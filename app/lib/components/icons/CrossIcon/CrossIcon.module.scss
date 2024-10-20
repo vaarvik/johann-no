@@ -1,0 +1,5 @@
+@import 'app/lib/assets/scss/mixins';
+
+.exit-icon {
+  @include icon-styles;
+}

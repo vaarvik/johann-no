@@ -1,0 +1,37 @@
+@import 'app/lib/assets/scss/variables';
+
+.content-padded {
+  @each $size, $value in $space-sizes {
+    &--padding {
+      &-#{$size} {
+        padding: $value;
+      }
+
+      &-x-#{$size} {
+        padding-left: $value;
+        padding-right: $value;
+      }
+
+      &-y-#{$size} {
+        padding-bottom: $value;
+        padding-top: $value;
+      }
+
+      &-left-#{$size} {
+        padding-left: $value;
+      }
+
+      &-right-#{$size} {
+        padding-right: $value;
+      }
+
+      &-bottom-#{$size} {
+        padding-bottom: $value;
+      }
+
+      &-top-#{$size} {
+        padding-top: $value;
+      }
+    }
+  }
+}

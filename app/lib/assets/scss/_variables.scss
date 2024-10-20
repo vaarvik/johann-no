@@ -1,0 +1,184 @@
+/**
+* Theme colors:
+* * Alt: https://huemint.com/website-3/#palette=ffffff-f7e1d1-26065b-182764-3a2637-38b8e2
+* * Alt: https://huemint.com/website-3/#palette=ffffff-2928fd-34075d-2a06a2-685d5c-f75b03
+* * Alt: https://huemint.com/website-3/#palette=ffffff-fcf0cb-1b1314-253336-d12127-285176
+* * Current: https://huemint.com/website-2/#palette=ffffff-070707-7408e6-a45ee2
+*/
+
+/* Colors */
+$color-foreground: #070707;
+$color-background: #fff;
+
+$colors-default: (
+  foreground: $color-foreground,
+  background: $color-background,
+);
+
+$color-primary: #7408e6;
+$color-secondary: #a45ee2;
+// $color-tertiary: #38b8e2;
+// $color-quaternary: #f7e1d1;
+
+$colors-brand: (
+  primary: $color-primary,
+  secondary: $color-secondary,
+);
+
+$color-neutral-lightest: #e7e7e7;
+$color-neutral-lighter: #d8d8d8;
+$color-neutral-medium: #bfbfbf;
+$color-neutral-darker: #a0a0a0;
+$color-neutral-darkest: #5e5e5e;
+
+$colors-neutral: (
+  lightest: $color-neutral-lightest,
+  lighter: $color-neutral-lighter,
+  medium: $color-neutral-medium,
+  darker: $color-neutral-darker,
+  darkest: $color-neutral-darkest,
+);
+
+$color-success: #28a745;
+$color-warning: #ffc107;
+$color-error: #dc3545;
+$color-info: $color-neutral-lighter;
+
+$colors-status: (
+  success: $color-success,
+  warning: $color-warning,
+  error: $color-error,
+  info: $color-info,
+);
+
+$colors-all: ();
+$colors-brand-status: ();
+
+@each $key, $value in $colors-default {
+  $colors-all: map-merge(
+    $colors-all,
+    (
+      $key: $value,
+    )
+  );
+
+  $colors-brand-status: map-merge(
+    $colors-brand-status,
+    (
+      $key: $value,
+    )
+  );
+}
+
+@each $key, $value in $colors-brand {
+  $colors-all: map-merge(
+    $colors-all,
+    (
+      $key: $value,
+    )
+  );
+
+  $colors-brand-status: map-merge(
+    $colors-brand-status,
+    (
+      $key: $value,
+    )
+  );
+}
+
+@each $key, $value in $colors-status {
+  $colors-all: map-merge(
+    $colors-all,
+    (
+      $key: $value,
+    )
+  );
+
+  $colors-brand-status: map-merge(
+    $colors-brand-status,
+    (
+      $key: $value,
+    )
+  );
+}
+
+@each $key, $value in $colors-neutral {
+  $colors-all: map-merge(
+    $colors-all,
+    (
+      $key: $value,
+    )
+  );
+}
+
+/* Content Widths */
+$content-width-2xs: 300px;
+$content-width-xs: 450px;
+$content-width-sm: 600px;
+$content-width-md: 900px;
+$content-width-lg: 1200px;
+$content-width-xl: 1500px;
+
+$content-width-sizes: (
+  '2xs': $content-width-2xs,
+  xs: $content-width-xs,
+  sm: $content-width-sm,
+  md: $content-width-md,
+  lg: $content-width-lg,
+  xl: $content-width-xl,
+);
+
+/* Spacing Properties */
+$space-xs: 0.25rem;
+$space-sm: 0.5rem;
+$space-md: 1rem;
+$space-lg: 2rem;
+$space-xl: 4rem;
+
+$space-sizes: (
+  xs: $space-xs,
+  sm: $space-sm,
+  md: $space-md,
+  lg: $space-lg,
+  xl: $space-xl,
+);
+
+/* Rounding Properties */
+$round-xs: 2px;
+$round-sm: 4px;
+$round-md: 8px;
+$round-lg: 16px;
+$round-xl: 32px;
+
+/* Text Properties */
+$font-family-base: 'Arial, sans-serif'; /* Fetched from Google and added as class by Next in `layout.tsx` */
+$font-family-heading: 'Helvetica, sans-serif';
+$font-mono: ui-monospace, menlo, monaco, 'Cascadia Mono', 'Segoe UI Mono',
+  'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
+  'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+
+$font-size-2xs: 0.5rem; /* 4px */
+$font-size-xs: 0.75rem; /* 10px */
+$font-size-sm: 0.875rem; /* 14px */
+$font-size-base: 16px;
+$font-size-lg: 1.25rem; /* 20px */
+$font-size-xl: 1.5rem; /* 24px */
+$font-size-2xl: 2rem; /* 32px */
+
+$font-sizes: (
+  2xs: $font-size-2xs,
+  xs: $font-size-xs,
+  sm: $font-size-sm,
+  md: $font-size-base,
+  lg: $font-size-lg,
+  xl: $font-size-xl,
+  2xl: $font-size-2xl,
+);
+
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-bold: 700;
+
+$line-height-tight: 1.2;
+$line-height-normal: 1.5;
+$line-height-loose: 1.75;

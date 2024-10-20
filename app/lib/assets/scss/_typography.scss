@@ -1,0 +1,138 @@
+@import 'app/lib/assets/scss/variables';
+
+.h1 {
+  font-size: $font-size-2xl;
+  margin-bottom: $space-lg;
+  margin-top: $space-xl;
+}
+
+.h2 {
+  font-size: $font-size-xl;
+  margin-bottom: $space-md;
+  margin-top: $space-lg;
+}
+
+.h3 {
+  font-size: $font-size-lg;
+  margin-bottom: $space-xs;
+  margin-top: $space-sm;
+}
+
+.h4,
+.h5,
+.h6 {
+  margin-bottom: $space-xs;
+  margin-top: $space-sm;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-weight: 700;
+  letter-spacing: 0.33pt;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @each $color, $value in $colors-all {
+    &--color-#{$color} {
+      color: $value;
+    }
+  }
+}
+
+.p {
+  font-size: inherit;
+  font-weight: inherit;
+  margin-top: $space-sm;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @each $color, $value in $colors-all {
+    &--color-#{$color} {
+      color: $value;
+    }
+  }
+
+  @each $size, $value in $font-sizes {
+    &--size-#{$size} {
+      font-size: $value;
+    }
+  }
+}
+
+.ul {
+  list-style-type: disc;
+  margin-bottom: $space-sm;
+  margin-left: $space-lg;
+  margin-top: $space-xs;
+}
+
+.li {
+  padding-left: $space-xs;
+}
+
+b,
+.b {
+  font-weight: 700;
+  letter-spacing: 0.33pt;
+}
+
+a,
+.a {
+  &:not(:has(> *)) {
+    color: $color-secondary;
+    display: inline;
+    position: relative;
+    text-decoration: none;
+
+    &::before {
+      content: '';
+      background-color: $color-secondary;
+      bottom: -3px;
+      height: 2px;
+      left: 0;
+      position: absolute;
+      transition: width 0.2s ease-out;
+      width: 0;
+    }
+
+    &:hover,
+    &.a--hovered {
+      color: $color-secondary;
+
+      &::before {
+        width: 100%;
+      }
+    }
+  }
+
+  @each $color, $value in $colors-all {
+    &--color-#{$color}:not(:has(> *)) {
+      color: $value;
+
+      &:hover,
+      &.a--hovered {
+        color: $value;
+      }
+
+      &::before {
+        background-color: $value;
+      }
+    }
+  }
+}

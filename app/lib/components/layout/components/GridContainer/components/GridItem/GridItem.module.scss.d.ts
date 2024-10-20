@@ -1,0 +1,56 @@
+export type Styles = {
+  'grid-item--column-end-1': string;
+  'grid-item--column-end-10': string;
+  'grid-item--column-end-11': string;
+  'grid-item--column-end-12': string;
+  'grid-item--column-end-2': string;
+  'grid-item--column-end-3': string;
+  'grid-item--column-end-4': string;
+  'grid-item--column-end-5': string;
+  'grid-item--column-end-6': string;
+  'grid-item--column-end-7': string;
+  'grid-item--column-end-8': string;
+  'grid-item--column-end-9': string;
+  'grid-item--column-start-1': string;
+  'grid-item--column-start-10': string;
+  'grid-item--column-start-11': string;
+  'grid-item--column-start-12': string;
+  'grid-item--column-start-2': string;
+  'grid-item--column-start-3': string;
+  'grid-item--column-start-4': string;
+  'grid-item--column-start-5': string;
+  'grid-item--column-start-6': string;
+  'grid-item--column-start-7': string;
+  'grid-item--column-start-8': string;
+  'grid-item--column-start-9': string;
+  'grid-item--row-end-1': string;
+  'grid-item--row-end-10': string;
+  'grid-item--row-end-11': string;
+  'grid-item--row-end-12': string;
+  'grid-item--row-end-2': string;
+  'grid-item--row-end-3': string;
+  'grid-item--row-end-4': string;
+  'grid-item--row-end-5': string;
+  'grid-item--row-end-6': string;
+  'grid-item--row-end-7': string;
+  'grid-item--row-end-8': string;
+  'grid-item--row-end-9': string;
+  'grid-item--row-start-1': string;
+  'grid-item--row-start-10': string;
+  'grid-item--row-start-11': string;
+  'grid-item--row-start-12': string;
+  'grid-item--row-start-2': string;
+  'grid-item--row-start-3': string;
+  'grid-item--row-start-4': string;
+  'grid-item--row-start-5': string;
+  'grid-item--row-start-6': string;
+  'grid-item--row-start-7': string;
+  'grid-item--row-start-8': string;
+  'grid-item--row-start-9': string;
+};
+
+export type ClassNames = keyof Styles;
+
+declare const styles: Styles;
+
+export default styles;

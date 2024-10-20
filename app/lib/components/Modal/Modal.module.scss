@@ -1,0 +1,22 @@
+@import 'app/lib/assets/scss/variables';
+
+.modal {
+  background-color: rgba($color-foreground, 0.8);
+  display: flex;
+  inset: 0;
+  overflow: auto;
+  position: fixed;
+  z-index: 50;
+
+  &__button {
+    position: absolute;
+    right: $space-md;
+    top: $space-md;
+  }
+
+  &__content {
+    margin: auto;
+    max-width: $content-width-md;
+    position: relative;
+  }
+}

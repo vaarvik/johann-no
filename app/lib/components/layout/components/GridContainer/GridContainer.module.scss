@@ -1,0 +1,32 @@
+@import 'app/lib/assets/scss/variables';
+
+.grid-container {
+  display: grid;
+
+  @each $size, $value in $space-sizes {
+    &--gap-#{$size} {
+      gap: $value;
+    }
+
+    &--gap-x-#{$size} {
+      row-gap: $value;
+    }
+
+    &--gap-y-#{$size} {
+      column-gap: $value;
+    }
+  }
+
+  @for $i from 1 through 12 {
+    &--columns-#{$i} {
+      grid-template-columns: repeat(#{$i}, 1fr);
+    }
+  }
+
+  // Loop to generate grid row classes
+  @for $i from 1 through 12 {
+    &--rows-#{$i} {
+      grid-template-rows: repeat(#{$i}, 1fr);
+    }
+  }
+}

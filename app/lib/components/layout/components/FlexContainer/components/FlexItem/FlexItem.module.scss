@@ -1,0 +1,60 @@
+@import 'app/lib/assets/scss/variables';
+
+.flex-item {
+  @for $i from 0 through 9 {
+    &--order-#{$i} {
+      order: $i;
+    }
+  }
+
+  @for $i from 0 through 9 {
+    &--grow-#{$i} {
+      flex-grow: $i;
+    }
+  }
+
+  @for $i from 0 through 9 {
+    &--shrink-#{$i} {
+      flex-shrink: $i;
+    }
+  }
+
+  &--basis-auto {
+    flex-basis: auto;
+  }
+
+  @for $i from 0 through 20 {
+    &--basis-#{calc($i * 5)} {
+      flex-basis: calc($i * 5%);
+    }
+  }
+
+  &--fill-content {
+    height: 100%;
+    width: 100%;
+  }
+
+  &--align-auto {
+    align-self: auto;
+  }
+
+  &--align-flex-start {
+    align-self: flex-start;
+  }
+
+  &--align-flex-end {
+    align-self: flex-end;
+  }
+
+  &--align-center {
+    align-self: center;
+  }
+
+  &--align-baseline {
+    align-self: baseline;
+  }
+
+  &--align-stretch {
+    align-self: stretch;
+  }
+}

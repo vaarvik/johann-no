@@ -1,0 +1,20 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnPaste": false,
+  "editor.formatOnType": false,
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file", // required to format on save
+  "editor.renderWhitespace": "selection",
+  "editor.wordWrap": "on",
+  "editor.insertSpaces": false,
+  "editor.autoClosingOvertype": "always",
+  "stylelint.enable": true,
+  "stylelint.validate": ["css", "scss", "less"],
+  "css.validate": false,
+  "scss.validate": false,
+  "less.validate": false
+}

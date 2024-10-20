@@ -1,0 +1,72 @@
+@import 'app/lib/assets/scss/variables';
+@import 'app/lib/assets/scss/functions';
+
+.button {
+  border-radius: $round-sm;
+  cursor: pointer;
+  display: inline-block;
+  font-size: $font-size-base;
+  padding: 0.5em 0.8em;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+
+  &--rounded {
+    border-radius: 50%;
+    padding: 0.5em;
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+    opacity: 0.3;
+  }
+
+  @each $size, $value in $font-sizes {
+    &--size-#{$size} {
+      font-size: $value;
+    }
+  }
+
+  @each $variant, $value in $colors-brand-status {
+    &--#{$variant}-filled {
+      background-color: $value;
+      border: 2px solid $value;
+
+      @if color_contrast($value, $color-background) < 4.5 {
+        color: $color-foreground;
+      } @else {
+        color: $color-background;
+      }
+
+      &:hover {
+        background-color: $color-background;
+        color: $value;
+      }
+
+      &:focus {
+        outline: 2px solid $color-primary;
+      }
+    }
+
+    &--#{$variant}-outlined {
+      background-color: transparent;
+      border: 2px solid $value;
+      color: $value;
+
+      &:hover {
+        background-color: $value;
+        color: $color-background;
+      }
+    }
+
+    &--#{$variant}-text {
+      background-color: transparent;
+      border: 2px solid transparent;
+      color: $value;
+
+      &:hover {
+        border: 2px solid $value;
+      }
+    }
+  }
+}
