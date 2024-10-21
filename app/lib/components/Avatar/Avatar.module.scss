@@ -1,0 +1,20 @@
+@import 'app/lib/assets/scss/variables';
+
+.avatar {
+  background-color: $color-neutral-lighter;
+  border-radius: 50%;
+  font-size: inherit;
+  height: 3em;
+  overflow: hidden;
+  width: 3em;
+
+  &--clickable {
+    cursor: pointer;
+  }
+
+  @each $size, $value in $font-sizes {
+    &--size-#{$size} {
+      font-size: calc($value * 8);
+    }
+  }
+}

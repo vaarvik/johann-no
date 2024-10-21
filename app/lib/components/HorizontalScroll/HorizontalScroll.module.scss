@@ -1,0 +1,36 @@
+@import 'app/lib/assets/scss/variables';
+
+.horizontal-scroll__container {
+  height: 100vh;
+  overflow: hidden;
+  position: sticky;
+  top: 0;
+}
+
+.horizontal-scroll__strip {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  will-change: transform;
+}
+
+.horizontal-scroll__content {
+  align-items: center;
+  display: flex;
+  flex-shrink: 0;
+  height: 100vh;
+
+  @each $size, $value in $space-sizes {
+    &--gap-#{$size} {
+      gap: $value;
+    }
+
+    &--gap-y-#{$size} {
+      row-gap: $value;
+    }
+
+    &--gap-x-#{$size} {
+      column-gap: $value;
+    }
+  }
+}
