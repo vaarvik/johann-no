@@ -16,6 +16,7 @@ export type Styles = {
   'horizontal-scroll__content--gap-y-sm': string;
   'horizontal-scroll__content--gap-y-xl': string;
   'horizontal-scroll__content--gap-y-xs': string;
+  'horizontal-scroll__item': string;
   'horizontal-scroll__strip': string;
 };
 

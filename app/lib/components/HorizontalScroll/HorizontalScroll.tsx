@@ -19,7 +19,7 @@ export default function HorizontalScroll({ gap, items }: Props): JSX.Element {
     contentRef,
     itemRefs,
     visibleItems,
-  } = useHorizontalScroll(0.5);
+  } = useHorizontalScroll(0.7);
 
   const classNamesContent = [
     styles['horizontal-scroll__content'],
@@ -36,6 +36,7 @@ export default function HorizontalScroll({ gap, items }: Props): JSX.Element {
           <div className={classNamesContent.join(' ')} ref={contentRef}>
             {items.map((item, index) => (
               <div
+                className={styles['horizontal-scroll__item']}
                 ref={el => {
                   if (el) {
                     itemRefs.current[index] = el;

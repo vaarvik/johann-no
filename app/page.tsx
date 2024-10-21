@@ -1,11 +1,18 @@
 'use client';
 
-import HorizontalScroll from '@/components/HorizontalScroll/HorizontalScroll';
 import Container from '@/components/layout/components/Container/Container';
 import ContentPadded from '@/components/layout/components/ContentPadded/ContentPadded';
+import Timeline from '@/components/Timeline/Timeline';
 import ImageText from './lib/widgets/ImageText/ImageText';
 
 export default function Home(): JSX.Element {
+  const timelineData = [
+    { year: 2020, month: 'January', position: 'Frontend Developer' },
+    { year: 2020, month: 'June', position: 'Backend Developer' },
+    { year: 2021, month: 'March', position: 'Full Stack Developer' },
+    { year: 2022, month: 'September', position: 'Senior Developer' },
+    { year: 2023, month: 'April', position: 'Lead Developer' },
+  ];
   return (
     <main>
       <Container width="xl">
@@ -13,71 +20,7 @@ export default function Home(): JSX.Element {
           <ImageText />
         </ContentPadded>
       </Container>
-      <HorizontalScroll
-        gap="xl"
-        items={[
-          {
-            content: isVisible => (
-              <div
-                style={{
-                  width: '1000px',
-                  height: '50vh',
-                  background: isVisible ? 'yellow' : 'green',
-                }}
-                className={isVisible ? 'visible' : ''}
-              />
-            ),
-          },
-          {
-            content: isVisible => (
-              <div
-                style={{
-                  width: '1000px',
-                  height: '50vh',
-                  background: isVisible ? 'yellow' : 'red',
-                }}
-                className={isVisible ? 'visible' : ''}
-              />
-            ),
-          },
-          {
-            content: isVisible => (
-              <div
-                style={{
-                  width: '1000px',
-                  height: '50vh',
-                  background: isVisible ? 'yellow' : 'green',
-                }}
-                className={isVisible ? 'visible' : ''}
-              />
-            ),
-          },
-          {
-            content: isVisible => (
-              <div
-                style={{
-                  width: '1000px',
-                  height: '50vh',
-                  background: isVisible ? 'yellow' : 'blue',
-                }}
-                className={isVisible ? 'visible' : ''}
-              />
-            ),
-          },
-          {
-            content: isVisible => (
-              <div
-                style={{
-                  width: '1000px',
-                  height: '50vh',
-                  background: isVisible ? 'yellow' : 'green',
-                }}
-                className={isVisible ? 'visible' : ''}
-              />
-            ),
-          },
-        ]}
-      />
+      <Timeline items={timelineData} />
     </main>
   );
 }
