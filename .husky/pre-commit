@@ -1,1 +1,1 @@
-node server-utils/check-changes.js
+npm run typecheck && npm run lint-staged
