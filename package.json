@@ -4,7 +4,7 @@
   "private": true,
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "next lint --fix",
+      "eslint --fix",
       "prettier --write"
     ],
     "*.{css,scss,less}": [
@@ -47,6 +47,8 @@
     "lint-staged": "^15.4.3",
     "prettier": "^3.4.2",
     "stylelint": "^16.14.1",
+    "stylelint-declaration-strict-value": "^1.10.7",
+    "stylelint-order": "^6.0.4",
     "typescript": "^5"
   }
 }

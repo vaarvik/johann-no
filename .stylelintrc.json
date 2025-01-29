@@ -1,0 +1,22 @@
+{
+  "plugins": ["stylelint-order", "stylelint-declaration-strict-value"],
+  "rules": {
+    "color-hex-length": null,
+    "max-nesting-depth": 3,
+    "order/properties-order": [
+      ["content"],
+      {
+        "unspecified": "bottomAlphabetical"
+      }
+    ],
+    "scale-unlimited/declaration-strict-value": [
+      "/color$/",
+      {
+        "disableFix": true,
+        "expandShorthand": true,
+        "ignoreValues": ["currentcolor", "inherit", "transparent"]
+      }
+    ],
+    "selector-class-pattern": null
+  }
+}
