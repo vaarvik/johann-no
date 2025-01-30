@@ -28,4 +28,10 @@ body {
   line-height: var(--line-height-normal);
 }
 
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
 @include meta.load-css("typography");

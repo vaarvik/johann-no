@@ -126,8 +126,8 @@ $space-sizes: (
 
 /* ----- Root Variables ----- */
 :root {
-  --color-background: #222222;
-  --color-foreground: #ffffff;
+  --color-background: #ffffff;
+  --color-foreground: #222222;
 
   --color-primary-160: #0d1434;
   --color-primary-140: #1b2658;
@@ -220,8 +220,8 @@ $space-sizes: (
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-foreground: #222222;
-    --color-background: #ffffff;
+    --color-background: #222222;
+    --color-foreground: #ffffff;
 
     --color-primary-160: #f3f6f2;
     --color-primary-140: #c1c7ed;
