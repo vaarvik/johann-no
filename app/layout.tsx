@@ -1,6 +1,5 @@
-import "@/assets/css/01_reset.css";
-import "@/assets/css/02_variables.css";
-import "@/assets/css/03_globals.css";
+import "@/assets/scss/01_reset.scss";
+import "@/assets/scss/02_globals.scss";
 import type { Metadata } from "next";
 import { Meow_Script, Merriweather, Raleway } from "next/font/google";
 

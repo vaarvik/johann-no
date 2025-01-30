@@ -1,0 +1,266 @@
+@use "sass:map";
+
+/* ----- SCSS Variables ----- */
+
+$colors-default: (
+  foreground: (
+    color: var(--color-foreground),
+    contrast: var(--color-background),
+  ),
+  background: (
+    color: var(--color-background),
+    contrast: var(--color-foreground),
+  ),
+  grey: (
+    color: var(--color-grey-40),
+    contrast: var(--color-background),
+  ),
+);
+
+$colors-brand: (
+  primary: (
+    color: var(--color-primary-100),
+    contrast: var(--color-foreground),
+  ),
+);
+
+$colors-status: (
+  error: (
+    color: var(--color-error-100),
+    contrast: var(--color-foreground),
+  ),
+  success: (
+    color: var(--color-success-100),
+    contrast: var(--color-background),
+  ),
+  warning: (
+    color: var(--color-warning-100),
+    contrast: var(--color-background),
+  ),
+);
+
+$colors-all: ();
+$colors-brand-status: ();
+
+@each $key, $value in $colors-brand {
+  $colors-all: map.merge(
+    $colors-all,
+    (
+      $key: $value,
+    )
+  );
+
+  $colors-brand-status: map.merge(
+    $colors-brand-status,
+    (
+      $key: $value,
+    )
+  );
+}
+
+@each $key, $value in $colors-status {
+  $colors-all: map.merge(
+    $colors-all,
+    (
+      $key: $value,
+    )
+  );
+
+  $colors-brand-status: map.merge(
+    $colors-brand-status,
+    (
+      $key: $value,
+    )
+  );
+}
+
+$font-sizes: (
+  sm: var(--font-size-sm),
+  md: var(--font-size-md),
+  lg: var(--font-size-lg),
+  xl: var(--font-size-xl),
+  2xl: var(--font-size-2xl),
+  3xl: var(--font-size-3xl),
+  4xl: var(--font-size-4xl),
+  5xl: var(--font-size-5xl),
+  6xl: var(--font-size-6xl),
+);
+
+/* Breakpoints */
+$breakpoint-mobile: 0;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+$breakpoint-desktop-large: 1440px;
+
+$breakpoints: (
+  mobile: $breakpoint-mobile,
+  tablet: $breakpoint-tablet,
+  desktop: $breakpoint-desktop,
+  large-desktop: $breakpoint-desktop-large,
+);
+
+/* Max widths */
+$max-widths: (
+  narrow: var(--max-width-narrow),
+  text: var(--max-width-text),
+  default: var(--max-width-default),
+  wide: var(--max-width-wide),
+);
+
+$space-sizes: (
+  100: var(--spacing-100),
+  200: var(--spacing-200),
+  300: var(--spacing-300),
+  400: var(--spacing-400),
+  500: var(--spacing-500),
+  600: var(--spacing-600),
+  700: var(--spacing-700),
+  800: var(--spacing-800),
+  1000: var(--spacing-1000),
+  1200: var(--spacing-1200),
+  1400: var(--spacing-1400),
+  1600: var(--spacing-1600),
+  2000: var(--spacing-2000),
+  4000: var(--spacing-4000),
+);
+
+/* ----- Root Variables ----- */
+:root {
+  --color-background: #222222;
+  --color-foreground: #ffffff;
+
+  --color-primary-160: #0d1434;
+  --color-primary-140: #1b2658;
+  --color-primary-120: #3a4b9d;
+  --color-primary-100: #2b5ea1;
+  --color-primary-80: #5d81c5;
+  --color-primary-60: #8fa4e9;
+  --color-primary-40: #c1c7ed;
+  --color-primary-20: #f3f6f2;
+
+  --color-grey-100: #4d4d4d;
+  --color-grey-80: #808080;
+  --color-grey-60: #b3b3b3;
+  --color-grey-40: #e6e6e6;
+  --color-grey-20: #f2f2f2;
+
+  --color-error-100: #db4144;
+  --color-error-80: #e06b6e;
+  --color-error-60: #e99598;
+  --color-error-40: #f0bfc0;
+  --color-error-20: #f8e9ea;
+
+  --color-success-100: #22aa5f;
+  --color-success-80: #55d08f;
+  --color-success-60: #88e4b8;
+  --color-success-40: #bbf8e2;
+  --color-success-20: #eefceb;
+
+  --color-warning-100: #ffff00;
+  --color-warning-80: #ffff80;
+  --color-warning-60: #ffffb3;
+  --color-warning-40: #ffffe6;
+  --color-warning-20: #fffff9;
+
+  --color-modal: #222222;
+
+  --font-size-base: 16px;
+  --font-size-sm: 0.75rem; /* 12px */
+  --font-size-md: 1rem; /* 16px */
+  --font-size-lg: 1.25rem; /* 20px */
+  --font-size-xl: 1.5rem; /* 24px */
+  --font-size-2xl: 2rem; /* 32px */
+  --font-size-3xl: 2.5rem; /* 40px */
+  --font-size-4xl: 3rem; /* 48px */
+  --font-size-5xl: 3.5rem; /* 56px */
+  --font-size-6xl: 6rem; /* 96px */
+
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+
+  --line-height-normal: 1.5;
+  --line-height-sm: 1.25;
+  --line-height-lg: 1.75;
+  --line-height-xl: 2;
+  --line-height-xxl: 2.5;
+
+  --max-width-narrow: 550px;
+  --max-width-text: 720px;
+  --max-width-default: 1220px;
+  --max-width-wide: 1520px;
+
+  --spacing-base: 16px;
+  --spacing-100: calc(var(--spacing-base) * 0.25);
+  --spacing-200: calc(var(--spacing-base) * 0.5);
+  --spacing-300: calc(var(--spacing-base) * 0.75);
+  --spacing-400: var(--spacing-base);
+  --spacing-500: calc(var(--spacing-base) * 1.25);
+  --spacing-600: calc(var(--spacing-base) * 1.5);
+  --spacing-700: calc(var(--spacing-base) * 1.75);
+  --spacing-800: calc(var(--spacing-base) * 2);
+  --spacing-1000: calc(var(--spacing-base) * 2.5);
+  --spacing-1200: calc(var(--spacing-base) * 3);
+  --spacing-1400: calc(var(--spacing-base) * 3.5);
+  --spacing-1600: calc(var(--spacing-base) * 4);
+  --spacing-2000: calc(var(--spacing-base) * 5);
+  --spacing-4000: calc(var(--spacing-base) * 10);
+
+  --radius-normal: 8px;
+  --radius-full: 9999px;
+
+  /* Z-index */
+  --z-index-background: -1; // Background elements
+  --z-index-base: 1; // Default content layer
+  --z-index-header: 10; // Headers, navigation bars
+  --z-index-dropdown: 20; // Dropdowns
+  --z-index-tooltip: 30; // Tooltips
+  --z-index-modal: 40; // Modals
+  --z-index-notification: 50; // Notification banners
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-foreground: #222222;
+    --color-background: #ffffff;
+
+    --color-primary-160: #f3f6f2;
+    --color-primary-140: #c1c7ed;
+    --color-primary-120: #8fa4e9;
+    --color-primary-100: #5d81c5;
+    --color-primary-80: #2b5ea1;
+    --color-primary-60: #3a4b9d;
+    --color-primary-40: #1b2658;
+    --color-primary-20: #0d1434;
+
+    --color-grey-100: #f2f2f2;
+    --color-grey-80: #e6e6e6;
+    --color-grey-60: #b3b3b3;
+    --color-grey-40: #808080;
+    --color-grey-20: #4d4d4d;
+
+    --color-error-100: #f8e9ea;
+    --color-error-80: #f0bfc0;
+    --color-error-60: #e99598;
+    --color-error-40: #e06b6e;
+    --color-error-20: #db4144;
+
+    --color-success-100: #eefceb;
+    --color-success-80: #bbf8e2;
+    --color-success-60: #88e4b8;
+    --color-success-40: #55d08f;
+    --color-success-20: #22aa5f;
+
+    --color-warning-100: #fffff9;
+    --color-warning-80: #ffffe6;
+    --color-warning-60: #ffffb3;
+    --color-warning-40: #ffff80;
+    --color-warning-20: #ffff00;
+  }
+}
+
+@media screen and (max-width: #{$breakpoint-tablet}) {
+  :root {
+    --font-size-base: 14px;
+    --spacing-base: 8px;
+  }
+}

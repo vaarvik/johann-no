@@ -1,0 +1,60 @@
+/* stylelint-disable max-nesting-depth */
+@use "lib/assets/scss/variables" as vars;
+
+.grid-container {
+  display: grid;
+
+  @each $size, $value in vars.$space-sizes {
+    @layer default-screen {
+      &--gap-#{$size} {
+        gap: $value;
+      }
+
+      &--gap-y-#{$size} {
+        row-gap: $value;
+      }
+
+      &--gap-x-#{$size} {
+        column-gap: $value;
+      }
+    }
+
+    @for $i from 1 through 12 {
+      &--columns-#{$i} {
+        grid-template-columns: repeat(#{$i}, 1fr);
+      }
+
+      &--rows-#{$i} {
+        grid-template-rows: repeat(#{$i}, 1fr);
+      }
+    }
+
+    @each $screen-size, $breakpoint in vars.$breakpoints {
+      @layer #{$screen-size} {
+        @media (width >= $breakpoint) {
+          &--gap-#{$screen-size}-#{$size} {
+            gap: $value;
+          }
+
+          &--gap-#{$screen-size}-y-#{$size} {
+            row-gap: $value;
+          }
+
+          &--gap-#{$screen-size}-x-#{$size} {
+            column-gap: $value;
+          }
+
+          @for $i from 1 through 12 {
+            &--columns-#{$screen-size}-#{$i} {
+              grid-template-columns: repeat(#{$i}, 1fr);
+            }
+
+            &--rows-#{$screen-size}-#{$i} {
+              grid-template-rows: repeat(#{$i}, 1fr);
+            }
+          }
+        }
+      }
+    }
+  }
+}

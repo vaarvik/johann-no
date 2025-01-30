@@ -1,9 +1,12 @@
-import styles from './page.module.css';
+import Heading from "@/components/typography/components/Heading/Heading";
+import styles from "./page.module.css";
 
 export default function Home() {
-    return (
-        <div className={styles.page}>
-            <main className={styles.main}>Home</main>
-        </div>
-    );
+  return (
+    <div className={styles.page}>
+      <main className={styles.main}>
+        <Heading level={2}>Home</Heading>
+      </main>
+    </div>
+  );
 }

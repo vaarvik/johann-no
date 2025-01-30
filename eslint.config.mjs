@@ -5,15 +5,14 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 const compat = new FlatCompat({
     baseDirectory: __dirname,
 });
 
 const eslintConfig = [
-    /* eslint-disable @typescript-eslint/no-unsafe-member-access */
     ...compat.extends('next/core-web-vitals', 'next/typescript'),
     {
+        files: ['**/*.ts', '**/*.tsx'],
         rules: {
             '@typescript-eslint/ban-ts-comment': [
                 'warn',
@@ -55,6 +54,12 @@ const eslintConfig = [
                 projectService: true,
                 tsconfigRootDir: import.meta.dirname,
             },
+        },
+    },
+    {
+        files: ['**/*.module.scss.d.ts'],
+        rules: {
+            'max-lines': 'off',
         },
     },
 ];

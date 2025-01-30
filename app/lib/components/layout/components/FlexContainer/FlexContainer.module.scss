@@ -1,0 +1,193 @@
+/* stylelint-disable max-nesting-depth */
+@use "lib/assets/scss/variables" as vars;
+
+.flex-container {
+  display: flex;
+
+  &--fit-to-parent {
+    height: 100%;
+    width: 100%;
+  }
+
+  &--fit-to-screen {
+    height: 100vh;
+    left: 50%;
+    position: relative;
+    transform: translateX(-50%);
+    width: 100vw;
+  }
+
+  @each $size, $value in vars.$space-sizes {
+    @layer default-screen {
+      &--gap-#{$size} {
+        gap: $value;
+      }
+
+      &--gap-y-#{$size} {
+        row-gap: $value;
+      }
+
+      &--gap-x-#{$size} {
+        column-gap: $value;
+      }
+    }
+
+    @each $screen-size, $breakpoint in vars.$breakpoints {
+      @layer #{$screen-size} {
+        @media (width >= $breakpoint) {
+          &--gap-#{$screen-size}-#{$size} {
+            gap: $value;
+          }
+
+          &--gap-#{$screen-size}-y-#{$size} {
+            row-gap: $value;
+          }
+
+          &--gap-#{$screen-size}-x-#{$size} {
+            column-gap: $value;
+          }
+
+          &--direction-#{$screen-size}-row {
+            flex-direction: row;
+          }
+
+          &--direction-#{$screen-size}-row-reverse {
+            flex-direction: row-reverse;
+          }
+
+          &--direction-#{$screen-size}-column {
+            flex-direction: column;
+          }
+
+          &--direction-#{$screen-size}-column-reverse {
+            flex-direction: column-reverse;
+          }
+
+          &--justify-#{$screen-size}-flex-start {
+            justify-content: flex-start;
+          }
+
+          &--justify-#{$screen-size}-flex-end {
+            justify-content: flex-end;
+          }
+
+          &--justify-#{$screen-size}-center {
+            justify-content: center;
+          }
+
+          &--justify-#{$screen-size}-space-between {
+            justify-content: space-between;
+          }
+
+          &--justify-#{$screen-size}-space-around {
+            justify-content: space-around;
+          }
+
+          &--justify-#{$screen-size}-space-evenly {
+            justify-content: space-evenly;
+          }
+
+          &--align-#{$screen-size}-flex-start {
+            align-items: flex-start;
+          }
+
+          &--align-#{$screen-size}-flex-end {
+            align-items: flex-end;
+          }
+
+          &--align-#{$screen-size}-center {
+            align-items: center;
+          }
+
+          &--align-#{$screen-size}-baseline {
+            align-items: baseline;
+          }
+
+          &--align-#{$screen-size}-stretch {
+            align-items: stretch;
+          }
+        }
+      }
+    }
+  }
+
+  &--direction-row {
+    flex-direction: row;
+  }
+
+  &--direction-row-reverse {
+    flex-direction: row-reverse;
+  }
+
+  &--direction-column {
+    flex-direction: column;
+  }
+
+  &--direction-column-reverse {
+    flex-direction: column-reverse;
+  }
+
+  &--justify-flex-start {
+    justify-content: flex-start;
+  }
+
+  &--justify-flex-end {
+    justify-content: flex-end;
+  }
+
+  &--justify-center {
+    justify-content: center;
+  }
+
+  &--justify-space-between {
+    justify-content: space-between;
+  }
+
+  &--justify-space-around {
+    justify-content: space-around;
+  }
+
+  &--justify-space-evenly {
+    justify-content: space-evenly;
+  }
+
+  &--align-flex-start {
+    align-items: flex-start;
+  }
+
+  &--align-flex-end {
+    align-items: flex-end;
+  }
+
+  &--align-center {
+    align-items: center;
+  }
+
+  &--align-baseline {
+    align-items: baseline;
+  }
+
+  &--align-stretch {
+    align-items: stretch;
+  }
+
+  &--wrap-wrap {
+    flex-wrap: wrap;
+  }
+
+  &--wrap-wrap-reverse {
+    flex-wrap: wrap-reverse;
+  }
+
+  &--wrap-nowrap {
+    flex-wrap: nowrap;
+  }
+
+  &--wrap-initial {
+    flex-wrap: initial;
+  }
+
+  &--wrap-inherit {
+    flex-wrap: inherit;
+  }
+}

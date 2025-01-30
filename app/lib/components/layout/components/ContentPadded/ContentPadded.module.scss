@@ -1,0 +1,76 @@
+/* stylelint-disable max-nesting-depth */
+@use "lib/assets/scss/variables" as vars;
+@use "sass:list";
+@use "sass:map";
+
+.content-padded--padding {
+  @each $size, $value in vars.$space-sizes {
+    @layer default-screen {
+      &-#{$size} {
+        padding: $value;
+      }
+
+      &-x-#{$size} {
+        padding-left: $value;
+        padding-right: $value;
+      }
+
+      &-y-#{$size} {
+        padding-bottom: $value;
+        padding-top: $value;
+      }
+
+      &-left-#{$size} {
+        padding-left: $value;
+      }
+
+      &-right-#{$size} {
+        padding-right: $value;
+      }
+
+      &-bottom-#{$size} {
+        padding-bottom: $value;
+      }
+
+      &-top-#{$size} {
+        padding-top: $value;
+      }
+    }
+
+    @each $screen-size, $breakpoint in vars.$breakpoints {
+      @layer #{$screen-size} {
+        @media (width >= $breakpoint) {
+          &-#{$screen-size}-#{$size} {
+            padding: $value;
+          }
+
+          &-#{$screen-size}-x-#{$size} {
+            padding-left: $value;
+            padding-right: $value;
+          }
+
+          &-#{$screen-size}-y-#{$size} {
+            padding-bottom: $value;
+            padding-top: $value;
+          }
+
+          &-#{$screen-size}-left-#{$size} {
+            padding-left: $value;
+          }
+
+          &-#{$screen-size}-right-#{$size} {
+            padding-right: $value;
+          }
+
+          &-#{$screen-size}-bottom-#{$size} {
+            padding-bottom: $value;
+          }
+
+          &-#{$screen-size}-top-#{$size} {
+            padding-top: $value;
+          }
+        }
+      }
+    }
+  }
+}

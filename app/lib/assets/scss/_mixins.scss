@@ -1,0 +1,26 @@
+@use "variables" as vars;
+@use "sass:map";
+
+@mixin icon-styles {
+  display: inline;
+  font-size: inherit;
+  height: 1em;
+  width: 1em;
+
+  @each $color, $value in vars.$colors-all {
+    $color-value: map.get($value, color);
+
+    &--color-#{$color} path,
+    &--color-#{$color} circle {
+      fill: $color-value;
+    }
+  }
+
+  @each $size, $value in vars.$font-sizes {
+    &--size-#{$size} {
+      font-size: $value;
+      height: $value;
+      width: $value;
+    }
+  }
+}

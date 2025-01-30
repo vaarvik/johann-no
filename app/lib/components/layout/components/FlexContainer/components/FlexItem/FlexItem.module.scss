@@ -1,0 +1,56 @@
+.flex-item {
+  display: inline-flex;
+
+  @for $i from 0 through 9 {
+    &--order-#{$i} {
+      order: $i;
+    }
+
+    &--grow-#{$i} {
+      flex-grow: $i;
+    }
+
+    &--shrink-#{$i} {
+      flex-shrink: $i;
+    }
+  }
+
+  @for $i from 0 through 20 {
+    &--basis-#{calc($i * 5)} {
+      flex-basis: calc($i * 5%);
+    }
+  }
+
+  &--basis-auto {
+    flex-basis: auto;
+  }
+
+  &--fill-content {
+    height: 100%;
+    width: 100%;
+  }
+
+  &--align-auto {
+    align-self: auto;
+  }
+
+  &--align-flex-start {
+    align-self: flex-start;
+  }
+
+  &--align-flex-end {
+    align-self: flex-end;
+  }
+
+  &--align-center {
+    align-self: center;
+  }
+
+  &--align-baseline {
+    align-self: baseline;
+  }
+
+  &--align-stretch {
+    align-self: stretch;
+  }
+}

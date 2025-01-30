@@ -1,0 +1,21 @@
+@use "app/lib/assets/scss/mixins";
+
+.arrow-icon {
+  @include mixins.icon-styles;
+
+  &--down {
+    transform: rotate(0deg) translateY(0.1em);
+  }
+
+  &--left {
+    transform: rotate(90deg) translateY(0.1em);
+  }
+
+  &--right {
+    transform: rotate(270deg) translateY(0.1em);
+  }
+
+  &--up {
+    transform: rotate(180deg) translateY(0.1em);
+  }
+}

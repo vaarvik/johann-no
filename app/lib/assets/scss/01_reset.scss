@@ -1,0 +1,79 @@
+* {
+  border: 0;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+input,
+option,
+select,
+textarea,
+button {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  overflow: visible;
+}
+
+button {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+input {
+  vertical-align: middle;
+}
+
+legend {
+  font-family: inherit;
+  font-weight: inherit;
+}
+
+table {
+  border-collapse: collapse; /* Removes spacing in table */
+  border-style: hidden; /* Remove all the outside borders of the existing table */
+}
+
+th {
+  text-align: inherit;
+}
+
+ol,
+ul,
+dl {
+  padding-inline-start: 0;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  display: block;
+}
+
+sup {
+  vertical-align: top;
+}

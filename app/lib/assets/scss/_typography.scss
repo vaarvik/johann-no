@@ -1,0 +1,133 @@
+@use "./variables" as vars;
+@use "sass:map";
+
+.h1 {
+  font-family: var(--font-hero);
+  font-size: var(--font-size-6xl);
+
+  @each $color-name, $value in vars.$colors-all {
+    $color: map.get($value, color);
+
+    &--color-#{$color-name} {
+      color: $color;
+    }
+  }
+}
+
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-weight: var(--font-weight-bold);
+
+  @each $color-name, $value in vars.$colors-all {
+    $color: map.get($value, color);
+
+    &--color-#{$color-name} {
+      color: $color;
+    }
+  }
+}
+
+.h2,
+.h3,
+.h4 {
+  font-family: var(--font-headings);
+}
+
+.h5,
+.h6 {
+  font-family: var(--font-body);
+  font-size: var(--font-size-xl);
+}
+
+.h2 {
+  font-size: var(--font-size-4xl);
+}
+
+.h3 {
+  font-size: var(--font-size-3xl);
+}
+
+.h4 {
+  font-size: var(--font-size-2xl);
+}
+
+.p {
+  @each $color-name, $value in vars.$colors-all {
+    $color: map.get($value, color);
+
+    &--color-#{$color-name} {
+      color: $color;
+    }
+  }
+
+  @each $size, $value in vars.$font-sizes {
+    &--size-#{$size} {
+      font-size: $value;
+    }
+  }
+}
+
+.ul {
+  margin-bottom: var(--spacing-300);
+  margin-left: var(--spacing-400);
+  margin-top: var(--spacing-200);
+
+  @each $color-name, $value in vars.$colors-all {
+    $color: map.get($value, color);
+
+    &--color-#{$color-name} {
+      color: $color;
+    }
+  }
+}
+
+.li {
+  list-style-type: disc;
+  padding-left: var(--spacing-200);
+
+  @each $color-name, $value in vars.$colors-all {
+    $color: map.get($value, color);
+
+    &--color-#{$color-name} {
+      color: $color;
+    }
+  }
+}
+
+b,
+.b {
+  font-weight: var(--font-weight-bold);
+}
+
+a,
+.a {
+  &:not(:has(> *)) {
+    color: var(--color-primary-100);
+    display: inline;
+    position: relative;
+    text-decoration: none;
+
+    &::before {
+      content: "";
+      background-color: var(--color-primary-100);
+      bottom: -3px;
+      height: 2px;
+      left: 0;
+      position: absolute;
+      transition: width 0.2s ease-out;
+      width: 0;
+    }
+
+    &:hover,
+    &.a--hovered {
+      color: var(--color-primary-100);
+
+      &::before {
+        width: 100%;
+      }
+    }
+  }
+}

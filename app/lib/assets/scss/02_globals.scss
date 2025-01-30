@@ -1,3 +1,14 @@
+@use "sass:meta";
+@use "./variables" as vars;
+
+@include meta.load-css("variables");
+
+// Sets the breakpoint layer priority
+@layer default-screen;
+@each $breakpoint, $_ in vars.$breakpoints {
+  @layer #{$breakpoint};
+}
+
 html {
   font-size: var(--font-size-base);
   scroll-behavior: smooth;
@@ -16,3 +27,5 @@ body {
   -moz-osx-font-smoothing: grayscale;
   line-height: var(--line-height-normal);
 }
+
+@include meta.load-css("typography");

@@ -1,0 +1,24 @@
+@use "../../assets/scss/variables";
+
+.modal {
+  background-color: rgba(var(--color-modal), 0.8);
+  display: flex;
+  inset: 0;
+  overflow: auto;
+  position: fixed;
+  z-index: var(--z-index-modal);
+
+  &__button {
+    position: absolute;
+    right: var(--spacing-400);
+    top: var(--spacing-400);
+  }
+
+  &__content {
+    background-color: var(--color-background);
+    border-radius: var(--radius-normal);
+    margin: auto;
+    max-width: var(--max-width-text);
+    position: relative;
+  }
+}
