@@ -2,12 +2,11 @@
 @use 'sass:map';
 
 .button {
-  border-radius: var(--radius-normal);
+  border-radius: var(--radius-full);
   cursor: pointer;
   display: inline-block;
-  font-size: var(--font-size-md);
-  padding: var(--spacing-200) var(--spacing-300);
   transition:
+    opacity 0.3s ease,
     background-color 0.3s ease,
     color 0.3s ease;
 
@@ -16,10 +15,19 @@
     opacity: 0.3;
   }
 
-  @each $size, $value in vars.$font-sizes {
-    &--size-#{$size} {
-      font-size: $value;
-    }
+  &--size-sm {
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-100) var(--spacing-200);
+  }
+
+  &--size-md {
+    font-size: var(--font-size-md);
+    padding: var(--spacing-200) var(--spacing-300);
+  }
+
+  &--size-lg {
+    font-size: var(--font-size-lg);
+    padding: var(--spacing-300) var(--spacing-400);
   }
 
   @each $color-name, $value in vars.$colors-all {
@@ -30,14 +38,14 @@
       background-color: $color;
       border: 2px solid $color;
       color: $contrast-color;
+      position: relative;
 
       &:hover {
-        background-color: var(--color-background);
-        color: $color;
+        opacity: 0.85;
       }
 
       &:focus {
-        outline: 2px solid var(--color-primary-100);
+        outline: 2px solid var(--color-primary-140);
       }
     }
 

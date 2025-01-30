@@ -4,7 +4,6 @@
   "ignoreFiles": ["**/_variables.scss", "**/_css-variables.scss", "**/_mixins.scss", "**/_functions.scss"],
   "rules": {
     "color-hex-length": null,
-    "max-nesting-depth": 3,
     "order/properties-order": [
       ["content"],
       {

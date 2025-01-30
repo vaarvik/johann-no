@@ -1,5 +1,5 @@
+import classNames from '@/services/utils/classNames';
 import { AllColors } from '@/types/colors';
-import { FontSize } from '@/types/text';
 import { ElementType, HTMLAttributes } from 'react';
 import Spinner from '../Spinner/Spinner';
 import styles from './Button.module.scss';
@@ -11,7 +11,7 @@ export interface ButtonProps
   disabled?: boolean;
   isLoading?: boolean;
   ref?: React.RefObject<HTMLElement | null>;
-  size?: FontSize;
+  size?: 'sm' | 'md' | 'lg';
   name?: string;
   variant?: 'filled' | 'outlined' | 'text';
   value?: string;
@@ -28,18 +28,15 @@ export default function Button({
   variant = 'filled',
   ...otherProps
 }: ButtonProps) {
-  const classNames = [
-    styles['button'],
-    styles[`button--size-${size}`],
-    styles[`button--${color}-${variant}`],
-  ];
-
-  if (disabled) classNames.push(styles['button--disabled']);
-
   return (
     <HTMLTag
       disabled={disabled}
-      className={classNames.join(' ')}
+      className={classNames(
+        styles['button'],
+        styles[`button--size-${size}`],
+        styles[`button--${color}-${variant}`],
+        disabled && styles['button--disabled'],
+      )}
       {...otherProps}
     >
       {children}

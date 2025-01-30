@@ -1,3 +1,4 @@
+import classNames from '@/services/utils/classNames';
 import React from 'react';
 
 export default function ListItem({
@@ -5,9 +6,8 @@ export default function ListItem({
   className,
   ...props
 }: React.HTMLAttributes<HTMLLIElement>) {
-  const classNames = ['li', className ?? ''];
   return (
-    <li className={classNames.join(' ')} {...props}>
+    <li className={classNames(className, 'li')} {...props}>
       {children}
     </li>
   );

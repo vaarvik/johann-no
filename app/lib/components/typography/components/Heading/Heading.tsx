@@ -1,3 +1,4 @@
+import classNames from '@/services/utils/classNames';
 import { AllColors } from '@/types/colors';
 import React from 'react';
 
@@ -17,14 +18,16 @@ export default function Heading({
 }: HeadingProps) {
   const HTMLTag =
     CustomHTMLTag ?? (`h${level}` as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6');
-  const classNames = [`h${level}`, className ?? ''];
-
-  if (color !== 'currentcolor') {
-    classNames.push(`h${level}--color-${color}`);
-  }
 
   return (
-    <HTMLTag className={classNames.join(' ')} {...props}>
+    <HTMLTag
+      className={classNames(
+        className,
+        `h${level}`,
+        `h${level}--color-${color}`,
+      )}
+      {...props}
+    >
       {children}
     </HTMLTag>
   );

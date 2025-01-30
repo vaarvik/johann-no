@@ -1,3 +1,4 @@
+import classNames from '@/services/utils/classNames';
 import { ElementType, HTMLAttributes } from 'react';
 import styles from './FlexItem.module.scss';
 
@@ -50,18 +51,19 @@ export default function FlexItem({
   children,
   ...otherProps
 }: Props) {
-  const classNames = [styles['flex-item']];
-
-  if (fillContent) classNames.push(styles['flex-item--fill-content']);
-  if (order !== undefined) classNames.push(styles[`flex-item--order-${order}`]);
-  if (grow !== undefined) classNames.push(styles[`flex-item--grow-${grow}`]);
-  if (shrink !== undefined)
-    classNames.push(styles[`flex-item--shrink-${shrink}`]);
-  if (basis !== undefined) classNames.push(styles[`flex-item--basis-${basis}`]);
-  if (align) classNames.push(styles[`flex-item--align-${align}`]);
-
   return (
-    <HTMLTag className={classNames.join(' ')} {...otherProps}>
+    <HTMLTag
+      className={classNames(
+        styles['flex-item'],
+        fillContent && styles['flex-item--fill-content'],
+        order !== undefined && styles[`flex-item--order-${order}`],
+        grow !== undefined && styles[`flex-item--grow-${grow}`],
+        shrink !== undefined && styles[`flex-item--shrink-${shrink}`],
+        basis !== undefined && styles[`flex-item--basis-${basis}`],
+        align && styles[`flex-item--align-${align}`],
+      )}
+      {...otherProps}
+    >
       {children}
     </HTMLTag>
   );

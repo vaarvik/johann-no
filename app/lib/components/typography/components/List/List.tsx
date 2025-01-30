@@ -1,3 +1,4 @@
+import classNames from '@/services/utils/classNames';
 import hasOnlyChildrenOfType from '@/services/utils/hasChildrenOfType';
 import React from 'react';
 import ListItem from './components/ListItem/ListItem';
@@ -9,7 +10,7 @@ export interface ListProps
 
 export default function List({
   children,
-  color,
+  color = 'currentcolor',
   className,
   ordered,
   ...props
@@ -21,11 +22,12 @@ export default function List({
   }
 
   const HTMLTag = ordered ? 'ol' : 'ul';
-  const classNames = [HTMLTag, className ?? ''];
-  if (color) classNames.push(`${HTMLTag}--color-${color}`);
 
   return (
-    <HTMLTag className={classNames.join(' ')} {...props}>
+    <HTMLTag
+      className={classNames(className, HTMLTag, `${HTMLTag}--color-${color}`)}
+      {...props}
+    >
       {children}
     </HTMLTag>
   );

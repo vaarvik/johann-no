@@ -1,3 +1,4 @@
+import classNames from '@/services/utils/classNames';
 import { generateClassNamesByStringOrObject } from '@/services/utils/generateClassNamesByStringOrObject';
 import { SpacingVariant } from '@/types/spacing';
 import { ElementType, HTMLAttributes } from 'react';
@@ -14,14 +15,14 @@ export default function ContentMargined({
   children,
   ...otherProps
 }: Props) {
-  const classNames = generateClassNamesByStringOrObject(
+  const marginClassNames = generateClassNamesByStringOrObject(
     margin,
     styles,
     'content-margined--margin',
   );
 
   return (
-    <HTMLTag className={classNames.join(' ')} {...otherProps}>
+    <HTMLTag className={classNames(...marginClassNames)} {...otherProps}>
       {children}
     </HTMLTag>
   );

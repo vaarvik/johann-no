@@ -1,4 +1,3 @@
-export default function classNames(...args: string[]) {
-  const classes = args.filter(Boolean).join(' ');
-  return classes;
+export default function classNames(...args: (string | boolean | undefined)[]) {
+  return args.filter(Boolean).join(' ');
 }

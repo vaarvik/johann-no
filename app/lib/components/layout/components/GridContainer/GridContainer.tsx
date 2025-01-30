@@ -1,3 +1,4 @@
+import classNames from '@/services/utils/classNames';
 import { generateClassNamesByStringOrObject } from '@/services/utils/generateClassNamesByStringOrObject';
 import hasOnlyChildrenOfType from '@/services/utils/hasChildrenOfType';
 import { ScreenOptions } from '@/types/layout';
@@ -29,23 +30,32 @@ export default function GridContainer({
     );
   }
 
-  const classNames = [
-    styles['grid-container'],
-    ...generateClassNamesByStringOrObject(
-      columns,
-      styles,
-      'grid-container--columns',
-    ),
-    ...generateClassNamesByStringOrObject(rows, styles, 'grid-container--rows'),
-  ];
+  const columnsClassNames = generateClassNamesByStringOrObject(
+    columns,
+    styles,
+    'grid-container--columns',
+  );
 
-  if (gap)
-    classNames.push(
-      ...generateClassNamesByStringOrObject(gap, styles, 'grid-container--gap'),
-    );
+  const rowsClassNames = generateClassNamesByStringOrObject(
+    rows,
+    styles,
+    'grid-container--rows',
+  );
+
+  const gapClassNames = gap
+    ? generateClassNamesByStringOrObject(gap, styles, 'grid-container--gap')
+    : [];
 
   return (
-    <HTMLTag className={classNames.join(' ')} {...otherProps}>
+    <HTMLTag
+      className={classNames(
+        styles['grid-container'],
+        ...columnsClassNames,
+        ...rowsClassNames,
+        ...gapClassNames,
+      )}
+      {...otherProps}
+    >
       {children}
     </HTMLTag>
   );

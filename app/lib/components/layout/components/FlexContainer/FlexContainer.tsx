@@ -1,3 +1,4 @@
+import classNames from '@/services/utils/classNames';
 import { generateClassNamesByStringOrObject } from '@/services/utils/generateClassNamesByStringOrObject';
 import hasOnlyChildrenOfType from '@/services/utils/hasChildrenOfType';
 import { ScreenOptions } from '@/types/layout';
@@ -51,44 +52,42 @@ export default function FlexContainer({
     );
   }
 
-  const classNames = [
-    styles['flex-container'],
-    ...generateClassNamesByStringOrObject(
-      direction,
-      styles,
-      'flex-container--direction',
-    ),
-    styles[`flex-container--wrap-${wrap}`],
-  ];
+  const directionClassNames = generateClassNamesByStringOrObject(
+    direction,
+    styles,
+    'flex-container--direction',
+  );
 
-  if (gap)
-    classNames.push(
-      ...generateClassNamesByStringOrObject(gap, styles, 'flex-container--gap'),
-    );
-
-  if (align)
-    classNames.push(
-      ...generateClassNamesByStringOrObject(
-        align,
-        styles,
-        'flex-container--align',
-      ),
-    );
-
-  if (justify)
-    classNames.push(
-      ...generateClassNamesByStringOrObject(
+  const justifyClassNames = justify
+    ? generateClassNamesByStringOrObject(
         justify,
         styles,
         'flex-container--justify',
-      ),
-    );
+      )
+    : [];
 
-  if (fitToParent) classNames.push(styles[`flex-container--fit-to-parent`]);
-  if (fitToScreen) classNames.push(styles[`flex-container--fit-to-screen`]);
+  const alignClassNames = align
+    ? generateClassNamesByStringOrObject(align, styles, 'flex-container--align')
+    : [];
+
+  const gapClassNames = gap
+    ? generateClassNamesByStringOrObject(gap, styles, 'flex-container--gap')
+    : [];
 
   return (
-    <HTMLTag className={classNames.join(' ')} {...otherProps}>
+    <HTMLTag
+      className={classNames(
+        styles['flex-container'],
+        styles[`flex-container--wrap-${wrap}`],
+        fitToParent && styles[`flex-container--fit-to-parent`],
+        fitToScreen && styles[`flex-container--fit-to-screen`],
+        ...directionClassNames,
+        ...justifyClassNames,
+        ...alignClassNames,
+        ...gapClassNames,
+      )}
+      {...otherProps}
+    >
       {children}
     </HTMLTag>
   );

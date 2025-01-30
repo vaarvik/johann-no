@@ -17,15 +17,9 @@ export type Styles = {
   'button--primary-filled': string;
   'button--primary-outlined': string;
   'button--primary-text': string;
-  'button--size-2xl': string;
-  'button--size-3xl': string;
-  'button--size-4xl': string;
-  'button--size-5xl': string;
-  'button--size-6xl': string;
   'button--size-lg': string;
   'button--size-md': string;
   'button--size-sm': string;
-  'button--size-xl': string;
   'button--success-filled': string;
   'button--success-outlined': string;
   'button--success-text': string;

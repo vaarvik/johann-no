@@ -5,7 +5,7 @@ export function generateClassNamesByStringOrObject<T>(
 ) {
   if (!value) {
     throw new Error(
-      `Value is defined. Value: ${value}. BaseClass: ${baseClass}`,
+      `Value is undefined. Value: ${value}. BaseClass: ${baseClass}`,
     );
   }
 

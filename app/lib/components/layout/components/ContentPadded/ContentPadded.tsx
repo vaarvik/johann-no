@@ -1,3 +1,4 @@
+import classNames from '@/services/utils/classNames';
 import { generateClassNamesByStringOrObject } from '@/services/utils/generateClassNamesByStringOrObject';
 import { SpacingVariant } from '@/types/spacing';
 import { ElementType, HTMLAttributes } from 'react';
@@ -15,14 +16,13 @@ export default function ContentPadded({
   children,
   ...otherProps
 }: ContentPaddedProps) {
-  const classNames = generateClassNamesByStringOrObject(
+  const paddingClassNames = generateClassNamesByStringOrObject(
     padding,
     styles,
     'content-padded--padding',
   );
-
   return (
-    <HTMLTag className={classNames.join(' ')} {...otherProps}>
+    <HTMLTag className={classNames(...paddingClassNames)} {...otherProps}>
       {children}
     </HTMLTag>
   );

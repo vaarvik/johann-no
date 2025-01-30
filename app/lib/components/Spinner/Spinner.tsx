@@ -1,15 +1,14 @@
+import classNames from '@/services/utils/classNames';
 import { FontSize } from '@/types/text';
 import styles from './Spinner.module.scss';
-
-import type { JSX } from 'react';
 
 interface Props {
   size?: FontSize;
 }
-export default function Spinner({ size = 'md' }: Props): JSX.Element {
+export default function Spinner({ size = 'md' }: Props) {
   return (
     <div
-      className={`${styles.spinner} ${styles[`spinner--size-${size}`]}`}
+      className={classNames(styles.spinner, styles[`spinner--size-${size}`])}
     ></div>
   );
 }

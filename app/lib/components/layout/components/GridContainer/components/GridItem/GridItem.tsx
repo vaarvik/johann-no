@@ -1,3 +1,4 @@
+import classNames from '@/services/utils/classNames';
 import { ElementType, HTMLAttributes } from 'react';
 import styles from './GridItem.module.scss';
 
@@ -20,23 +21,16 @@ export default function GridItem({
   children,
   ...otherProps
 }: Props) {
-  const classNames = [];
-
-  if (columnStart) {
-    classNames.push(styles[`grid-item--column-start-${columnStart}`]);
-  }
-  if (columnEnd) {
-    classNames.push(styles[`grid-item--column-end-${columnEnd}`]);
-  }
-  if (rowStart) {
-    classNames.push(styles[`grid-item--row-start-${rowStart}`]);
-  }
-  if (rowEnd) {
-    classNames.push(styles[`grid-item--row-end-${rowEnd}`]);
-  }
-
   return (
-    <HTMLTag className={classNames.join(' ')} {...otherProps}>
+    <HTMLTag
+      className={classNames(
+        columnStart && styles[`grid-item--column-start-${columnStart}`],
+        columnEnd && styles[`grid-item--column-end-${columnEnd}`],
+        rowStart && styles[`grid-item--row-start-${rowStart}`],
+        rowEnd && styles[`grid-item--row-end-${rowEnd}`],
+      )}
+      {...otherProps}
+    >
       {children}
     </HTMLTag>
   );
