@@ -1,10 +1,10 @@
-export type DefaultColors = "foreground" | "background";
+export type DefaultColors = 'foreground' | 'background';
 
-export type BrandColors = "primary";
+export type BrandColors = 'primary';
 
-export type NeutralColors = "foreground" | "background" | "grey";
+export type NeutralColors = 'foreground' | 'background' | 'neutral';
 
-export type StatusColors = "error" | "warning" | "success";
+export type StatusColors = 'error' | 'warning' | 'success';
 
 export type AllColors =
   | DefaultColors

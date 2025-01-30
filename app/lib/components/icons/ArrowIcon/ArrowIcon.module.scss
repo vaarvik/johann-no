@@ -1,4 +1,4 @@
-@use "app/lib/assets/scss/mixins";
+@use 'app/lib/assets/scss/mixins';
 
 .arrow-icon {
   @include mixins.icon-styles;

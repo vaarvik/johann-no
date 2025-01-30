@@ -1,6 +1,6 @@
-import hasOnlyChildrenOfType from "@/services/utils/hasChildrenOfType";
-import React from "react";
-import ListItem from "./components/ListItem/ListItem";
+import hasOnlyChildrenOfType from '@/services/utils/hasChildrenOfType';
+import React from 'react';
+import ListItem from './components/ListItem/ListItem';
 
 export interface ListProps
   extends React.HTMLAttributes<HTMLUListElement | HTMLOListElement> {
@@ -20,12 +20,12 @@ export default function List({
     );
   }
 
-  const HTMLTag = ordered ? "ol" : "ul";
-  const classNames = [HTMLTag, className ?? ""];
+  const HTMLTag = ordered ? 'ol' : 'ul';
+  const classNames = [HTMLTag, className ?? ''];
   if (color) classNames.push(`${HTMLTag}--color-${color}`);
 
   return (
-    <HTMLTag className={classNames.join(" ")} {...props}>
+    <HTMLTag className={classNames.join(' ')} {...props}>
       {children}
     </HTMLTag>
   );

@@ -1,29 +1,29 @@
-import { IconSVGProps } from "@/types/icons";
-import styles from "./ArrowIcon.module.scss";
+import { IconSVGProps } from '@/types/icons';
+import styles from './ArrowIcon.module.scss';
 
 interface Props extends IconSVGProps {
-  direction?: "up" | "down" | "left" | "right";
+  direction?: 'up' | 'down' | 'left' | 'right';
 }
 
 export default function ArrowIcon({
-  color = "currentcolor",
-  direction = "down",
+  color = 'currentcolor',
+  direction = 'down',
   size,
   ...props
 }: Props) {
-  const classNames = [styles["arrow-icon"], styles[`arrow-icon--${direction}`]];
+  const classNames = [styles['arrow-icon'], styles[`arrow-icon--${direction}`]];
 
   if (size) {
     classNames.push(styles[`arrow-icon--size-${size}`]);
   }
 
-  if (color !== "currentcolor") {
+  if (color !== 'currentcolor') {
     classNames.push(styles[`arrow-icon--color-${color}`]);
   }
 
   return (
     <svg
-      className={classNames.join(" ")}
+      className={classNames.join(' ')}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       width={24}

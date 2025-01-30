@@ -1,28 +1,28 @@
-import { generateClassNamesByStringOrObject } from "@/services/utils/generateClassNamesByStringOrObject";
-import hasOnlyChildrenOfType from "@/services/utils/hasChildrenOfType";
-import { ScreenOptions } from "@/types/layout";
-import { SpacingVariantXY } from "@/types/spacing";
-import { ElementType, HTMLAttributes } from "react";
-import styles from "./FlexContainer.module.scss";
-import FlexItem from "./components/FlexItem/FlexItem";
+import { generateClassNamesByStringOrObject } from '@/services/utils/generateClassNamesByStringOrObject';
+import hasOnlyChildrenOfType from '@/services/utils/hasChildrenOfType';
+import { ScreenOptions } from '@/types/layout';
+import { SpacingVariantXY } from '@/types/spacing';
+import { ElementType, HTMLAttributes } from 'react';
+import styles from './FlexContainer.module.scss';
+import FlexItem from './components/FlexItem/FlexItem';
 
-type FlexDirectionOptions = "row" | "column" | "row-reverse" | "column-reverse";
+type FlexDirectionOptions = 'row' | 'column' | 'row-reverse' | 'column-reverse';
 type FlexJustifyOptions =
-  | "flex-start"
-  | "flex-end"
-  | "center"
-  | "space-between"
-  | "space-around"
-  | "space-evenly";
+  | 'flex-start'
+  | 'flex-end'
+  | 'center'
+  | 'space-between'
+  | 'space-around'
+  | 'space-evenly';
 type FlexAlignOptions =
-  | "stretch"
-  | "flex-start"
-  | "flex-end"
-  | "center"
-  | "baseline";
-type FlexWrapOptions = "nowrap" | "wrap" | "wrap-reverse";
+  | 'stretch'
+  | 'flex-start'
+  | 'flex-end'
+  | 'center'
+  | 'baseline';
+type FlexWrapOptions = 'nowrap' | 'wrap' | 'wrap-reverse';
 
-interface Props extends Omit<HTMLAttributes<HTMLElement>, "className"> {
+interface Props extends Omit<HTMLAttributes<HTMLElement>, 'className'> {
   as?: ElementType;
   direction?: FlexDirectionOptions | ScreenOptions<FlexDirectionOptions>;
   fitToParent?: boolean;
@@ -34,13 +34,13 @@ interface Props extends Omit<HTMLAttributes<HTMLElement>, "className"> {
 }
 
 export default function FlexContainer({
-  as: HTMLTag = "div",
-  direction = "row",
+  as: HTMLTag = 'div',
+  direction = 'row',
   fitToParent = false,
   fitToScreen = false,
   justify,
   align,
-  wrap = "wrap",
+  wrap = 'wrap',
   gap,
   children,
   ...otherProps
@@ -52,18 +52,18 @@ export default function FlexContainer({
   }
 
   const classNames = [
-    styles["flex-container"],
+    styles['flex-container'],
     ...generateClassNamesByStringOrObject(
       direction,
       styles,
-      "flex-container--direction",
+      'flex-container--direction',
     ),
     styles[`flex-container--wrap-${wrap}`],
   ];
 
   if (gap)
     classNames.push(
-      ...generateClassNamesByStringOrObject(gap, styles, "flex-container--gap"),
+      ...generateClassNamesByStringOrObject(gap, styles, 'flex-container--gap'),
     );
 
   if (align)
@@ -71,7 +71,7 @@ export default function FlexContainer({
       ...generateClassNamesByStringOrObject(
         align,
         styles,
-        "flex-container--align",
+        'flex-container--align',
       ),
     );
 
@@ -80,7 +80,7 @@ export default function FlexContainer({
       ...generateClassNamesByStringOrObject(
         justify,
         styles,
-        "flex-container--justify",
+        'flex-container--justify',
       ),
     );
 
@@ -88,7 +88,7 @@ export default function FlexContainer({
   if (fitToScreen) classNames.push(styles[`flex-container--fit-to-screen`]);
 
   return (
-    <HTMLTag className={classNames.join(" ")} {...otherProps}>
+    <HTMLTag className={classNames.join(' ')} {...otherProps}>
       {children}
     </HTMLTag>
   );

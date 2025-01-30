@@ -1,7 +1,7 @@
 /* stylelint-disable max-nesting-depth */
-@use "lib/assets/scss/variables" as vars;
-@use "sass:list";
-@use "sass:map";
+@use 'app/lib/assets/scss/variables' as vars;
+@use 'sass:list';
+@use 'sass:map';
 
 .content-padded--padding {
   @each $size, $value in vars.$space-sizes {

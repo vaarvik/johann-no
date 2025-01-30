@@ -1,5 +1,5 @@
-@use "./variables" as vars;
-@use "sass:map";
+@use 'variables' as vars;
+@use 'sass:map';
 
 .h1 {
   font-family: var(--font-hero);
@@ -111,7 +111,7 @@ a,
     text-decoration: none;
 
     &::before {
-      content: "";
+      content: '';
       background-color: var(--color-primary-100);
       bottom: -3px;
       height: 2px;

@@ -1,5 +1,5 @@
 /* stylelint-disable max-nesting-depth */
-@use "lib/assets/scss/variables" as vars;
+@use 'app/lib/assets/scss/variables' as vars;
 
 .flex-container {
   display: flex;

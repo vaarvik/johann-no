@@ -1,4 +1,4 @@
-@use "sass:map";
+@use 'sass:map';
 
 /* ----- SCSS Variables ----- */
 
@@ -11,8 +11,8 @@ $colors-default: (
     color: var(--color-background),
     contrast: var(--color-foreground),
   ),
-  grey: (
-    color: var(--color-grey-40),
+  neutral: (
+    color: var(--color-neutral-80),
     contrast: var(--color-background),
   ),
 );
@@ -41,6 +41,15 @@ $colors-status: (
 
 $colors-all: ();
 $colors-brand-status: ();
+
+@each $key, $value in $colors-default {
+  $colors-all: map.merge(
+    $colors-all,
+    (
+      $key: $value,
+    )
+  );
+}
 
 @each $key, $value in $colors-brand {
   $colors-all: map.merge(
@@ -138,11 +147,11 @@ $space-sizes: (
   --color-primary-40: #c1c7ed;
   --color-primary-20: #f3f6f2;
 
-  --color-grey-100: #4d4d4d;
-  --color-grey-80: #808080;
-  --color-grey-60: #b3b3b3;
-  --color-grey-40: #e6e6e6;
-  --color-grey-20: #f2f2f2;
+  --color-neutral-100: #4d4d4d;
+  --color-neutral-80: #808080;
+  --color-neutral-60: #b3b3b3;
+  --color-neutral-40: #e6e6e6;
+  --color-neutral-20: #f2f2f2;
 
   --color-error-100: #db4144;
   --color-error-80: #e06b6e;
@@ -232,11 +241,11 @@ $space-sizes: (
     --color-primary-40: #1b2658;
     --color-primary-20: #0d1434;
 
-    --color-grey-100: #f2f2f2;
-    --color-grey-80: #e6e6e6;
-    --color-grey-60: #b3b3b3;
-    --color-grey-40: #808080;
-    --color-grey-20: #4d4d4d;
+    --color-neutral-100: #f2f2f2;
+    --color-neutral-80: #e6e6e6;
+    --color-neutral-60: #b3b3b3;
+    --color-neutral-40: #808080;
+    --color-neutral-20: #4d4d4d;
 
     --color-error-100: #f8e9ea;
     --color-error-80: #f0bfc0;

@@ -1,11 +1,11 @@
-import { AllColors } from "@/types/colors";
-import { FontSize } from "@/types/text";
-import { ElementType, HTMLAttributes } from "react";
-import Spinner from "../Spinner/Spinner";
-import styles from "./Button.module.scss";
+import { AllColors } from '@/types/colors';
+import { FontSize } from '@/types/text';
+import { ElementType, HTMLAttributes } from 'react';
+import Spinner from '../Spinner/Spinner';
+import styles from './Button.module.scss';
 
 export interface ButtonProps
-  extends Omit<HTMLAttributes<HTMLElement>, "className" | "color"> {
+  extends Omit<HTMLAttributes<HTMLElement>, 'className' | 'color'> {
   as?: ElementType;
   color?: AllColors;
   disabled?: boolean;
@@ -13,33 +13,33 @@ export interface ButtonProps
   ref?: React.RefObject<HTMLElement | null>;
   size?: FontSize;
   name?: string;
-  variant?: "filled" | "outlined" | "text";
+  variant?: 'filled' | 'outlined' | 'text';
   value?: string;
-  type?: "button" | "submit" | "reset";
+  type?: 'button' | 'submit' | 'reset';
 }
 
 export default function Button({
-  as: HTMLTag = "button",
+  as: HTMLTag = 'button',
   children,
-  color = "primary",
+  color = 'primary',
   disabled = false,
   isLoading = false,
-  size = "md",
-  variant = "filled",
+  size = 'md',
+  variant = 'filled',
   ...otherProps
 }: ButtonProps) {
   const classNames = [
-    styles["button"],
+    styles['button'],
     styles[`button--size-${size}`],
     styles[`button--${color}-${variant}`],
   ];
 
-  if (disabled) classNames.push(styles["button--disabled"]);
+  if (disabled) classNames.push(styles['button--disabled']);
 
   return (
     <HTMLTag
       disabled={disabled}
-      className={classNames.join(" ")}
+      className={classNames.join(' ')}
       {...otherProps}
     >
       {children}

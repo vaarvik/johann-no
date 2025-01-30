@@ -1,5 +1,5 @@
-@use "app/lib/assets/scss/variables" as vars;
-@use "sass:map";
+@use 'app/lib/assets/scss/variables' as vars;
+@use 'sass:map';
 
 .button {
   border-radius: var(--radius-normal);

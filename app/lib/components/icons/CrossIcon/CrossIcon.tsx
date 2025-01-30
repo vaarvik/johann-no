@@ -1,24 +1,24 @@
-import { IconSVGProps } from "@/types/icons";
-import styles from "./CrossIcon.module.scss";
+import { IconSVGProps } from '@/types/icons';
+import styles from './CrossIcon.module.scss';
 
 export default function CrossIcon({
-  color = "currentcolor",
+  color = 'currentcolor',
   size,
   ...props
 }: IconSVGProps) {
-  const classNames = [styles["exit-icon"]];
+  const classNames = [styles['exit-icon']];
 
   if (size) {
     classNames.push(styles[`exit-icon--size-${size}`]);
   }
 
-  if (color !== "currentcolor") {
+  if (color !== 'currentcolor') {
     classNames.push(styles[`exit-icon--color-${color}`]);
   }
 
   return (
     <svg
-      className={classNames.join(" ")}
+      className={classNames.join(' ')}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       width={24}
