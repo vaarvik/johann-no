@@ -9,11 +9,11 @@ export function generateClassNamesByStringOrObject<T>(
     );
   }
 
-  if (typeof value === "string" || typeof value === "number") {
+  if (typeof value === 'string' || typeof value === 'number') {
     return [generateClassName(value, styles, baseClass)];
   }
 
-  if (typeof value === "object") {
+  if (typeof value === 'object') {
     return generateClassNamesFromObject(value, styles, baseClass);
   }
 

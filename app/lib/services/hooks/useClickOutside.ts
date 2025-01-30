@@ -1,4 +1,4 @@
-import { RefObject, useEffect } from "react";
+import { RefObject, useEffect } from 'react';
 
 export default function useClickOutside<HTMLEl extends HTMLElement>(
   elementRef: RefObject<HTMLEl | null>,
@@ -14,11 +14,11 @@ export default function useClickOutside<HTMLEl extends HTMLElement>(
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
 
     // Cleanup event listener on unmount
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [elementRef, onClickOutside]);
 }

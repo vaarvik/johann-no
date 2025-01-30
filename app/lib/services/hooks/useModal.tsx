@@ -1,6 +1,6 @@
-import Modal from "@/components/Modal/Modal";
-import { ReactNode, useCallback, useEffect, useState } from "react";
-import { createRoot } from "react-dom/client";
+import Modal from '@/components/Modal/Modal';
+import { ReactNode, useCallback, useEffect, useState } from 'react';
+import { createRoot } from 'react-dom/client';
 
 interface UseModalReturn {
   openModal: (content: ReactNode) => void;
@@ -24,7 +24,7 @@ const useModal = (preventExit: boolean = false): UseModalReturn => {
   useEffect(() => {
     if (!isOpen || !content) return;
 
-    const container = document.createElement("div");
+    const container = document.createElement('div');
     document.body.appendChild(container);
     const root = createRoot(container);
 

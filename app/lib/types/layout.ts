@@ -1,12 +1,12 @@
-import { SCREEN_SIZES } from "@/constants";
+import { SCREEN_SIZES } from '@/constants';
 
-export type DirectionsXY = "x" | "y";
+export type DirectionsXY = 'x' | 'y';
 
-export type Directions = DirectionsXY | "top" | "right" | "bottom" | "left";
+export type Directions = DirectionsXY | 'top' | 'right' | 'bottom' | 'left';
 
 export type DirectionAlignment = {
-  vertical?: "top" | "bottom";
-  horizontal?: "left" | "right";
+  vertical?: 'top' | 'bottom';
+  horizontal?: 'left' | 'right';
 };
 
 type BaseDirectionsMap<T> = {
@@ -17,7 +17,7 @@ type BaseDirectionsMapXY<T> = {
   [key in DirectionsXY]?: T;
 };
 
-export type ScreenSizes = "mobile" | "tablet" | "desktop" | "large-desktop";
+export type ScreenSizes = 'mobile' | 'tablet' | 'desktop' | 'large-desktop';
 
 export type ScreenOptions<T> = Partial<Record<ScreenSizes, T>>;
 
@@ -38,7 +38,7 @@ export function isScreenOptions<T>(
   property: T | ScreenOptions<T>,
 ): property is ScreenOptions<T> {
   if (!property) return false;
-  return Object.keys(property).some((key) =>
+  return Object.keys(property).some(key =>
     SCREEN_SIZES.includes(key as ScreenSizes),
   );
 }

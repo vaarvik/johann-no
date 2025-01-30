@@ -2,16 +2,16 @@
 
 ## What was done to implement the change?
 
--   Description of change 1
--   Description of change 2...
+- Description of change 1
+- Description of change 2...
 
 ## Description
 
--   [ ] All changes made have been described.
+- [ ] All changes made have been described.
 
 ## Code Changes
 
--   [ ] Code/functionality is easy to understand and follows general conventions around complexity in
+- [ ] Code/functionality is easy to understand and follows general conventions around complexity in
     [README.md](/README.md#general-conventions).<details>
   <summary>Details</summary>
   <ul>
@@ -21,7 +21,7 @@
   </ul>
 </details>
 
--   [ ] Files follows given folder structure in [README.md](/README.md#folder-structure).<details>
+- [ ] Files follows given folder structure in [README.md](/README.md#folder-structure).<details>
   <summary>Details</summary>
   <ul>
     <li>Store logic and services used by multiple components in <code>app/lib/services/</code>. Those used only by
@@ -31,7 +31,7 @@
   </ul>
 </details>
 
--   [ ] Files and folders follow given file naming convention in [README.md](/README.md#general-conventions).<details>
+- [ ] Files and folders follow given file naming convention in [README.md](/README.md#general-conventions).<details>
   <summary>Details</summary>
   <ul>
     <li>Use PascalCase for component <b>folders</b> (e.g., Button/) and kebab-case for other folders (e.g., hooks/,
@@ -42,7 +42,7 @@
   </ul>
 </details>
 
--   [ ] CSS adhere to the conventions outlined in [README.md](/README.md#general-conventions).<details>
+- [ ] CSS adhere to the conventions outlined in [README.md](/README.md#general-conventions).<details>
   <summary>Details</summary>
   <ul>
     <li>Utilize BEM methodology.</li>
@@ -52,27 +52,27 @@
   </ul>
 </details>
 
--   [ ] No sensitive information is logged.
-    -   Be careful logging entire objects.
--   [ ] No lint errors are being ignored.
--   [ ] Possible exceptions are handled.
-    -   Remember to pass the original exception as a parameter.
--   [ ] Alerts from SonarCloud have been addressed.
--   [ ] README has been updated (if relevant).
+- [ ] No sensitive information is logged.
+  - Be careful logging entire objects.
+- [ ] No lint errors are being ignored.
+- [ ] Possible exceptions are handled.
+  - Remember to pass the original exception as a parameter.
+- [ ] Alerts from SonarCloud have been addressed.
+- [ ] README has been updated (if relevant).
 
 ## Dependencies
 
--   [ ] New dependencies added are according to agreed allowed dependencies given at
-        [Confluence](https://avinor.atlassian.net/wiki/x/CQChm). No new dependencies should be added without clarification
-        within the team and careful documented justification.
--   [ ] Unused dependencies have been removed (if any).
+- [ ] New dependencies added are according to agreed allowed dependencies given at
+      [Confluence](https://avinor.atlassian.net/wiki/x/CQChm). No new dependencies should be added without clarification
+      within the team and careful documented justification.
+- [ ] Unused dependencies have been removed (if any).
 
 ## Testing
 
 ### Unit and Integration Tests
 
--   [ ] All tests run in the project.
--   [ ] Tests have been written and are according to guidelines defined in
+- [ ] All tests run in the project.
+- [ ] Tests have been written and are according to guidelines defined in
     [README.md](/README.md#guidelines-for-testing).<details> <summary>Details</summary> <ul> <li>Write unit tests for
     all code in <code>services</code> folders and components in <code>app/lib/components</code>. Other code should be
     abstracted into services.</li> <li>Use <code>data-testid</code> to fetch HTML tags when testing components for

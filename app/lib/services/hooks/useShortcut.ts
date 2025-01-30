@@ -1,4 +1,4 @@
-import { RefObject, useEffect, useRef } from "react";
+import { RefObject, useEffect, useRef } from 'react';
 
 export function useShortcut<T extends HTMLElement>(
   shortcut: string[],
@@ -13,7 +13,7 @@ export function useShortcut<T extends HTMLElement>(
 
   useEffect(() => {
     if (ref.current) {
-      ref.current.setAttribute("data-shortcut", shortcutString);
+      ref.current.setAttribute('data-shortcut', shortcutString);
     }
 
     if (isEventListened.current) return;
@@ -36,7 +36,7 @@ export function useShortcut<T extends HTMLElement>(
       pressedKeys.current.add(e.key.toLowerCase());
       pressedKeys.current.add(e.key.toUpperCase());
       const allKeysPressed = shortcut.every(
-        (key) =>
+        key =>
           pressedKeys.current.has(key.toLowerCase()) ||
           pressedKeys.current.has(key.toUpperCase()),
       );
@@ -51,18 +51,18 @@ export function useShortcut<T extends HTMLElement>(
       onKeyUp?.(ref, e);
     };
 
-    document.addEventListener("keydown", (e) =>
+    document.addEventListener('keydown', e =>
       handleKeyDown(e as KeyboardEvent),
     );
-    document.addEventListener("keyup", (e) => handleKeyUp(e as KeyboardEvent));
+    document.addEventListener('keyup', e => handleKeyUp(e as KeyboardEvent));
 
     isEventListened.current = true;
 
     return () => {
-      document.removeEventListener("keydown", (e) =>
+      document.removeEventListener('keydown', e =>
         handleKeyDown(e as KeyboardEvent),
       );
-      document.removeEventListener("keyup", (e) =>
+      document.removeEventListener('keyup', e =>
         handleKeyUp(e as KeyboardEvent),
       );
       isEventListened.current = false;

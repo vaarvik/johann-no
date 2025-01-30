@@ -1,14 +1,14 @@
-import { ElementType, HTMLAttributes } from "react";
-import styles from "./FlexItem.module.scss";
+import { ElementType, HTMLAttributes } from 'react';
+import styles from './FlexItem.module.scss';
 
-interface Props extends Omit<HTMLAttributes<HTMLElement>, "className"> {
+interface Props extends Omit<HTMLAttributes<HTMLElement>, 'className'> {
   as?: ElementType;
   order?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
   grow?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
   fillContent?: boolean;
   shrink?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
   basis?:
-    | "auto"
+    | 'auto'
     | 0
     | 5
     | 10
@@ -31,16 +31,16 @@ interface Props extends Omit<HTMLAttributes<HTMLElement>, "className"> {
     | 95
     | 100;
   align?:
-    | "auto"
-    | "flex-start"
-    | "flex-end"
-    | "center"
-    | "baseline"
-    | "stretch";
+    | 'auto'
+    | 'flex-start'
+    | 'flex-end'
+    | 'center'
+    | 'baseline'
+    | 'stretch';
 }
 
 export default function FlexItem({
-  as: HTMLTag = "div",
+  as: HTMLTag = 'div',
   order,
   grow,
   fillContent,
@@ -50,9 +50,9 @@ export default function FlexItem({
   children,
   ...otherProps
 }: Props) {
-  const classNames = [styles["flex-item"]];
+  const classNames = [styles['flex-item']];
 
-  if (fillContent) classNames.push(styles["flex-item--fill-content"]);
+  if (fillContent) classNames.push(styles['flex-item--fill-content']);
   if (order !== undefined) classNames.push(styles[`flex-item--order-${order}`]);
   if (grow !== undefined) classNames.push(styles[`flex-item--grow-${grow}`]);
   if (shrink !== undefined)
@@ -61,7 +61,7 @@ export default function FlexItem({
   if (align) classNames.push(styles[`flex-item--align-${align}`]);
 
   return (
-    <HTMLTag className={classNames.join(" ")} {...otherProps}>
+    <HTMLTag className={classNames.join(' ')} {...otherProps}>
       {children}
     </HTMLTag>
   );

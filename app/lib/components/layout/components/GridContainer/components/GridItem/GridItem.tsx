@@ -1,9 +1,9 @@
-import { ElementType, HTMLAttributes } from "react";
-import styles from "./GridItem.module.scss";
+import { ElementType, HTMLAttributes } from 'react';
+import styles from './GridItem.module.scss';
 
 type GridItemOptions = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
 
-interface Props extends Omit<HTMLAttributes<HTMLElement>, "className"> {
+interface Props extends Omit<HTMLAttributes<HTMLElement>, 'className'> {
   as?: ElementType;
   columnStart?: GridItemOptions;
   columnEnd?: GridItemOptions;
@@ -12,7 +12,7 @@ interface Props extends Omit<HTMLAttributes<HTMLElement>, "className"> {
 }
 
 export default function GridItem({
-  as: HTMLTag = "div",
+  as: HTMLTag = 'div',
   columnStart,
   columnEnd,
   rowStart,
@@ -36,7 +36,7 @@ export default function GridItem({
   }
 
   return (
-    <HTMLTag className={classNames.join(" ")} {...otherProps}>
+    <HTMLTag className={classNames.join(' ')} {...otherProps}>
       {children}
     </HTMLTag>
   );

@@ -1,4 +1,4 @@
-import { Children, ElementType, isValidElement, ReactNode } from "react";
+import { Children, ElementType, isValidElement, ReactNode } from 'react';
 
 export default function hasOnlyChildrenOfType(
   children: ReactNode,
@@ -10,7 +10,7 @@ export default function hasOnlyChildrenOfType(
 
   const childrenArray = Children.toArray(children);
 
-  return childrenArray.every((child) => {
+  return childrenArray.every(child => {
     return isValidElement(child) && child.type === type;
   });
 }

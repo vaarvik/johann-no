@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { MouseEvent, ReactNode, useEffect } from "react";
-import CrossIcon from "../icons/CrossIcon/CrossIcon";
-import IconButton from "../IconButton/IconButton";
-import styles from "./Modal.module.scss";
+import { MouseEvent, ReactNode, useEffect } from 'react';
+import CrossIcon from '../icons/CrossIcon/CrossIcon';
+import IconButton from '../IconButton/IconButton';
+import styles from './Modal.module.scss';
 
 interface Props {
   isOpen: boolean;
@@ -20,15 +20,15 @@ export default function Modal({
 }: Props) {
   useEffect(() => {
     const handleKeyDown = (event: globalThis.KeyboardEvent) => {
-      if (event.key === "Escape" && !preventExit) {
+      if (event.key === 'Escape' && !preventExit) {
         onClose();
       }
     };
 
-    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener('keydown', handleKeyDown);
     };
   }, [onClose, preventExit]);
 
@@ -44,11 +44,11 @@ export default function Modal({
       onClick={!preventExit ? onClose : (): void => {}}
     >
       {!preventExit && (
-        <div className={styles["modal__button"]}>
+        <div className={styles['modal__button']}>
           <IconButton icon={<CrossIcon />} color="foreground" />
         </div>
       )}
-      <div className={styles["modal__content"]} onClick={stopPropagation}>
+      <div className={styles['modal__content']} onClick={stopPropagation}>
         {children}
       </div>
     </div>

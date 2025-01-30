@@ -1,41 +1,25 @@
 {
-    "plugins": ["stylelint-order", "stylelint-declaration-strict-value"],
-    "extends": [
-        "stylelint-config-standard-scss",
-        "stylelint-config-prettier-scss"
+  "plugins": ["stylelint-order", "stylelint-declaration-strict-value"],
+  "extends": ["stylelint-config-standard-scss", "stylelint-config-prettier-scss"],
+  "ignoreFiles": ["**/_variables.scss", "**/_css-variables.scss", "**/_mixins.scss", "**/_functions.scss"],
+  "rules": {
+    "color-hex-length": null,
+    "max-nesting-depth": 3,
+    "order/properties-order": [
+      ["content"],
+      {
+        "unspecified": "bottomAlphabetical"
+      }
     ],
-    "ignoreFiles": [
-        "**/_variables.scss",
-        "**/_css-variables.scss",
-        "**/_mixins.scss",
-        "**/_functions.scss"
+    "scale-unlimited/declaration-strict-value": [
+      ["/color$/", "fill", "stroke", "font-family", "font-weight", "line-height", "z-index"],
+      {
+        "message": "Expected ${types} (defined in `_variables.scss`) for \"${value}\" of \"${property}\"",
+        "disableFix": true,
+        "expandShorthand": true,
+        "ignoreValues": ["currentcolor", "inherit", "transparent"]
+      }
     ],
-    "rules": {
-        "color-hex-length": null,
-        "max-nesting-depth": 3,
-        "order/properties-order": [
-            ["content"],
-            {
-                "unspecified": "bottomAlphabetical"
-            }
-        ],
-        "scale-unlimited/declaration-strict-value": [
-            [
-                "/color$/",
-                "fill",
-                "stroke",
-                "font-family",
-                "font-weight",
-                "line-height",
-                "z-index"
-            ],
-            {
-                "message": "Expected ${types} (defined in `_variables.scss`) for \"${value}\" of \"${property}\"",
-                "disableFix": true,
-                "expandShorthand": true,
-                "ignoreValues": ["currentcolor", "inherit", "transparent"]
-            }
-        ],
-        "selector-class-pattern": null
-    }
+    "selector-class-pattern": null
+  }
 }
