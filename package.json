@@ -1,54 +1,61 @@
 {
-  "name": "johann-no",
-  "version": "0.1.0",
-  "private": true,
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "*.{css,scss,less}": [
-      "stylelint --fix",
-      "prettier --write"
-    ],
-    "*.{json,md}": [
-      "prettier --write"
-    ]
-  },
-  "scripts": {
-    "build": "next build",
-    "dev": "next dev --turbopack",
-    "format": "prettier --check --ignore-path .gitignore .",
-    "format:fix": "prettier --write --ignore-path .gitignore .",
-    "lint": "next lint && npm run lint:css",
-    "lint:css": "stylelint '**/*.{css,scss}'",
-    "lint:css:fix": "stylelint --fix '**/*.{css,scss}'",
-    "lint:js": "next lint",
-    "lint:js:fix": "next lint --fix",
-    "lint-staged": "lint-staged",
-    "prepare": "husky",
-    "start": "next start",
-    "typecheck": "tsc",
-    "typecheck:watch": "tsc --pretty --watch"
-  },
-  "dependencies": {
-    "next": "15.1.6",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
-  },
-  "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "15.1.6",
-    "husky": "^9.1.7",
-    "lint-staged": "^15.4.3",
-    "prettier": "^3.4.2",
-    "stylelint": "^16.14.1",
-    "stylelint-declaration-strict-value": "^1.10.7",
-    "stylelint-order": "^6.0.4",
-    "typescript": "^5"
-  }
+    "name": "johann-no",
+    "version": "0.1.0",
+    "private": true,
+    "lint-staged": {
+        "*.{js,jsx,ts,tsx}": [
+            "eslint --fix",
+            "prettier --write"
+        ],
+        "*.{css,scss,less}": [
+            "stylelint --fix",
+            "prettier --write"
+        ],
+        "*.{json,md}": [
+            "prettier --write"
+        ]
+    },
+    "scripts": {
+        "build": "next build",
+        "dev": "next dev --turbopack",
+        "format": "prettier --check --ignore-path .gitignore .",
+        "format:fix": "prettier --write --ignore-path .gitignore .",
+        "lint": "next lint && npm run lint:css",
+        "lint:css": "stylelint '**/*.{css,scss}'",
+        "lint:css:fix": "stylelint --fix '**/*.{css,scss}'",
+        "lint:js": "next lint",
+        "lint:js:fix": "next lint --fix",
+        "lint-staged": "lint-staged",
+        "prepare": "husky",
+        "start": "next start",
+        "test": "vitest",
+        "typecheck": "tsc",
+        "typecheck:watch": "tsc --pretty --watch"
+    },
+    "dependencies": {
+        "next": "15.1.6",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0"
+    },
+    "devDependencies": {
+        "@eslint/eslintrc": "^3",
+        "@testing-library/dom": "^10.4.0",
+        "@testing-library/react": "^16.2.0",
+        "@types/node": "^20",
+        "@types/react": "^19",
+        "@types/react-dom": "^19",
+        "@vitejs/plugin-react": "^4.3.4",
+        "eslint": "^9",
+        "eslint-config-next": "15.1.6",
+        "husky": "^9.1.7",
+        "jsdom": "^26.0.0",
+        "lint-staged": "^15.4.3",
+        "prettier": "^3.4.2",
+        "stylelint": "^16.14.1",
+        "stylelint-declaration-strict-value": "^1.10.7",
+        "stylelint-order": "^6.0.4",
+        "typescript": "^5",
+        "vite-tsconfig-paths": "^5.1.4",
+        "vitest": "^3.0.4"
+    }
 }
