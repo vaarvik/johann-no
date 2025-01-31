@@ -1,8 +1,8 @@
 'use client';
 
 import { MouseEvent, ReactNode, useEffect } from 'react';
-import CrossIcon from '../icons/CrossIcon/CrossIcon';
 import IconButton from '../IconButton/IconButton';
+import CrossIcon from '../icons/CrossIcon/CrossIcon';
 import styles from './Modal.module.scss';
 
 interface Props {
