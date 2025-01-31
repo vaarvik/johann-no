@@ -5,7 +5,7 @@ import IconButton from '../IconButton/IconButton';
 import CrossIcon from '../icons/CrossIcon/CrossIcon';
 import styles from './Modal.module.scss';
 
-interface Props {
+export interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   children: ReactNode;
@@ -17,7 +17,7 @@ export default function Modal({
   onClose,
   children,
   preventExit,
-}: Props) {
+}: ModalProps) {
   useEffect(() => {
     const handleKeyDown = (event: globalThis.KeyboardEvent) => {
       if (event.key === 'Escape' && !preventExit) {
