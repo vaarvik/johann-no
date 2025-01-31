@@ -9,6 +9,19 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
 });
 
+const restrictedDesignLibraryMessage =
+  'Do not import directly from react-aria-components outside components. Using third-party design libraries directly removes an abstraction layer, making future maintenance and refactoring more difficult. Instead, create a reusable component in the app/lib/components folder and use it throughout the application to ensure consistency and flexibility.';
+
+const restrictedDesignLibraries = [
+  'react-aria-components',
+  '@mui',
+  '@mantine',
+  'react-bootstrap',
+  'shadcn-ui',
+  '@chakra-ui',
+  'antd',
+];
+
 const eslintConfig = [
   ...compat.extends('next/core-web-vitals', 'next/typescript'),
   {
@@ -60,6 +73,24 @@ const eslintConfig = [
     files: ['**/*.module.scss.d.ts'],
     rules: {
       'max-lines': 'off',
+    },
+  },
+  {
+    files: ['!app/lib/components/**/*.{js,jsx,ts,tsx}'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          paths: restrictedDesignLibraries.map(library => ({
+            name: library,
+            message: restrictedDesignLibraryMessage,
+          })),
+          patterns: restrictedDesignLibraries.map(library => ({
+            group: [`${library}/*`],
+            message: restrictedDesignLibraryMessage,
+          })),
+        },
+      ],
     },
   },
 ];
