@@ -12,6 +12,7 @@ export default function Home() {
           <Button color="primary" variant="outlined">
             Click me
           </Button>
+          <a href="/about">Go to about</a>
         </Container>
       </main>
     </div>

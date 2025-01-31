@@ -105,27 +105,30 @@ b,
 a,
 .a {
   &:not(:has(> *)) {
-    color: var(--color-primary-100);
+    color: var(--color-link);
     display: inline;
     position: relative;
     text-decoration: none;
 
     &::before {
       content: '';
-      background-color: var(--color-primary-100);
+      background-color: var(--color-link);
       bottom: -3px;
       height: 2px;
       left: 0;
       position: absolute;
-      transition: width 0.2s ease-out;
+      transition:
+        background-color 0.2s ease-out,
+        width 0.2s ease-out;
       width: 0;
     }
 
     &:hover,
     &.a--hovered {
-      color: var(--color-primary-100);
+      color: var(--color-link-hover);
 
       &::before {
+        background-color: var(--color-link-hover);
         width: 100%;
       }
     }

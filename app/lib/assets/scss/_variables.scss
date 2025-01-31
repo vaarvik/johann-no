@@ -6,14 +6,17 @@ $colors-default: (
   foreground: (
     color: var(--color-foreground),
     contrast: var(--color-background),
+    nuance: var(--color-neutral-80),
   ),
   background: (
     color: var(--color-background),
     contrast: var(--color-foreground),
+    nuance: var(--color-neutral-20),
   ),
   neutral: (
     color: var(--color-neutral-80),
     contrast: var(--color-background),
+    nuance: var(--color-neutral-40),
   ),
 );
 
@@ -21,6 +24,7 @@ $colors-brand: (
   primary: (
     color: var(--color-primary-100),
     contrast: var(--color-white),
+    nuance: var(--color-primary-80),
   ),
 );
 
@@ -28,14 +32,17 @@ $colors-status: (
   error: (
     color: var(--color-error-100),
     contrast: var(--color-foreground),
+    nuance: var(--color-error-80),
   ),
   success: (
     color: var(--color-success-100),
     contrast: var(--color-background),
+    nuance: var(--color-success-80),
   ),
   warning: (
     color: var(--color-warning-100),
     contrast: var(--color-background),
+    nuance: var(--color-warning-80),
   ),
 );
 
@@ -138,6 +145,10 @@ $space-sizes: (
   --color-white: #ffffff;
   --color-black: #222222;
 
+  --color-link: var(--color-primary-140);
+  --color-link-hover: var(--color-primary-120);
+
+  /* Must be adjusted for dark mode start */
   --color-background: var(--color-white);
   --color-foreground: var(--color-black);
 
@@ -173,6 +184,7 @@ $space-sizes: (
   --color-warning-60: #ffe680;
   --color-warning-40: #fff2b3;
   --color-warning-20: #fff9e6;
+  /* Must be adjusted for dark mode end */
 
   --font-size-base: 16px;
   --font-size-sm: 0.75rem; /* 12px */

@@ -32,6 +32,7 @@
 
   @each $color-name, $value in vars.$colors-all {
     $color: map.get($value, color);
+    $nuance-color: map.get($value, nuance);
     $contrast-color: map.get($value, contrast);
 
     &--#{$color-name}-filled {
@@ -41,7 +42,8 @@
       position: relative;
 
       &:hover {
-        opacity: 0.85;
+        background-color: $nuance-color;
+        border-color: $nuance-color;
       }
 
       &:focus {
