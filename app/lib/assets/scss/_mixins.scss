@@ -16,11 +16,11 @@
     }
   }
 
-  @each $size, $value in vars.$font-sizes {
-    &--size-#{$size} {
+  @each $size-name, $value in vars.$font-sizes {
+    &--size-#{$size-name} {
       font-size: $value;
-      height: $value;
-      width: $value;
+      height: $size;
+      width: $size;
     }
   }
 }

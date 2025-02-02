@@ -1,13 +1,15 @@
 import classNames from '@/services/utils/classNames';
 import { AllColors } from '@/types/colors';
-import { FontSize } from '@/types/text';
+import { FontSize, FontWeight, LineHeight } from '@/types/text';
 import React from 'react';
 
 export interface ParagraphProps
   extends React.HTMLAttributes<HTMLParagraphElement> {
   as?: 'p' | 'div';
   color?: AllColors | 'currentcolor';
+  lineHeight?: LineHeight;
   size?: FontSize;
+  weight?: FontWeight;
 }
 
 export default function Paragraph({
@@ -15,7 +17,9 @@ export default function Paragraph({
   color = 'currentcolor',
   children,
   className,
-  size,
+  lineHeight = 'normal',
+  size = 'md',
+  weight = 'normal',
   ...props
 }: ParagraphProps) {
   return (
@@ -24,7 +28,9 @@ export default function Paragraph({
         className,
         'p',
         `p--color-${color}`,
+        `p--line-height-${lineHeight}`,
         `p--size-${size}`,
+        `p--weight-${weight}`,
       )}
       {...props}
     >

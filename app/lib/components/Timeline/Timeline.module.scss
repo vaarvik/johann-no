@@ -1,0 +1,221 @@
+// $cubic-bezier: cubic-bezier(0.72, 1.5, 0.2, 0.85);
+$cubic-bezier: cubic-bezier(0.72, 1.5, 0.1, 0.9);
+$animation-speed-main: 0.8s;
+$animation-speed-secondary: 0.3s;
+
+.timeline-item {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 66%;
+  justify-content: flex-end;
+  overflow: hidden;
+  position: relative;
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
+  width: 90vw;
+
+  &::before {
+    content: '';
+    background-color: var(--color-primary-160);
+    height: 16px;
+    position: absolute;
+    width: 100%;
+  }
+
+  &__pole {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 480px;
+    justify-content: flex-start;
+    position: relative;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform $animation-speed-main ease;
+    transition-delay: calc(
+      $animation-speed-main * 0.8 + $animation-speed-secondary +
+        $animation-speed-secondary
+    );
+    transition-timing-function: $cubic-bezier;
+
+    &::after {
+      content: '';
+      background-color: var(--color-primary-160);
+      display: block;
+      height: 100%;
+      position: absolute;
+      width: 8px;
+    }
+
+    &::before {
+      content: '';
+      background-color: var(--color-primary-160);
+      border-radius: 50%;
+      bottom: 0;
+      display: block;
+      height: 24px;
+      position: absolute;
+      width: 24px;
+    }
+  }
+
+  &__right {
+    align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+    left: 4px;
+    perspective: 1000px; /* Adds depth */
+    perspective-origin: top;
+    position: absolute;
+  }
+
+  &__left {
+    position: absolute;
+    right: 4px;
+  }
+
+  &__dates {
+    background-color: var(--color-primary-160);
+    border-top-right-radius: var(--radius-normal);
+    color: var(--color-background);
+    opacity: 0;
+    padding: var(--spacing-400);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition:
+      transform $animation-speed-secondary $cubic-bezier,
+      opacity 0.1s;
+    transition-delay: calc(
+      $animation-speed-main * 0.8 + $animation-speed-secondary +
+        $animation-speed-secondary
+    );
+    white-space: nowrap;
+  }
+
+  &__position {
+    background-color: var(--color-neutral-40);
+    color: var(--color-foreground);
+    opacity: 0;
+    padding: var(--spacing-400);
+    transform: scaleY(0) rotateX(75deg);
+    transform-origin: top;
+    transition:
+      transform $animation-speed-secondary $cubic-bezier,
+      opacity 0.1s;
+    transition-delay: calc(
+      $animation-speed-main * 0.8 + $animation-speed-secondary
+    );
+    width: 100%;
+  }
+
+  &__company {
+    animation-play-state: paused;
+    background-color: var(--color-neutral-0);
+    border-bottom-left-radius: var(--radius-normal);
+    border-bottom-right-radius: var(--radius-normal);
+    color: var(--color-foreground);
+    display: inline-block;
+    opacity: 0;
+    padding: var(--spacing-300) var(--spacing-400);
+    transform: scaleY(0);
+    transform-origin: top;
+    transform-style: preserve-3d;
+    transition:
+      transform $animation-speed-secondary $cubic-bezier,
+      opacity $animation-speed-secondary;
+    transition-delay: calc($animation-speed-main * 0.8);
+  }
+
+  &__description {
+    background-color: var(--color-neutral-0);
+    border-bottom-left-radius: var(--radius-normal);
+    border-top-left-radius: var(--radius-normal);
+    opacity: 0;
+    padding: var(--spacing-800);
+    transform: translateY(380px);
+    transition:
+      transform $animation-speed-main ease,
+      opacity $animation-speed-secondary ease;
+    transition-delay: calc(
+      $animation-speed-main * 0.8 + $animation-speed-secondary +
+        $animation-speed-secondary
+    );
+    transition-timing-function: $cubic-bezier;
+    width: var(--max-width-narrow);
+  }
+
+  &--visible {
+    z-index: var(--z-index-base);
+
+    .timeline-item__pole {
+      transform: scaleY(1);
+      transition-delay: 0s;
+    }
+
+    .timeline-item__description {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0s;
+    }
+
+    .timeline-item__dates {
+      opacity: 1;
+      transform: scaleX(1);
+      transition-delay: calc($animation-speed-main * 0.8);
+    }
+
+    .timeline-item__position {
+      opacity: 1;
+      transform: scaleY(1);
+      transition-delay: calc(
+        $animation-speed-main * 0.8 + $animation-speed-secondary
+      );
+    }
+
+    .timeline-item__company {
+      animation: 2.5s ease-out 0s forwards swing-x-axis;
+      animation-delay: calc(
+        $animation-speed-main * 0.8 + $animation-speed-secondary +
+          $animation-speed-secondary
+      );
+      opacity: 1;
+      transform: scaleY(1);
+      transition-delay: calc(
+        $animation-speed-main * 0.8 + $animation-speed-secondary +
+          $animation-speed-secondary
+      );
+    }
+  }
+
+  @keyframes swing-x-axis {
+    0% {
+      rotate: x 90deg; /* More extreme starting position */
+    }
+
+    20% {
+      rotate: x -17deg; /* Strong first swing */
+    }
+
+    40% {
+      rotate: x 10deg; /* Smaller back swing */
+    }
+
+    60% {
+      rotate: x -3deg; /* Reduced counter swing */
+    }
+
+    80% {
+      rotate: x 2deg; /* Slowing down */
+    }
+
+    90% {
+      rotate: x -1deg;
+    }
+
+    100% {
+      rotate: x 0deg; /* Settles in place */
+    }
+  }
+}

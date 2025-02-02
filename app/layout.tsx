@@ -15,7 +15,7 @@ const headingsFont = Merriweather({
 
 const bodyFont = Raleway({
   variable: '--font-body',
-  weight: ['400', '700'],
+  weight: ['400', '600'],
 });
 
 export const metadata: Metadata = {

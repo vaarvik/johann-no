@@ -8,3 +8,7 @@ export type FontSize =
   | '4xl'
   | '5xl'
   | '6xl';
+
+export type FontWeight = 'normal' | 'bold';
+
+export type LineHeight = 'tight' | 'normal' | 'loose';

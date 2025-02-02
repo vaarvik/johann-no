@@ -102,6 +102,17 @@ $font-sizes: (
   6xl: var(--font-size-6xl),
 );
 
+$font-weights: (
+  normal: var(--font-weight-normal),
+  bold: var(--font-weight-bold),
+);
+
+$line-heights: (
+  tight: var(--line-height-tight),
+  normal: var(--line-height-normal),
+  loose: var(--line-height-lg),
+);
+
 /* Breakpoints */
 $breakpoint-mobile: 0;
 $breakpoint-tablet: 768px;
@@ -148,8 +159,9 @@ $space-sizes: (
   --color-link: var(--color-primary-140);
   --color-link-hover: var(--color-primary-120);
 
+  --color-background: var(--color-neutral-20);
+
   /* Must be adjusted for dark mode start */
-  --color-background: var(--color-white);
   --color-foreground: var(--color-black);
 
   --color-primary-160: #0d1434;
@@ -161,11 +173,12 @@ $space-sizes: (
   --color-primary-40: #c1c7ed;
   --color-primary-20: #f3f6f2;
 
-  --color-neutral-100: #4d4d4d;
+  --color-neutral-100: #414141;
   --color-neutral-80: #808080;
   --color-neutral-60: #b3b3b3;
-  --color-neutral-40: #e6e6e6;
+  --color-neutral-40: #d9d9d9;
   --color-neutral-20: #f2f2f2;
+  --color-neutral-0: var(--color-white);
 
   --color-error-100: #db4144;
   --color-error-80: #e06b6e;
@@ -198,13 +211,11 @@ $space-sizes: (
   --font-size-6xl: 6rem; /* 96px */
 
   --font-weight-normal: 400;
-  --font-weight-bold: 700;
+  --font-weight-bold: 600;
 
-  --line-height-normal: 1.5;
-  --line-height-sm: 1.25;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.35;
   --line-height-lg: 1.75;
-  --line-height-xl: 2;
-  --line-height-xxl: 2.5;
 
   --max-width-narrow: 550px;
   --max-width-text: 720px;
@@ -242,7 +253,6 @@ $space-sizes: (
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-background: var(--color-black);
     --color-foreground: var(--color-white);
 
     --color-primary-160: #c1c7ed;
@@ -259,6 +269,7 @@ $space-sizes: (
     --color-neutral-60: #808080;
     --color-neutral-40: #4d4d4d;
     --color-neutral-20: #2a2a2a;
+    --color-neutral-0: var(--color-black);
 
     --color-error-100: #ff6b6b;
     --color-error-80: #e63946;

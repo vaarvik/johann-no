@@ -12,6 +12,10 @@
       color: $color;
     }
   }
+
+  &:not(:last-child) {
+    margin-bottom: var(--spacing-800);
+  }
 }
 
 .h2,
@@ -30,18 +34,6 @@
   }
 }
 
-.h2,
-.h3,
-.h4 {
-  font-family: var(--font-headings);
-}
-
-.h5,
-.h6 {
-  font-family: var(--font-body);
-  font-size: var(--font-size-xl);
-}
-
 .h2 {
   font-size: var(--font-size-4xl);
 }
@@ -54,6 +46,26 @@
   font-size: var(--font-size-2xl);
 }
 
+.h2,
+.h3,
+.h4 {
+  font-family: var(--font-headings);
+
+  &:not(:last-child) {
+    margin-bottom: var(--spacing-600);
+  }
+}
+
+.h5,
+.h6 {
+  font-family: var(--font-body);
+  font-size: var(--font-size-xl);
+
+  &:not(:last-child) {
+    margin-bottom: var(--spacing-400);
+  }
+}
+
 .p {
   @each $color-name, $value in vars.$colors-all {
     $color: map.get($value, color);
@@ -63,10 +75,26 @@
     }
   }
 
-  @each $size, $value in vars.$font-sizes {
-    &--size-#{$size} {
+  @each $size-name, $value in vars.$font-sizes {
+    &--size-#{$size-name} {
       font-size: $value;
     }
+  }
+
+  @each $weight-name, $value in vars.$font-weights {
+    &--weight-#{$weight-name} {
+      font-weight: $value;
+    }
+  }
+
+  @each $line-height-name, $value in vars.$line-heights {
+    &--line-height-#{$line-height-name} {
+      line-height: $value;
+    }
+  }
+
+  &:not(:last-child) {
+    margin-bottom: var(--spacing-300);
   }
 }
 
