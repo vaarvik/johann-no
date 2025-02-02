@@ -3,7 +3,7 @@ export function generateClassNamesByStringOrObject<T>(
   styles: { [key: string]: string },
   baseClass: string,
 ) {
-  if (!value) {
+  if (!value && value !== 0) {
     throw new Error(
       `Value is undefined. Value: ${value}. BaseClass: ${baseClass}`,
     );

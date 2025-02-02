@@ -39,8 +39,6 @@ export function useHorizontalScroll(threshold = 0.2) {
       const contentWidth = contentElement.offsetWidth;
 
       let amount = window.scrollY - offsetTop;
-      console.log(amount, window.scrollY, offsetTop);
-      console.log(contentWidth, window.innerWidth);
       amount = amount < 0 ? 0 : amount;
 
       if (amount < contentWidth - window.innerWidth) {

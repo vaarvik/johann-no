@@ -42,7 +42,7 @@ export default function FlexContainer({
   justify,
   align,
   wrap = 'wrap',
-  gap,
+  gap = '0',
   children,
   ...otherProps
 }: Props) {
@@ -70,9 +70,11 @@ export default function FlexContainer({
     ? generateClassNamesByStringOrObject(align, styles, 'flex-container--align')
     : [];
 
-  const gapClassNames = gap
-    ? generateClassNamesByStringOrObject(gap, styles, 'flex-container--gap')
-    : [];
+  const gapClassNames = generateClassNamesByStringOrObject(
+    gap,
+    styles,
+    'flex-container--gap',
+  );
 
   return (
     <HTMLTag

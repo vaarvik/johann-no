@@ -3,16 +3,16 @@
 import { useHorizontalScroll } from '@/components/HorizontalScroll/services/useHorizontalScroll';
 import classNames from '@/services/utils/classNames';
 import { generateClassNamesByStringOrObject } from '@/services/utils/generateClassNamesByStringOrObject';
-import { SpacingSizes } from '@/types/spacing';
+import { SpacingVariantXY } from '@/types/spacing';
 import { ReactNode } from 'react';
 import styles from './HorizontalScroll.module.scss';
 
 interface Props {
-  gap?: SpacingSizes;
+  gap?: SpacingVariantXY;
   items: { content: (isVisible: boolean) => ReactNode }[];
 }
 
-export default function HorizontalScroll({ gap, items }: Props) {
+export default function HorizontalScroll({ gap = '0', items }: Props) {
   const {
     wrapperRef,
     containerRef,
@@ -22,13 +22,11 @@ export default function HorizontalScroll({ gap, items }: Props) {
     visibleItems,
   } = useHorizontalScroll(0.7);
 
-  const gapClassNames = gap
-    ? generateClassNamesByStringOrObject(
-        gap,
-        styles,
-        'horizontal-scroll__content--gap',
-      )
-    : [];
+  const gapClassNames = generateClassNamesByStringOrObject(
+    gap,
+    styles,
+    'horizontal-scroll__content--gap',
+  );
 
   return (
     <div ref={wrapperRef}>

@@ -1,5 +1,7 @@
 import { SCREEN_SIZES } from '@/constants';
 
+export type Widths = 'narrow' | 'text' | 'default' | 'wide' | 'full';
+
 export type DirectionsXY = 'x' | 'y';
 
 export type Directions = DirectionsXY | 'top' | 'right' | 'bottom' | 'left';

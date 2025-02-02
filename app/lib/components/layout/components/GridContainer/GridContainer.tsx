@@ -20,7 +20,7 @@ export default function GridContainer({
   as: HTMLTag = 'div',
   children,
   columns,
-  gap,
+  gap = '0',
   rows,
   ...otherProps
 }: Props) {
@@ -42,9 +42,11 @@ export default function GridContainer({
     'grid-container--rows',
   );
 
-  const gapClassNames = gap
-    ? generateClassNamesByStringOrObject(gap, styles, 'grid-container--gap')
-    : [];
+  const gapClassNames = generateClassNamesByStringOrObject(
+    gap,
+    styles,
+    'grid-container--gap',
+  );
 
   return (
     <HTMLTag

@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { generateClassNamesByStringOrObject } from './generateClassNamesByStringOrObject';
 
 const mockBasicStyles = {
+  'base-class--gap-0': 'base-class--gap-0',
   'base-class--gap-300': 'base-class--gap-300',
   'base-class--gap-x-300': 'base-class--gap-x-300',
   'base-class--gap-y-300': 'base-class--gap-y-300',
@@ -122,7 +123,7 @@ describe('generateSpacingClassNames', () => {
     ).toThrow();
   });
 
-  it('should throw an error when value is undefined', () => {
+  it('should throw an error when value is undefined, but not if it is 0', () => {
     expect(() =>
       generateClassNamesByStringOrObject(
         undefined,
@@ -130,5 +131,17 @@ describe('generateSpacingClassNames', () => {
         'base-class--gap',
       ),
     ).toThrow();
+
+    expect(() =>
+      generateClassNamesByStringOrObject(null, mockStyles, 'base-class--gap'),
+    ).toThrow();
+
+    expect(() =>
+      generateClassNamesByStringOrObject('', mockStyles, 'base-class--gap'),
+    ).toThrow();
+
+    expect(() =>
+      generateClassNamesByStringOrObject(0, mockStyles, 'base-class--gap'),
+    ).not.toThrow();
   });
 });

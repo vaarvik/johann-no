@@ -2,6 +2,7 @@ import { DIRECTIONS } from '@/constants';
 import { ScreenAndDirectionMap, ScreenAndDirectionMapXY } from './layout';
 
 export type SpacingSizes =
+  | '0'
   | '100'
   | '200'
   | '300'

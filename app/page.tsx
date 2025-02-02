@@ -1,5 +1,6 @@
 'use client';
 
+import Container from '@/components/layout/components/Container/Container';
 import ContentPadded from '@/components/layout/components/ContentPadded/ContentPadded';
 import Timeline from '@/components/Timeline/Timeline';
 
@@ -29,7 +30,11 @@ export default function Home() {
     <main>
       <ContentPadded padding="4000"></ContentPadded>
 
-      <Timeline items={timelineData} />
+      <Container width="full" textAlign="center">
+        <ContentPadded padding={{ mobile: '400', desktop: '0' }}>
+          <Timeline items={timelineData} />
+        </ContentPadded>
+      </Container>
 
       <ContentPadded padding="4000"></ContentPadded>
     </main>
