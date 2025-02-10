@@ -1,6 +1,8 @@
 export type Styles = {
   'horizontal-scroll__container': string;
+  'horizontal-scroll__container--mobile-vertical': string;
   'horizontal-scroll__content': string;
+  'horizontal-scroll__content--gap-0': string;
   'horizontal-scroll__content--gap-100': string;
   'horizontal-scroll__content--gap-1000': string;
   'horizontal-scroll__content--gap-1200': string;
@@ -15,6 +17,7 @@ export type Styles = {
   'horizontal-scroll__content--gap-600': string;
   'horizontal-scroll__content--gap-700': string;
   'horizontal-scroll__content--gap-800': string;
+  'horizontal-scroll__content--gap-x-0': string;
   'horizontal-scroll__content--gap-x-100': string;
   'horizontal-scroll__content--gap-x-1000': string;
   'horizontal-scroll__content--gap-x-1200': string;
@@ -29,6 +32,7 @@ export type Styles = {
   'horizontal-scroll__content--gap-x-600': string;
   'horizontal-scroll__content--gap-x-700': string;
   'horizontal-scroll__content--gap-x-800': string;
+  'horizontal-scroll__content--gap-y-0': string;
   'horizontal-scroll__content--gap-y-100': string;
   'horizontal-scroll__content--gap-y-1000': string;
   'horizontal-scroll__content--gap-y-1200': string;

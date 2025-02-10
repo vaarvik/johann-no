@@ -1,34 +1,45 @@
-// $cubic-bezier: cubic-bezier(0.72, 1.5, 0.2, 0.85);
+@use 'app/lib/assets/scss/variables' as vars;
+@use 'app/lib/assets/scss/mixins' as mixins;
+
 $cubic-bezier: cubic-bezier(0.72, 1.5, 0.1, 0.9);
 $animation-speed-main: 0.8s;
 $animation-speed-secondary: 0.3s;
 
 .timeline-item {
-  align-items: center;
   display: flex;
   flex-direction: column;
-  height: 66%;
+  height: 100%;
   justify-content: flex-end;
   overflow: hidden;
   position: relative;
   transition:
     transform 0.3s ease,
     background 0.3s ease;
-  width: 90vw;
+  width: 100%;
+
+  @include mixins.tablet-up {
+    align-items: center;
+    height: 66%;
+  }
 
   &::before {
     content: '';
     background-color: var(--color-primary-160);
-    height: 16px;
+    height: 100vh;
     position: absolute;
-    width: 100%;
+    width: 8px;
+
+    @include mixins.tablet-up {
+      height: 16px;
+      width: 100%;
+    }
   }
 
   &__pole {
     align-items: center;
     display: flex;
     flex-direction: column;
-    height: 480px;
+    height: 48px;
     justify-content: flex-start;
     position: relative;
     transform: scaleY(0);
@@ -39,6 +50,12 @@ $animation-speed-secondary: 0.3s;
         $animation-speed-secondary
     );
     transition-timing-function: $cubic-bezier;
+    width: 480px;
+
+    @include mixins.tablet-up {
+      height: 480px;
+      width: auto;
+    }
 
     &::after {
       content: '';

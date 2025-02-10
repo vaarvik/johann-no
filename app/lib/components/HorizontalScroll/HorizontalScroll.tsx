@@ -10,9 +10,14 @@ import styles from './HorizontalScroll.module.scss';
 interface Props {
   gap?: SpacingVariantXY;
   items: { content: (isVisible: boolean) => ReactNode }[];
+  mobileScrollDirection?: 'horizontal' | 'vertical';
 }
 
-export default function HorizontalScroll({ gap = '0', items }: Props) {
+export default function HorizontalScroll({
+  gap = '0',
+  items,
+  mobileScrollDirection = 'vertical',
+}: Props) {
   const {
     wrapperRef,
     containerRef,
@@ -20,7 +25,7 @@ export default function HorizontalScroll({ gap = '0', items }: Props) {
     contentRef,
     itemRefs,
     visibleItems,
-  } = useHorizontalScroll(0.7);
+  } = useHorizontalScroll(0.7, mobileScrollDirection);
 
   const gapClassNames = generateClassNamesByStringOrObject(
     gap,
@@ -31,7 +36,11 @@ export default function HorizontalScroll({ gap = '0', items }: Props) {
   return (
     <div ref={wrapperRef}>
       <div
-        className={styles['horizontal-scroll__container']}
+        className={classNames(
+          styles['horizontal-scroll__container'],
+          mobileScrollDirection === 'vertical' &&
+            styles['horizontal-scroll__container--mobile-vertical'],
+        )}
         ref={containerRef}
       >
         <div className={styles['horizontal-scroll__strip']} ref={sectionRef}>

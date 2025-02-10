@@ -1,17 +1,9 @@
 @use 'app/lib/assets/scss/variables' as vars;
+@use 'app/lib/assets/scss/mixins' as mixins;
 
-.horizontal-scroll__container {
-  height: 100vh;
-  overflow: hidden;
-  position: sticky;
-  top: 0;
-}
-
-.horizontal-scroll__strip {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  will-change: transform;
+.horizontal-scroll__item {
+  height: 100%;
+  width: 60vw;
 }
 
 .horizontal-scroll__content {
@@ -34,6 +26,47 @@
   }
 }
 
-.horizontal-scroll__item {
-  height: 100%;
+.horizontal-scroll__container {
+  height: 100vh;
+  overflow: hidden;
+  position: sticky;
+  top: 0;
+
+  &--mobile-vertical {
+    height: auto;
+    width: 100%;
+
+    .horizontal-scroll__content {
+      flex-direction: column;
+      height: auto;
+    }
+
+    .horizontal-scroll__item {
+      height: 60vh;
+      width: 100%;
+      width: auto;
+    }
+
+    @include mixins.tablet-up {
+      height: 100vh;
+      width: auto;
+
+      .horizontal-scroll__content {
+        flex-direction: row;
+        height: 100vh;
+      }
+
+      .horizontal-scroll__item {
+        height: 100%;
+        width: 60vw;
+      }
+    }
+  }
+}
+
+.horizontal-scroll__strip {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  will-change: transform;
 }
