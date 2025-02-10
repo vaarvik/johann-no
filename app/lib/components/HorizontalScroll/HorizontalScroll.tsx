@@ -9,7 +9,9 @@ import styles from './HorizontalScroll.module.scss';
 
 interface Props {
   gap?: SpacingVariantXY;
-  items: { content: (isVisible: boolean) => ReactNode }[];
+  items: {
+    content: (isVisible: boolean) => ReactNode;
+  }[];
   mobileScrollDirection?: 'horizontal' | 'vertical';
 }
 

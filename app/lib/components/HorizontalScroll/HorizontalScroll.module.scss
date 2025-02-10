@@ -3,7 +3,7 @@
 
 .horizontal-scroll__item {
   height: 100%;
-  width: 60vw;
+  width: auto;
 }
 
 .horizontal-scroll__content {
@@ -42,8 +42,7 @@
     }
 
     .horizontal-scroll__item {
-      height: 60vh;
-      width: 100%;
+      height: auto;
       width: auto;
     }
 
@@ -58,7 +57,7 @@
 
       .horizontal-scroll__item {
         height: 100%;
-        width: 60vw;
+        width: auto;
       }
     }
   }

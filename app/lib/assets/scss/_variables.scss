@@ -295,6 +295,6 @@ $space-sizes: (
 @media screen and (max-width: #{$breakpoint-tablet}) {
   :root {
     --font-size-base: 14px;
-    --spacing-base: 8px;
+    // --spacing-base: 8px;
   }
 }

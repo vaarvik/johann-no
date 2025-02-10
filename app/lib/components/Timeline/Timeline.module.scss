@@ -6,44 +6,45 @@ $animation-speed-main: 0.8s;
 $animation-speed-secondary: 0.3s;
 
 .timeline-item {
+  align-items: center;
   display: flex;
-  flex-direction: column;
-  height: 100%;
-  justify-content: flex-end;
+  height: 100vh;
   overflow: hidden;
   position: relative;
+  text-align: left;
   transition:
     transform 0.3s ease,
     background 0.3s ease;
   width: 100%;
 
   @include mixins.tablet-up {
-    align-items: center;
+    flex-direction: column;
     height: 66%;
+    justify-content: flex-end;
+    width: 100vw;
   }
 
   &::before {
     content: '';
     background-color: var(--color-primary-160);
     height: 100vh;
-    position: absolute;
     width: 8px;
 
     @include mixins.tablet-up {
       height: 16px;
+      position: absolute;
       width: 100%;
     }
   }
 
   &__pole {
-    align-items: center;
+    align-items: flex-start;
     display: flex;
     flex-direction: column;
-    height: 48px;
-    justify-content: flex-start;
+    justify-content: center;
     position: relative;
-    transform: scaleY(0);
-    transform-origin: bottom;
+    transform: scaleX(0);
+    transform-origin: left;
     transition: transform $animation-speed-main ease;
     transition-delay: calc(
       $animation-speed-main * 0.8 + $animation-speed-secondary +
@@ -53,7 +54,11 @@ $animation-speed-secondary: 0.3s;
     width: 480px;
 
     @include mixins.tablet-up {
+      align-items: center;
       height: 480px;
+      justify-content: flex-start;
+      transform: scaleY(0);
+      transform-origin: bottom;
       width: auto;
     }
 
@@ -61,20 +66,30 @@ $animation-speed-secondary: 0.3s;
       content: '';
       background-color: var(--color-primary-160);
       display: block;
-      height: 100%;
-      position: absolute;
-      width: 8px;
+      height: 8px;
+      width: 100%;
+
+      @include mixins.tablet-up {
+        height: 100%;
+        position: absolute;
+        width: 8px;
+      }
     }
 
     &::before {
       content: '';
       background-color: var(--color-primary-160);
       border-radius: 50%;
-      bottom: 0;
       display: block;
       height: 24px;
+      left: -12px;
       position: absolute;
       width: 24px;
+
+      @include mixins.tablet-up {
+        bottom: 0;
+        left: unset;
+      }
     }
   }
 
@@ -82,20 +97,34 @@ $animation-speed-secondary: 0.3s;
     align-items: flex-end;
     display: flex;
     flex-direction: column;
-    left: 4px;
     perspective: 1000px; /* Adds depth */
     perspective-origin: top;
     position: absolute;
+    right: 0;
+    top: 8px;
+
+    @include mixins.tablet-up {
+      left: 4px;
+      right: unset;
+      top: unset;
+    }
   }
 
   &__left {
+    bottom: 8px;
     position: absolute;
-    right: 4px;
+    right: 0;
+    width: 100%;
+
+    @include mixins.tablet-up {
+      bottom: unset;
+      right: 4px;
+      width: auto;
+    }
   }
 
   &__dates {
     background-color: var(--color-primary-160);
-    border-top-right-radius: var(--radius-normal);
     color: var(--color-background);
     opacity: 0;
     padding: var(--spacing-400);
@@ -109,10 +138,15 @@ $animation-speed-secondary: 0.3s;
         $animation-speed-secondary
     );
     white-space: nowrap;
+
+    @include mixins.tablet-up {
+      border-top-right-radius: var(--radius-normal);
+    }
   }
 
   &__position {
     background-color: var(--color-neutral-40);
+    border-bottom-left-radius: var(--radius-normal);
     color: var(--color-foreground);
     opacity: 0;
     padding: var(--spacing-400);
@@ -125,6 +159,10 @@ $animation-speed-secondary: 0.3s;
       $animation-speed-main * 0.8 + $animation-speed-secondary
     );
     width: 100%;
+
+    @include mixins.tablet-up {
+      border-bottom-left-radius: 0;
+    }
   }
 
   &__company {
@@ -151,7 +189,8 @@ $animation-speed-secondary: 0.3s;
     border-top-left-radius: var(--radius-normal);
     opacity: 0;
     padding: var(--spacing-800);
-    transform: translateY(380px);
+    transform: translateX(-380px);
+    transform-origin: left;
     transition:
       transform $animation-speed-main ease,
       opacity $animation-speed-secondary ease;
@@ -160,20 +199,26 @@ $animation-speed-secondary: 0.3s;
         $animation-speed-secondary
     );
     transition-timing-function: $cubic-bezier;
-    width: var(--max-width-narrow);
+    width: 100%;
+
+    @include mixins.tablet-up {
+      transform: translateY(380px);
+      transform-origin: bottom;
+      width: var(--max-width-narrow);
+    }
   }
 
   &--visible {
     z-index: var(--z-index-base);
 
     .timeline-item__pole {
-      transform: scaleY(1);
+      transform: scale(1);
       transition-delay: 0s;
     }
 
     .timeline-item__description {
       opacity: 1;
-      transform: translateY(0);
+      transform: translate(0);
       transition-delay: 0s;
     }
 
