@@ -26,13 +26,6 @@ export function useHorizontalScroll(
   }
 
   useEffect(() => {
-    const checkIfMobile = () => setIsMobile(window.innerWidth < 768);
-    checkIfMobile();
-    window.addEventListener('resize', checkIfMobile);
-    return () => window.removeEventListener('resize', checkIfMobile);
-  }, []);
-
-  useEffect(() => {
     const wrapperElement = wrapperRef.current;
     const sectionElement = sectionRef.current;
     const contentElement = contentRef.current;
@@ -45,6 +38,8 @@ export function useHorizontalScroll(
     }
 
     const updateSectionSize = (): void => {
+      setIsMobile(window.innerWidth < 768);
+
       if (!isMobile || mobileScrollDirection === 'horizontal') {
         const sectionWidth = contentElement.offsetWidth;
         wrapperElement.style.height = `${
@@ -67,7 +62,10 @@ export function useHorizontalScroll(
 
       if (
         amount <
-        contentSize - (isMobile ? window.innerHeight : window.innerWidth)
+        contentSize -
+          (mobileScrollDirection === 'vertical' && isMobile
+            ? window.innerHeight
+            : window.innerWidth)
       ) {
         if (mobileScrollDirection === 'vertical' && isMobile) {
           sectionElement.style.transform = `translate3d(0, -${amount}px, 0)`;

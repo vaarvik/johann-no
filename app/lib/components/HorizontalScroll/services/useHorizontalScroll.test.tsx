@@ -4,7 +4,11 @@ import { ReactNode } from 'react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { useHorizontalScroll } from './useHorizontalScroll';
 
-const MockComponent = () => {
+const MockComponent = ({
+  mobileScrollDirection = 'horizontal',
+}: {
+  mobileScrollDirection?: 'horizontal' | 'vertical';
+}) => {
   const {
     wrapperRef,
     containerRef,
@@ -12,7 +16,7 @@ const MockComponent = () => {
     contentRef,
     itemRefs,
     visibleItems,
-  } = useHorizontalScroll(0.2);
+  } = useHorizontalScroll(0.2, mobileScrollDirection);
 
   const items: { content: (isVisible: boolean) => ReactNode }[] = [
     {
@@ -107,18 +111,15 @@ describe('useHorizontalScroll', () => {
 
   it('should throw error if refs are not connected to any elements', () => {
     expect(() => renderHook(() => useHorizontalScroll(0.5))).toThrow(
-      'All elements must be defined: sectionRef, wrapperRef, and contentRef',
+      'All elements must be defined: wrapperRef, sectionRef, and contentRef',
     );
   });
 
-  it('should update visibleItems when elements are scrolled into view', async () => {
+  it('should update visibleItems when elements are scrolled into view', () => {
     const { getByTestId, unmount } = render(<MockComponent />);
 
     const visibleItem = getByTestId('item-1');
     const invisibleItem = getByTestId('item-2');
-
-    vi.spyOn(window, 'innerWidth', 'get').mockReturnValue(1024);
-    vi.spyOn(window, 'innerHeight', 'get').mockReturnValue(768);
 
     // Mock getBoundingClientRect for horizontal scrolling
     vi.spyOn(visibleItem, 'getBoundingClientRect').mockReturnValue({
@@ -152,7 +153,7 @@ describe('useHorizontalScroll', () => {
     unmount();
   });
 
-  it('should correctly calculate the section height', async () => {
+  it('should correctly calculate the section height', () => {
     const { getByTestId, unmount } = render(<MockComponent />);
 
     const wrapperElement = getByTestId('wrapper');
@@ -176,7 +177,7 @@ describe('useHorizontalScroll', () => {
     unmount();
   });
 
-  it('should update section height on window resize', async () => {
+  it('should update section height on window resize', () => {
     const { getByTestId, unmount } = render(<MockComponent />);
 
     const wrapperElement = getByTestId('wrapper');
@@ -203,7 +204,7 @@ describe('useHorizontalScroll', () => {
     unmount();
   });
 
-  it('should correctly calculate and transform the section on scroll', async () => {
+  it('should correctly calculate and transform the section on scroll', () => {
     const { getByTestId, unmount } = render(<MockComponent />);
 
     const wrapperElement = getByTestId('wrapper');
@@ -228,7 +229,7 @@ describe('useHorizontalScroll', () => {
     unmount();
   });
 
-  it('should not apply transformations until the wrapper is in view', async () => {
+  it('should not apply transformations until the wrapper is in view', () => {
     const { getByTestId, unmount } = render(<MockComponent />);
 
     const wrapperElement = getByTestId('wrapper');
@@ -259,6 +260,110 @@ describe('useHorizontalScroll', () => {
     });
 
     expect(transformSpy).toHaveBeenCalledWith('translate3d(-100px, 0, 0)');
+
+    unmount();
+  });
+
+  it('should apply vertical scrolling on mobile when mobileScrollDirection is "vertical"', () => {
+    vi.spyOn(window, 'innerWidth', 'get').mockReturnValue(500);
+    vi.spyOn(window, 'innerHeight', 'get').mockReturnValue(768);
+
+    const { getByTestId, unmount } = render(
+      <MockComponent mobileScrollDirection="vertical" />,
+    );
+
+    const wrapperElement = getByTestId('wrapper');
+    const sectionElement = getByTestId('section');
+    const contentElement = getByTestId('content');
+
+    vi.spyOn(wrapperElement, 'offsetTop', 'get').mockReturnValue(500);
+    vi.spyOn(contentElement, 'offsetHeight', 'get').mockReturnValue(2000);
+
+    const transformSpy = vi
+      .spyOn(sectionElement.style, 'transform', 'set')
+      .mockImplementation(() => {});
+
+    vi.spyOn(window, 'scrollY', 'get').mockReturnValue(500);
+
+    act(() => {
+      window.dispatchEvent(new Event('scroll'));
+    });
+
+    expect(transformSpy).toHaveBeenCalledWith('translate3d(0, -0px, 0)');
+
+    vi.spyOn(window, 'scrollY', 'get').mockReturnValue(600);
+
+    act(() => {
+      window.dispatchEvent(new Event('scroll'));
+    });
+
+    expect(transformSpy).toHaveBeenCalledWith('translate3d(0, -100px, 0)');
+
+    unmount();
+  });
+
+  it('should retain horizontal scrolling when mobileScrollDirection is "horizontal"', () => {
+    vi.spyOn(window, 'innerWidth', 'get').mockReturnValue(500);
+    vi.spyOn(window, 'innerHeight', 'get').mockReturnValue(768);
+
+    const { getByTestId, unmount } = render(<MockComponent />);
+
+    const wrapperElement = getByTestId('wrapper');
+    const sectionElement = getByTestId('section');
+    const contentElement = getByTestId('content');
+
+    vi.spyOn(wrapperElement, 'offsetTop', 'get').mockReturnValue(1000);
+    vi.spyOn(contentElement, 'offsetWidth', 'get').mockReturnValue(2000);
+
+    const transformSpy = vi
+      .spyOn(sectionElement.style, 'transform', 'set')
+      .mockImplementation(() => {});
+
+    vi.spyOn(window, 'scrollY', 'get').mockReturnValue(500);
+
+    act(() => {
+      window.dispatchEvent(new Event('scroll'));
+    });
+
+    expect(transformSpy).toHaveBeenCalledWith('translate3d(-0px, 0, 0)');
+
+    vi.spyOn(window, 'scrollY', 'get').mockReturnValue(1100);
+
+    act(() => {
+      window.dispatchEvent(new Event('scroll'));
+    });
+
+    expect(transformSpy).toHaveBeenCalledWith('translate3d(-100px, 0, 0)');
+
+    unmount();
+  });
+
+  it('should correctly update styles when transitioning between mobile and desktop', () => {
+    vi.spyOn(window, 'innerWidth', 'get').mockReturnValue(500);
+    vi.spyOn(window, 'innerHeight', 'get').mockReturnValue(768);
+
+    const { getByTestId, unmount } = render(
+      <MockComponent mobileScrollDirection="vertical" />,
+    );
+
+    const wrapperElement = getByTestId('wrapper');
+    const contentElement = getByTestId('content');
+
+    vi.spyOn(contentElement, 'offsetWidth', 'get').mockReturnValue(2000);
+
+    act(() => {
+      window.dispatchEvent(new Event('resize'));
+    });
+
+    expect(wrapperElement.style.height).toBe('auto');
+
+    vi.spyOn(window, 'innerWidth', 'get').mockReturnValue(1024);
+
+    act(() => {
+      window.dispatchEvent(new Event('resize'));
+    });
+
+    expect(wrapperElement.style.height).toBe('1744px'); // Expected height: 768 + (2000 - 1024)
 
     unmount();
   });
