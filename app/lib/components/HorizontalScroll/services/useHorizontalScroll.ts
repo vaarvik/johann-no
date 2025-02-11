@@ -1,14 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 
-/**
- * Custom hook to create a horizontal or vertical scroll effect.
- * - Horizontal scrolling applies by default on non-mobile screens.
- * - On mobile, you can choose between horizontal or vertical scrolling.
- *
- * @param threshold - The threshold for an item to be considered visible
- * @param mobileScrollDirection - Defines scroll direction on mobile ('horizontal' or 'vertical')
- * @returns The refs for the wrapper, container, section, content, and items, as well as the indices of the visible items
- */
 export function useHorizontalScroll(
   threshold = 0.2,
   mobileScrollDirection: 'horizontal' | 'vertical' = 'horizontal',
@@ -22,37 +13,16 @@ export function useHorizontalScroll(
   const sectionRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<HTMLDivElement[]>([]);
+
   const [visibleItems, setVisibleItems] = useState<number[]>([]);
   const [isMobile, setIsMobile] = useState<boolean>(false);
 
   useEffect(() => {
-    const wrapperElement = wrapperRef.current;
-    const sectionElement = sectionRef.current;
-    const contentElement = contentRef.current;
-    const itemElements = itemRefs.current;
-
-    if (!wrapperElement || !sectionElement || !contentElement) {
+    if (!wrapperRef.current || !sectionRef.current || !contentRef.current) {
       throw new Error(
-        'All elements must be defined: wrapperRef, sectionRef, and contentRef',
+        'All elements must be defined: wrapperRef, sectionRef, and contentRef.',
       );
     }
-
-    const updateSectionSize = createResizeHandler(
-      wrapperElement,
-      contentElement,
-      setIsMobile,
-      mobileScrollDirection,
-    );
-    const onScroll = createScrollHandler(
-      wrapperElement,
-      sectionElement,
-      contentElement,
-      itemElements,
-      setVisibleItems,
-      threshold,
-      isMobile,
-      mobileScrollDirection,
-    );
 
     updateSectionSize();
     window.addEventListener('scroll', onScroll);
@@ -62,95 +32,64 @@ export function useHorizontalScroll(
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', updateSectionSize);
     };
-  }, [threshold, isMobile, mobileScrollDirection]);
+
+    function isVertical() {
+      return isMobile && mobileScrollDirection === 'vertical';
+    }
+
+    function updateSectionSize() {
+      setIsMobile(window.innerWidth < 768);
+      wrapperRef.current!.style.height = isVertical()
+        ? 'auto'
+        : `${window.innerHeight + (contentRef.current!.offsetWidth - window.innerWidth)}px`;
+    }
+
+    function onScroll() {
+      const offsetTop = wrapperRef.current!.offsetTop;
+      const contentSize = isVertical()
+        ? contentRef.current!.offsetHeight
+        : contentRef.current!.offsetWidth;
+      const scrollAmount = Math.max(0, window.scrollY - offsetTop);
+      const maxScroll =
+        contentSize - (isVertical() ? window.innerHeight : window.innerWidth);
+
+      if (scrollAmount < maxScroll) {
+        sectionRef.current!.style.transform = isVertical()
+          ? `translate3d(0, -${scrollAmount}px, 0)`
+          : `translate3d(-${scrollAmount}px, 0, 0)`;
+      }
+
+      setVisibleItems(
+        itemRefs
+          .current!.map((item, index) => (isElementVisible(item) ? index : -1))
+          .filter(index => index !== -1),
+      );
+    }
+
+    function isElementVisible(element: HTMLDivElement): boolean {
+      const rect = element.getBoundingClientRect();
+      const size = isVertical() ? rect.height : rect.width;
+      const visibleSize = isVertical()
+        ? Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0)
+        : Math.min(rect.right, window.innerWidth) - Math.max(rect.left, 0);
+      return visibleSize / size >= threshold;
+    }
+  }, [
+    threshold,
+    isMobile,
+    mobileScrollDirection,
+    wrapperRef,
+    sectionRef,
+    contentRef,
+    itemRefs,
+  ]);
 
   return {
+    visibleItems,
     wrapperRef,
     containerRef,
     sectionRef,
     contentRef,
     itemRefs,
-    visibleItems,
-  };
-}
-
-export function isElementVisible(
-  element: HTMLDivElement,
-  threshold: number,
-  isMobile: boolean,
-  mobileScrollDirection: 'horizontal' | 'vertical',
-): boolean {
-  const rect = element.getBoundingClientRect();
-
-  const elementSize =
-    mobileScrollDirection === 'vertical' && isMobile ? rect.height : rect.width;
-
-  const visibleSize =
-    mobileScrollDirection === 'vertical' && isMobile
-      ? Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0)
-      : Math.min(rect.right, window.innerWidth) - Math.max(rect.left, 0);
-
-  return visibleSize / elementSize >= threshold;
-}
-
-function createScrollHandler(
-  wrapperElement: HTMLDivElement,
-  sectionElement: HTMLDivElement,
-  contentElement: HTMLDivElement,
-  itemElements: HTMLDivElement[],
-  setVisibleItems: (indices: number[]) => void,
-  threshold: number,
-  isMobile: boolean,
-  mobileScrollDirection: 'horizontal' | 'vertical',
-) {
-  return (): void => {
-    const offsetTop = wrapperElement.offsetTop;
-    const contentSize =
-      mobileScrollDirection === 'vertical' && isMobile
-        ? contentElement.offsetHeight
-        : contentElement.offsetWidth;
-
-    let amount = window.scrollY - offsetTop;
-    amount = Math.max(amount, 0);
-
-    if (
-      amount <
-      contentSize -
-        (isMobile && mobileScrollDirection === 'vertical'
-          ? window.innerHeight
-          : window.innerWidth)
-    ) {
-      sectionElement.style.transform =
-        isMobile && mobileScrollDirection === 'vertical'
-          ? `translate3d(0, -${amount}px, 0)`
-          : `translate3d(-${amount}px, 0, 0)`;
-    }
-
-    const visibleItemsIndices: number[] = [];
-    itemElements.forEach((item, index) => {
-      if (isElementVisible(item, threshold, isMobile, mobileScrollDirection)) {
-        visibleItemsIndices.push(index);
-      }
-    });
-
-    setVisibleItems(visibleItemsIndices);
-  };
-}
-
-function createResizeHandler(
-  wrapperElement: HTMLDivElement,
-  contentElement: HTMLDivElement,
-  setIsMobile: (state: boolean) => void,
-  mobileScrollDirection: 'horizontal' | 'vertical',
-) {
-  return (): void => {
-    setIsMobile(window.innerWidth < 768);
-
-    if (window.innerWidth >= 768 || mobileScrollDirection === 'horizontal') {
-      const sectionWidth = contentElement.offsetWidth;
-      wrapperElement.style.height = `${window.innerHeight + (sectionWidth - window.innerWidth)}px`;
-    } else {
-      wrapperElement.style.height = 'auto';
-    }
   };
 }
