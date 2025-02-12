@@ -31,13 +31,30 @@ export default function Home() {
   const { classes, ref } = useAnimation({
     animations: {
       mobile: {
-        duration: 2000,
-        easing: 'fast-fall',
-        start: { opacity: 0 },
-        end: { opacity: 100 },
+        in: {
+          duration: 200,
+          easing: 'fast-fall',
+          start: { opacity: 0 },
+          end: { opacity: 100 },
+        },
+        out: {
+          duration: 2000,
+          start: { opacity: 100 },
+          end: { opacity: 0 },
+        },
       },
       desktop: {
-        duration: 500,
+        in: {
+          duration: 2000,
+          easing: 'fast-fall',
+          start: { opacity: 0 },
+          end: { opacity: 100 },
+        },
+        out: {
+          duration: 200,
+          start: { opacity: 100 },
+          end: { opacity: 0 },
+        },
       },
     },
   });

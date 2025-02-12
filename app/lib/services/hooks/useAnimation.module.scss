@@ -102,28 +102,33 @@ $animation-opacities: (0, 20, 40, 60, 80, 100);
   }
 
   @layer default-screen {
-    // Generate base delay classes
-    @include generate-animations('-start');
     @include generate-transition-properties('');
 
-    // Generate delay classes for 'in' and 'out' states
-    @each $state in ('in', 'out') {
-      @include generate-animations('-#{$state}-start');
-      @include generate-transition-properties('-#{$state}');
-    }
+    // Generate base delay classes
+    @include generate-animations('-start');
+
+    @include generate-animations('-out');
+    @include generate-animations('-out-start');
+    @include generate-animations('-out-end');
+    @include generate-transition-properties('-out');
+    @include generate-transition-properties('-out-end');
+    @include generate-transition-properties('-out-start');
   }
 
   // Generate delay classes for devices
   @each $screen-size, $breakpoint in vars.$breakpoints {
     @layer #{$screen-size} {
       @media (width >= $breakpoint) {
-        @include generate-animations('-#{$screen-size}-start');
         @include generate-transition-properties('-#{$screen-size}');
 
-        @each $state in ('in', 'out') {
-          @include generate-animations('-#{$screen-size}-#{$state}-start');
-          @include generate-transition-properties('-#{$screen-size}-#{$state}');
-        }
+        @include generate-animations('-#{$screen-size}-start');
+
+        @include generate-animations('-#{$screen-size}-out');
+        @include generate-animations('-#{$screen-size}-out-start');
+        @include generate-animations('-#{$screen-size}-out-end');
+        @include generate-transition-properties('-#{$screen-size}-out');
+        @include generate-transition-properties('-#{$screen-size}-out-end');
+        @include generate-transition-properties('-#{$screen-size}-out-start');
       }
     }
   }
@@ -144,11 +149,12 @@ $animation-opacities: (0, 20, 40, 60, 80, 100);
   @layer default-screen {
     // Generate base delay classes
     @include generate-animations('-end');
-
-    // Generate delay classes for 'in' and 'out' states
-    @each $state in ('in', 'out') {
-      @include generate-animations('-#{$state}-end');
-    }
+    @include generate-animations('-in');
+    @include generate-animations('-in-start');
+    @include generate-animations('-in-end');
+    @include generate-transition-properties('-in');
+    @include generate-transition-properties('-in-end');
+    @include generate-transition-properties('-in-start');
   }
 
   @each $screen-size, $breakpoint in vars.$breakpoints {
@@ -156,9 +162,12 @@ $animation-opacities: (0, 20, 40, 60, 80, 100);
       @media (width >= $breakpoint) {
         @include generate-animations('-#{$screen-size}-end');
 
-        @each $state in ('in', 'out') {
-          @include generate-animations('-#{$screen-size}-#{$state}-end');
-        }
+        @include generate-animations('-#{$screen-size}-in');
+        @include generate-animations('-#{$screen-size}-in-start');
+        @include generate-animations('-#{$screen-size}-in-end');
+        @include generate-transition-properties('-#{$screen-size}-in');
+        @include generate-transition-properties('-#{$screen-size}-in-end');
+        @include generate-transition-properties('-#{$screen-size}-in-start');
       }
     }
   }
