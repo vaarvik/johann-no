@@ -1,0 +1,151 @@
+@use 'app/lib/assets/scss/variables' as vars;
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:math';
+
+$animation-delays: (200, 500, 700, 1000, 1500, 2000);
+$animation-durations: (200, 500, 700, 1000, 1500, 2000);
+$animation-fades: (0, 50px, 100px, 200px, 400px, 800px, 25%, 50%, 75%, 100%);
+$animation-easings: (
+  linear,
+  ease-in,
+  ease-out,
+  ease-in-out,
+  ease,
+  smooth,
+  snappy,
+  slow-rise,
+  fast-fall
+);
+$animation-rotations: (
+  0,
+  15deg,
+  30deg,
+  45deg,
+  60deg,
+  75deg,
+  90deg,
+  105deg,
+  120deg,
+  135deg,
+  150deg,
+  165deg,
+  180deg,
+  195deg,
+  210deg,
+  225deg,
+  240deg,
+  255deg,
+  270deg,
+  285deg,
+  300deg,
+  315deg,
+  330deg,
+  345deg,
+  360deg
+);
+$animation-opacities: (0, 20, 40, 60, 80, 100);
+
+@mixin generate-animations($prefix) {
+  @each $value in $animation-opacities {
+    &#{$prefix}-opacity-#{$value} {
+      opacity: math.div($value, 100);
+    }
+  }
+
+  @each $value in $animation-rotations {
+    &#{$prefix}-rotate-#{$value} {
+      rotate: $value;
+    }
+  }
+}
+
+@mixin generate-transition-properties($prefix) {
+  @each $value in $animation-delays {
+    &#{$prefix}-delay-#{$value} {
+      transition-delay: #{$value}ms;
+    }
+  }
+
+  @each $value in $animation-durations {
+    &#{$prefix}-duration-#{$value} {
+      transition-duration: #{$value}ms;
+    }
+  }
+
+  @each $value in $animation-easings {
+    &#{$prefix}-easing-#{$value} {
+      transition-timing-function: if(
+        $value == smooth,
+        cubic-bezier(0.25, 0.1, 0.25, 1),
+        if(
+          $value == snappy,
+          cubic-bezier(0.4, 0, 0.6, 1),
+          if(
+            $value == slow-rise,
+            cubic-bezier(0.3, 0, 0.7, 1),
+            if($value == fast-fall, cubic-bezier(0.6, 0, 1, 0.4), $value)
+          )
+        )
+      );
+    }
+  }
+}
+
+.animation {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+
+  // Generate base delay classes
+  @include generate-animations('-start');
+  @include generate-transition-properties('');
+
+  // Generate delay classes for 'in' and 'out' states
+  @each $state in ('in', 'out') {
+    @include generate-animations('-start-#{$state}');
+    @include generate-transition-properties('-#{$state}');
+  }
+
+  @each $screen-size, $breakpoint in vars.$breakpoints {
+    @media (width >= $breakpoint) {
+      @include generate-animations('-start-#{$screen-size}');
+      @include generate-transition-properties('-#{$screen-size}');
+
+      @each $state in ('in', 'out') {
+        @include generate-animations('-start-#{$screen-size}-#{$state}');
+        @include generate-transition-properties('-#{$screen-size}-#{$state}');
+      }
+    }
+  }
+
+  //   @include animation-class(
+  //     'translateX',
+  //     (0, 50px, 100px, 200px, 400px, 800px, 25%, 50%, 75%, 100%)
+  //   );
+  //   @include animation-class(
+  //     'translateY',
+  //     (0, 50px, 100px, 200px, 400px, 800px, 25%, 50%, 75%, 100%)
+  //   );
+  //   @include animation-class('scaleX', (0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4));
+  //   @include animation-class('scaleY', (0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4));
+}
+
+.animation--visible.animation {
+  // Generate base delay classes
+  @include generate-animations('-end');
+
+  // Generate delay classes for 'in' and 'out' states
+  @each $state in ('in', 'out') {
+    @include generate-animations('-end-#{$state}');
+  }
+
+  @each $screen-size, $breakpoint in vars.$breakpoints {
+    @media (width >= $breakpoint) {
+      @include generate-animations('-end-#{$screen-size}');
+
+      @each $state in ('in', 'out') {
+        @include generate-animations('-end-#{$screen-size}-#{$state}');
+      }
+    }
+  }
+}

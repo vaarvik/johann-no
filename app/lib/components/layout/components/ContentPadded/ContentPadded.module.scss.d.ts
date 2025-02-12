@@ -1,4 +1,5 @@
 export type Styles = {
+  'content-padded--padding-0': string;
   'content-padded--padding-100': string;
   'content-padded--padding-1000': string;
   'content-padded--padding-1200': string;
@@ -13,6 +14,7 @@ export type Styles = {
   'content-padded--padding-600': string;
   'content-padded--padding-700': string;
   'content-padded--padding-800': string;
+  'content-padded--padding-bottom-0': string;
   'content-padded--padding-bottom-100': string;
   'content-padded--padding-bottom-1000': string;
   'content-padded--padding-bottom-1200': string;
@@ -27,6 +29,7 @@ export type Styles = {
   'content-padded--padding-bottom-600': string;
   'content-padded--padding-bottom-700': string;
   'content-padded--padding-bottom-800': string;
+  'content-padded--padding-desktop-0': string;
   'content-padded--padding-desktop-100': string;
   'content-padded--padding-desktop-1000': string;
   'content-padded--padding-desktop-1200': string;
@@ -41,6 +44,7 @@ export type Styles = {
   'content-padded--padding-desktop-600': string;
   'content-padded--padding-desktop-700': string;
   'content-padded--padding-desktop-800': string;
+  'content-padded--padding-desktop-bottom-0': string;
   'content-padded--padding-desktop-bottom-100': string;
   'content-padded--padding-desktop-bottom-1000': string;
   'content-padded--padding-desktop-bottom-1200': string;
@@ -55,6 +59,7 @@ export type Styles = {
   'content-padded--padding-desktop-bottom-600': string;
   'content-padded--padding-desktop-bottom-700': string;
   'content-padded--padding-desktop-bottom-800': string;
+  'content-padded--padding-desktop-left-0': string;
   'content-padded--padding-desktop-left-100': string;
   'content-padded--padding-desktop-left-1000': string;
   'content-padded--padding-desktop-left-1200': string;
@@ -69,6 +74,7 @@ export type Styles = {
   'content-padded--padding-desktop-left-600': string;
   'content-padded--padding-desktop-left-700': string;
   'content-padded--padding-desktop-left-800': string;
+  'content-padded--padding-desktop-right-0': string;
   'content-padded--padding-desktop-right-100': string;
   'content-padded--padding-desktop-right-1000': string;
   'content-padded--padding-desktop-right-1200': string;
@@ -83,6 +89,7 @@ export type Styles = {
   'content-padded--padding-desktop-right-600': string;
   'content-padded--padding-desktop-right-700': string;
   'content-padded--padding-desktop-right-800': string;
+  'content-padded--padding-desktop-top-0': string;
   'content-padded--padding-desktop-top-100': string;
   'content-padded--padding-desktop-top-1000': string;
   'content-padded--padding-desktop-top-1200': string;
@@ -97,6 +104,7 @@ export type Styles = {
   'content-padded--padding-desktop-top-600': string;
   'content-padded--padding-desktop-top-700': string;
   'content-padded--padding-desktop-top-800': string;
+  'content-padded--padding-desktop-x-0': string;
   'content-padded--padding-desktop-x-100': string;
   'content-padded--padding-desktop-x-1000': string;
   'content-padded--padding-desktop-x-1200': string;
@@ -111,6 +119,7 @@ export type Styles = {
   'content-padded--padding-desktop-x-600': string;
   'content-padded--padding-desktop-x-700': string;
   'content-padded--padding-desktop-x-800': string;
+  'content-padded--padding-desktop-y-0': string;
   'content-padded--padding-desktop-y-100': string;
   'content-padded--padding-desktop-y-1000': string;
   'content-padded--padding-desktop-y-1200': string;
@@ -125,6 +134,7 @@ export type Styles = {
   'content-padded--padding-desktop-y-600': string;
   'content-padded--padding-desktop-y-700': string;
   'content-padded--padding-desktop-y-800': string;
+  'content-padded--padding-large-desktop-0': string;
   'content-padded--padding-large-desktop-100': string;
   'content-padded--padding-large-desktop-1000': string;
   'content-padded--padding-large-desktop-1200': string;
@@ -139,6 +149,7 @@ export type Styles = {
   'content-padded--padding-large-desktop-600': string;
   'content-padded--padding-large-desktop-700': string;
   'content-padded--padding-large-desktop-800': string;
+  'content-padded--padding-large-desktop-bottom-0': string;
   'content-padded--padding-large-desktop-bottom-100': string;
   'content-padded--padding-large-desktop-bottom-1000': string;
   'content-padded--padding-large-desktop-bottom-1200': string;
@@ -153,6 +164,7 @@ export type Styles = {
   'content-padded--padding-large-desktop-bottom-600': string;
   'content-padded--padding-large-desktop-bottom-700': string;
   'content-padded--padding-large-desktop-bottom-800': string;
+  'content-padded--padding-large-desktop-left-0': string;
   'content-padded--padding-large-desktop-left-100': string;
   'content-padded--padding-large-desktop-left-1000': string;
   'content-padded--padding-large-desktop-left-1200': string;
@@ -167,6 +179,7 @@ export type Styles = {
   'content-padded--padding-large-desktop-left-600': string;
   'content-padded--padding-large-desktop-left-700': string;
   'content-padded--padding-large-desktop-left-800': string;
+  'content-padded--padding-large-desktop-right-0': string;
   'content-padded--padding-large-desktop-right-100': string;
   'content-padded--padding-large-desktop-right-1000': string;
   'content-padded--padding-large-desktop-right-1200': string;
@@ -181,6 +194,7 @@ export type Styles = {
   'content-padded--padding-large-desktop-right-600': string;
   'content-padded--padding-large-desktop-right-700': string;
   'content-padded--padding-large-desktop-right-800': string;
+  'content-padded--padding-large-desktop-top-0': string;
   'content-padded--padding-large-desktop-top-100': string;
   'content-padded--padding-large-desktop-top-1000': string;
   'content-padded--padding-large-desktop-top-1200': string;
@@ -195,6 +209,7 @@ export type Styles = {
   'content-padded--padding-large-desktop-top-600': string;
   'content-padded--padding-large-desktop-top-700': string;
   'content-padded--padding-large-desktop-top-800': string;
+  'content-padded--padding-large-desktop-x-0': string;
   'content-padded--padding-large-desktop-x-100': string;
   'content-padded--padding-large-desktop-x-1000': string;
   'content-padded--padding-large-desktop-x-1200': string;
@@ -209,6 +224,7 @@ export type Styles = {
   'content-padded--padding-large-desktop-x-600': string;
   'content-padded--padding-large-desktop-x-700': string;
   'content-padded--padding-large-desktop-x-800': string;
+  'content-padded--padding-large-desktop-y-0': string;
   'content-padded--padding-large-desktop-y-100': string;
   'content-padded--padding-large-desktop-y-1000': string;
   'content-padded--padding-large-desktop-y-1200': string;
@@ -223,6 +239,7 @@ export type Styles = {
   'content-padded--padding-large-desktop-y-600': string;
   'content-padded--padding-large-desktop-y-700': string;
   'content-padded--padding-large-desktop-y-800': string;
+  'content-padded--padding-left-0': string;
   'content-padded--padding-left-100': string;
   'content-padded--padding-left-1000': string;
   'content-padded--padding-left-1200': string;
@@ -237,6 +254,7 @@ export type Styles = {
   'content-padded--padding-left-600': string;
   'content-padded--padding-left-700': string;
   'content-padded--padding-left-800': string;
+  'content-padded--padding-mobile-0': string;
   'content-padded--padding-mobile-100': string;
   'content-padded--padding-mobile-1000': string;
   'content-padded--padding-mobile-1200': string;
@@ -251,6 +269,7 @@ export type Styles = {
   'content-padded--padding-mobile-600': string;
   'content-padded--padding-mobile-700': string;
   'content-padded--padding-mobile-800': string;
+  'content-padded--padding-mobile-bottom-0': string;
   'content-padded--padding-mobile-bottom-100': string;
   'content-padded--padding-mobile-bottom-1000': string;
   'content-padded--padding-mobile-bottom-1200': string;
@@ -265,6 +284,7 @@ export type Styles = {
   'content-padded--padding-mobile-bottom-600': string;
   'content-padded--padding-mobile-bottom-700': string;
   'content-padded--padding-mobile-bottom-800': string;
+  'content-padded--padding-mobile-left-0': string;
   'content-padded--padding-mobile-left-100': string;
   'content-padded--padding-mobile-left-1000': string;
   'content-padded--padding-mobile-left-1200': string;
@@ -279,6 +299,7 @@ export type Styles = {
   'content-padded--padding-mobile-left-600': string;
   'content-padded--padding-mobile-left-700': string;
   'content-padded--padding-mobile-left-800': string;
+  'content-padded--padding-mobile-right-0': string;
   'content-padded--padding-mobile-right-100': string;
   'content-padded--padding-mobile-right-1000': string;
   'content-padded--padding-mobile-right-1200': string;
@@ -293,6 +314,7 @@ export type Styles = {
   'content-padded--padding-mobile-right-600': string;
   'content-padded--padding-mobile-right-700': string;
   'content-padded--padding-mobile-right-800': string;
+  'content-padded--padding-mobile-top-0': string;
   'content-padded--padding-mobile-top-100': string;
   'content-padded--padding-mobile-top-1000': string;
   'content-padded--padding-mobile-top-1200': string;
@@ -307,6 +329,7 @@ export type Styles = {
   'content-padded--padding-mobile-top-600': string;
   'content-padded--padding-mobile-top-700': string;
   'content-padded--padding-mobile-top-800': string;
+  'content-padded--padding-mobile-x-0': string;
   'content-padded--padding-mobile-x-100': string;
   'content-padded--padding-mobile-x-1000': string;
   'content-padded--padding-mobile-x-1200': string;
@@ -321,6 +344,7 @@ export type Styles = {
   'content-padded--padding-mobile-x-600': string;
   'content-padded--padding-mobile-x-700': string;
   'content-padded--padding-mobile-x-800': string;
+  'content-padded--padding-mobile-y-0': string;
   'content-padded--padding-mobile-y-100': string;
   'content-padded--padding-mobile-y-1000': string;
   'content-padded--padding-mobile-y-1200': string;
@@ -335,6 +359,7 @@ export type Styles = {
   'content-padded--padding-mobile-y-600': string;
   'content-padded--padding-mobile-y-700': string;
   'content-padded--padding-mobile-y-800': string;
+  'content-padded--padding-right-0': string;
   'content-padded--padding-right-100': string;
   'content-padded--padding-right-1000': string;
   'content-padded--padding-right-1200': string;
@@ -349,6 +374,7 @@ export type Styles = {
   'content-padded--padding-right-600': string;
   'content-padded--padding-right-700': string;
   'content-padded--padding-right-800': string;
+  'content-padded--padding-tablet-0': string;
   'content-padded--padding-tablet-100': string;
   'content-padded--padding-tablet-1000': string;
   'content-padded--padding-tablet-1200': string;
@@ -363,6 +389,7 @@ export type Styles = {
   'content-padded--padding-tablet-600': string;
   'content-padded--padding-tablet-700': string;
   'content-padded--padding-tablet-800': string;
+  'content-padded--padding-tablet-bottom-0': string;
   'content-padded--padding-tablet-bottom-100': string;
   'content-padded--padding-tablet-bottom-1000': string;
   'content-padded--padding-tablet-bottom-1200': string;
@@ -377,6 +404,7 @@ export type Styles = {
   'content-padded--padding-tablet-bottom-600': string;
   'content-padded--padding-tablet-bottom-700': string;
   'content-padded--padding-tablet-bottom-800': string;
+  'content-padded--padding-tablet-left-0': string;
   'content-padded--padding-tablet-left-100': string;
   'content-padded--padding-tablet-left-1000': string;
   'content-padded--padding-tablet-left-1200': string;
@@ -391,6 +419,7 @@ export type Styles = {
   'content-padded--padding-tablet-left-600': string;
   'content-padded--padding-tablet-left-700': string;
   'content-padded--padding-tablet-left-800': string;
+  'content-padded--padding-tablet-right-0': string;
   'content-padded--padding-tablet-right-100': string;
   'content-padded--padding-tablet-right-1000': string;
   'content-padded--padding-tablet-right-1200': string;
@@ -405,6 +434,7 @@ export type Styles = {
   'content-padded--padding-tablet-right-600': string;
   'content-padded--padding-tablet-right-700': string;
   'content-padded--padding-tablet-right-800': string;
+  'content-padded--padding-tablet-top-0': string;
   'content-padded--padding-tablet-top-100': string;
   'content-padded--padding-tablet-top-1000': string;
   'content-padded--padding-tablet-top-1200': string;
@@ -419,6 +449,7 @@ export type Styles = {
   'content-padded--padding-tablet-top-600': string;
   'content-padded--padding-tablet-top-700': string;
   'content-padded--padding-tablet-top-800': string;
+  'content-padded--padding-tablet-x-0': string;
   'content-padded--padding-tablet-x-100': string;
   'content-padded--padding-tablet-x-1000': string;
   'content-padded--padding-tablet-x-1200': string;
@@ -433,6 +464,7 @@ export type Styles = {
   'content-padded--padding-tablet-x-600': string;
   'content-padded--padding-tablet-x-700': string;
   'content-padded--padding-tablet-x-800': string;
+  'content-padded--padding-tablet-y-0': string;
   'content-padded--padding-tablet-y-100': string;
   'content-padded--padding-tablet-y-1000': string;
   'content-padded--padding-tablet-y-1200': string;
@@ -447,6 +479,7 @@ export type Styles = {
   'content-padded--padding-tablet-y-600': string;
   'content-padded--padding-tablet-y-700': string;
   'content-padded--padding-tablet-y-800': string;
+  'content-padded--padding-top-0': string;
   'content-padded--padding-top-100': string;
   'content-padded--padding-top-1000': string;
   'content-padded--padding-top-1200': string;
@@ -461,6 +494,7 @@ export type Styles = {
   'content-padded--padding-top-600': string;
   'content-padded--padding-top-700': string;
   'content-padded--padding-top-800': string;
+  'content-padded--padding-x-0': string;
   'content-padded--padding-x-100': string;
   'content-padded--padding-x-1000': string;
   'content-padded--padding-x-1200': string;
@@ -475,6 +509,7 @@ export type Styles = {
   'content-padded--padding-x-600': string;
   'content-padded--padding-x-700': string;
   'content-padded--padding-x-800': string;
+  'content-padded--padding-y-0': string;
   'content-padded--padding-y-100': string;
   'content-padded--padding-y-1000': string;
   'content-padded--padding-y-1200': string;

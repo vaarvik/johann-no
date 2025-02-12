@@ -1,3 +1,4 @@
+import { isElementVisible } from '@/services/utils/isElementVisible';
 import { useEffect, useRef, useState } from 'react';
 
 export function useHorizontalScroll(
@@ -61,18 +62,11 @@ export function useHorizontalScroll(
 
       setVisibleItems(
         itemRefs
-          .current!.map((item, index) => (isElementVisible(item) ? index : -1))
+          .current!.map((item, index) =>
+            isElementVisible(item, threshold) ? index : -1,
+          )
           .filter(index => index !== -1),
       );
-    }
-
-    function isElementVisible(element: HTMLDivElement): boolean {
-      const rect = element.getBoundingClientRect();
-      const size = isVertical() ? rect.height : rect.width;
-      const visibleSize = isVertical()
-        ? Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0)
-        : Math.min(rect.right, window.innerWidth) - Math.max(rect.left, 0);
-      return visibleSize / size >= threshold;
     }
   }, [
     threshold,

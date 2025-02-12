@@ -3,6 +3,8 @@
 import Container from '@/components/layout/components/Container/Container';
 import ContentPadded from '@/components/layout/components/ContentPadded/ContentPadded';
 import Timeline from '@/components/Timeline/Timeline';
+import { useAnimation } from '@/services/hooks/useAnimation';
+import classNames from '@/services/utils/classNames';
 
 export default function Home() {
   const timelineData = [
@@ -26,9 +28,24 @@ export default function Home() {
     },
   ];
 
+  const { classes, ref } = useAnimation({
+    animations: {
+      duration: 2000,
+      easing: 'fast-fall',
+      start: { opacity: 0 },
+      end: { opacity: 100 },
+    },
+  });
+
   return (
     <main>
-      <ContentPadded padding="4000"></ContentPadded>
+      <ContentPadded
+        padding="4000"
+        className={classNames(...classes)}
+        ref={ref}
+      >
+        <h1>Hello my freinds</h1>
+      </ContentPadded>
 
       <Container width="full" textAlign="center">
         <ContentPadded padding={{ mobile: '400', desktop: '0' }}>
