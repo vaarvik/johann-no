@@ -30,10 +30,15 @@ export default function Home() {
 
   const { classes, ref } = useAnimation({
     animations: {
-      duration: 2000,
-      easing: 'fast-fall',
-      start: { opacity: 0 },
-      end: { opacity: 100 },
+      mobile: {
+        duration: 2000,
+        easing: 'fast-fall',
+        start: { opacity: 0 },
+        end: { opacity: 100 },
+      },
+      desktop: {
+        duration: 500,
+      },
     },
   });
 
