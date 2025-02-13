@@ -3,6 +3,7 @@ import { AnimationProps } from '@/types/animations';
 import { useEffect, useRef, useState } from 'react';
 import { generateClassNamesByStringOrObject } from '../utils/generateClassNamesByStringOrObject';
 import { isElementVisible } from '../utils/isElementVisible';
+import { useWrapper } from './useWrapper';
 
 interface UseAnimationProps {
   animations: AnimationProps;
@@ -26,29 +27,6 @@ function useVisibility(
     return () => window.removeEventListener('scroll', checkVisibility);
   }, [ref, threshold]);
   return isVisible;
-}
-
-function useWrapper(
-  elementRef: React.RefObject<HTMLElement | null>,
-  classNames: string[],
-  HTMLTag: keyof HTMLElementTagNameMap = 'div',
-) {
-  const wrapperRef = useRef<HTMLElement | null>(null);
-
-  useEffect(() => {
-    if (!elementRef.current || wrapperRef.current) return;
-
-    const wrapperElement = document.createElement(HTMLTag);
-    wrapperElement.classList.add(...classNames);
-
-    elementRef.current.parentNode?.insertBefore(
-      wrapperElement,
-      elementRef.current,
-    );
-    wrapperElement.appendChild(elementRef.current);
-    wrapperRef.current = wrapperElement;
-  }, [elementRef, classNames, HTMLTag]);
-  return wrapperRef;
 }
 
 export function useAnimation<T extends HTMLElement>({

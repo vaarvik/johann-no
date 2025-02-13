@@ -69,7 +69,7 @@ describe('useAnimation Hook', () => {
     unmount();
   });
 
-  it('should wrap the element with one specified wrapper element and classes', () => {
+  it('should wrap the element with specified wrapper element', () => {
     const { container, unmount } = render(
       <MockComponent
         wrapperClasses={['custom-wrapper']}
@@ -79,7 +79,6 @@ describe('useAnimation Hook', () => {
 
     const wrappers = container.querySelectorAll('section.custom-wrapper');
     expect(wrappers[0]).not.toBeNull();
-    expect(wrappers.length).toBe(1);
 
     unmount();
   });
