@@ -20,6 +20,7 @@ export type Styles = {
   'animation-desktop-duration-2000': string;
   'animation-desktop-duration-500': string;
   'animation-desktop-duration-700': string;
+  'animation-desktop-easing-bounce': string;
   'animation-desktop-easing-ease': string;
   'animation-desktop-easing-ease-in': string;
   'animation-desktop-easing-ease-in-out': string;
@@ -92,6 +93,7 @@ export type Styles = {
   'animation-desktop-in-duration-2000': string;
   'animation-desktop-in-duration-500': string;
   'animation-desktop-in-duration-700': string;
+  'animation-desktop-in-easing-bounce': string;
   'animation-desktop-in-easing-ease': string;
   'animation-desktop-in-easing-ease-in': string;
   'animation-desktop-in-easing-ease-in-out': string;
@@ -113,6 +115,7 @@ export type Styles = {
   'animation-desktop-in-end-duration-2000': string;
   'animation-desktop-in-end-duration-500': string;
   'animation-desktop-in-end-duration-700': string;
+  'animation-desktop-in-end-easing-bounce': string;
   'animation-desktop-in-end-easing-ease': string;
   'animation-desktop-in-end-easing-ease-in': string;
   'animation-desktop-in-end-easing-ease-in-out': string;
@@ -245,6 +248,7 @@ export type Styles = {
   'animation-desktop-in-start-duration-2000': string;
   'animation-desktop-in-start-duration-500': string;
   'animation-desktop-in-start-duration-700': string;
+  'animation-desktop-in-start-easing-bounce': string;
   'animation-desktop-in-start-easing-ease': string;
   'animation-desktop-in-start-easing-ease-in': string;
   'animation-desktop-in-start-easing-ease-in-out': string;
@@ -344,6 +348,7 @@ export type Styles = {
   'animation-desktop-out-duration-2000': string;
   'animation-desktop-out-duration-500': string;
   'animation-desktop-out-duration-700': string;
+  'animation-desktop-out-easing-bounce': string;
   'animation-desktop-out-easing-ease': string;
   'animation-desktop-out-easing-ease-in': string;
   'animation-desktop-out-easing-ease-in-out': string;
@@ -365,6 +370,7 @@ export type Styles = {
   'animation-desktop-out-end-duration-2000': string;
   'animation-desktop-out-end-duration-500': string;
   'animation-desktop-out-end-duration-700': string;
+  'animation-desktop-out-end-easing-bounce': string;
   'animation-desktop-out-end-easing-ease': string;
   'animation-desktop-out-end-easing-ease-in': string;
   'animation-desktop-out-end-easing-ease-in-out': string;
@@ -497,6 +503,7 @@ export type Styles = {
   'animation-desktop-out-start-duration-2000': string;
   'animation-desktop-out-start-duration-500': string;
   'animation-desktop-out-start-duration-700': string;
+  'animation-desktop-out-start-easing-bounce': string;
   'animation-desktop-out-start-easing-ease': string;
   'animation-desktop-out-start-easing-ease-in': string;
   'animation-desktop-out-start-easing-ease-in-out': string;
@@ -632,6 +639,7 @@ export type Styles = {
   'animation-duration-2000': string;
   'animation-duration-500': string;
   'animation-duration-700': string;
+  'animation-easing-bounce': string;
   'animation-easing-ease': string;
   'animation-easing-ease-in': string;
   'animation-easing-ease-in-out': string;
@@ -704,6 +712,7 @@ export type Styles = {
   'animation-in-duration-2000': string;
   'animation-in-duration-500': string;
   'animation-in-duration-700': string;
+  'animation-in-easing-bounce': string;
   'animation-in-easing-ease': string;
   'animation-in-easing-ease-in': string;
   'animation-in-easing-ease-in-out': string;
@@ -725,6 +734,7 @@ export type Styles = {
   'animation-in-end-duration-2000': string;
   'animation-in-end-duration-500': string;
   'animation-in-end-duration-700': string;
+  'animation-in-end-easing-bounce': string;
   'animation-in-end-easing-ease': string;
   'animation-in-end-easing-ease-in': string;
   'animation-in-end-easing-ease-in-out': string;
@@ -857,6 +867,7 @@ export type Styles = {
   'animation-in-start-duration-2000': string;
   'animation-in-start-duration-500': string;
   'animation-in-start-duration-700': string;
+  'animation-in-start-easing-bounce': string;
   'animation-in-start-easing-ease': string;
   'animation-in-start-easing-ease-in': string;
   'animation-in-start-easing-ease-in-out': string;
@@ -947,6 +958,7 @@ export type Styles = {
   'animation-large-desktop-duration-2000': string;
   'animation-large-desktop-duration-500': string;
   'animation-large-desktop-duration-700': string;
+  'animation-large-desktop-easing-bounce': string;
   'animation-large-desktop-easing-ease': string;
   'animation-large-desktop-easing-ease-in': string;
   'animation-large-desktop-easing-ease-in-out': string;
@@ -1019,6 +1031,7 @@ export type Styles = {
   'animation-large-desktop-in-duration-2000': string;
   'animation-large-desktop-in-duration-500': string;
   'animation-large-desktop-in-duration-700': string;
+  'animation-large-desktop-in-easing-bounce': string;
   'animation-large-desktop-in-easing-ease': string;
   'animation-large-desktop-in-easing-ease-in': string;
   'animation-large-desktop-in-easing-ease-in-out': string;
@@ -1040,6 +1053,7 @@ export type Styles = {
   'animation-large-desktop-in-end-duration-2000': string;
   'animation-large-desktop-in-end-duration-500': string;
   'animation-large-desktop-in-end-duration-700': string;
+  'animation-large-desktop-in-end-easing-bounce': string;
   'animation-large-desktop-in-end-easing-ease': string;
   'animation-large-desktop-in-end-easing-ease-in': string;
   'animation-large-desktop-in-end-easing-ease-in-out': string;
@@ -1172,6 +1186,7 @@ export type Styles = {
   'animation-large-desktop-in-start-duration-2000': string;
   'animation-large-desktop-in-start-duration-500': string;
   'animation-large-desktop-in-start-duration-700': string;
+  'animation-large-desktop-in-start-easing-bounce': string;
   'animation-large-desktop-in-start-easing-ease': string;
   'animation-large-desktop-in-start-easing-ease-in': string;
   'animation-large-desktop-in-start-easing-ease-in-out': string;
@@ -1271,6 +1286,7 @@ export type Styles = {
   'animation-large-desktop-out-duration-2000': string;
   'animation-large-desktop-out-duration-500': string;
   'animation-large-desktop-out-duration-700': string;
+  'animation-large-desktop-out-easing-bounce': string;
   'animation-large-desktop-out-easing-ease': string;
   'animation-large-desktop-out-easing-ease-in': string;
   'animation-large-desktop-out-easing-ease-in-out': string;
@@ -1292,6 +1308,7 @@ export type Styles = {
   'animation-large-desktop-out-end-duration-2000': string;
   'animation-large-desktop-out-end-duration-500': string;
   'animation-large-desktop-out-end-duration-700': string;
+  'animation-large-desktop-out-end-easing-bounce': string;
   'animation-large-desktop-out-end-easing-ease': string;
   'animation-large-desktop-out-end-easing-ease-in': string;
   'animation-large-desktop-out-end-easing-ease-in-out': string;
@@ -1424,6 +1441,7 @@ export type Styles = {
   'animation-large-desktop-out-start-duration-2000': string;
   'animation-large-desktop-out-start-duration-500': string;
   'animation-large-desktop-out-start-duration-700': string;
+  'animation-large-desktop-out-start-easing-bounce': string;
   'animation-large-desktop-out-start-easing-ease': string;
   'animation-large-desktop-out-start-easing-ease-in': string;
   'animation-large-desktop-out-start-easing-ease-in-out': string;
@@ -1565,6 +1583,7 @@ export type Styles = {
   'animation-mobile-duration-2000': string;
   'animation-mobile-duration-500': string;
   'animation-mobile-duration-700': string;
+  'animation-mobile-easing-bounce': string;
   'animation-mobile-easing-ease': string;
   'animation-mobile-easing-ease-in': string;
   'animation-mobile-easing-ease-in-out': string;
@@ -1637,6 +1656,7 @@ export type Styles = {
   'animation-mobile-in-duration-2000': string;
   'animation-mobile-in-duration-500': string;
   'animation-mobile-in-duration-700': string;
+  'animation-mobile-in-easing-bounce': string;
   'animation-mobile-in-easing-ease': string;
   'animation-mobile-in-easing-ease-in': string;
   'animation-mobile-in-easing-ease-in-out': string;
@@ -1658,6 +1678,7 @@ export type Styles = {
   'animation-mobile-in-end-duration-2000': string;
   'animation-mobile-in-end-duration-500': string;
   'animation-mobile-in-end-duration-700': string;
+  'animation-mobile-in-end-easing-bounce': string;
   'animation-mobile-in-end-easing-ease': string;
   'animation-mobile-in-end-easing-ease-in': string;
   'animation-mobile-in-end-easing-ease-in-out': string;
@@ -1790,6 +1811,7 @@ export type Styles = {
   'animation-mobile-in-start-duration-2000': string;
   'animation-mobile-in-start-duration-500': string;
   'animation-mobile-in-start-duration-700': string;
+  'animation-mobile-in-start-easing-bounce': string;
   'animation-mobile-in-start-easing-ease': string;
   'animation-mobile-in-start-easing-ease-in': string;
   'animation-mobile-in-start-easing-ease-in-out': string;
@@ -1889,6 +1911,7 @@ export type Styles = {
   'animation-mobile-out-duration-2000': string;
   'animation-mobile-out-duration-500': string;
   'animation-mobile-out-duration-700': string;
+  'animation-mobile-out-easing-bounce': string;
   'animation-mobile-out-easing-ease': string;
   'animation-mobile-out-easing-ease-in': string;
   'animation-mobile-out-easing-ease-in-out': string;
@@ -1910,6 +1933,7 @@ export type Styles = {
   'animation-mobile-out-end-duration-2000': string;
   'animation-mobile-out-end-duration-500': string;
   'animation-mobile-out-end-duration-700': string;
+  'animation-mobile-out-end-easing-bounce': string;
   'animation-mobile-out-end-easing-ease': string;
   'animation-mobile-out-end-easing-ease-in': string;
   'animation-mobile-out-end-easing-ease-in-out': string;
@@ -2042,6 +2066,7 @@ export type Styles = {
   'animation-mobile-out-start-duration-2000': string;
   'animation-mobile-out-start-duration-500': string;
   'animation-mobile-out-start-duration-700': string;
+  'animation-mobile-out-start-easing-bounce': string;
   'animation-mobile-out-start-easing-ease': string;
   'animation-mobile-out-start-easing-ease-in': string;
   'animation-mobile-out-start-easing-ease-in-out': string;
@@ -2192,6 +2217,7 @@ export type Styles = {
   'animation-out-duration-2000': string;
   'animation-out-duration-500': string;
   'animation-out-duration-700': string;
+  'animation-out-easing-bounce': string;
   'animation-out-easing-ease': string;
   'animation-out-easing-ease-in': string;
   'animation-out-easing-ease-in-out': string;
@@ -2213,6 +2239,7 @@ export type Styles = {
   'animation-out-end-duration-2000': string;
   'animation-out-end-duration-500': string;
   'animation-out-end-duration-700': string;
+  'animation-out-end-easing-bounce': string;
   'animation-out-end-easing-ease': string;
   'animation-out-end-easing-ease-in': string;
   'animation-out-end-easing-ease-in-out': string;
@@ -2345,6 +2372,7 @@ export type Styles = {
   'animation-out-start-duration-2000': string;
   'animation-out-start-duration-500': string;
   'animation-out-start-duration-700': string;
+  'animation-out-start-easing-bounce': string;
   'animation-out-start-easing-ease': string;
   'animation-out-start-easing-ease-in': string;
   'animation-out-start-easing-ease-in-out': string;
@@ -2486,6 +2514,7 @@ export type Styles = {
   'animation-tablet-duration-2000': string;
   'animation-tablet-duration-500': string;
   'animation-tablet-duration-700': string;
+  'animation-tablet-easing-bounce': string;
   'animation-tablet-easing-ease': string;
   'animation-tablet-easing-ease-in': string;
   'animation-tablet-easing-ease-in-out': string;
@@ -2558,6 +2587,7 @@ export type Styles = {
   'animation-tablet-in-duration-2000': string;
   'animation-tablet-in-duration-500': string;
   'animation-tablet-in-duration-700': string;
+  'animation-tablet-in-easing-bounce': string;
   'animation-tablet-in-easing-ease': string;
   'animation-tablet-in-easing-ease-in': string;
   'animation-tablet-in-easing-ease-in-out': string;
@@ -2579,6 +2609,7 @@ export type Styles = {
   'animation-tablet-in-end-duration-2000': string;
   'animation-tablet-in-end-duration-500': string;
   'animation-tablet-in-end-duration-700': string;
+  'animation-tablet-in-end-easing-bounce': string;
   'animation-tablet-in-end-easing-ease': string;
   'animation-tablet-in-end-easing-ease-in': string;
   'animation-tablet-in-end-easing-ease-in-out': string;
@@ -2711,6 +2742,7 @@ export type Styles = {
   'animation-tablet-in-start-duration-2000': string;
   'animation-tablet-in-start-duration-500': string;
   'animation-tablet-in-start-duration-700': string;
+  'animation-tablet-in-start-easing-bounce': string;
   'animation-tablet-in-start-easing-ease': string;
   'animation-tablet-in-start-easing-ease-in': string;
   'animation-tablet-in-start-easing-ease-in-out': string;
@@ -2810,6 +2842,7 @@ export type Styles = {
   'animation-tablet-out-duration-2000': string;
   'animation-tablet-out-duration-500': string;
   'animation-tablet-out-duration-700': string;
+  'animation-tablet-out-easing-bounce': string;
   'animation-tablet-out-easing-ease': string;
   'animation-tablet-out-easing-ease-in': string;
   'animation-tablet-out-easing-ease-in-out': string;
@@ -2831,6 +2864,7 @@ export type Styles = {
   'animation-tablet-out-end-duration-2000': string;
   'animation-tablet-out-end-duration-500': string;
   'animation-tablet-out-end-duration-700': string;
+  'animation-tablet-out-end-easing-bounce': string;
   'animation-tablet-out-end-easing-ease': string;
   'animation-tablet-out-end-easing-ease-in': string;
   'animation-tablet-out-end-easing-ease-in-out': string;
@@ -2963,6 +2997,7 @@ export type Styles = {
   'animation-tablet-out-start-duration-2000': string;
   'animation-tablet-out-start-duration-500': string;
   'animation-tablet-out-start-duration-700': string;
+  'animation-tablet-out-start-easing-bounce': string;
   'animation-tablet-out-start-easing-ease': string;
   'animation-tablet-out-start-easing-ease-in': string;
   'animation-tablet-out-start-easing-ease-in-out': string;

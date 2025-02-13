@@ -30,19 +30,24 @@ export default function Home() {
 
   const { classes, ref } = useAnimation<HTMLHeadingElement>({
     animations: {
-      duration: 200,
+      duration: 1000,
       origin: 'center-left',
+      easing: 'bounce',
       start: { scale: 'x-0', translate: 'left', opacity: 0 },
       end: { scale: '100', translate: 'center', opacity: 100 },
     },
+    triggerThreshold: 0.8,
   });
 
   return (
     <main>
-      <ContentPadded padding="4000">
-        <h1 className={classNames(...classes)} ref={ref}>
-          Hello my freinds
-        </h1>
+      <ContentPadded
+        padding="4000"
+        className={classNames(...classes)}
+        ref={ref}
+        style={{ backgroundColor: 'red', width: 500 }}
+      >
+        <h1>Hello my freinds</h1>
       </ContentPadded>
       <Container width="full" textAlign="center">
         <ContentPadded padding={{ mobile: '400', desktop: '0' }}>

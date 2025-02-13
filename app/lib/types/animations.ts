@@ -50,7 +50,8 @@ export type AnimationEaseValues =
   | 'smooth'
   | 'snappy'
   | 'slow-rise'
-  | 'fast-fall';
+  | 'fast-fall'
+  | 'bounce';
 
 export type AnimationTransformValues = {
   translate?:

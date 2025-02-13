@@ -10,6 +10,7 @@ interface UseAnimationProps {
     classes?: string[];
     tag?: keyof HTMLElementTagNameMap;
   };
+  triggerThreshold?: number;
 }
 
 function useVisibility(
@@ -29,32 +30,36 @@ function useVisibility(
 
 function useWrapper(
   elementRef: React.RefObject<HTMLElement | null>,
-  wrapperClasses: string[],
-  wrapperTag: keyof HTMLElementTagNameMap = 'div',
+  classNames: string[],
+  HTMLTag: keyof HTMLElementTagNameMap = 'div',
 ) {
   const wrapperRef = useRef<HTMLElement | null>(null);
+
   useEffect(() => {
     if (!elementRef.current || wrapperRef.current) return;
-    const wrapperElement = document.createElement(wrapperTag);
-    wrapperElement.classList.add(...wrapperClasses);
+
+    const wrapperElement = document.createElement(HTMLTag);
+    wrapperElement.classList.add(...classNames);
+
     elementRef.current.parentNode?.insertBefore(
       wrapperElement,
       elementRef.current,
     );
     wrapperElement.appendChild(elementRef.current);
     wrapperRef.current = wrapperElement;
-  }, [elementRef, wrapperClasses, wrapperTag]);
+  }, [elementRef, classNames, HTMLTag]);
   return wrapperRef;
 }
 
 export function useAnimation<T extends HTMLElement>({
   animations,
   wrapper = { classes: ['animation-wrapper'] },
+  triggerThreshold = 0.8,
 }: UseAnimationProps) {
   const [isInitialized, setIsInitialized] = useState(false);
   const elementRef = useRef<T | null>(null);
   const wrapperRef = useWrapper(elementRef, wrapper.classes ?? [], wrapper.tag);
-  const isVisible = useVisibility(wrapperRef, 0.8);
+  const isVisible = useVisibility(wrapperRef, triggerThreshold);
   const [animationClasses, setAnimationClasses] = useState<string[]>([
     styles.animation,
   ]);
