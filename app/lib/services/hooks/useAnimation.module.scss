@@ -19,30 +19,30 @@ $animation-easings: (
 );
 $animation-rotations: (
   0,
-  15deg,
-  30deg,
-  45deg,
-  60deg,
-  75deg,
-  90deg,
-  105deg,
-  120deg,
-  135deg,
-  150deg,
-  165deg,
-  180deg,
-  195deg,
-  210deg,
-  225deg,
-  240deg,
-  255deg,
-  270deg,
-  285deg,
-  300deg,
-  315deg,
-  330deg,
-  345deg,
-  360deg
+  15,
+  30,
+  45,
+  60,
+  75,
+  90,
+  105,
+  120,
+  135,
+  150,
+  165,
+  180,
+  195,
+  210,
+  225,
+  240,
+  255,
+  270,
+  285,
+  300,
+  315,
+  330,
+  345,
+  360
 );
 $animation-opacities: (0, 20, 40, 60, 80, 100);
 
@@ -55,7 +55,7 @@ $animation-opacities: (0, 20, 40, 60, 80, 100);
 
   @each $value in $animation-rotations {
     &#{$prefix}-rotate-#{$value} {
-      rotate: $value;
+      rotate: #{$value}deg;
     }
   }
 }
@@ -94,6 +94,7 @@ $animation-opacities: (0, 20, 40, 60, 80, 100);
 
 .animation {
   backface-visibility: hidden;
+  transform-origin: left;
   transform-style: preserve-3d;
 
   &:not(.animation--init) {

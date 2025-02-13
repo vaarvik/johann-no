@@ -6,27 +6,34 @@ import styles from './useAnimation.module.scss';
 
 interface UseAnimationProps {
   animations: AnimationProps;
+  wrapper?: {
+    classes?: string[];
+    tag?: keyof HTMLElementTagNameMap;
+  };
 }
 
-export function useAnimation({ animations }: UseAnimationProps) {
+export function useAnimation<T extends HTMLElement>({
+  animations,
+  wrapper = { classes: ['animation-wrapper'] },
+}: UseAnimationProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [isInitialized, setIsInitialized] = useState(false);
   const [animationClasses, setAnimationClasses] = useState<string[]>([
     styles['animation'],
   ]);
-  const elementRef = useRef<HTMLElement | null>(null);
+  const elementRef = useRef<T | null>(null);
+  const wrapperRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
-    if (!elementRef.current) return;
+    if (!wrapperRef.current) return;
 
     const checkVisibility = () => {
-      if (elementRef.current) {
-        const visible = isElementVisible(elementRef.current, 0.8);
-        // ✅ Only update state if visibility actually changed (prevents infinite loop)
-        setIsVisible(prevVisible => {
-          if (prevVisible !== visible) return visible;
-          return prevVisible; // No change, prevents re-render
-        });
+      if (wrapperRef.current) {
+        const visible = isElementVisible(wrapperRef.current, 1);
+        console.log(visible);
+        if (isVisible !== visible) {
+          setIsVisible(visible);
+        }
       }
     };
 
@@ -36,11 +43,25 @@ export function useAnimation({ animations }: UseAnimationProps) {
     // Listen for scroll events
     window.addEventListener('scroll', checkVisibility);
     return () => window.removeEventListener('scroll', checkVisibility);
-  }, []);
+  }, [isVisible, isInitialized]);
 
   useEffect(() => {
+    if (!elementRef.current) return;
+
     if (!isInitialized) {
       setIsInitialized(true);
+
+      // wrap the element in a div
+      const wrapperElement = document.createElement(wrapper.tag ?? 'div');
+      elementRef.current?.parentNode?.insertBefore(
+        wrapperElement,
+        elementRef.current,
+      );
+      wrapperElement.appendChild(elementRef.current);
+      if (wrapper.classes) {
+        wrapperElement.classList.add(...wrapper.classes);
+      }
+      wrapperRef.current = wrapperElement;
     }
 
     setAnimationClasses(prevClasses => {
@@ -57,7 +78,7 @@ export function useAnimation({ animations }: UseAnimationProps) {
 
       return prevClasses; // No change, prevents re-render
     });
-  }, [isVisible, isInitialized, animations]);
+  }, [isVisible, isInitialized, animations, wrapper]);
 
   return { classes: animationClasses, ref: elementRef };
 }

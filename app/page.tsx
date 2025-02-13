@@ -28,32 +28,32 @@ export default function Home() {
     },
   ];
 
-  const { classes, ref } = useAnimation({
+  const { classes, ref } = useAnimation<HTMLHeadingElement>({
     animations: {
       mobile: {
         in: {
           duration: 200,
           easing: 'fast-fall',
-          start: { opacity: 0 },
-          end: { opacity: 100 },
+          start: { rotate: 0 },
+          end: { rotate: 105 },
         },
         out: {
           duration: 2000,
-          start: { opacity: 100 },
-          end: { opacity: 0 },
+          start: { rotate: 105 },
+          end: { rotate: 0 },
         },
       },
       desktop: {
         in: {
           duration: 2000,
           easing: 'fast-fall',
-          start: { opacity: 0 },
-          end: { opacity: 100 },
+          start: { rotate: 0 },
+          end: { rotate: 105 },
         },
         out: {
           duration: 200,
-          start: { opacity: 100 },
-          end: { opacity: 0 },
+          start: { rotate: 105 },
+          end: { rotate: 0 },
         },
       },
     },
@@ -61,20 +61,16 @@ export default function Home() {
 
   return (
     <main>
-      <ContentPadded
-        padding="4000"
-        className={classNames(...classes)}
-        ref={ref}
-      >
-        <h1>Hello my freinds</h1>
+      <ContentPadded padding="4000">
+        <h1 className={classNames(...classes)} ref={ref}>
+          Hello my freinds
+        </h1>
       </ContentPadded>
-
       <Container width="full" textAlign="center">
         <ContentPadded padding={{ mobile: '400', desktop: '0' }}>
           <Timeline items={timelineData} />
         </ContentPadded>
       </Container>
-
       <ContentPadded padding="4000"></ContentPadded>
     </main>
   );
