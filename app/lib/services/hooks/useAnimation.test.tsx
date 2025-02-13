@@ -48,9 +48,10 @@ describe('useAnimation Hook', () => {
 
   it('should initialize with default classes', () => {
     const { result } = renderHook(() => useAnimation({ animations: {} }));
-    expect(result.current.classes[0]).toContain('animation');
-    expect(result.current.classes[0]).not.toContain('animation--init');
-    expect(result.current.classes[0]).not.toContain('animation--visible');
+    const classes = result.current.classes.join(', ');
+    expect(classes).toContain('animation');
+    expect(classes).not.toContain('animation--init');
+    expect(classes).not.toContain('animation--visible');
   });
 
   it('should initialize with default classes on render', () => {
@@ -68,7 +69,7 @@ describe('useAnimation Hook', () => {
     unmount();
   });
 
-  it('should wrap the element with the specified wrapper element and classes', () => {
+  it('should wrap the element with one specified wrapper element and classes', () => {
     const { container, unmount } = render(
       <MockComponent
         wrapperClasses={['custom-wrapper']}
@@ -76,8 +77,9 @@ describe('useAnimation Hook', () => {
       />,
     );
 
-    const wrapper = container.querySelector('section.custom-wrapper');
-    expect(wrapper).not.toBeNull();
+    const wrappers = container.querySelectorAll('section.custom-wrapper');
+    expect(wrappers[0]).not.toBeNull();
+    expect(wrappers.length).toBe(1);
 
     unmount();
   });

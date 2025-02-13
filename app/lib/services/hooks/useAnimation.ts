@@ -12,43 +12,57 @@ interface UseAnimationProps {
   };
 }
 
+function useVisibility(
+  ref: React.RefObject<HTMLElement | null>,
+  threshold = 0.8,
+) {
+  const [isVisible, setIsVisible] = useState(false);
+  useEffect(() => {
+    const checkVisibility = () =>
+      setIsVisible(isElementVisible(ref.current!, threshold));
+    checkVisibility();
+    window.addEventListener('scroll', checkVisibility);
+    return () => window.removeEventListener('scroll', checkVisibility);
+  }, [ref, threshold]);
+  return isVisible;
+}
+
+function useWrapper(
+  elementRef: React.RefObject<HTMLElement | null>,
+  wrapperClasses: string[],
+  wrapperTag: keyof HTMLElementTagNameMap = 'div',
+) {
+  const wrapperRef = useRef<HTMLElement | null>(null);
+  useEffect(() => {
+    if (!elementRef.current || wrapperRef.current) return;
+    const wrapperElement = document.createElement(wrapperTag);
+    wrapperElement.classList.add(...wrapperClasses);
+    elementRef.current.parentNode?.insertBefore(
+      wrapperElement,
+      elementRef.current,
+    );
+    wrapperElement.appendChild(elementRef.current);
+    wrapperRef.current = wrapperElement;
+  }, [elementRef, wrapperClasses, wrapperTag]);
+  return wrapperRef;
+}
+
 export function useAnimation<T extends HTMLElement>({
   animations,
   wrapper = { classes: ['animation-wrapper'] },
 }: UseAnimationProps) {
-  const [isVisible, setIsVisible] = useState(false);
   const [isInitialized, setIsInitialized] = useState(false);
+  const elementRef = useRef<T | null>(null);
+  const wrapperRef = useWrapper(elementRef, wrapper.classes ?? [], wrapper.tag);
+  const isVisible = useVisibility(wrapperRef, 0.8);
   const [animationClasses, setAnimationClasses] = useState<string[]>([
     styles.animation,
   ]);
-  const elementRef = useRef<T | null>(null);
-  const wrapperRef = useRef<HTMLElement | null>(null);
-
-  useEffect(() => {
-    if (!wrapperRef.current) return;
-    const checkVisibility = () => {
-      const visible = isElementVisible(wrapperRef.current!, 1);
-      if (isVisible !== visible) setIsVisible(visible);
-    };
-    checkVisibility();
-    window.addEventListener('scroll', checkVisibility);
-    return () => window.removeEventListener('scroll', checkVisibility);
-  }, [isVisible, isInitialized]);
 
   useEffect(() => {
     if (!elementRef.current) return;
     if (!isInitialized) {
       setIsInitialized(true);
-      const wrapperElement = document.createElement(wrapper.tag ?? 'div');
-      elementRef.current.parentNode?.insertBefore(
-        wrapperElement,
-        elementRef.current,
-      );
-      wrapperElement.appendChild(elementRef.current);
-      if (wrapper.classes) {
-        wrapperElement.classList.add(...wrapper.classes);
-      }
-      wrapperRef.current = wrapperElement;
     }
 
     setAnimationClasses(prevClasses => {
@@ -62,7 +76,7 @@ export function useAnimation<T extends HTMLElement>({
         ? newClasses
         : prevClasses;
     });
-  }, [isVisible, isInitialized, animations, wrapper]);
+  }, [isVisible, isInitialized, animations]);
 
   return { classes: animationClasses, ref: elementRef };
 }
