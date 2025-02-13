@@ -30,7 +30,6 @@ export function useAnimation<T extends HTMLElement>({
     const checkVisibility = () => {
       if (wrapperRef.current) {
         const visible = isElementVisible(wrapperRef.current, 1);
-        console.log(visible);
         if (isVisible !== visible) {
           setIsVisible(visible);
         }
@@ -51,7 +50,6 @@ export function useAnimation<T extends HTMLElement>({
     if (!isInitialized) {
       setIsInitialized(true);
 
-      // wrap the element in a div
       const wrapperElement = document.createElement(wrapper.tag ?? 'div');
       elementRef.current?.parentNode?.insertBefore(
         wrapperElement,
@@ -65,6 +63,44 @@ export function useAnimation<T extends HTMLElement>({
     }
 
     setAnimationClasses(prevClasses => {
+      // const finalAnimation = animations;
+      // // Combine the animation properties into a single property
+
+      // // if any of the animation properties inside any of the objects in the animations object is translateX or translateY, then combine them to a single translate property - this needs to be checked at every level, so recurrsive is best
+      // const checkForProperties = (
+      //   obj: AnimationProps,
+      //   properties: (keyof AnimationTransformValues)[],
+      //   callback: (obj: AnimationTransformValues) => void,
+      // ) => {
+      //   Object.keys(obj).forEach(_key => {
+      //     const key = _key as keyof AnimationProps;
+      //     if (typeof obj[key] === 'object') {
+      //       checkForProperties(obj[key], properties, callback);
+      //     } else {
+      //       const finalProperties: AnimationTransformValues = {};
+      //       properties.forEach(property => {
+      //         if (property === key) {
+      //           finalProperties[property] = obj[key];
+      //         }
+      //       });
+
+      //       if (Object.keys(finalProperties).length) {
+      //         callback(finalProperties);
+      //       }
+      //     }
+      //   });
+      // };
+
+      // checkForProperties(finalAnimation, ['translateX', 'translateY'], obj => {
+      //   obj.translate = `translateX(${obj.translateX ?? 0}) translateY(${obj.translateY ?? 0})`;
+      //   delete obj.translateX;
+      //   delete obj.translateY;
+      // });
+
+      // console.log(finalAnimation);
+
+      // if any of the animation properties inside any of the objects in the animations object is scale, then combine them to a single scale property - this needs to be checked at every level, so recurrsive is best
+
       const newClasses = [
         ...generateClassNamesByStringOrObject(animations, styles, `animation`),
         styles['animation'],

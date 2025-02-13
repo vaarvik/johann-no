@@ -1,3 +1,4 @@
+@use 'app/lib/assets/scss/functions' as funcs;
 @use 'app/lib/assets/scss/variables' as vars;
 @use 'sass:list';
 @use 'sass:map';
@@ -45,6 +46,41 @@ $animation-rotations: (
   360
 );
 $animation-opacities: (0, 20, 40, 60, 80, 100);
+$animation-translations: (
+  'left',
+  'right',
+  'top',
+  'bottom',
+  'left-top',
+  'right-top',
+  'left-bottom',
+  'right-bottom',
+  'center'
+);
+$animation-scales: (
+  'x-0',
+  'y-0',
+  'x-25',
+  'y-25',
+  'x-50',
+  'y-50',
+  'x-75',
+  'y-75',
+  '100',
+  'x-125',
+  'y-125'
+);
+$animation-origins: (
+  'top-left',
+  'top-center',
+  'top-right',
+  'center-left',
+  'center-center',
+  'center-right',
+  'bottom-left',
+  'bottom-center',
+  'bottom-right'
+);
 
 @mixin generate-animations($prefix) {
   @each $value in $animation-opacities {
@@ -56,6 +92,59 @@ $animation-opacities: (0, 20, 40, 60, 80, 100);
   @each $value in $animation-rotations {
     &#{$prefix}-rotate-#{$value} {
       rotate: #{$value}deg;
+    }
+  }
+
+  @each $value in $animation-translations {
+    &#{$prefix}-translate-#{$value} {
+      // use pixels instead of percentages
+      @if $value == 'left' {
+        translate: -100px 0;
+      } @else if $value == 'right' {
+        translate: 100px 0;
+      } @else if $value == 'top' {
+        translate: 0 -100px;
+      } @else if $value == 'bottom' {
+        translate: 0 100px;
+      } @else if $value == 'left-top' {
+        translate: -100px -100px;
+      } @else if $value == 'right-top' {
+        translate: 100px -100px;
+      } @else if $value == 'left-bottom' {
+        translate: -100px 100px;
+      } @else if $value == 'right-bottom' {
+        translate: 100px 100px;
+      } @else if $value == 'center' {
+        translate: 0 0;
+      }
+    }
+  }
+
+  @each $value in $animation-scales {
+    &#{$prefix}-scale-#{$value} {
+      @if $value == 'x-0' {
+        scale: 0 1;
+      } @else if $value == 'y-0' {
+        scale: 1 0;
+      } @else if $value == 'x-25' {
+        scale: 0.25 1;
+      } @else if $value == 'y-25' {
+        scale: 1 0.25;
+      } @else if $value == 'x-50' {
+        scale: 0.5 1;
+      } @else if $value == 'y-50' {
+        scale: 1 0.5;
+      } @else if $value == 'x-75' {
+        scale: 0.75 1;
+      } @else if $value == 'y-75' {
+        scale: 1 0.75;
+      } @else if $value == '100' {
+        scale: 1 1;
+      } @else if $value == 'x-125' {
+        scale: 1.25 1;
+      } @else if $value == 'y-125' {
+        scale: 1 1.25;
+      }
     }
   }
 }
@@ -75,26 +164,38 @@ $animation-opacities: (0, 20, 40, 60, 80, 100);
 
   @each $value in $animation-easings {
     &#{$prefix}-easing-#{$value} {
-      transition-timing-function: if(
-        $value == smooth,
-        cubic-bezier(0.25, 0.1, 0.25, 1),
-        if(
-          $value == snappy,
-          cubic-bezier(0.4, 0, 0.6, 1),
-          if(
-            $value == slow-rise,
-            cubic-bezier(0.3, 0, 0.7, 1),
-            if($value == fast-fall, cubic-bezier(0.6, 0, 1, 0.4), $value)
-          )
-        )
-      );
+      @if $value == linear {
+        transition-timing-function: linear;
+      } @else if $value == ease-in {
+        transition-timing-function: ease-in;
+      } @else if $value == ease-out {
+        transition-timing-function: ease-out;
+      } @else if $value == ease-in-out {
+        transition-timing-function: ease-in-out;
+      } @else if $value == ease {
+        transition-timing-function: ease;
+      } @else if $value == smooth {
+        transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+      } @else if $value == snappy {
+        transition-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
+      } @else if $value == slow-rise {
+        transition-timing-function: cubic-bezier(0.3, 0, 0.7, 1);
+      } @else if $value == fast-fall {
+        transition-timing-function: cubic-bezier(0.6, 0, 1, 0.4);
+      }
+    }
+  }
+
+  @each $value in $animation-origins {
+    $formatted-value: funcs.str-replace($value, '-', ' ');
+    &#{$prefix}-origin-#{$value} {
+      transform-origin: #{$formatted-value};
     }
   }
 }
 
 .animation {
   backface-visibility: hidden;
-  transform-origin: left;
   transform-style: preserve-3d;
 
   &:not(.animation--init) {
@@ -133,17 +234,6 @@ $animation-opacities: (0, 20, 40, 60, 80, 100);
       }
     }
   }
-
-  //   @include animation-class(
-  //     'translateX',
-  //     (0, 50px, 100px, 200px, 400px, 800px, 25%, 50%, 75%, 100%)
-  //   );
-  //   @include animation-class(
-  //     'translateY',
-  //     (0, 50px, 100px, 200px, 400px, 800px, 25%, 50%, 75%, 100%)
-  //   );
-  //   @include animation-class('scaleX', (0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4));
-  //   @include animation-class('scaleY', (0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4));
 }
 
 .animation--visible.animation {

@@ -30,32 +30,10 @@ export default function Home() {
 
   const { classes, ref } = useAnimation<HTMLHeadingElement>({
     animations: {
-      mobile: {
-        in: {
-          duration: 200,
-          easing: 'fast-fall',
-          start: { rotate: 0 },
-          end: { rotate: 105 },
-        },
-        out: {
-          duration: 2000,
-          start: { rotate: 105 },
-          end: { rotate: 0 },
-        },
-      },
-      desktop: {
-        in: {
-          duration: 2000,
-          easing: 'fast-fall',
-          start: { rotate: 0 },
-          end: { rotate: 105 },
-        },
-        out: {
-          duration: 200,
-          start: { rotate: 105 },
-          end: { rotate: 0 },
-        },
-      },
+      duration: 200,
+      origin: 'center-left',
+      start: { scale: 'x-0', translate: 'left', opacity: 0 },
+      end: { scale: '100', translate: 'center', opacity: 100 },
     },
   });
 

@@ -52,28 +52,49 @@ export type AnimationEaseValues =
   | 'slow-rise'
   | 'fast-fall';
 
+export type AnimationTransformValues = {
+  translate?:
+    | 'left'
+    | 'right'
+    | 'top'
+    | 'bottom'
+    | 'left-top'
+    | 'right-top'
+    | 'left-bottom'
+    | 'right-bottom'
+    | 'center';
+  scale?:
+    | 'x-0'
+    | 'y-0'
+    | 'x-25'
+    | 'y-25'
+    | 'x-50'
+    | 'y-50'
+    | 'x-75'
+    | 'y-75'
+    | '100'
+    | 'x-125'
+    | 'y-125';
+  rotate?: AnimationRotateValues; // e.g., '45deg'
+  opacity?: AnimationOpacityValues; // Allow setting starting opacity
+};
+
 export interface AnimationConfig {
   delay?: AnimationDelayValues;
   duration?: AnimationDurationValues;
+  origin:
+    | 'top-left'
+    | 'top-center'
+    | 'top-right'
+    | 'center-left'
+    | 'center-center'
+    | 'center-right'
+    | 'bottom-left'
+    | 'bottom-center'
+    | 'bottom-right';
   easing?: AnimationEaseValues;
-  start?: {
-    // Custom easing (e.g., 'ease-in-out', 'cubic-bezier(0.4, 0, 0.2, 1)')
-    translateX?: AnimationFadeValues; // px or %
-    translateY?: AnimationFadeValues;
-    scaleX?: AnimationScaleValues;
-    scaleY?: AnimationScaleValues;
-    rotate?: AnimationRotateValues; // e.g., '45deg'
-    opacity?: AnimationOpacityValues; // Allow setting starting opacity
-  };
-  end?: {
-    // Custom easing (e.g., 'ease-in-out', 'cubic-bezier(0.4, 0, 0.2, 1)')
-    translateX?: AnimationFadeValues;
-    translateY?: AnimationFadeValues;
-    scaleX?: AnimationScaleValues;
-    scaleY?: AnimationScaleValues;
-    rotate?: AnimationRotateValues;
-    opacity?: AnimationOpacityValues;
-  };
+  start?: AnimationTransformValues;
+  end?: AnimationTransformValues;
 }
 
 export type AnimationProps =
