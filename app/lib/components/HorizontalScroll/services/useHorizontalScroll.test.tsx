@@ -66,15 +66,6 @@ describe('useHorizontalScroll', () => {
     vi.useRealTimers();
   });
 
-  it('should throw an error if threshold is out of range', () => {
-    expect(() => renderHook(() => useHorizontalScroll(1.5))).toThrow(
-      'Threshold must be between -1 and 1',
-    );
-    expect(() => renderHook(() => useHorizontalScroll(-1.5))).toThrow(
-      'Threshold must be between -1 and 1',
-    );
-  });
-
   it('should render without errors', () => {
     const { getByTestId, unmount } = render(<MockComponent />);
     expect(getByTestId('wrapper')).not.toBeNull();

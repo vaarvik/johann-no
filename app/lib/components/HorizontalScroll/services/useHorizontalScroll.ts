@@ -5,10 +5,6 @@ export function useHorizontalScroll(
   threshold = 0.2,
   mobileScrollDirection: 'horizontal' | 'vertical' = 'horizontal',
 ) {
-  if (threshold > 1 || threshold < -1) {
-    throw new Error('Threshold must be between -1 and 1');
-  }
-
   const wrapperRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);

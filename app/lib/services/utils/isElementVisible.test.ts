@@ -87,4 +87,13 @@ describe('isElementVisible', () => {
     } as HTMLElement;
     expect(isElementVisible(mockElement, 0.5)).toBe(false);
   });
+
+  it('should throw an error if threshold is out of range', () => {
+    expect(() => isElementVisible({} as HTMLElement, 1.2)).toThrow(
+      'Threshold must be between 0 and 1',
+    );
+    expect(() => isElementVisible({} as HTMLElement, -0.3)).toThrow(
+      'Threshold must be between 0 and 1',
+    );
+  });
 });

@@ -2,6 +2,10 @@ export function isElementVisible(
   element: HTMLElement,
   threshold: number,
 ): boolean {
+  if (threshold > 1 || threshold < 0) {
+    throw new Error('Threshold must be between 0 and 1');
+  }
+
   const rect = element.getBoundingClientRect();
   const elementArea = rect.width * rect.height;
   const visibleWidth = Math.max(
