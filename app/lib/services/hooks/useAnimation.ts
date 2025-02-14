@@ -2,8 +2,8 @@ import styles from '@/assets/scss/animation.module.scss';
 import { AnimationProps } from '@/types/animations';
 import { useEffect, useRef, useState } from 'react';
 import { generateClassNamesByStringOrObject } from '../utils/generateClassNamesByStringOrObject';
-import { isElementVisible } from '../utils/isElementVisible';
 import { useWrapper } from './useWrapper';
+import { useVisibility } from './useVisibility';
 
 interface UseAnimationProps {
   animations: AnimationProps;
@@ -12,21 +12,6 @@ interface UseAnimationProps {
     tag?: keyof HTMLElementTagNameMap;
   };
   triggerThreshold?: number;
-}
-
-function useVisibility(
-  ref: React.RefObject<HTMLElement | null>,
-  threshold = 0.8,
-) {
-  const [isVisible, setIsVisible] = useState(false);
-  useEffect(() => {
-    const checkVisibility = () =>
-      setIsVisible(isElementVisible(ref.current!, threshold));
-    checkVisibility();
-    window.addEventListener('scroll', checkVisibility);
-    return () => window.removeEventListener('scroll', checkVisibility);
-  }, [ref, threshold]);
-  return isVisible;
 }
 
 export function useAnimation<T extends HTMLElement>({
