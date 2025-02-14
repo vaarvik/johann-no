@@ -1,18 +1,25 @@
 import { isElementVisible } from '@/services/utils/isElementVisible';
-import { useEffect, useRef, useState } from 'react';
+import { RefObject, useEffect, useRef, useState } from 'react';
 
-export function useHorizontalScroll(
-  threshold = 0.2,
-  mobileScrollDirection: 'horizontal' | 'vertical' = 'horizontal',
+function useIsMobile() {
+  const [mobile, setMobile] = useState(false);
+  useEffect(() => {
+    const handleResize = () => setMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  return mobile;
+}
+
+function useScrollAnimation(
+  vertical = false,
+  contentRef: RefObject<HTMLDivElement | null>,
+  sectionRef: RefObject<HTMLDivElement | null>,
+  wrapperRef: RefObject<HTMLDivElement | null>,
+  threshold: number,
 ) {
-  const wrapperRef = useRef<HTMLDivElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
-  const itemRefs = useRef<HTMLDivElement[]>([]);
-
   const [visibleItems, setVisibleItems] = useState<number[]>([]);
-  const [isMobile, setIsMobile] = useState<boolean>(false);
+  const itemRefs = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
     if (!wrapperRef.current || !sectionRef.current || !contentRef.current) {
@@ -21,39 +28,22 @@ export function useHorizontalScroll(
       );
     }
 
-    updateSectionSize();
-    window.addEventListener('scroll', onScroll);
-    window.addEventListener('resize', updateSectionSize);
+    const handleScroll = () => {
+      const offset = Math.max(
+        0,
+        window.scrollY - (wrapperRef.current!.offsetTop ?? 0),
+      );
 
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', updateSectionSize);
-    };
+      const limit =
+        (vertical
+          ? contentRef.current!.offsetHeight
+          : contentRef.current!.offsetWidth) -
+        (vertical ? window.innerHeight : window.innerWidth);
 
-    function isVertical() {
-      return isMobile && mobileScrollDirection === 'vertical';
-    }
-
-    function updateSectionSize() {
-      setIsMobile(window.innerWidth < 768);
-      wrapperRef.current!.style.height = isVertical()
-        ? 'auto'
-        : `${window.innerHeight + (contentRef.current!.offsetWidth - window.innerWidth)}px`;
-    }
-
-    function onScroll() {
-      const offsetTop = wrapperRef.current!.offsetTop;
-      const contentSize = isVertical()
-        ? contentRef.current!.offsetHeight
-        : contentRef.current!.offsetWidth;
-      const scrollAmount = Math.max(0, window.scrollY - offsetTop);
-      const maxScroll =
-        contentSize - (isVertical() ? window.innerHeight : window.innerWidth);
-
-      if (scrollAmount < maxScroll) {
-        sectionRef.current!.style.transform = isVertical()
-          ? `translate3d(0, -${scrollAmount}px, 0)`
-          : `translate3d(-${scrollAmount}px, 0, 0)`;
+      if (offset < limit) {
+        sectionRef.current!.style.transform = vertical
+          ? `translate3d(0, -${offset}px, 0)`
+          : `translate3d(-${offset}px, 0, 0)`;
       }
 
       setVisibleItems(
@@ -63,6 +53,44 @@ export function useHorizontalScroll(
           )
           .filter(index => index !== -1),
       );
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [vertical, contentRef, sectionRef, wrapperRef, threshold]);
+
+  return { itemRefs, visibleItems };
+}
+
+export function useHorizontalScroll(
+  threshold = 0.2,
+  mobileScrollDirection: 'horizontal' | 'vertical' = 'horizontal',
+) {
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
+  const { itemRefs, visibleItems } = useScrollAnimation(
+    isMobile && mobileScrollDirection === 'vertical',
+    contentRef,
+    sectionRef,
+    wrapperRef,
+    threshold,
+  );
+
+  useEffect(() => {
+    updateSectionSize();
+    window.addEventListener('resize', updateSectionSize);
+
+    return () => {
+      window.removeEventListener('resize', updateSectionSize);
+    };
+
+    function updateSectionSize() {
+      wrapperRef.current!.style.height =
+        isMobile && mobileScrollDirection === 'vertical'
+          ? 'auto'
+          : `${window.innerHeight + (contentRef.current!.offsetWidth - window.innerWidth)}px`;
     }
   }, [
     threshold,

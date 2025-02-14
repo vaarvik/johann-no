@@ -77,7 +77,7 @@ describe('useHorizontalScroll', () => {
     const removeEventListener = vi.spyOn(window, 'removeEventListener');
     const { unmount } = render(<MockComponent />);
 
-    expect(addEventListener).toHaveBeenCalledTimes(2);
+    expect(addEventListener).toHaveBeenCalledTimes(3);
     expect(addEventListener).toHaveBeenCalledWith(
       'scroll',
       expect.any(Function),
@@ -89,7 +89,7 @@ describe('useHorizontalScroll', () => {
 
     unmount();
 
-    expect(removeEventListener).toHaveBeenCalledTimes(2);
+    expect(removeEventListener).toHaveBeenCalledTimes(3);
     expect(removeEventListener).toHaveBeenCalledWith(
       'scroll',
       expect.any(Function),
