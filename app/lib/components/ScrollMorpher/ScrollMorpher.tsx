@@ -5,7 +5,7 @@ import classNames from '@/services/utils/classNames';
 import { generateClassNamesByStringOrObject } from '@/services/utils/generateClassNamesByStringOrObject';
 import { SpacingVariantXY } from '@/types/spacing';
 import { ReactNode } from 'react';
-import styles from './HorizontalScroll.module.scss';
+import styles from './ScrollMorpher.module.scss';
 
 interface Props {
   gap?: SpacingVariantXY;
@@ -32,30 +32,30 @@ export default function ScrollMorpher({
   const gapClassNames = generateClassNamesByStringOrObject(
     gap,
     styles,
-    'horizontal-scroll__content--gap',
+    'scroll-morpher__content--gap',
   );
 
   return (
     <div ref={wrapperRef}>
       <div
         className={classNames(
-          styles['horizontal-scroll__container'],
+          styles['scroll-morpher__container'],
           direction === 'vertical' &&
-            styles['horizontal-scroll__container--vertical'],
+            styles['scroll-morpher__container--vertical'],
         )}
         ref={containerRef}
       >
-        <div className={styles['horizontal-scroll__strip']} ref={sectionRef}>
+        <div className={styles['scroll-morpher__strip']} ref={sectionRef}>
           <div
             className={classNames(
-              styles['horizontal-scroll__content'],
+              styles['scroll-morpher__content'],
               ...gapClassNames,
             )}
             ref={contentRef}
           >
             {items.map((item, index) => (
               <div
-                className={styles['horizontal-scroll__item']}
+                className={styles['scroll-morpher__item']}
                 ref={el => {
                   if (el) {
                     itemRefs.current[index] = el;
