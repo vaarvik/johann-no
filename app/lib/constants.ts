@@ -12,7 +12,14 @@ export const DIRECTIONS: Directions[] = [
 
 export const SCREEN_SIZES: ScreenSizes[] = [
   'mobile',
+  'tablet',
   'desktop',
   'large-desktop',
-  'tablet',
 ];
+
+export const SCREEN_SIZES_MAP = {
+  mobile: 0,
+  tablet: 768,
+  desktop: 1024,
+  'large-desktop': 1440,
+};

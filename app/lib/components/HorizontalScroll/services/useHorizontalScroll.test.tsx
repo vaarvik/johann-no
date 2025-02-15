@@ -1,7 +1,7 @@
 /* eslint-disable max-lines */
-import { act, render, renderHook } from '@testing-library/react';
+import { act, cleanup, render, renderHook } from '@testing-library/react';
 import { ReactNode } from 'react';
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import { useHorizontalScroll } from './useHorizontalScroll';
 
 const MockComponent = ({
@@ -57,19 +57,13 @@ const MockComponent = ({
 };
 
 describe('useHorizontalScroll', () => {
-  beforeEach(() => {
-    vi.useFakeTimers();
-  });
-
   afterEach(() => {
-    vi.clearAllTimers();
-    vi.useRealTimers();
+    cleanup();
   });
 
   it('should render without errors', () => {
-    const { getByTestId, unmount } = render(<MockComponent />);
+    const { getByTestId } = render(<MockComponent />);
     expect(getByTestId('wrapper')).not.toBeNull();
-    unmount();
   });
 
   it('should add and remove event listeners on mount and unmount', () => {
@@ -77,7 +71,7 @@ describe('useHorizontalScroll', () => {
     const removeEventListener = vi.spyOn(window, 'removeEventListener');
     const { unmount } = render(<MockComponent />);
 
-    expect(addEventListener).toHaveBeenCalledTimes(3);
+    expect(addEventListener).toHaveBeenCalledTimes(5);
     expect(addEventListener).toHaveBeenCalledWith(
       'scroll',
       expect.any(Function),
@@ -89,7 +83,7 @@ describe('useHorizontalScroll', () => {
 
     unmount();
 
-    expect(removeEventListener).toHaveBeenCalledTimes(3);
+    expect(removeEventListener).toHaveBeenCalledTimes(5);
     expect(removeEventListener).toHaveBeenCalledWith(
       'scroll',
       expect.any(Function),
@@ -107,7 +101,7 @@ describe('useHorizontalScroll', () => {
   });
 
   it('should update visibleItems when elements are scrolled into view', () => {
-    const { getByTestId, unmount } = render(<MockComponent />);
+    const { getByTestId } = render(<MockComponent />);
 
     const visibleItem = getByTestId('item-1');
     const invisibleItem = getByTestId('item-2');
@@ -140,12 +134,10 @@ describe('useHorizontalScroll', () => {
 
     expect(visibleItem.textContent).toContain('item 1: visible');
     expect(invisibleItem.textContent).toContain('item 2: invisible');
-
-    unmount();
   });
 
   it('should correctly calculate the section height', () => {
-    const { getByTestId, unmount } = render(<MockComponent />);
+    const { getByTestId } = render(<MockComponent />);
 
     const wrapperElement = getByTestId('wrapper');
     const contentElement = getByTestId('content');
@@ -164,12 +156,10 @@ describe('useHorizontalScroll', () => {
 
     // Expected height calculation: 768 + (2000 - 1024) = 1744px
     expect(heightSpy).toHaveBeenCalledWith('1744px');
-
-    unmount();
   });
 
   it('should update section height on window resize', () => {
-    const { getByTestId, unmount } = render(<MockComponent />);
+    const { getByTestId } = render(<MockComponent />);
 
     const wrapperElement = getByTestId('wrapper');
     const contentElement = getByTestId('item-1').parentElement!;
@@ -191,12 +181,10 @@ describe('useHorizontalScroll', () => {
 
     // Expected height calculation: 768 + (2000 - 1024) = 1744px
     expect(heightSpy).toHaveBeenCalledWith('1744px');
-
-    unmount();
   });
 
   it('should correctly calculate and transform the section on scroll', () => {
-    const { getByTestId, unmount } = render(<MockComponent />);
+    const { getByTestId } = render(<MockComponent />);
 
     const wrapperElement = getByTestId('wrapper');
     const contentElement = getByTestId('content');
@@ -216,12 +204,10 @@ describe('useHorizontalScroll', () => {
     });
 
     expect(transformSpy).toHaveBeenCalledWith('translate3d(-50px, 0, 0)');
-
-    unmount();
   });
 
   it('should not apply transformations until the wrapper is in view', () => {
-    const { getByTestId, unmount } = render(<MockComponent />);
+    const { getByTestId } = render(<MockComponent />);
 
     const wrapperElement = getByTestId('wrapper');
     const sectionElement = getByTestId('section');
@@ -251,15 +237,13 @@ describe('useHorizontalScroll', () => {
     });
 
     expect(transformSpy).toHaveBeenCalledWith('translate3d(-100px, 0, 0)');
-
-    unmount();
   });
 
   it('should apply vertical scrolling on mobile when mobileScrollDirection is "vertical"', () => {
     vi.spyOn(window, 'innerWidth', 'get').mockReturnValue(500);
     vi.spyOn(window, 'innerHeight', 'get').mockReturnValue(768);
 
-    const { getByTestId, unmount } = render(
+    const { getByTestId } = render(
       <MockComponent mobileScrollDirection="vertical" />,
     );
 
@@ -289,15 +273,13 @@ describe('useHorizontalScroll', () => {
     });
 
     expect(transformSpy).toHaveBeenCalledWith('translate3d(0, -100px, 0)');
-
-    unmount();
   });
 
   it('should retain horizontal scrolling when mobileScrollDirection is "horizontal"', () => {
     vi.spyOn(window, 'innerWidth', 'get').mockReturnValue(500);
     vi.spyOn(window, 'innerHeight', 'get').mockReturnValue(768);
 
-    const { getByTestId, unmount } = render(<MockComponent />);
+    const { getByTestId } = render(<MockComponent />);
 
     const wrapperElement = getByTestId('wrapper');
     const sectionElement = getByTestId('section');
@@ -325,15 +307,13 @@ describe('useHorizontalScroll', () => {
     });
 
     expect(transformSpy).toHaveBeenCalledWith('translate3d(-100px, 0, 0)');
-
-    unmount();
   });
 
   it('should correctly update styles when transitioning between mobile and desktop', () => {
     vi.spyOn(window, 'innerWidth', 'get').mockReturnValue(500);
     vi.spyOn(window, 'innerHeight', 'get').mockReturnValue(768);
 
-    const { getByTestId, unmount } = render(
+    const { getByTestId } = render(
       <MockComponent mobileScrollDirection="vertical" />,
     );
 
@@ -355,7 +335,5 @@ describe('useHorizontalScroll', () => {
     });
 
     expect(wrapperElement.style.height).toBe('1744px'); // Expected height: 768 + (2000 - 1024)
-
-    unmount();
   });
 });

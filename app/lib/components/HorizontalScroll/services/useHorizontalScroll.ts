@@ -1,64 +1,30 @@
+import { SCREEN_SIZES_MAP } from '@/constants';
 import { isElementVisible } from '@/services/utils/isElementVisible';
-import { RefObject, useEffect, useRef, useState } from 'react';
+import { ScreenSizes } from '@/types/layout';
+import { useEffect, useRef, useState } from 'react';
 
-function useIsMobile() {
-  const [mobile, setMobile] = useState(false);
+export function useGetDevice() {
+  const [device, setDevice] = useState<ScreenSizes>('mobile');
+
+  const handleResize = () => {
+    if (window.innerWidth >= SCREEN_SIZES_MAP['large-desktop']) {
+      setDevice('large-desktop');
+    } else if (window.innerWidth >= SCREEN_SIZES_MAP.desktop) {
+      setDevice('desktop');
+    } else if (window.innerWidth >= SCREEN_SIZES_MAP.tablet) {
+      setDevice('tablet');
+    } else {
+      setDevice('mobile');
+    }
+  };
+
   useEffect(() => {
-    const handleResize = () => setMobile(window.innerWidth < 768);
+    handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-  return mobile;
-}
 
-function useScrollAnimation(
-  vertical = false,
-  contentRef: RefObject<HTMLDivElement | null>,
-  sectionRef: RefObject<HTMLDivElement | null>,
-  wrapperRef: RefObject<HTMLDivElement | null>,
-  threshold: number,
-) {
-  const [visibleItems, setVisibleItems] = useState<number[]>([]);
-  const itemRefs = useRef<HTMLDivElement[]>([]);
-
-  useEffect(() => {
-    if (!wrapperRef.current || !sectionRef.current || !contentRef.current) {
-      throw new Error(
-        'All elements must be defined: wrapperRef, sectionRef, and contentRef.',
-      );
-    }
-
-    const handleScroll = () => {
-      const offset = Math.max(
-        0,
-        window.scrollY - (wrapperRef.current!.offsetTop ?? 0),
-      );
-
-      const limit =
-        (vertical
-          ? contentRef.current!.offsetHeight
-          : contentRef.current!.offsetWidth) -
-        (vertical ? window.innerHeight : window.innerWidth);
-
-      if (offset < limit) {
-        sectionRef.current!.style.transform = vertical
-          ? `translate3d(0, -${offset}px, 0)`
-          : `translate3d(-${offset}px, 0, 0)`;
-      }
-
-      setVisibleItems(
-        itemRefs
-          .current!.map((item, index) =>
-            isElementVisible(item, threshold) ? index : -1,
-          )
-          .filter(index => index !== -1),
-      );
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [vertical, contentRef, sectionRef, wrapperRef, threshold]);
-
-  return { itemRefs, visibleItems };
+  return device;
 }
 
 export function useHorizontalScroll(
@@ -69,37 +35,70 @@ export function useHorizontalScroll(
   const containerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  const isMobile = useIsMobile();
-  const { itemRefs, visibleItems } = useScrollAnimation(
-    isMobile && mobileScrollDirection === 'vertical',
-    contentRef,
-    sectionRef,
-    wrapperRef,
-    threshold,
-  );
+  const itemRefs = useRef<HTMLDivElement[]>([]);
+  const [visibleItems, setVisibleItems] = useState<number[]>([]);
+  const device = useGetDevice();
+  const isVertical = mobileScrollDirection === 'vertical';
 
   useEffect(() => {
+    if (!wrapperRef.current || !sectionRef.current || !contentRef.current) {
+      throw new Error(
+        'All elements must be defined: wrapperRef, sectionRef, and contentRef.',
+      );
+    }
+
     updateSectionSize();
     window.addEventListener('resize', updateSectionSize);
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
+      window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', updateSectionSize);
     };
 
     function updateSectionSize() {
       wrapperRef.current!.style.height =
-        isMobile && mobileScrollDirection === 'vertical'
+        device === 'mobile' && mobileScrollDirection === 'vertical'
           ? 'auto'
           : `${window.innerHeight + (contentRef.current!.offsetWidth - window.innerWidth)}px`;
     }
+
+    function handleScroll() {
+      const offset = Math.max(
+        0,
+        window.scrollY - (wrapperRef.current!.offsetTop ?? 0),
+      );
+
+      const contentSize = isVertical
+        ? contentRef.current!.offsetHeight
+        : contentRef.current!.offsetWidth;
+      const windowSize = isVertical ? window.innerHeight : window.innerWidth;
+      const limit = contentSize - windowSize;
+
+      if (offset < limit) {
+        const transformValue = isVertical
+          ? `translate3d(0, -${offset}px, 0)`
+          : `translate3d(-${offset}px, 0, 0)`;
+        sectionRef.current!.style.transform = transformValue;
+      }
+
+      const visibleItems = itemRefs
+        .current!.map((item, index) =>
+          isElementVisible(item, threshold) ? index : -1,
+        )
+        .filter(index => index !== -1);
+
+      setVisibleItems(visibleItems);
+    }
   }, [
     threshold,
-    isMobile,
+    device,
     mobileScrollDirection,
     wrapperRef,
     sectionRef,
     contentRef,
     itemRefs,
+    isVertical,
   ]);
 
   return {
