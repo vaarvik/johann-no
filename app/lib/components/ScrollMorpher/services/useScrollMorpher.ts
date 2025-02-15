@@ -1,7 +1,7 @@
 import { isElementVisible } from '@/services/utils/isElementVisible';
 import { useEffect, useRef, useState } from 'react';
 
-export function useHorizontalScroll(
+export function useScrollMorpher(
   threshold = 0.2,
   direction: 'horizontal' | 'vertical' = 'horizontal',
 ) {

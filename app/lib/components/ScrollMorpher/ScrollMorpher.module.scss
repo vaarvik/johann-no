@@ -1,12 +1,12 @@
 @use 'app/lib/assets/scss/variables' as vars;
 @use 'app/lib/assets/scss/mixins' as mixins;
 
-.horizontal-scroll__item {
+.scroll-morpher__item {
   height: 100%;
   width: auto;
 }
 
-.horizontal-scroll__content {
+.scroll-morpher__content {
   display: flex;
   flex-shrink: 0;
   height: 100vh;
@@ -26,7 +26,7 @@
   }
 }
 
-.horizontal-scroll__container {
+.scroll-morpher__container {
   height: 100vh;
   overflow: hidden;
   position: sticky;
@@ -36,12 +36,12 @@
     height: auto;
     width: 100%;
 
-    .horizontal-scroll__content {
+    .scroll-morpher__content {
       flex-direction: column;
       height: auto;
     }
 
-    .horizontal-scroll__item {
+    .scroll-morpher__item {
       height: auto;
       width: auto;
     }
@@ -50,12 +50,12 @@
       height: 100vh;
       width: auto;
 
-      .horizontal-scroll__content {
+      .scroll-morpher__content {
         flex-direction: row;
         height: 100vh;
       }
 
-      .horizontal-scroll__item {
+      .scroll-morpher__item {
         height: 100%;
         width: auto;
       }
@@ -63,7 +63,7 @@
   }
 }
 
-.horizontal-scroll__strip {
+.scroll-morpher__strip {
   align-items: center;
   display: flex;
   justify-content: space-between;

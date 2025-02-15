@@ -1,6 +1,6 @@
 'use client';
 
-import { useHorizontalScroll } from '@/components/HorizontalScroll/services/useHorizontalScroll';
+import { useScrollMorpher } from '@/components/ScrollMorpher/services/useScrollMorpher';
 import classNames from '@/services/utils/classNames';
 import { generateClassNamesByStringOrObject } from '@/services/utils/generateClassNamesByStringOrObject';
 import { SpacingVariantXY } from '@/types/spacing';
@@ -15,7 +15,7 @@ interface Props {
   direction?: 'horizontal' | 'vertical';
 }
 
-export default function HorizontalScroll({
+export default function ScrollMorpher({
   gap = '0',
   items,
   direction = 'horizontal',
@@ -27,7 +27,7 @@ export default function HorizontalScroll({
     contentRef,
     itemRefs,
     visibleItems,
-  } = useHorizontalScroll(0.7, direction);
+  } = useScrollMorpher(0.7, direction);
 
   const gapClassNames = generateClassNamesByStringOrObject(
     gap,

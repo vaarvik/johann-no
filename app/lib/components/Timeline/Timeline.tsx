@@ -1,12 +1,12 @@
+import { useGetDevice } from '@/services/hooks/useGetDevice';
 import classNames from '@/services/utils/classNames';
 import React from 'react';
-import HorizontalScroll from '../HorizontalScroll/HorizontalScroll';
+import ScrollMorpher from '../ScrollMorpher/ScrollMorpher';
 import FlexContainer from '../layout/components/FlexContainer/FlexContainer';
 import FlexItem from '../layout/components/FlexContainer/components/FlexItem/FlexItem';
 import Heading from '../typography/components/Heading/Heading';
 import Paragraph from '../typography/components/Paragraph/Paragraph';
 import styles from './Timeline.module.scss';
-import { useGetDevice } from '@/services/hooks/useGetDevice';
 
 interface TimelineItem {
   startDate: Date;
@@ -26,7 +26,7 @@ export default function Timeline({ items }: TimelineProps) {
 
   return (
     <div>
-      <HorizontalScroll
+      <ScrollMorpher
         direction={device === 'mobile' ? 'vertical' : 'horizontal'}
         items={items.map(item => ({
           content: (isVisible: boolean): React.JSX.Element => {

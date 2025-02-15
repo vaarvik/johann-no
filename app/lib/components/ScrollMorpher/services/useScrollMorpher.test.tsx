@@ -2,7 +2,7 @@
 import { act, cleanup, render, renderHook } from '@testing-library/react';
 import { ReactNode } from 'react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { useHorizontalScroll } from './useHorizontalScroll';
+import { useScrollMorpher } from './useScrollMorpher';
 
 const MockComponent = ({
   direction = 'horizontal',
@@ -16,7 +16,7 @@ const MockComponent = ({
     contentRef,
     itemRefs,
     visibleItems,
-  } = useHorizontalScroll(0.2, direction);
+  } = useScrollMorpher(0.2, direction);
 
   const items: { content: (isVisible: boolean) => ReactNode }[] = [
     {
@@ -56,7 +56,7 @@ const MockComponent = ({
   );
 };
 
-describe('useHorizontalScroll', () => {
+describe('useScrollMorpher', () => {
   afterEach(() => {
     cleanup();
   });
@@ -95,7 +95,7 @@ describe('useHorizontalScroll', () => {
   });
 
   it('should throw error if refs are not connected to any elements', () => {
-    expect(() => renderHook(() => useHorizontalScroll(0.5))).toThrow(
+    expect(() => renderHook(() => useScrollMorpher(0.5))).toThrow(
       'All elements must be defined: wrapperRef, sectionRef, and contentRef',
     );
   });
