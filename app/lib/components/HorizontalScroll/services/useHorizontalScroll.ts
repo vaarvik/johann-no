@@ -1,10 +1,9 @@
-import { useGetDevice } from '@/services/hooks/useGetDevice';
 import { isElementVisible } from '@/services/utils/isElementVisible';
 import { useEffect, useRef, useState } from 'react';
 
 export function useHorizontalScroll(
   threshold = 0.2,
-  mobileScrollDirection: 'horizontal' | 'vertical' = 'horizontal',
+  direction: 'horizontal' | 'vertical' = 'horizontal',
 ) {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -12,10 +11,10 @@ export function useHorizontalScroll(
   const contentRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<HTMLDivElement[]>([]);
   const [visibleItems, setVisibleItems] = useState<number[]>([]);
-  const device = useGetDevice();
-  const isVertical = mobileScrollDirection === 'vertical';
 
   useEffect(() => {
+    const isVertical = direction === 'vertical';
+
     if (!wrapperRef.current || !sectionRef.current || !contentRef.current) {
       throw new Error(
         'All elements must be defined: wrapperRef, sectionRef, and contentRef.',
@@ -32,10 +31,9 @@ export function useHorizontalScroll(
     };
 
     function updateSectionSize() {
-      wrapperRef.current!.style.height =
-        device === 'mobile' && mobileScrollDirection === 'vertical'
-          ? 'auto'
-          : `${window.innerHeight + (contentRef.current!.offsetWidth - window.innerWidth)}px`;
+      wrapperRef.current!.style.height = isVertical
+        ? 'auto'
+        : `${window.innerHeight + (contentRef.current!.offsetWidth - window.innerWidth)}px`;
     }
 
     function handleScroll() {
@@ -65,16 +63,7 @@ export function useHorizontalScroll(
 
       setVisibleItems(visibleItems);
     }
-  }, [
-    threshold,
-    device,
-    mobileScrollDirection,
-    wrapperRef,
-    sectionRef,
-    contentRef,
-    itemRefs,
-    isVertical,
-  ]);
+  }, [threshold, direction, wrapperRef, sectionRef, contentRef, itemRefs]);
 
   return {
     visibleItems,

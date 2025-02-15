@@ -12,13 +12,13 @@ interface Props {
   items: {
     content: (isVisible: boolean) => ReactNode;
   }[];
-  mobileScrollDirection?: 'horizontal' | 'vertical';
+  direction?: 'horizontal' | 'vertical';
 }
 
 export default function HorizontalScroll({
   gap = '0',
   items,
-  mobileScrollDirection = 'vertical',
+  direction = 'horizontal',
 }: Props) {
   const {
     wrapperRef,
@@ -27,7 +27,7 @@ export default function HorizontalScroll({
     contentRef,
     itemRefs,
     visibleItems,
-  } = useHorizontalScroll(0.7, mobileScrollDirection);
+  } = useHorizontalScroll(0.7, direction);
 
   const gapClassNames = generateClassNamesByStringOrObject(
     gap,
@@ -40,8 +40,8 @@ export default function HorizontalScroll({
       <div
         className={classNames(
           styles['horizontal-scroll__container'],
-          mobileScrollDirection === 'vertical' &&
-            styles['horizontal-scroll__container--mobile-vertical'],
+          direction === 'vertical' &&
+            styles['horizontal-scroll__container--vertical'],
         )}
         ref={containerRef}
       >

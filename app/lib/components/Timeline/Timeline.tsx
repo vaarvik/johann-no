@@ -6,6 +6,7 @@ import FlexItem from '../layout/components/FlexContainer/components/FlexItem/Fle
 import Heading from '../typography/components/Heading/Heading';
 import Paragraph from '../typography/components/Paragraph/Paragraph';
 import styles from './Timeline.module.scss';
+import { useGetDevice } from '@/services/hooks/useGetDevice';
 
 interface TimelineItem {
   startDate: Date;
@@ -21,9 +22,12 @@ interface TimelineProps {
 }
 
 export default function Timeline({ items }: TimelineProps) {
+  const device = useGetDevice();
+
   return (
     <div>
       <HorizontalScroll
+        direction={device === 'mobile' ? 'vertical' : 'horizontal'}
         items={items.map(item => ({
           content: (isVisible: boolean): React.JSX.Element => {
             return (

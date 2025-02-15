@@ -5,9 +5,9 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import { useHorizontalScroll } from './useHorizontalScroll';
 
 const MockComponent = ({
-  mobileScrollDirection = 'horizontal',
+  direction = 'horizontal',
 }: {
-  mobileScrollDirection?: 'horizontal' | 'vertical';
+  direction?: 'horizontal' | 'vertical';
 }) => {
   const {
     wrapperRef,
@@ -16,7 +16,7 @@ const MockComponent = ({
     contentRef,
     itemRefs,
     visibleItems,
-  } = useHorizontalScroll(0.2, mobileScrollDirection);
+  } = useHorizontalScroll(0.2, direction);
 
   const items: { content: (isVisible: boolean) => ReactNode }[] = [
     {
@@ -71,7 +71,7 @@ describe('useHorizontalScroll', () => {
     const removeEventListener = vi.spyOn(window, 'removeEventListener');
     const { unmount } = render(<MockComponent />);
 
-    expect(addEventListener).toHaveBeenCalledTimes(5);
+    expect(addEventListener).toHaveBeenCalledTimes(2);
     expect(addEventListener).toHaveBeenCalledWith(
       'scroll',
       expect.any(Function),
@@ -83,7 +83,7 @@ describe('useHorizontalScroll', () => {
 
     unmount();
 
-    expect(removeEventListener).toHaveBeenCalledTimes(5);
+    expect(removeEventListener).toHaveBeenCalledTimes(2);
     expect(removeEventListener).toHaveBeenCalledWith(
       'scroll',
       expect.any(Function),
@@ -239,13 +239,11 @@ describe('useHorizontalScroll', () => {
     expect(transformSpy).toHaveBeenCalledWith('translate3d(-100px, 0, 0)');
   });
 
-  it('should apply vertical scrolling on mobile when mobileScrollDirection is "vertical"', () => {
+  it('should apply vertical scrolling when direction is "vertical"', () => {
     vi.spyOn(window, 'innerWidth', 'get').mockReturnValue(500);
     vi.spyOn(window, 'innerHeight', 'get').mockReturnValue(768);
 
-    const { getByTestId } = render(
-      <MockComponent mobileScrollDirection="vertical" />,
-    );
+    const { getByTestId } = render(<MockComponent direction="vertical" />);
 
     const wrapperElement = getByTestId('wrapper');
     const sectionElement = getByTestId('section');
@@ -275,7 +273,7 @@ describe('useHorizontalScroll', () => {
     expect(transformSpy).toHaveBeenCalledWith('translate3d(0, -100px, 0)');
   });
 
-  it('should retain horizontal scrolling when mobileScrollDirection is "horizontal"', () => {
+  it('should retain horizontal scrolling when direction is "horizontal"', () => {
     vi.spyOn(window, 'innerWidth', 'get').mockReturnValue(500);
     vi.spyOn(window, 'innerHeight', 'get').mockReturnValue(768);
 
@@ -309,26 +307,21 @@ describe('useHorizontalScroll', () => {
     expect(transformSpy).toHaveBeenCalledWith('translate3d(-100px, 0, 0)');
   });
 
-  it('should correctly update styles when transitioning between mobile and desktop', () => {
-    vi.spyOn(window, 'innerWidth', 'get').mockReturnValue(500);
-    vi.spyOn(window, 'innerHeight', 'get').mockReturnValue(768);
-
-    const { getByTestId } = render(
-      <MockComponent mobileScrollDirection="vertical" />,
+  it('should correctly update styles when updating from horizontal to vertical', () => {
+    const { rerender, getByTestId } = render(
+      <MockComponent direction="vertical" />,
     );
 
     const wrapperElement = getByTestId('wrapper');
     const contentElement = getByTestId('content');
 
+    vi.spyOn(window, 'innerHeight', 'get').mockReturnValue(768);
+    vi.spyOn(window, 'innerWidth', 'get').mockReturnValue(1024);
     vi.spyOn(contentElement, 'offsetWidth', 'get').mockReturnValue(2000);
-
-    act(() => {
-      window.dispatchEvent(new Event('resize'));
-    });
 
     expect(wrapperElement.style.height).toBe('auto');
 
-    vi.spyOn(window, 'innerWidth', 'get').mockReturnValue(1024);
+    rerender(<MockComponent direction="horizontal" />);
 
     act(() => {
       window.dispatchEvent(new Event('resize'));

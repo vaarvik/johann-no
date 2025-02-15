@@ -1,6 +1,6 @@
 export type Styles = {
   'horizontal-scroll__container': string;
-  'horizontal-scroll__container--mobile-vertical': string;
+  'horizontal-scroll__container--vertical': string;
   'horizontal-scroll__content': string;
   'horizontal-scroll__content--gap-0': string;
   'horizontal-scroll__content--gap-100': string;
