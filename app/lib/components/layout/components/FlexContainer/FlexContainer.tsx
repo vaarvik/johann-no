@@ -3,7 +3,7 @@ import { generateClassNamesByStringOrObject } from '@/services/utils/generateCla
 import hasOnlyChildrenOfType from '@/services/utils/hasChildrenOfType';
 import { ScreenOptions } from '@/types/layout';
 import { SpacingVariantXY } from '@/types/spacing';
-import { ElementType, HTMLAttributes } from 'react';
+import { ElementType, HTMLAttributes, RefAttributes } from 'react';
 import styles from './FlexContainer.module.scss';
 import FlexItem from './components/FlexItem/FlexItem';
 
@@ -23,7 +23,9 @@ type FlexAlignOptions =
   | 'baseline';
 type FlexWrapOptions = 'nowrap' | 'wrap' | 'wrap-reverse';
 
-interface Props extends Omit<HTMLAttributes<HTMLElement>, 'className'> {
+interface Props
+  extends HTMLAttributes<HTMLElement>,
+    RefAttributes<HTMLElement> {
   as?: ElementType;
   direction?: FlexDirectionOptions | ScreenOptions<FlexDirectionOptions>;
   fitToParent?: boolean;
@@ -36,6 +38,7 @@ interface Props extends Omit<HTMLAttributes<HTMLElement>, 'className'> {
 
 export default function FlexContainer({
   as: HTMLTag = 'div',
+  className,
   direction = 'row',
   fitToParent = false,
   fitToScreen = false,
@@ -87,6 +90,7 @@ export default function FlexContainer({
         ...justifyClassNames,
         ...alignClassNames,
         ...gapClassNames,
+        className,
       )}
       {...otherProps}
     >

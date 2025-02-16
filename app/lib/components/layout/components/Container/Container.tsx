@@ -1,10 +1,12 @@
 import classNames from '@/services/utils/classNames';
 import { generateClassNamesByStringOrObject } from '@/services/utils/generateClassNamesByStringOrObject';
 import { ScreenOptions, Widths } from '@/types/layout';
-import { ElementType, HTMLAttributes } from 'react';
+import { ElementType, HTMLAttributes, RefAttributes } from 'react';
 import styles from './Container.module.scss';
 
-interface Props extends Omit<HTMLAttributes<HTMLElement>, 'className'> {
+interface Props
+  extends HTMLAttributes<HTMLElement>,
+    RefAttributes<HTMLElement> {
   as?: ElementType;
   textAlign?: 'left' | 'center' | 'right';
   width?: Widths | ScreenOptions<Widths>;
@@ -12,6 +14,7 @@ interface Props extends Omit<HTMLAttributes<HTMLElement>, 'className'> {
 
 export default function Container({
   as: HTMLTag = 'div',
+  className,
   textAlign = 'left',
   width = 'default',
   children,
@@ -29,6 +32,7 @@ export default function Container({
         styles['container'],
         ...widthClassNames,
         textAlign && styles[`container--text-${textAlign}`],
+        className,
       )}
       {...otherProps}
     >

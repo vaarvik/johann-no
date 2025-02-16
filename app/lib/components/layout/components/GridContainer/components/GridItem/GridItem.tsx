@@ -1,10 +1,12 @@
 import classNames from '@/services/utils/classNames';
-import { ElementType, HTMLAttributes } from 'react';
+import { ElementType, HTMLAttributes, RefAttributes } from 'react';
 import styles from './GridItem.module.scss';
 
 type GridItemOptions = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
 
-interface Props extends Omit<HTMLAttributes<HTMLElement>, 'className'> {
+interface Props
+  extends HTMLAttributes<HTMLElement>,
+    RefAttributes<HTMLElement> {
   as?: ElementType;
   columnStart?: GridItemOptions;
   columnEnd?: GridItemOptions;
@@ -14,6 +16,7 @@ interface Props extends Omit<HTMLAttributes<HTMLElement>, 'className'> {
 
 export default function GridItem({
   as: HTMLTag = 'div',
+  className,
   columnStart,
   columnEnd,
   rowStart,
@@ -28,6 +31,7 @@ export default function GridItem({
         columnEnd && styles[`grid-item--column-end-${columnEnd}`],
         rowStart && styles[`grid-item--row-start-${rowStart}`],
         rowEnd && styles[`grid-item--row-end-${rowEnd}`],
+        className,
       )}
       {...otherProps}
     >

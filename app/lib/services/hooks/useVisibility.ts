@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { isElementVisible } from '../utils/isElementVisible';
+import { isElementVisible, VisibleThreshold } from '../utils/isElementVisible';
 
 export function useVisibility(
   ref: React.RefObject<HTMLElement | null>,
-  threshold = 0.8,
+  threshold: VisibleThreshold = 0.8,
 ) {
   const [isVisible, setIsVisible] = useState(false);
   useEffect(() => {

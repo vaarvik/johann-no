@@ -2,8 +2,9 @@ import styles from '@/assets/scss/animation.module.scss';
 import { AnimationProps } from '@/types/animations';
 import { useEffect, useRef, useState } from 'react';
 import { generateClassNamesByStringOrObject } from '../utils/generateClassNamesByStringOrObject';
-import { useWrapper } from './useWrapper';
+import { VisibleThreshold } from '../utils/isElementVisible';
 import { useVisibility } from './useVisibility';
+import { useWrapper } from './useWrapper';
 
 interface UseAnimationProps {
   animations: AnimationProps;
@@ -11,7 +12,7 @@ interface UseAnimationProps {
     classes?: string[];
     tag?: keyof HTMLElementTagNameMap;
   };
-  triggerThreshold?: number;
+  triggerThreshold?: VisibleThreshold;
 }
 
 export function useAnimation<T extends HTMLElement>({

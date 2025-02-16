@@ -1,8 +1,10 @@
 import classNames from '@/services/utils/classNames';
-import { ElementType, HTMLAttributes } from 'react';
+import { ElementType, HTMLAttributes, RefAttributes } from 'react';
 import styles from './FlexItem.module.scss';
 
-interface Props extends Omit<HTMLAttributes<HTMLElement>, 'className'> {
+interface Props
+  extends HTMLAttributes<HTMLElement>,
+    RefAttributes<HTMLElement> {
   as?: ElementType;
   order?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
   grow?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
@@ -42,6 +44,7 @@ interface Props extends Omit<HTMLAttributes<HTMLElement>, 'className'> {
 
 export default function FlexItem({
   as: HTMLTag = 'div',
+  className,
   order,
   grow,
   fillContent,
@@ -61,6 +64,7 @@ export default function FlexItem({
         shrink !== undefined && styles[`flex-item--shrink-${shrink}`],
         basis !== undefined && styles[`flex-item--basis-${basis}`],
         align && styles[`flex-item--align-${align}`],
+        className,
       )}
       {...otherProps}
     >

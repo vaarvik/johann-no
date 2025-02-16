@@ -21,12 +21,13 @@ export function useScrollMorpher(
       );
     }
 
+    updateTransformation();
     updateSectionSize();
     window.addEventListener('resize', updateSectionSize);
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', updateTransformation);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', updateTransformation);
       window.removeEventListener('resize', updateSectionSize);
     };
 
@@ -36,7 +37,7 @@ export function useScrollMorpher(
         : `${window.innerHeight + (contentRef.current!.offsetWidth - window.innerWidth)}px`;
     }
 
-    function handleScroll() {
+    function updateTransformation() {
       const offset = Math.max(
         0,
         window.scrollY - (wrapperRef.current!.offsetTop ?? 0),

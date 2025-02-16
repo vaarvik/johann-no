@@ -1,11 +1,12 @@
 import classNames from '@/services/utils/classNames';
 import { AllColors } from '@/types/colors';
-import { ElementType, HTMLAttributes } from 'react';
+import { ElementType, HTMLAttributes, RefAttributes } from 'react';
 import Spinner from '../Spinner/Spinner';
 import styles from './Button.module.scss';
 
 export interface ButtonProps
-  extends Omit<HTMLAttributes<HTMLElement>, 'className' | 'color'> {
+  extends Omit<HTMLAttributes<HTMLElement>, 'color'>,
+    RefAttributes<HTMLElement> {
   as?: ElementType;
   color?: AllColors;
   disabled?: boolean;
@@ -20,6 +21,7 @@ export interface ButtonProps
 
 export default function Button({
   as: HTMLTag = 'button',
+  className,
   children,
   color = 'primary',
   disabled = false,
@@ -36,6 +38,7 @@ export default function Button({
         styles[`button--size-${size}`],
         styles[`button--${color}-${variant}`],
         disabled && styles['button--disabled'],
+        className,
       )}
       {...otherProps}
     >

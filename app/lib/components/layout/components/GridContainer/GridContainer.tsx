@@ -3,13 +3,15 @@ import { generateClassNamesByStringOrObject } from '@/services/utils/generateCla
 import hasOnlyChildrenOfType from '@/services/utils/hasChildrenOfType';
 import { ScreenOptions } from '@/types/layout';
 import { SpacingVariantXY } from '@/types/spacing';
-import { ElementType, HTMLAttributes } from 'react';
+import { ElementType, HTMLAttributes, RefAttributes } from 'react';
 import styles from './GridContainer.module.scss';
 import GridItem from './components/GridItem/GridItem';
 
 export type GridCellOptions = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
 
-interface Props extends Omit<HTMLAttributes<HTMLElement>, 'className'> {
+interface Props
+  extends HTMLAttributes<HTMLElement>,
+    RefAttributes<HTMLElement> {
   as?: ElementType;
   columns: GridCellOptions | ScreenOptions<GridCellOptions>;
   gap?: SpacingVariantXY;
@@ -19,6 +21,7 @@ interface Props extends Omit<HTMLAttributes<HTMLElement>, 'className'> {
 export default function GridContainer({
   as: HTMLTag = 'div',
   children,
+  className,
   columns,
   gap = '0',
   rows,
@@ -55,6 +58,7 @@ export default function GridContainer({
         ...columnsClassNames,
         ...rowsClassNames,
         ...gapClassNames,
+        className,
       )}
       {...otherProps}
     >

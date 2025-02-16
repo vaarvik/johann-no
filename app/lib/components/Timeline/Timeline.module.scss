@@ -128,8 +128,8 @@ $animation-speed-secondary: 0.3s;
     color: var(--color-background);
     opacity: 0;
     padding: var(--spacing-400);
-    transform: scaleX(0);
-    transform-origin: left;
+    transform: scaleY(0);
+    transform-origin: top;
     transition:
       transform $animation-speed-secondary $cubic-bezier,
       opacity 0.1s;
@@ -141,6 +141,8 @@ $animation-speed-secondary: 0.3s;
 
     @include mixins.tablet-up {
       border-top-right-radius: var(--radius-normal);
+      transform: scaleX(0);
+      transform-origin: left;
     }
   }
 
@@ -202,6 +204,7 @@ $animation-speed-secondary: 0.3s;
     width: 100%;
 
     @include mixins.tablet-up {
+      max-width: 48vw;
       transform: translateY(380px);
       transform-origin: bottom;
       width: var(--max-width-narrow);

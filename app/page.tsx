@@ -3,8 +3,7 @@
 import Container from '@/components/layout/components/Container/Container';
 import ContentPadded from '@/components/layout/components/ContentPadded/ContentPadded';
 import Timeline from '@/components/Timeline/Timeline';
-import { useAnimation } from '@/services/hooks/useAnimation';
-import classNames from '@/services/utils/classNames';
+import SectionYearExperience from './lib/sections/SectionYearExperience/SectionYearExperience';
 
 export default function Home() {
   const timelineData = [
@@ -28,33 +27,14 @@ export default function Home() {
     },
   ];
 
-  const { classes, ref } = useAnimation<HTMLHeadingElement>({
-    animations: {
-      duration: 1000,
-      origin: 'center-left',
-      easing: 'bounce',
-      start: { scale: 'x-0', translate: 'left', opacity: 0 },
-      end: { scale: '100', translate: 'center', opacity: 100 },
-    },
-    triggerThreshold: 0.8,
-  });
-
   return (
     <main>
-      <ContentPadded
-        padding="4000"
-        className={classNames(...classes)}
-        ref={ref}
-        style={{ backgroundColor: 'red', width: 500 }}
-      >
-        <h1>Hello my freinds</h1>
-      </ContentPadded>
       <Container width="full" textAlign="center">
         <ContentPadded padding={{ mobile: '400', desktop: '0' }}>
           <Timeline items={timelineData} />
         </ContentPadded>
       </Container>
-      <ContentPadded padding="4000"></ContentPadded>
+      <SectionYearExperience />
     </main>
   );
 }
