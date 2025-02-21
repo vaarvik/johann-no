@@ -19,8 +19,8 @@
   @each $size-name, $value in vars.$font-sizes {
     &--size-#{$size-name} {
       font-size: $value;
-      height: $size;
-      width: $size;
+      height: $value;
+      width: $value;
     }
   }
 }

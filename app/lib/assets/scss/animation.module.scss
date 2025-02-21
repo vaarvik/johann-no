@@ -59,15 +59,20 @@ $animation-translations: (
   'center'
 );
 $animation-scales: (
+  '0',
   'x-0',
   'y-0',
+  '25',
   'x-25',
   'y-25',
+  '50',
   'x-50',
   'y-50',
+  '75',
   'x-75',
   'y-75',
   '100',
+  '125',
   'x-125',
   'y-125'
 );
@@ -127,24 +132,34 @@ $animation-origins: (
         scale: 0 1;
       } @else if $value == 'y-0' {
         scale: 1 0;
+      } @else if $value == '0' {
+        scale: 0 0;
       } @else if $value == 'x-25' {
         scale: 0.25 1;
       } @else if $value == 'y-25' {
         scale: 1 0.25;
+      } @else if $value == '25' {
+        scale: 0.25 0.25;
       } @else if $value == 'x-50' {
         scale: 0.5 1;
       } @else if $value == 'y-50' {
         scale: 1 0.5;
+      } @else if $value == '50' {
+        scale: 0.5 0.5;
       } @else if $value == 'x-75' {
         scale: 0.75 1;
       } @else if $value == 'y-75' {
         scale: 1 0.75;
+      } @else if $value == '75' {
+        scale: 0.75 0.75;
       } @else if $value == '100' {
         scale: 1 1;
       } @else if $value == 'x-125' {
         scale: 1.25 1;
       } @else if $value == 'y-125' {
         scale: 1 1.25;
+      } @else if $value == '125' {
+        scale: 1.25 1.25;
       }
     }
   }

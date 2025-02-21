@@ -45,7 +45,7 @@ export type Styles = {
   'flex-container--direction-tablet-column-reverse': string;
   'flex-container--direction-tablet-row': string;
   'flex-container--direction-tablet-row-reverse': string;
-  'flex-container--fit-to-parent': string;
+  'flex-container--fill-content': string;
   'flex-container--fit-to-screen': string;
   'flex-container--gap-0': string;
   'flex-container--gap-100': string;
@@ -55,6 +55,7 @@ export type Styles = {
   'flex-container--gap-1600': string;
   'flex-container--gap-200': string;
   'flex-container--gap-2000': string;
+  'flex-container--gap-2400': string;
   'flex-container--gap-300': string;
   'flex-container--gap-400': string;
   'flex-container--gap-4000': string;
@@ -70,6 +71,7 @@ export type Styles = {
   'flex-container--gap-desktop-1600': string;
   'flex-container--gap-desktop-200': string;
   'flex-container--gap-desktop-2000': string;
+  'flex-container--gap-desktop-2400': string;
   'flex-container--gap-desktop-300': string;
   'flex-container--gap-desktop-400': string;
   'flex-container--gap-desktop-4000': string;
@@ -85,6 +87,7 @@ export type Styles = {
   'flex-container--gap-desktop-x-1600': string;
   'flex-container--gap-desktop-x-200': string;
   'flex-container--gap-desktop-x-2000': string;
+  'flex-container--gap-desktop-x-2400': string;
   'flex-container--gap-desktop-x-300': string;
   'flex-container--gap-desktop-x-400': string;
   'flex-container--gap-desktop-x-4000': string;
@@ -100,6 +103,7 @@ export type Styles = {
   'flex-container--gap-desktop-y-1600': string;
   'flex-container--gap-desktop-y-200': string;
   'flex-container--gap-desktop-y-2000': string;
+  'flex-container--gap-desktop-y-2400': string;
   'flex-container--gap-desktop-y-300': string;
   'flex-container--gap-desktop-y-400': string;
   'flex-container--gap-desktop-y-4000': string;
@@ -115,6 +119,7 @@ export type Styles = {
   'flex-container--gap-large-desktop-1600': string;
   'flex-container--gap-large-desktop-200': string;
   'flex-container--gap-large-desktop-2000': string;
+  'flex-container--gap-large-desktop-2400': string;
   'flex-container--gap-large-desktop-300': string;
   'flex-container--gap-large-desktop-400': string;
   'flex-container--gap-large-desktop-4000': string;
@@ -130,6 +135,7 @@ export type Styles = {
   'flex-container--gap-large-desktop-x-1600': string;
   'flex-container--gap-large-desktop-x-200': string;
   'flex-container--gap-large-desktop-x-2000': string;
+  'flex-container--gap-large-desktop-x-2400': string;
   'flex-container--gap-large-desktop-x-300': string;
   'flex-container--gap-large-desktop-x-400': string;
   'flex-container--gap-large-desktop-x-4000': string;
@@ -145,6 +151,7 @@ export type Styles = {
   'flex-container--gap-large-desktop-y-1600': string;
   'flex-container--gap-large-desktop-y-200': string;
   'flex-container--gap-large-desktop-y-2000': string;
+  'flex-container--gap-large-desktop-y-2400': string;
   'flex-container--gap-large-desktop-y-300': string;
   'flex-container--gap-large-desktop-y-400': string;
   'flex-container--gap-large-desktop-y-4000': string;
@@ -160,6 +167,7 @@ export type Styles = {
   'flex-container--gap-mobile-1600': string;
   'flex-container--gap-mobile-200': string;
   'flex-container--gap-mobile-2000': string;
+  'flex-container--gap-mobile-2400': string;
   'flex-container--gap-mobile-300': string;
   'flex-container--gap-mobile-400': string;
   'flex-container--gap-mobile-4000': string;
@@ -175,6 +183,7 @@ export type Styles = {
   'flex-container--gap-mobile-x-1600': string;
   'flex-container--gap-mobile-x-200': string;
   'flex-container--gap-mobile-x-2000': string;
+  'flex-container--gap-mobile-x-2400': string;
   'flex-container--gap-mobile-x-300': string;
   'flex-container--gap-mobile-x-400': string;
   'flex-container--gap-mobile-x-4000': string;
@@ -190,6 +199,7 @@ export type Styles = {
   'flex-container--gap-mobile-y-1600': string;
   'flex-container--gap-mobile-y-200': string;
   'flex-container--gap-mobile-y-2000': string;
+  'flex-container--gap-mobile-y-2400': string;
   'flex-container--gap-mobile-y-300': string;
   'flex-container--gap-mobile-y-400': string;
   'flex-container--gap-mobile-y-4000': string;
@@ -205,6 +215,7 @@ export type Styles = {
   'flex-container--gap-tablet-1600': string;
   'flex-container--gap-tablet-200': string;
   'flex-container--gap-tablet-2000': string;
+  'flex-container--gap-tablet-2400': string;
   'flex-container--gap-tablet-300': string;
   'flex-container--gap-tablet-400': string;
   'flex-container--gap-tablet-4000': string;
@@ -220,6 +231,7 @@ export type Styles = {
   'flex-container--gap-tablet-x-1600': string;
   'flex-container--gap-tablet-x-200': string;
   'flex-container--gap-tablet-x-2000': string;
+  'flex-container--gap-tablet-x-2400': string;
   'flex-container--gap-tablet-x-300': string;
   'flex-container--gap-tablet-x-400': string;
   'flex-container--gap-tablet-x-4000': string;
@@ -235,6 +247,7 @@ export type Styles = {
   'flex-container--gap-tablet-y-1600': string;
   'flex-container--gap-tablet-y-200': string;
   'flex-container--gap-tablet-y-2000': string;
+  'flex-container--gap-tablet-y-2400': string;
   'flex-container--gap-tablet-y-300': string;
   'flex-container--gap-tablet-y-400': string;
   'flex-container--gap-tablet-y-4000': string;
@@ -250,6 +263,7 @@ export type Styles = {
   'flex-container--gap-x-1600': string;
   'flex-container--gap-x-200': string;
   'flex-container--gap-x-2000': string;
+  'flex-container--gap-x-2400': string;
   'flex-container--gap-x-300': string;
   'flex-container--gap-x-400': string;
   'flex-container--gap-x-4000': string;
@@ -265,6 +279,7 @@ export type Styles = {
   'flex-container--gap-y-1600': string;
   'flex-container--gap-y-200': string;
   'flex-container--gap-y-2000': string;
+  'flex-container--gap-y-2400': string;
   'flex-container--gap-y-300': string;
   'flex-container--gap-y-400': string;
   'flex-container--gap-y-4000': string;

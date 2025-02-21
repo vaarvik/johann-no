@@ -65,17 +65,22 @@ export type AnimationTransformValues = {
     | 'right-bottom'
     | 'center';
   scale?:
+    | '0'
     | 'x-0'
     | 'y-0'
+    | '25'
     | 'x-25'
     | 'y-25'
+    | '50'
     | 'x-50'
     | 'y-50'
+    | '75'
     | 'x-75'
     | 'y-75'
     | '100'
     | 'x-125'
-    | 'y-125';
+    | 'y-125'
+    | '125';
   rotate?: AnimationRotateValues; // e.g., '45deg'
   opacity?: AnimationOpacityValues; // Allow setting starting opacity
 };

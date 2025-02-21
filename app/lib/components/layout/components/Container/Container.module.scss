@@ -1,5 +1,7 @@
 @use 'app/lib/assets/scss/variables' as vars;
 
+$aligns: (left, center, right);
+
 .container {
   margin-left: auto;
   margin-right: auto;
@@ -15,15 +17,23 @@
     max-width: none;
   }
 
-  &--text-center {
-    text-align: center;
-  }
+  &--text {
+    @each $value in $aligns {
+      @layer default-screen {
+        &-#{$value} {
+          text-align: $value;
+        }
+      }
 
-  &--text-left {
-    text-align: left;
-  }
-
-  &--text-right {
-    text-align: right;
+      @each $screen-size, $breakpoint in vars.$breakpoints {
+        @layer #{$screen-size} {
+          @media (width >= $breakpoint) {
+            &-#{$screen-size}-#{$value} {
+              text-align: $value;
+            }
+          }
+        }
+      }
+    }
   }
 }

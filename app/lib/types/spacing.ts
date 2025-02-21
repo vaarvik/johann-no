@@ -16,6 +16,7 @@ export type SpacingSizes =
   | '1400'
   | '1600'
   | '2000'
+  | '2400'
   | '4000';
 
 export type SpacingVariant = SpacingSizes | ScreenAndDirectionMap<SpacingSizes>;

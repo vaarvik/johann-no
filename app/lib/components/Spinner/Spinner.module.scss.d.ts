@@ -6,6 +6,7 @@ export type Styles = {
   'spinner--size-4xl': string;
   'spinner--size-5xl': string;
   'spinner--size-6xl': string;
+  'spinner--size-7xl': string;
   'spinner--size-lg': string;
   'spinner--size-md': string;
   'spinner--size-sm': string;

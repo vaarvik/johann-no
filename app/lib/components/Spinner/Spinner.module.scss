@@ -14,8 +14,8 @@
     &--size-#{$size-name} {
       border-width: 0.15em;
       font-size: $value;
-      height: $size;
-      width: $size;
+      height: $value;
+      width: $value;
     }
   }
 

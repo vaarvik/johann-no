@@ -3,13 +3,13 @@
 .flex-container {
   display: flex;
 
-  &--fit-to-parent {
+  &--fill-content {
     height: 100%;
     width: 100%;
   }
 
   &--fit-to-screen {
-    height: 100vh;
+    min-height: 100vh;
     overflow: auto;
     scrollbar-gutter: stable;
     width: 100vw;

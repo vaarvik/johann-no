@@ -100,6 +100,7 @@ $font-sizes: (
   4xl: var(--font-size-4xl),
   5xl: var(--font-size-5xl),
   6xl: var(--font-size-6xl),
+  7xl: var(--font-size-7xl),
 );
 
 $font-weights: (
@@ -149,6 +150,7 @@ $space-sizes: (
   1400: var(--spacing-1400),
   1600: var(--spacing-1600),
   2000: var(--spacing-2000),
+  2400: var(--spacing-2400),
   4000: var(--spacing-4000),
 );
 
@@ -209,7 +211,8 @@ $space-sizes: (
   --font-size-3xl: 2.5rem; /* 40px */
   --font-size-4xl: 3rem; /* 48px */
   --font-size-5xl: 3.5rem; /* 56px */
-  --font-size-6xl: 6rem; /* 96px */
+  --font-size-6xl: 4rem; /* 64px */
+  --font-size-7xl: 6rem; /* 96px */
 
   --font-weight-normal: 400;
   --font-weight-bold: 600;
@@ -237,6 +240,7 @@ $space-sizes: (
   --spacing-1400: calc(var(--spacing-base) * 3.5);
   --spacing-1600: calc(var(--spacing-base) * 4);
   --spacing-2000: calc(var(--spacing-base) * 5);
+  --spacing-2400: calc(var(--spacing-base) * 6);
   --spacing-4000: calc(var(--spacing-base) * 10);
 
   --radius-normal: 8px;

@@ -2,13 +2,23 @@
 @use 'sass:map';
 
 $sizes: (sm, var(--font-size-3xl)), (md, var(--font-size-6xl)),
-  (lg, calc(var(--font-size-6xl) * 1.5)), (xl, calc(var(--font-size-6xl) * 3));
+  (lg, calc(var(--font-size-6xl) * 1.5)), (xl, calc(var(--font-size-6xl) * 3)),
+  (2xl, calc(var(--font-size-6xl) * 6));
 
 .year-counter {
   align-items: flex-end;
   display: flex;
   font-family: var(--font-headings);
   max-width: 100%;
+  position: relative;
+
+  @each $color-name, $value in vars.$colors-all {
+    $color: map.get($value, color);
+
+    &--color-#{$color-name} {
+      color: $color;
+    }
+  }
 
   @each $size, $value in ($sizes) {
     @layer default-screen {
@@ -32,13 +42,5 @@ $sizes: (sm, var(--font-size-3xl)), (md, var(--font-size-6xl)),
     /* stylelint-disable-next-line scale-unlimited/declaration-strict-value */
     line-height: 1;
     margin: 0 2px;
-
-    @each $color-name, $value in vars.$colors-all {
-      $color: map.get($value, color);
-
-      &--color-#{$color-name} {
-        color: $color;
-      }
-    }
   }
 }

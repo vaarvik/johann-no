@@ -79,7 +79,6 @@ $animation-speed-secondary: 0.3s;
     &::before {
       content: '';
       background-color: var(--color-primary-160);
-      border-radius: 50%;
       display: block;
       height: 24px;
       left: -12px;
@@ -140,7 +139,6 @@ $animation-speed-secondary: 0.3s;
     white-space: nowrap;
 
     @include mixins.tablet-up {
-      border-top-right-radius: var(--radius-normal);
       transform: scaleX(0);
       transform-origin: left;
     }
@@ -148,7 +146,6 @@ $animation-speed-secondary: 0.3s;
 
   &__position {
     background-color: var(--color-neutral-40);
-    border-bottom-left-radius: var(--radius-normal);
     color: var(--color-foreground);
     opacity: 0;
     padding: var(--spacing-400);
@@ -170,8 +167,6 @@ $animation-speed-secondary: 0.3s;
   &__company {
     animation-play-state: paused;
     background-color: var(--color-neutral-0);
-    border-bottom-left-radius: var(--radius-normal);
-    border-bottom-right-radius: var(--radius-normal);
     color: var(--color-foreground);
     display: inline-block;
     opacity: 0;
@@ -187,8 +182,6 @@ $animation-speed-secondary: 0.3s;
 
   &__description {
     background-color: var(--color-neutral-0);
-    border-bottom-left-radius: var(--radius-normal);
-    border-top-left-radius: var(--radius-normal);
     opacity: 0;
     padding: var(--spacing-800);
     transform: translateX(-380px);

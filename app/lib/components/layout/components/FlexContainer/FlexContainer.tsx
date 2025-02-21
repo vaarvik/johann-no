@@ -28,7 +28,7 @@ interface Props
     RefAttributes<HTMLElement> {
   as?: ElementType;
   direction?: FlexDirectionOptions | ScreenOptions<FlexDirectionOptions>;
-  fitToParent?: boolean;
+  fillContent?: boolean;
   fitToScreen?: boolean;
   justify?: FlexJustifyOptions | ScreenOptions<FlexJustifyOptions>;
   align?: FlexAlignOptions | ScreenOptions<FlexAlignOptions>;
@@ -40,7 +40,7 @@ export default function FlexContainer({
   as: HTMLTag = 'div',
   className,
   direction = 'row',
-  fitToParent = false,
+  fillContent = false,
   fitToScreen = false,
   justify,
   align,
@@ -84,7 +84,7 @@ export default function FlexContainer({
       className={classNames(
         styles['flex-container'],
         styles[`flex-container--wrap-${wrap}`],
-        fitToParent && styles[`flex-container--fit-to-parent`],
+        fillContent && 'fill-content',
         fitToScreen && styles[`flex-container--fit-to-screen`],
         ...directionClassNames,
         ...justifyClassNames,

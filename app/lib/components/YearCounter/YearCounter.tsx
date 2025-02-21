@@ -7,7 +7,7 @@ import { ScreenOptions } from '@/types/layout';
 import { useYearCount } from './service/useYearCount';
 import styles from './YearCounter.module.scss';
 
-export type YearCounterSizes = 'xl' | 'lg' | 'md' | 'sm';
+export type YearCounterSizes = '2xl' | 'xl' | 'lg' | 'md' | 'sm';
 
 export type YearCounterProps = {
   startDate: Date;
@@ -29,6 +29,7 @@ function YearCounter({
     <div
       className={classNames(
         styles['year-counter'],
+        color && styles[`year-counter--color-${color}`],
         ...generateClassNamesByStringOrObject(
           size,
           styles,
@@ -44,10 +45,7 @@ function YearCounter({
         return (
           <span
             key={index}
-            className={classNames(
-              styles['year-counter__number'],
-              color && styles[`year-counter__number--color-${color}`],
-            )}
+            className={classNames(styles['year-counter__number'])}
             style={{
               fontSize: `${fontSize}em`,
               opacity: opacity.toFixed(2),

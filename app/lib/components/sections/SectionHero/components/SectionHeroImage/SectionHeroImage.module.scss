@@ -1,0 +1,19 @@
+@use 'app/lib/assets/scss/mixins';
+
+.section-hero-image {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  width: 184px;
+
+  @include mixins.tablet-up {
+    width: 264px;
+  }
+
+  &__image {
+    height: 100%;
+    inset: 0;
+    object-fit: cover;
+    width: 100%;
+  }
+}

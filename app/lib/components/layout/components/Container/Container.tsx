@@ -1,15 +1,19 @@
 import classNames from '@/services/utils/classNames';
 import { generateClassNamesByStringOrObject } from '@/services/utils/generateClassNamesByStringOrObject';
 import { ScreenOptions, Widths } from '@/types/layout';
-import { ElementType, HTMLAttributes, RefAttributes } from 'react';
+import { ElementType } from 'react';
+import ContentPadded, {
+  ContentPaddedProps,
+} from '../ContentPadded/ContentPadded';
 import styles from './Container.module.scss';
 
-interface Props
-  extends HTMLAttributes<HTMLElement>,
-    RefAttributes<HTMLElement> {
+export type TextAlign = 'left' | 'center' | 'right';
+
+interface Props extends ContentPaddedProps {
   as?: ElementType;
-  textAlign?: 'left' | 'center' | 'right';
+  textAlign?: TextAlign | ScreenOptions<TextAlign>;
   width?: Widths | ScreenOptions<Widths>;
+  fillContent?: boolean;
 }
 
 export default function Container({
@@ -17,7 +21,9 @@ export default function Container({
   className,
   textAlign = 'left',
   width = 'default',
+  padding = { mobile: { x: '400' }, tablet: { x: '800' } },
   children,
+  fillContent,
   ...otherProps
 }: Props) {
   const widthClassNames = generateClassNamesByStringOrObject(
@@ -26,17 +32,26 @@ export default function Container({
     'container--width',
   );
 
+  const alignClassNames = generateClassNamesByStringOrObject(
+    textAlign,
+    styles,
+    'container--text',
+  );
+
   return (
     <HTMLTag
       className={classNames(
         styles['container'],
         ...widthClassNames,
-        textAlign && styles[`container--text-${textAlign}`],
+        ...alignClassNames,
+        fillContent && 'fill-content',
         className,
       )}
       {...otherProps}
     >
-      {children}
+      <ContentPadded fillContent padding={padding}>
+        {children}
+      </ContentPadded>
     </HTMLTag>
   );
 }

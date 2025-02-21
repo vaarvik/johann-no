@@ -1,9 +1,7 @@
-'use client';
-
-import Container from '@/components/layout/components/Container/Container';
-import ContentPadded from '@/components/layout/components/ContentPadded/ContentPadded';
 import Timeline from '@/components/Timeline/Timeline';
-import SectionYearExperience from './lib/sections/SectionYearExperience/SectionYearExperience';
+import Container from '@/components/layout/components/Container/Container';
+import SectionHero from '@/components/sections/SectionHero/SectionHero';
+import SectionYearExperience from './lib/components/sections/SectionYearExperience/SectionYearExperience';
 
 export default function Home() {
   const timelineData = [
@@ -29,12 +27,15 @@ export default function Home() {
 
   return (
     <main>
-      <Container width="full" textAlign="center">
-        <ContentPadded padding={{ mobile: '400', desktop: '0' }}>
-          <Timeline items={timelineData} />
-        </ContentPadded>
-      </Container>
+      <SectionHero />
       <SectionYearExperience />
+      <Container
+        width="full"
+        textAlign="center"
+        padding={{ mobile: '400', tablet: '0' }}
+      >
+        <Timeline items={timelineData} />
+      </Container>
     </main>
   );
 }

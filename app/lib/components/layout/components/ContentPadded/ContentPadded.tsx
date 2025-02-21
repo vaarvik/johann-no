@@ -9,6 +9,7 @@ export interface ContentPaddedProps
     RefAttributes<HTMLElement> {
   as?: ElementType;
   padding?: SpacingVariant;
+  fillContent?: boolean;
 }
 
 export default function ContentPadded({
@@ -16,6 +17,7 @@ export default function ContentPadded({
   padding = '400',
   children,
   className,
+  fillContent,
   ...otherProps
 }: ContentPaddedProps) {
   const paddingClassNames = generateClassNamesByStringOrObject(
@@ -25,7 +27,11 @@ export default function ContentPadded({
   );
   return (
     <HTMLTag
-      className={classNames(...paddingClassNames, className)}
+      className={classNames(
+        ...paddingClassNames,
+        fillContent && 'fill-content',
+        className,
+      )}
       {...otherProps}
     >
       {children}

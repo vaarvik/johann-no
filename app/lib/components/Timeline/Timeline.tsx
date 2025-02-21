@@ -1,3 +1,5 @@
+'use client';
+
 import { useGetDevice } from '@/services/hooks/useGetDevice';
 import classNames from '@/services/utils/classNames';
 import React from 'react';

@@ -6,6 +6,7 @@ export interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'div';
   level: 1 | 2 | 3 | 4 | 5 | 6;
   color?: AllColors | 'currentcolor';
+  uppercased?: boolean;
 }
 
 export default function Heading({
@@ -13,6 +14,7 @@ export default function Heading({
   color = 'currentcolor',
   children,
   className,
+  uppercased,
   level,
   ...props
 }: HeadingProps) {
@@ -22,9 +24,10 @@ export default function Heading({
   return (
     <HTMLTag
       className={classNames(
-        className,
         `h${level}`,
         `h${level}--color-${color}`,
+        uppercased && `h${level}--uppercased`,
+        className,
       )}
       {...props}
     >

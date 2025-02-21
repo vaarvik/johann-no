@@ -9,6 +9,7 @@ interface Props
     RefAttributes<HTMLElement> {
   as?: ElementType;
   margin?: SpacingVariant;
+  fillContent?: boolean;
 }
 
 export default function ContentMargined({
@@ -16,6 +17,7 @@ export default function ContentMargined({
   margin = '400',
   className,
   children,
+  fillContent,
   ...otherProps
 }: Props) {
   const marginClassNames = generateClassNamesByStringOrObject(
@@ -26,7 +28,11 @@ export default function ContentMargined({
 
   return (
     <HTMLTag
-      className={classNames(...marginClassNames, className)}
+      className={classNames(
+        ...marginClassNames,
+        fillContent && 'fill-content',
+        className,
+      )}
       {...otherProps}
     >
       {children}

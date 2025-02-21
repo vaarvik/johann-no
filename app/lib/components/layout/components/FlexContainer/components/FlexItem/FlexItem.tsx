@@ -58,7 +58,7 @@ export default function FlexItem({
     <HTMLTag
       className={classNames(
         styles['flex-item'],
-        fillContent && styles['flex-item--fill-content'],
+        fillContent && 'fill-content',
         order !== undefined && styles[`flex-item--order-${order}`],
         grow !== undefined && styles[`flex-item--grow-${grow}`],
         shrink !== undefined && styles[`flex-item--shrink-${shrink}`],

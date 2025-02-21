@@ -1,4 +1,5 @@
 export type Styles = {
+  'content-margined--margin-0': string;
   'content-margined--margin-100': string;
   'content-margined--margin-1000': string;
   'content-margined--margin-1200': string;
@@ -13,6 +14,7 @@ export type Styles = {
   'content-margined--margin-600': string;
   'content-margined--margin-700': string;
   'content-margined--margin-800': string;
+  'content-margined--margin-bottom-0': string;
   'content-margined--margin-bottom-100': string;
   'content-margined--margin-bottom-1000': string;
   'content-margined--margin-bottom-1200': string;
@@ -27,6 +29,7 @@ export type Styles = {
   'content-margined--margin-bottom-600': string;
   'content-margined--margin-bottom-700': string;
   'content-margined--margin-bottom-800': string;
+  'content-margined--margin-desktop-0': string;
   'content-margined--margin-desktop-100': string;
   'content-margined--margin-desktop-1000': string;
   'content-margined--margin-desktop-1200': string;
@@ -41,6 +44,7 @@ export type Styles = {
   'content-margined--margin-desktop-600': string;
   'content-margined--margin-desktop-700': string;
   'content-margined--margin-desktop-800': string;
+  'content-margined--margin-desktop-bottom-0': string;
   'content-margined--margin-desktop-bottom-100': string;
   'content-margined--margin-desktop-bottom-1000': string;
   'content-margined--margin-desktop-bottom-1200': string;
@@ -55,6 +59,7 @@ export type Styles = {
   'content-margined--margin-desktop-bottom-600': string;
   'content-margined--margin-desktop-bottom-700': string;
   'content-margined--margin-desktop-bottom-800': string;
+  'content-margined--margin-desktop-left-0': string;
   'content-margined--margin-desktop-left-100': string;
   'content-margined--margin-desktop-left-1000': string;
   'content-margined--margin-desktop-left-1200': string;
@@ -69,6 +74,7 @@ export type Styles = {
   'content-margined--margin-desktop-left-600': string;
   'content-margined--margin-desktop-left-700': string;
   'content-margined--margin-desktop-left-800': string;
+  'content-margined--margin-desktop-right-0': string;
   'content-margined--margin-desktop-right-100': string;
   'content-margined--margin-desktop-right-1000': string;
   'content-margined--margin-desktop-right-1200': string;
@@ -83,6 +89,7 @@ export type Styles = {
   'content-margined--margin-desktop-right-600': string;
   'content-margined--margin-desktop-right-700': string;
   'content-margined--margin-desktop-right-800': string;
+  'content-margined--margin-desktop-top-0': string;
   'content-margined--margin-desktop-top-100': string;
   'content-margined--margin-desktop-top-1000': string;
   'content-margined--margin-desktop-top-1200': string;
@@ -97,6 +104,7 @@ export type Styles = {
   'content-margined--margin-desktop-top-600': string;
   'content-margined--margin-desktop-top-700': string;
   'content-margined--margin-desktop-top-800': string;
+  'content-margined--margin-desktop-x-0': string;
   'content-margined--margin-desktop-x-100': string;
   'content-margined--margin-desktop-x-1000': string;
   'content-margined--margin-desktop-x-1200': string;
@@ -111,6 +119,7 @@ export type Styles = {
   'content-margined--margin-desktop-x-600': string;
   'content-margined--margin-desktop-x-700': string;
   'content-margined--margin-desktop-x-800': string;
+  'content-margined--margin-desktop-y-0': string;
   'content-margined--margin-desktop-y-100': string;
   'content-margined--margin-desktop-y-1000': string;
   'content-margined--margin-desktop-y-1200': string;
@@ -125,6 +134,7 @@ export type Styles = {
   'content-margined--margin-desktop-y-600': string;
   'content-margined--margin-desktop-y-700': string;
   'content-margined--margin-desktop-y-800': string;
+  'content-margined--margin-large-desktop-0': string;
   'content-margined--margin-large-desktop-100': string;
   'content-margined--margin-large-desktop-1000': string;
   'content-margined--margin-large-desktop-1200': string;
@@ -139,6 +149,7 @@ export type Styles = {
   'content-margined--margin-large-desktop-600': string;
   'content-margined--margin-large-desktop-700': string;
   'content-margined--margin-large-desktop-800': string;
+  'content-margined--margin-large-desktop-bottom-0': string;
   'content-margined--margin-large-desktop-bottom-100': string;
   'content-margined--margin-large-desktop-bottom-1000': string;
   'content-margined--margin-large-desktop-bottom-1200': string;
@@ -153,6 +164,7 @@ export type Styles = {
   'content-margined--margin-large-desktop-bottom-600': string;
   'content-margined--margin-large-desktop-bottom-700': string;
   'content-margined--margin-large-desktop-bottom-800': string;
+  'content-margined--margin-large-desktop-left-0': string;
   'content-margined--margin-large-desktop-left-100': string;
   'content-margined--margin-large-desktop-left-1000': string;
   'content-margined--margin-large-desktop-left-1200': string;
@@ -167,6 +179,7 @@ export type Styles = {
   'content-margined--margin-large-desktop-left-600': string;
   'content-margined--margin-large-desktop-left-700': string;
   'content-margined--margin-large-desktop-left-800': string;
+  'content-margined--margin-large-desktop-right-0': string;
   'content-margined--margin-large-desktop-right-100': string;
   'content-margined--margin-large-desktop-right-1000': string;
   'content-margined--margin-large-desktop-right-1200': string;
@@ -181,6 +194,7 @@ export type Styles = {
   'content-margined--margin-large-desktop-right-600': string;
   'content-margined--margin-large-desktop-right-700': string;
   'content-margined--margin-large-desktop-right-800': string;
+  'content-margined--margin-large-desktop-top-0': string;
   'content-margined--margin-large-desktop-top-100': string;
   'content-margined--margin-large-desktop-top-1000': string;
   'content-margined--margin-large-desktop-top-1200': string;
@@ -195,6 +209,7 @@ export type Styles = {
   'content-margined--margin-large-desktop-top-600': string;
   'content-margined--margin-large-desktop-top-700': string;
   'content-margined--margin-large-desktop-top-800': string;
+  'content-margined--margin-large-desktop-x-0': string;
   'content-margined--margin-large-desktop-x-100': string;
   'content-margined--margin-large-desktop-x-1000': string;
   'content-margined--margin-large-desktop-x-1200': string;
@@ -209,6 +224,7 @@ export type Styles = {
   'content-margined--margin-large-desktop-x-600': string;
   'content-margined--margin-large-desktop-x-700': string;
   'content-margined--margin-large-desktop-x-800': string;
+  'content-margined--margin-large-desktop-y-0': string;
   'content-margined--margin-large-desktop-y-100': string;
   'content-margined--margin-large-desktop-y-1000': string;
   'content-margined--margin-large-desktop-y-1200': string;
@@ -223,6 +239,7 @@ export type Styles = {
   'content-margined--margin-large-desktop-y-600': string;
   'content-margined--margin-large-desktop-y-700': string;
   'content-margined--margin-large-desktop-y-800': string;
+  'content-margined--margin-left-0': string;
   'content-margined--margin-left-100': string;
   'content-margined--margin-left-1000': string;
   'content-margined--margin-left-1200': string;
@@ -237,6 +254,7 @@ export type Styles = {
   'content-margined--margin-left-600': string;
   'content-margined--margin-left-700': string;
   'content-margined--margin-left-800': string;
+  'content-margined--margin-mobile-0': string;
   'content-margined--margin-mobile-100': string;
   'content-margined--margin-mobile-1000': string;
   'content-margined--margin-mobile-1200': string;
@@ -251,6 +269,7 @@ export type Styles = {
   'content-margined--margin-mobile-600': string;
   'content-margined--margin-mobile-700': string;
   'content-margined--margin-mobile-800': string;
+  'content-margined--margin-mobile-bottom-0': string;
   'content-margined--margin-mobile-bottom-100': string;
   'content-margined--margin-mobile-bottom-1000': string;
   'content-margined--margin-mobile-bottom-1200': string;
@@ -265,6 +284,7 @@ export type Styles = {
   'content-margined--margin-mobile-bottom-600': string;
   'content-margined--margin-mobile-bottom-700': string;
   'content-margined--margin-mobile-bottom-800': string;
+  'content-margined--margin-mobile-left-0': string;
   'content-margined--margin-mobile-left-100': string;
   'content-margined--margin-mobile-left-1000': string;
   'content-margined--margin-mobile-left-1200': string;
@@ -279,6 +299,7 @@ export type Styles = {
   'content-margined--margin-mobile-left-600': string;
   'content-margined--margin-mobile-left-700': string;
   'content-margined--margin-mobile-left-800': string;
+  'content-margined--margin-mobile-right-0': string;
   'content-margined--margin-mobile-right-100': string;
   'content-margined--margin-mobile-right-1000': string;
   'content-margined--margin-mobile-right-1200': string;
@@ -293,6 +314,7 @@ export type Styles = {
   'content-margined--margin-mobile-right-600': string;
   'content-margined--margin-mobile-right-700': string;
   'content-margined--margin-mobile-right-800': string;
+  'content-margined--margin-mobile-top-0': string;
   'content-margined--margin-mobile-top-100': string;
   'content-margined--margin-mobile-top-1000': string;
   'content-margined--margin-mobile-top-1200': string;
@@ -307,6 +329,7 @@ export type Styles = {
   'content-margined--margin-mobile-top-600': string;
   'content-margined--margin-mobile-top-700': string;
   'content-margined--margin-mobile-top-800': string;
+  'content-margined--margin-mobile-x-0': string;
   'content-margined--margin-mobile-x-100': string;
   'content-margined--margin-mobile-x-1000': string;
   'content-margined--margin-mobile-x-1200': string;
@@ -321,6 +344,7 @@ export type Styles = {
   'content-margined--margin-mobile-x-600': string;
   'content-margined--margin-mobile-x-700': string;
   'content-margined--margin-mobile-x-800': string;
+  'content-margined--margin-mobile-y-0': string;
   'content-margined--margin-mobile-y-100': string;
   'content-margined--margin-mobile-y-1000': string;
   'content-margined--margin-mobile-y-1200': string;
@@ -335,6 +359,7 @@ export type Styles = {
   'content-margined--margin-mobile-y-600': string;
   'content-margined--margin-mobile-y-700': string;
   'content-margined--margin-mobile-y-800': string;
+  'content-margined--margin-right-0': string;
   'content-margined--margin-right-100': string;
   'content-margined--margin-right-1000': string;
   'content-margined--margin-right-1200': string;
@@ -349,6 +374,7 @@ export type Styles = {
   'content-margined--margin-right-600': string;
   'content-margined--margin-right-700': string;
   'content-margined--margin-right-800': string;
+  'content-margined--margin-tablet-0': string;
   'content-margined--margin-tablet-100': string;
   'content-margined--margin-tablet-1000': string;
   'content-margined--margin-tablet-1200': string;
@@ -363,6 +389,7 @@ export type Styles = {
   'content-margined--margin-tablet-600': string;
   'content-margined--margin-tablet-700': string;
   'content-margined--margin-tablet-800': string;
+  'content-margined--margin-tablet-bottom-0': string;
   'content-margined--margin-tablet-bottom-100': string;
   'content-margined--margin-tablet-bottom-1000': string;
   'content-margined--margin-tablet-bottom-1200': string;
@@ -377,6 +404,7 @@ export type Styles = {
   'content-margined--margin-tablet-bottom-600': string;
   'content-margined--margin-tablet-bottom-700': string;
   'content-margined--margin-tablet-bottom-800': string;
+  'content-margined--margin-tablet-left-0': string;
   'content-margined--margin-tablet-left-100': string;
   'content-margined--margin-tablet-left-1000': string;
   'content-margined--margin-tablet-left-1200': string;
@@ -391,6 +419,7 @@ export type Styles = {
   'content-margined--margin-tablet-left-600': string;
   'content-margined--margin-tablet-left-700': string;
   'content-margined--margin-tablet-left-800': string;
+  'content-margined--margin-tablet-right-0': string;
   'content-margined--margin-tablet-right-100': string;
   'content-margined--margin-tablet-right-1000': string;
   'content-margined--margin-tablet-right-1200': string;
@@ -405,6 +434,7 @@ export type Styles = {
   'content-margined--margin-tablet-right-600': string;
   'content-margined--margin-tablet-right-700': string;
   'content-margined--margin-tablet-right-800': string;
+  'content-margined--margin-tablet-top-0': string;
   'content-margined--margin-tablet-top-100': string;
   'content-margined--margin-tablet-top-1000': string;
   'content-margined--margin-tablet-top-1200': string;
@@ -419,6 +449,7 @@ export type Styles = {
   'content-margined--margin-tablet-top-600': string;
   'content-margined--margin-tablet-top-700': string;
   'content-margined--margin-tablet-top-800': string;
+  'content-margined--margin-tablet-x-0': string;
   'content-margined--margin-tablet-x-100': string;
   'content-margined--margin-tablet-x-1000': string;
   'content-margined--margin-tablet-x-1200': string;
@@ -433,6 +464,7 @@ export type Styles = {
   'content-margined--margin-tablet-x-600': string;
   'content-margined--margin-tablet-x-700': string;
   'content-margined--margin-tablet-x-800': string;
+  'content-margined--margin-tablet-y-0': string;
   'content-margined--margin-tablet-y-100': string;
   'content-margined--margin-tablet-y-1000': string;
   'content-margined--margin-tablet-y-1200': string;
@@ -447,6 +479,7 @@ export type Styles = {
   'content-margined--margin-tablet-y-600': string;
   'content-margined--margin-tablet-y-700': string;
   'content-margined--margin-tablet-y-800': string;
+  'content-margined--margin-top-0': string;
   'content-margined--margin-top-100': string;
   'content-margined--margin-top-1000': string;
   'content-margined--margin-top-1200': string;
@@ -461,6 +494,7 @@ export type Styles = {
   'content-margined--margin-top-600': string;
   'content-margined--margin-top-700': string;
   'content-margined--margin-top-800': string;
+  'content-margined--margin-x-0': string;
   'content-margined--margin-x-100': string;
   'content-margined--margin-x-1000': string;
   'content-margined--margin-x-1200': string;
@@ -475,6 +509,7 @@ export type Styles = {
   'content-margined--margin-x-600': string;
   'content-margined--margin-x-700': string;
   'content-margined--margin-x-800': string;
+  'content-margined--margin-y-0': string;
   'content-margined--margin-y-100': string;
   'content-margined--margin-y-1000': string;
   'content-margined--margin-y-1200': string;
