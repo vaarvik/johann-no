@@ -24,9 +24,12 @@ export function useAnimation<T extends HTMLElement>({
   const elementRef = useRef<T | null>(null);
   const wrapperRef = useWrapper(elementRef, wrapper.classes ?? [], wrapper.tag);
   const isVisible = useVisibility(wrapperRef, triggerThreshold);
-  const [animationClasses, setAnimationClasses] = useState<string[]>([
+  const initClasses = [
     styles.animation,
-  ]);
+    ...generateClassNamesByStringOrObject(animations, styles, 'animation'),
+  ];
+  const [animationClasses, setAnimationClasses] =
+    useState<string[]>(initClasses);
 
   useEffect(() => {
     if (!elementRef.current) return;
@@ -36,8 +39,7 @@ export function useAnimation<T extends HTMLElement>({
 
     setAnimationClasses(prevClasses => {
       const newClasses = [
-        ...generateClassNamesByStringOrObject(animations, styles, 'animation'),
-        styles.animation,
+        ...initClasses,
         isVisible ? styles['animation--visible'] : '',
         isInitialized ? styles['animation--init'] : '',
       ];

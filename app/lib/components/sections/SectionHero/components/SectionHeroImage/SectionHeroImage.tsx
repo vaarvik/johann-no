@@ -25,9 +25,9 @@ export default function SectionHeroImage() {
   return (
     <div
       className={classNames(
-        styles['section-hero-image'],
-        ' fill-content',
         ...classes,
+        styles['section-hero-image'],
+        'fill-content',
       )}
       ref={ref}
     >
