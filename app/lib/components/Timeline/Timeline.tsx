@@ -4,6 +4,7 @@ import { useGetDevice } from '@/services/hooks/useGetDevice';
 import classNames from '@/services/utils/classNames';
 import React from 'react';
 import ScrollMorpher from '../ScrollMorpher/ScrollMorpher';
+import ContentPadded from '../layout/components/ContentPadded/ContentPadded';
 import FlexContainer from '../layout/components/FlexContainer/FlexContainer';
 import FlexItem from '../layout/components/FlexContainer/components/FlexItem/FlexItem';
 import Heading from '../typography/components/Heading/Heading';
@@ -41,10 +42,13 @@ export default function Timeline({ items }: TimelineProps) {
               >
                 <div className={styles['timeline-item__pole']}>
                   <div className={styles['timeline-item__right']}>
-                    <div className={styles['timeline-item__dates']}>
+                    <ContentPadded
+                      className={styles['timeline-item__dates']}
+                      padding={{ mobile: '300', tablet: '400' }}
+                    >
                       <FlexContainer direction="column">
                         <FlexItem>
-                          <Paragraph size="2xl">
+                          <Paragraph size={{ mobile: 'xl', tablet: '2xl' }}>
                             <b>
                               {item.startDate.toLocaleDateString('en-US', {
                                 year: 'numeric',
@@ -54,7 +58,7 @@ export default function Timeline({ items }: TimelineProps) {
                           </Paragraph>
                         </FlexItem>
                         <FlexItem>
-                          <Paragraph size="lg">
+                          <Paragraph size={{ tablet: 'lg' }}>
                             <b>End:</b>{' '}
                             {item.endDate.toLocaleDateString('en-US', {
                               year: 'numeric',
@@ -63,12 +67,15 @@ export default function Timeline({ items }: TimelineProps) {
                           </Paragraph>
                         </FlexItem>
                       </FlexContainer>
-                    </div>
-                    <div className={styles['timeline-item__position']}>
-                      <Paragraph size="lg">
+                    </ContentPadded>
+                    <ContentPadded
+                      className={styles['timeline-item__position']}
+                      padding={{ mobile: '300', tablet: '400' }}
+                    >
+                      <Paragraph size={{ tablet: 'lg' }}>
                         <b>Role:</b> {item.position}
                       </Paragraph>
-                    </div>
+                    </ContentPadded>
                     <div className={styles['timeline-item__company']}>
                       <Paragraph size="sm">
                         <b>Client:</b> {item.company}
@@ -78,7 +85,7 @@ export default function Timeline({ items }: TimelineProps) {
                   <div className={styles['timeline-item__left']}>
                     <div className={styles['timeline-item__description']}>
                       <Heading level={5}>{item.title}</Heading>
-                      <Paragraph size="lg" lineHeight="loose">
+                      <Paragraph size={{ tablet: 'lg' }} lineHeight="loose">
                         {item.summary}
                       </Paragraph>
                     </div>

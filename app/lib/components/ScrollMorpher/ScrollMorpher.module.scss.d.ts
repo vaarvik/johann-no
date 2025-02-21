@@ -10,6 +10,7 @@ export type Styles = {
   'scroll-morpher__content--gap-1600': string;
   'scroll-morpher__content--gap-200': string;
   'scroll-morpher__content--gap-2000': string;
+  'scroll-morpher__content--gap-2400': string;
   'scroll-morpher__content--gap-300': string;
   'scroll-morpher__content--gap-400': string;
   'scroll-morpher__content--gap-4000': string;
@@ -25,6 +26,7 @@ export type Styles = {
   'scroll-morpher__content--gap-x-1600': string;
   'scroll-morpher__content--gap-x-200': string;
   'scroll-morpher__content--gap-x-2000': string;
+  'scroll-morpher__content--gap-x-2400': string;
   'scroll-morpher__content--gap-x-300': string;
   'scroll-morpher__content--gap-x-400': string;
   'scroll-morpher__content--gap-x-4000': string;
@@ -40,6 +42,7 @@ export type Styles = {
   'scroll-morpher__content--gap-y-1600': string;
   'scroll-morpher__content--gap-y-200': string;
   'scroll-morpher__content--gap-y-2000': string;
+  'scroll-morpher__content--gap-y-2400': string;
   'scroll-morpher__content--gap-y-300': string;
   'scroll-morpher__content--gap-y-400': string;
   'scroll-morpher__content--gap-y-4000': string;

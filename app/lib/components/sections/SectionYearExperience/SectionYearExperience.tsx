@@ -2,7 +2,9 @@ import Container from '@/components/layout/components/Container/Container';
 import FlexItem from '@/components/layout/components/FlexContainer/components/FlexItem/FlexItem';
 import FlexContainer from '@/components/layout/components/FlexContainer/FlexContainer';
 import Section from '@/components/Section/Section';
+import Paragraph from '@/components/typography/components/Paragraph/Paragraph';
 import YearCounter from '@/components/YearCounter/YearCounter';
+import styles from './SectonYearExperience.module.scss';
 
 export default function SectionYearExperience() {
   return (
@@ -10,7 +12,11 @@ export default function SectionYearExperience() {
       <Container
         width="default"
         fillContent
-        padding={{ mobile: '800', tablet: '1600' }}
+        padding={{
+          mobile: { y: '800', left: '800' },
+          tablet: { y: '600', left: '600' },
+        }}
+        className={styles['section-year-experience']}
       >
         <FlexContainer fillContent>
           <FlexItem fillContent>
@@ -28,7 +34,9 @@ export default function SectionYearExperience() {
                 />
               </FlexItem>
               <FlexItem>
-                <h2 className="p--size-3xl">Years Experience</h2>
+                <Paragraph as="h2" size={{ mobile: '2xl', tablet: '3xl' }}>
+                  Years Experience
+                </Paragraph>
               </FlexItem>
             </FlexContainer>
           </FlexItem>

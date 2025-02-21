@@ -1,6 +1,6 @@
 export function generateClassNamesByStringOrObject<T>(
   value: T,
-  styles: { [key: string]: string },
+  styles: { [key: string]: string } | undefined,
   baseClass: string,
 ) {
   if (!value && value !== 0) {
@@ -22,23 +22,24 @@ export function generateClassNamesByStringOrObject<T>(
 
 function generateClassName(
   value: string | number,
-  styles: { [key: string]: string },
+  styles: { [key: string]: string } | undefined,
   baseClass: string,
 ) {
-  const className = styles[`${baseClass}-${value}`];
+  const className =
+    styles?.[`${baseClass}-${value}`] ?? `${baseClass}-${value}`;
 
-  if (!className) {
+  if (!className && styles) {
     throw new Error(
       `No valid class name (${className}) found in passed in styles with baseClass: ${baseClass}, value: ${value}`,
     );
   }
 
-  return className;
+  return className!;
 }
 
 function generateClassNamesFromObject<T>(
   value: T,
-  styles: { [key: string]: string },
+  styles: { [key: string]: string } | undefined,
   baseClass: string,
 ) {
   const classNames: string[] = [];

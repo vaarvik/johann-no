@@ -51,7 +51,7 @@ export function useScrollMorpher(
 
       if (offset < limit) {
         const transformValue = isVertical
-          ? `translate3d(0, -${offset}px, 0)`
+          ? `translate3d(0, -0px, 0)`
           : `translate3d(-${offset}px, 0, 0)`;
         sectionRef.current!.style.transform = transformValue;
       }

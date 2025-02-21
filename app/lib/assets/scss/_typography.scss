@@ -97,9 +97,23 @@
     }
   }
 
-  @each $size-name, $value in vars.$font-sizes {
-    &--size-#{$size-name} {
-      font-size: $value;
+  &--size {
+    @each $size-name, $value in vars.$font-sizes {
+      @layer default-screen {
+        &-#{$size-name} {
+          font-size: $value;
+        }
+      }
+
+      @each $screen-size, $breakpoint in vars.$breakpoints {
+        @layer #{$screen-size} {
+          @media (width >= $breakpoint) {
+            &-#{$screen-size}-#{$size-name} {
+              font-size: $value;
+            }
+          }
+        }
+      }
     }
   }
 

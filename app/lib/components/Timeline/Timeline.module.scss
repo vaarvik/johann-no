@@ -29,6 +29,7 @@ $animation-speed-secondary: 0.3s;
     background-color: var(--color-primary-160);
     height: 100vh;
     width: 8px;
+    z-index: var(--z-index-base);
 
     @include mixins.tablet-up {
       height: 16px;
@@ -51,7 +52,7 @@ $animation-speed-secondary: 0.3s;
         $animation-speed-secondary
     );
     transition-timing-function: $cubic-bezier;
-    width: 480px;
+    width: calc(100vw - 48px);
 
     @include mixins.tablet-up {
       align-items: center;
@@ -82,12 +83,14 @@ $animation-speed-secondary: 0.3s;
       display: block;
       height: 24px;
       left: -12px;
+      opacity: 0;
       position: absolute;
       width: 24px;
 
       @include mixins.tablet-up {
         bottom: 0;
         left: unset;
+        opacity: 1;
       }
     }
   }
@@ -111,6 +114,7 @@ $animation-speed-secondary: 0.3s;
 
   &__left {
     bottom: 8px;
+    box-shadow: 0 0 1px 1px rgb(0 0 0 / 5%);
     position: absolute;
     right: 0;
     width: 100%;
@@ -126,7 +130,6 @@ $animation-speed-secondary: 0.3s;
     background-color: var(--color-primary-160);
     color: var(--color-background);
     opacity: 0;
-    padding: var(--spacing-400);
     transform: scaleY(0);
     transform-origin: top;
     transition:
@@ -148,7 +151,6 @@ $animation-speed-secondary: 0.3s;
     background-color: var(--color-neutral-40);
     color: var(--color-foreground);
     opacity: 0;
-    padding: var(--spacing-400);
     transform: scaleY(0) rotateX(75deg);
     transform-origin: top;
     transition:
@@ -158,10 +160,6 @@ $animation-speed-secondary: 0.3s;
       $animation-speed-main * 0.8 + $animation-speed-secondary
     );
     width: 100%;
-
-    @include mixins.tablet-up {
-      border-bottom-left-radius: 0;
-    }
   }
 
   &__company {
@@ -171,6 +169,7 @@ $animation-speed-secondary: 0.3s;
     display: inline-block;
     opacity: 0;
     padding: var(--spacing-300) var(--spacing-400);
+    position: relative;
     transform: scaleY(0);
     transform-origin: top;
     transform-style: preserve-3d;
