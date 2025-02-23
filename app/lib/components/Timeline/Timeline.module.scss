@@ -168,7 +168,6 @@ $animation-speed-secondary: 0.3s;
     color: var(--color-foreground);
     display: inline-block;
     opacity: 0;
-    padding: var(--spacing-300) var(--spacing-400);
     position: relative;
     transform: scaleY(0);
     transform-origin: top;
@@ -182,7 +181,6 @@ $animation-speed-secondary: 0.3s;
   &__description {
     background-color: var(--color-neutral-0);
     opacity: 0;
-    padding: var(--spacing-800);
     transform: translateX(-380px);
     transform-origin: left;
     transition:

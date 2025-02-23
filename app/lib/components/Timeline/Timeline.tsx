@@ -76,19 +76,25 @@ export default function Timeline({ items }: TimelineProps) {
                         <b>Role:</b> {item.position}
                       </Paragraph>
                     </ContentPadded>
-                    <div className={styles['timeline-item__company']}>
+                    <ContentPadded
+                      className={styles['timeline-item__company']}
+                      padding={{ mobile: '300', tablet: '400' }}
+                    >
                       <Paragraph size="sm">
                         <b>Client:</b> {item.company}
                       </Paragraph>
-                    </div>
+                    </ContentPadded>
                   </div>
                   <div className={styles['timeline-item__left']}>
-                    <div className={styles['timeline-item__description']}>
+                    <ContentPadded
+                      className={styles['timeline-item__description']}
+                      padding={{ mobile: '600', tablet: '800' }}
+                    >
                       <Heading level={5}>{item.title}</Heading>
                       <Paragraph size={{ tablet: 'lg' }} lineHeight="loose">
                         {item.summary}
                       </Paragraph>
-                    </div>
+                    </ContentPadded>
                   </div>
                 </div>
               </div>
