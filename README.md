@@ -20,10 +20,17 @@
 ```bash
 pnpm install
 ```
+
 2. Setup git pre commit hook:
+
+```bash
+chmod +x .githooks/pre-commit
+```
+
 ```bash
 git config core.hooksPath .githooks
 ```
+
 3. Start the development server:
 
 ```bash
