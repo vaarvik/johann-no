@@ -1,0 +1,22 @@
+#!/bin/sh
+
+echo "🔍 Running pre-commit checks..."
+
+# Run lint check
+echo "Running lint check..."
+npm run lint
+if [ $? -ne 0 ]; then
+    echo "❌ Lint check failed. Please fix the issues before committing."
+    exit 1
+fi
+
+# Run typecheck
+echo "Running typecheck..."
+npm run typecheck
+if [ $? -ne 0 ]; then
+    echo "❌ Typecheck failed. Please fix the type issues before committing."
+    exit 1
+fi
+
+echo "✅ All checks passed!"
+exit 0
