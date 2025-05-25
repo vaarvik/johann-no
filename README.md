@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Johann.no
+
+## Tech Stack
+
+- **Framework**: Next.js (Pages Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **UI Components**: Shadcn/ui
+
+## Prerequisites
+
+- Node.js (LTS version recommended)
+- pnpm (recommended package manager)
+- Git
 
 ## Getting Started
 
-First, run the development server:
+1. Install dependencies:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
+```
+2. Setup git pre commit hook:
+```bash
+git config core.hooksPath .githooks
+```
+3. Start the development server:
+
+```bash
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The application will be available at [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Development Guidelines
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Use TypeScript for type safety
+- Follow ESLint configuration
+- Ensure responsive and accessible components
+- Use Tailwind CSS for styling
+- Maintain strict type safety (avoid `any` and `unknown`)
+- Keep components "dumb" with logic in domain components
+- Limit file size to 150 lines
+- Prefer custom hooks over complex component logic
+- Abstract repeated code (3+ occurrences)
 
-## Learn More
+## Recommended VS Code Extensions
 
-To learn more about Next.js, take a look at the following resources:
+- **ESLint** - For code linting
+- **Tailwind CSS IntelliSense** - For Tailwind class suggestions
+- **TypeScript and JavaScript Language Features** - For TypeScript support
+- **GitLens** - For enhanced Git functionality
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Available Scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `pnpm dev` - Start development server
+- `pnpm build` - Build for production
+- `pnpm start` - Start production server
+- `pnpm lint` - Run ESLint
+- `pnpm typecheck` - Run TypeScript type checking
 
-## Deploy on Vercel
+## Resources
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Next.js Documentation](https://nextjs.org/docs)
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+- [Shadcn/ui Documentation](https://ui.shadcn.com/)
