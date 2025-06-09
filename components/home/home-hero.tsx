@@ -177,7 +177,7 @@ function StickyNavigation() {
       className={`
         ${isSticky
       ? "fixed top-0 left-0 right-0 z-50 bg-slate-900 backdrop-blur-md border-b border-slate-800/5"
-      : "absolute bottom-0 left-0 right-0 z-20"
+      : "absolute bottom-0 left-0 right-0 z-20 border-slate-800/5"
     }
         transition-all duration-300 px-8
       `}
@@ -206,7 +206,7 @@ function StickyNavigation() {
           </div>
 
           <div className="flex gap-4 items-center">
-            {[{ label: "Experience", href: "/#experience" }, { label: "Portfolio", href: "/#portfolio" }, { label: "Contact", href: "/#contact" }].map(item => (
+            {[{ label: "Experience", href: "/#experience" }, { label: "Skills", href: "/#skills" }, { label: "Portfolio", href: "/#portfolio" }, { label: "Contact", href: "/#contact" }].map(item => (
               <Link href={item.href} key={item.href}>
                 <Button
                   key={item.href}

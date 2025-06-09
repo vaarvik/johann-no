@@ -97,8 +97,7 @@ export default function HomeExperience() {
   }, [])
 
   return (
-    <section className="py-0 bg-slate-900 relative overflow-hidden">
-
+    <section className="py-0 bg-slate-900 relative overflow-hidden" id="experience">
       <div className="absolute inset-0 overflow-hidden">
         {matrixChars.map(char => (
           <motion.div
@@ -204,9 +203,8 @@ export default function HomeExperience() {
         </div>
       </div>
 
-      <div className="py-32 bg-slate-200 relative">
+      <div className="py-32 bg-slate-200 relative" id="skills">
         <div className="container mx-auto px-8 relative z-10">
-
           <motion.div
             className="mb-16 text-center"
             initial={{ opacity: 0, y: 30 }}
