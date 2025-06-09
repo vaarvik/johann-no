@@ -2,12 +2,13 @@
 
 import { motion } from "framer-motion"
 import { Send, Zap } from "lucide-react"
+import Link from "next/link"
 import { Button } from "../ui/button"
 
 export default function HomeContact() {
   return (
     <section className="py-32 bg-slate-800 relative overflow-hidden border-t border-slate-700" id="contact">
-      <div className="absolute inset-0 opacity-5">
+      <div className="absolute inset-0 opacity-20">
         <div
           className="absolute inset-0"
           style={{
@@ -30,12 +31,15 @@ export default function HomeContact() {
           </p>
 
           <div className="flex gap-4 justify-center">
-            <Button variant="primary">
-              <Send className="h-4 w-4" />
-              Send Message
-            </Button>
+            <Link href="mailto:contact@johann.com">
+              <Button variant="primary" size="lg">
+                <Send className="h-4 w-4" />
+                Send Message
+              </Button>
+            </Link>
             <Button
               variant="outline"
+              size="lg"
               onClick={() => {}}
             >
               <Zap className="h-4 w-4" />

@@ -1,4 +1,5 @@
 import { Coffee, Copyright, Github, Heart, Linkedin, Mail } from "lucide-react"
+import Link from "next/link"
 import { Button } from "./ui/button"
 import { Separator } from "./ui/separator"
 
@@ -17,26 +18,32 @@ export default function Footer() {
               and leading technical teams to success.
             </p>
             <div className="flex gap-4">
-              <Button variant="ghost" size="icon" className="text-slate-400 hover:text-white hover:bg-slate-800 w-10 h-10 transition-all duration-300">
-                <Github className="h-5 w-5" />
-              </Button>
-              <Button variant="ghost" size="icon" className="text-slate-400 hover:text-white hover:bg-slate-800 w-10 h-10 transition-all duration-300">
-                <Linkedin className="h-5 w-5" />
-              </Button>
-              <Button variant="ghost" size="icon" className="text-slate-400 hover:text-white hover:bg-slate-800 w-10 h-10 transition-all duration-300">
-                <Mail className="h-5 w-5" />
-              </Button>
+              <Link href="https://github.com/vaarvik" target="_blank">
+                <Button variant="ghost" size="icon" className="text-slate-400 hover:text-white hover:bg-slate-800 w-10 h-10 transition-all duration-300">
+                  <Github className="h-5 w-5" />
+                </Button>
+              </Link>
+              <Link href="https://www.linkedin.com/in/johann-v%C3%A5rvik-9114a7163/" target="_blank">
+                <Button variant="ghost" size="icon" className="text-slate-400 hover:text-white hover:bg-slate-800 w-10 h-10 transition-all duration-300">
+                  <Linkedin className="h-5 w-5" />
+                </Button>
+              </Link>
+              <Link href="mailto:contact@johann.com">
+                <Button variant="ghost" size="icon" className="text-slate-400 hover:text-white hover:bg-slate-800 w-10 h-10 transition-all duration-300">
+                  <Mail className="h-5 w-5" />
+                </Button>
+              </Link>
             </div>
           </div>
 
           <div>
             <h4 className="text-white font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              {["Experience", "Skills", "Portfolio", "Contact", "How this site was made"].map(item => (
-                <li key={item}>
-                  <button className="text-slate-400 hover:text-white transition-colors duration-200 text-sm" type="button">
-                    {item}
-                  </button>
+              {[{ label: "Home", href: "/#home" }, { label: "Experience", href: "/#experience" }, { label: "Skills", href: "/#skills" }, { label: "Portfolio", href: "/#portfolio" }, { label: "Contact", href: "/#contact" }].map(item => (
+                <li key={item.href}>
+                  <Link href={item.href} className="text-slate-400 hover:text-white transition-colors duration-200 text-sm">
+                    {item.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -45,7 +52,7 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-semibold mb-4">Services</h4>
             <ul className="space-y-2">
-              {["Web Development", "System Architecture", "Team Leadership", "Technical Consulting", "Design"].map(item => (
+              {["Web Development", "System Architecture", "Team Leadership", "Design"].map(item => (
                 <li key={item}>
                   <span className="text-slate-400 text-sm">{item}</span>
                 </li>

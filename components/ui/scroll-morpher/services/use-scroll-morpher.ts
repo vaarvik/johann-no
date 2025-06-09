@@ -48,7 +48,6 @@ export function useScrollMorpher(
         : contentRef.current!.offsetWidth
       const windowSize = isVertical ? window.innerHeight : window.innerWidth
       const limit = contentSize - windowSize
-      console.log("offset", offset, limit)
 
       if (offset < limit) {
         const transformValue = isVertical

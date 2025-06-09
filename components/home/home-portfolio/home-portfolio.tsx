@@ -17,13 +17,13 @@ export default function HomePortfolio() {
       </div>
       <Timeline items={[{
         id: "1",
-        content: () => <HomePortfolioItem />
+        content: isVisible => <HomePortfolioItem isVisible={isVisible} />
       }, {
         id: "2",
-        content: () => <HomePortfolioItem />
+        content: isVisible => <HomePortfolioItem isVisible={isVisible} />
       }, {
         id: "3",
-        content: () => <HomePortfolioItem />
+        content: isVisible => <HomePortfolioItem isVisible={isVisible} />
       },]}
       />
     </section>

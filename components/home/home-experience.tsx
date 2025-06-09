@@ -344,19 +344,14 @@ export default function HomeExperience() {
                         <div className="flex flex-wrap gap-2">
                           {skill.technologies.map(tech => (
                             <WithPopover
+                              className="max-w-[200px]"
                               key={`${skill.name}-${tech.name}`}
                               content={(
-                                <div className="space-y-3">
-                                  <h4 className="font-semibold text-slate-800">{tech.name}</h4>
-                                  <div className="flex justify-between items-center">
-                                    <div className="text-center">
-                                      <div className="text-sm font-medium text-slate-600">Experience</div>
-                                      <div className="text-lg font-bold text-indigo-600">{tech.experience}</div>
-                                    </div>
-                                    <div className="text-center">
-                                      <div className="text-sm font-medium text-slate-600">Projects</div>
-                                      <div className="text-lg font-bold text-slate-700">{tech.projects}+</div>
-                                    </div>
+                                <div className="space-y-1">
+                                  <h4 className="text-sm font-semibold text-slate-800">{tech.name}</h4>
+                                  <div className="flex justify-between items-center text-xs">
+                                    <span className="text-slate-700">{tech.experience}</span>
+                                    <span className="text-slate-700">{tech.projects}+ projects</span>
                                   </div>
                                 </div>
                               )}

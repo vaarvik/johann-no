@@ -23,7 +23,7 @@ const timelineItemVariants = cva(
 )
 
 const timelineItemPoleVariants = cva(
-  "flex flex-col justify-center relative transform scale-x-0 origin-left transition-transform duration-800 ease-[cubic-bezier(0.72,1.5,0.1,0.9)] transition-delay-[1.12s] w-[calc(100vw-48px)] md:scale-x-100 md:items-center md:h-[480px] md:w-auto md:origin-bottom md:scale-y-0 md:justify-start after:content-[''] after:bg-indigo-600 after:block after:h-2 after:w-full md:after:h-full md:after:absolute md:after:w-2 before:content-[''] before:bg-indigo-600 before:block before:rounded-full before:h-6 before:-left-3 before:opacity-0 before:absolute before:w-6 md:before:bottom-0 md:before:left-[unset] md:before:opacity-100",
+  "flex flex-col justify-center md:left-[-200px] relative transform scale-x-0 origin-left transition-transform duration-800 ease-[cubic-bezier(0.72,1.5,0.1,0.9)] transition-delay-[1.12s] w-[calc(100vw-48px)] md:scale-x-100 md:items-center md:h-[480px] md:w-auto md:origin-bottom md:scale-y-0 md:justify-start after:content-[''] after:bg-indigo-600 after:block after:h-2 after:w-full md:after:h-full md:after:absolute md:after:w-2 before:content-[''] before:bg-indigo-600 before:block before:rounded-full before:h-6 before:-left-3 before:opacity-0 before:absolute before:w-6 md:before:bottom-0 md:before:left-[unset] md:before:opacity-100",
   {
     variants: {
       device: {
@@ -128,33 +128,6 @@ export default function Timeline({ items, className, ...props }: TimelineProps) 
                 </div>
               </div>
             )
-            // return (
-            //   <div
-            //     className={cn(
-            //       timelineItemVariants({ device }),
-            //       timelineItemBeforeVariants({ device }),
-            //         isVisible && "z-10",
-            //         isVisible && "[&_.timeline-pole]:scale-100 [&_.timeline-pole]:transition-delay-0",
-            //         isVisible && "[&_.timeline-description]:opacity-100 [&_.timeline-description]:translate-x-0 [&_.timeline-description]:transition-delay-0",
-            //         isVisible && "[&_.timeline-dates]:opacity-100 [&_.timeline-dates]:scale-x-100 [&_.timeline-dates]:transition-delay-[0.64s]",
-            //         isVisible && "[&_.timeline-position]:opacity-100 [&_.timeline-position]:scale-y-100 [&_.timeline-position]:transition-delay-[0.64s]",
-            //         isVisible && "[&_.timeline-company]:opacity-100 [&_.timeline-company]:scale-y-100 [&_.timeline-company]:transition-delay-[1.12s] [&_.timeline-company]:animate-[swing-x-axis_2.5s_ease-out_0s_forwards] [&_.timeline-company]:animation-delay-[1.12s]"
-            //     )}
-            //   >
-            //     <div
-            //       className={cn(
-            //         "timeline-pole",
-            //         timelineItemPoleVariants({ device }),
-            //         timelineItemPoleAfterVariants({ device }),
-            //         timelineItemPoleBeforeVariants({ device })
-            //       )}
-            //     >
-            //       <div className={cn("timeline-right", timelineItemRightVariants({ device }))}>
-            //         {item.content(isVisible)}
-            //       </div>
-            //     </div>
-            //   </div>
-            // )
           },
         }))}
       />
