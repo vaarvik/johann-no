@@ -17,7 +17,6 @@ export default function HomeHero() {
 
   useEffect(() => {
     setIsClient(true)
-    // Generate particles only on client side
     const generatedParticles = Array.from({ length: 20 }).map((_, i) => ({
       id: i,
       x: Math.random() * window.innerWidth,
