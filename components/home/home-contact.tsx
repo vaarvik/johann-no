@@ -6,7 +6,7 @@ import { Button } from "../ui/button"
 
 export default function HomeContact() {
   return (
-    <section className="py-32 bg-slate-800 relative overflow-hidden border-t border-slate-700">
+    <section className="py-32 bg-slate-800 relative overflow-hidden border-t border-slate-700" id="contact">
       <div className="absolute inset-0 opacity-5">
         <div
           className="absolute inset-0"
@@ -30,14 +30,13 @@ export default function HomeContact() {
           </p>
 
           <div className="flex gap-4 justify-center">
-            <Button className="bg-indigo-700 hover:bg-indigo-800 text-white px-6 py-3 text-base font-medium transition-all duration-300 flex items-center gap-2">
+            <Button variant="primary">
               <Send className="h-4 w-4" />
               Send Message
             </Button>
             <Button
               variant="outline"
               onClick={() => {}}
-              className="border-slate-600 text-slate-200 bg-slate-700 hover:bg-slate-600 hover:text-white px-6 py-3 text-base font-medium flex items-center gap-2"
             >
               <Zap className="h-4 w-4" />
               See how this site was made

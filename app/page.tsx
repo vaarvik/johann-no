@@ -1,3 +1,4 @@
+import Footer from "@/components/footer"
 import HomeContact from "@/components/home/home-contact"
 import HomeExperience from "@/components/home/home-experience"
 import HomeHero from "@/components/home/home-hero"
@@ -11,6 +12,7 @@ export default function Home() {
         <HomeExperience />
         <HomePortfolio />
         <HomeContact />
+        <Footer />
       </main>
     </div>
   )
