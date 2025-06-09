@@ -12,6 +12,22 @@ import { Button } from "../ui/button"
 export default function HomeHero() {
   const { scrollY } = useScroll()
   const y = useTransform(scrollY, [0, 500], [0, 150])
+  const [isClient, setIsClient] = useState(false)
+  const [particles, setParticles] = useState<Array<{ id: number, x: number, y: number, duration: number, delay: number }>>([])
+
+  useEffect(() => {
+    setIsClient(true)
+    // Generate particles only on client side
+    const generatedParticles = Array.from({ length: 20 }).map((_, i) => ({
+      id: i,
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight,
+      duration: Math.random() * 3 + 2,
+      delay: Math.random() * 2
+    }))
+    setParticles(generatedParticles)
+  }, [])
+
   const onNavigateToHowItWasMade = () => {
     console.log("navigate to how it was made")
   }
@@ -26,22 +42,22 @@ export default function HomeHero() {
       <div className="absolute inset-0 bg-gradient-to-br from-transparent via-blue-900/20 to-transparent" />
 
       <div className="absolute inset-0 overflow-hidden">
-        {[...Array.from({ length: 20 })].map((_, i) => ({ id: i })).map(({ id }) => (
+        {isClient && particles.map(({ id, x, y, duration, delay }) => (
           <motion.div
             key={id}
             className="absolute w-1 h-1 bg-blue-400/30"
             initial={{
-              x: Math.random() * (typeof window !== "undefined" ? window.innerWidth : 1000),
-              y: Math.random() * (typeof window !== "undefined" ? window.innerHeight : 1000)
+              x,
+              y
             }}
             animate={{
-              y: [null, Math.random() * (typeof window !== "undefined" ? window.innerHeight : 1000)],
+              y: [y, Math.random() * window.innerHeight],
               opacity: [0, 1, 0]
             }}
             transition={{
-              duration: Math.random() * 3 + 2,
+              duration,
               repeat: Infinity,
-              delay: Math.random() * 2
+              delay
             }}
           />
         ))}
