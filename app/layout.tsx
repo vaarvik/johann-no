@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Geist, Geist_Mono, Meow_Script } from "next/font/google"
+import { Geist, Meow_Script, Space_Mono } from "next/font/google"
 import "./globals.css"
 
 const geistSans = Geist({
@@ -7,9 +7,10 @@ const geistSans = Geist({
   subsets: ["latin"],
 })
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const spaceMono = Space_Mono({
+  variable: "--font-space-mono",
   subsets: ["latin"],
+  weight: ["400", "700"],
 })
 
 const heroFont = Meow_Script({
@@ -30,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${heroFont.variable} antialiased`}
+        className={`${geistSans.variable} ${spaceMono.variable} ${heroFont.variable} antialiased`}
       >
         {children}
       </body>

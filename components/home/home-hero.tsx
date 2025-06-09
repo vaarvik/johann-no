@@ -161,9 +161,11 @@ function StickyNavigation() {
   const [isSticky, setIsSticky] = useState(false)
 
   useEffect(() => {
+    setIsSticky(window.scrollY > window.innerHeight * 0.92)
+
     const handleScroll = () => {
       const scrollPosition = window.scrollY
-      setIsSticky(scrollPosition > window.innerHeight * 0.8)
+      setIsSticky(scrollPosition > window.innerHeight * 0.92)
     }
 
     window.addEventListener("scroll", handleScroll)
@@ -174,20 +176,20 @@ function StickyNavigation() {
     <motion.nav
       className={`
         ${isSticky
-      ? "fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200"
+      ? "fixed top-0 left-0 right-0 z-50 bg-slate-900 backdrop-blur-md border-b border-slate-800/5"
       : "absolute bottom-0 left-0 right-0 z-20"
     }
-        transition-all duration-300
+        transition-all duration-300 px-8
       `}
       initial={{ opacity: 0, y: 50 }}
       animate={{
         opacity: 1,
         y: 0,
-        backgroundColor: isSticky ? "rgba(255, 255, 255, 0.95)" : "transparent"
+        backgroundColor: isSticky ? "rgba(0, 0, 0, 0.1)" : "transparent"
       }}
       transition={{ duration: 0.8, delay: isSticky ? 0 : 1.2 }}
     >
-      <div className="max-w-6xl mx-auto py-4">
+      <div className="max-w-7xl mx-auto py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Link href="/#home">
@@ -204,8 +206,8 @@ function StickyNavigation() {
           </div>
 
           <div className="flex gap-4 items-center">
-            {[{ label: "Experience", href: "/#experience" }, { label: "Portfolio", href: "/#portfolio" }, { label: "Contact", href: "/#contact" }].map((item, index) => (
-              <Link href={item.href} key={index}>
+            {[{ label: "Experience", href: "/#experience" }, { label: "Portfolio", href: "/#portfolio" }, { label: "Contact", href: "/#contact" }].map(item => (
+              <Link href={item.href} key={item.href}>
                 <Button
                   key={item.href}
                   variant="secondary"
