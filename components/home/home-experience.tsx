@@ -163,7 +163,7 @@ export default function HomeExperience() {
 
               <div className="p-6 font-mono">
                 <div className="text-green-400 mb-2">
-                  <span className="text-green-500">$</span> Calculating professional experience...
+                  <span className="text-green-500">$</span> Calculating years of experience...
                 </div>
                 <div className="text-green-300">
                   <span className="text-green-500">→</span> Scanning development history
