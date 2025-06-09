@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Code, Database, Palette, Server, Terminal } from "lucide-react"
+import { Brain, Code, Database, Loader2, Palette, Server, Terminal } from "lucide-react"
 import { useEffect, useState } from "react"
 import { WithPopover } from "../ui/popover"
 import { YearCounter } from "../ui/year-counter/year-counter"
@@ -16,10 +16,10 @@ const skills = [
     iconBg: "bg-white",
     iconColor: "text-blue-600",
     technologies: [
-      { name: "React", experience: "5+ years", projects: 15, description: "Expert in React ecosystem including hooks, context, performance optimization" },
-      { name: "Next.js", experience: "3+ years", projects: 8, description: "Full-stack React framework with SSR, API routes, and deployment optimization" },
-      { name: "TypeScript", experience: "4+ years", projects: 12, description: "Type-safe development with advanced typing patterns and generics" },
-      { name: "Tailwind CSS", experience: "3+ years", projects: 10, description: "Utility-first CSS framework for rapid UI development" }
+      { name: "React", experience: "5+ years", projects: 15, },
+      { name: "Next.js", experience: "3+ years", projects: 8, },
+      { name: "TypeScript", experience: "4+ years", projects: 12, },
+      { name: "Tailwind CSS", experience: "3+ years", projects: 10, }
     ]
   },
   {
@@ -31,10 +31,25 @@ const skills = [
     iconBg: "bg-white",
     iconColor: "text-slate-700",
     technologies: [
-      { name: "Node.js", experience: "5+ years", projects: 20, description: "Server-side JavaScript with Express, real-time applications, and API development" },
-      { name: "Java", experience: "6+ years", projects: 25, description: "Enterprise applications with Spring Boot, microservices, and JVM optimization" },
-      { name: "Golang", experience: "2+ years", projects: 6, description: "High-performance backend services and concurrent programming" },
-      { name: "Python", experience: "3+ years", projects: 8, description: "Data processing, automation, and API development with Django/FastAPI" }
+      { name: "Node.js", experience: "5+ years", projects: 20, },
+      { name: "Java", experience: "6+ years", projects: 25, },
+      { name: "Golang", experience: "2+ years", projects: 6, },
+      { name: "Python", experience: "3+ years", projects: 8, }
+    ]
+  },
+  {
+    name: "AI & ML",
+    level: 65,
+    icon: Brain,
+    bgColor: "bg-gradient-to-br from-cyan-500 via-cyan-600 to-blue-700",
+    borderColor: "border-cyan-400",
+    iconBg: "bg-white",
+    iconColor: "text-cyan-600",
+    technologies: [
+      { name: "OpenAI/GPT", experience: "2+ years", projects: 12, },
+      { name: "LangChain", experience: "1+ year", projects: 6 },
+      { name: "Python ML", experience: "3+ years", projects: 10 },
+      { name: "TensorFlow", experience: "2+ years", projects: 4 }
     ]
   },
   {
@@ -46,10 +61,10 @@ const skills = [
     iconBg: "bg-white",
     iconColor: "text-emerald-600",
     technologies: [
-      { name: "AWS", experience: "4+ years", projects: 15, description: "Cloud architecture with EC2, Lambda, S3, RDS, and CloudFormation" },
-      { name: "Docker", experience: "4+ years", projects: 18, description: "Containerization, multi-stage builds, and orchestration" },
-      { name: "Kubernetes", experience: "2+ years", projects: 5, description: "Container orchestration, scaling, and service mesh" },
-      { name: "CI/CD", experience: "5+ years", projects: 20, description: "GitLab CI, GitHub Actions, Jenkins, and deployment automation" }
+      { name: "AWS", experience: "4+ years", projects: 15, },
+      { name: "Docker", experience: "4+ years", projects: 18, },
+      { name: "Kubernetes", experience: "2+ years", projects: 5, },
+      { name: "CI/CD", experience: "5+ years", projects: 20, }
     ]
   },
   {
@@ -61,10 +76,10 @@ const skills = [
     iconBg: "bg-white",
     iconColor: "text-purple-600",
     technologies: [
-      { name: "Figma", experience: "4+ years", projects: 30, description: "UI/UX design, prototyping, and design system creation" },
-      { name: "UX/UI", experience: "5+ years", projects: 25, description: "User research, wireframing, and interaction design" },
-      { name: "Prototyping", experience: "4+ years", projects: 20, description: "Interactive prototypes and user testing" },
-      { name: "Design Systems", experience: "3+ years", projects: 8, description: "Component libraries, tokens, and design consistency" }
+      { name: "Figma", experience: "4+ years", projects: 30, },
+      { name: "UX/UI", experience: "5+ years", projects: 25, },
+      { name: "Prototyping", experience: "4+ years", projects: 20, },
+      { name: "Design Systems", experience: "3+ years", projects: 8, }
     ]
   }
 ]
@@ -159,9 +174,9 @@ export default function HomeExperience() {
                 <div className="text-green-300">
                   <span className="text-green-500">→</span> Computing experience metrics
                 </div>
-                <div className="text-center">
+                <div>
                   <motion.div
-                    className="mb-8"
+                    className="mb-4"
                     initial={{ opacity: 0, scale: 0.5 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 1.2 }}
@@ -194,7 +209,9 @@ export default function HomeExperience() {
                   </motion.div>
 
                   <div className="text-green-400">
-                    <span className="text-green-500">✓</span>{" "}Years of experience calculation complete
+                    <span className="text-green-500">
+                      <Loader2 className="inline animate-spin w-3 h-3" />
+                    </span>{" "}Years of experience increasing
                   </div>
                 </div>
               </div>
@@ -218,7 +235,7 @@ export default function HomeExperience() {
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 xl:grid-cols-4 gap-8 mb-12">
+          <div className="grid lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5 gap-8 mb-12">
             {skills.map((skill, index) => (
               <motion.div
                 key={skill.name}
@@ -242,13 +259,13 @@ export default function HomeExperience() {
                   <div className={`${skill.bgColor} border-4 ${skill.borderColor} shadow-xl relative overflow-hidden h-full transform transition-all duration-300 group-hover:shadow-2xl rounded-md`}>
 
                     <div className="absolute inset-0 opacity-10">
-                      <div className="absolute top-4 right-4 w-16 h-16 border-2 border-white transform rotate-12"></div>
-                      <div className="absolute bottom-8 left-6 w-8 h-8 bg-white opacity-20"></div>
-                      <div className="absolute top-1/2 right-8 w-4 h-4 bg-white opacity-30 transform rotate-45"></div>
+                      <div className="absolute top-4 right-4 w-16 h-16 border-2 border-white transform rotate-12 rounded-md"></div>
+                      <div className="absolute bottom-8 left-6 w-8 h-8 bg-white opacity-20 rounded-md"></div>
+                      <div className="absolute top-1/2 right-8 w-4 h-4 bg-white opacity-30 transform rotate-45 rounded-md"></div>
                     </div>
 
                     <motion.div
-                      className="absolute top-6 left-6 w-6 h-6 bg-white/20"
+                      className="absolute top-6 left-6 w-6 h-6 bg-white/20 rounded-md"
                       animate={{
                         rotate: [0, 360],
                         scale: [1, 1.1, 1]
@@ -329,23 +346,17 @@ export default function HomeExperience() {
                             <WithPopover
                               key={`${skill.name}-${tech.name}`}
                               content={(
-                                <div className="p-6 space-y-4">
-                                  <div>
-                                    <h4 className="text-lg font-semibold text-slate-800 mb-2">{tech.name}</h4>
-                                  </div>
-                                  <div className="grid grid-cols-2 gap-4">
-                                    <div className="border border-indigo-200 p-4">
-                                      <h5 className="text-sm font-semibold text-slate-700 mb-1">Experience</h5>
-                                      <p className="text-lg font-bold text-indigo-600">{tech.experience}</p>
+                                <div className="space-y-3">
+                                  <h4 className="font-semibold text-slate-800">{tech.name}</h4>
+                                  <div className="flex justify-between items-center">
+                                    <div className="text-center">
+                                      <div className="text-sm font-medium text-slate-600">Experience</div>
+                                      <div className="text-lg font-bold text-indigo-600">{tech.experience}</div>
                                     </div>
-                                    <div className="border border-slate-200 p-4">
-                                      <h5 className="text-sm font-semibold text-slate-700 mb-1">Projects</h5>
-                                      <p className="text-lg font-bold text-slate-600">{tech.projects}+</p>
+                                    <div className="text-center">
+                                      <div className="text-sm font-medium text-slate-600">Projects</div>
+                                      <div className="text-lg font-bold text-slate-700">{tech.projects}+</div>
                                     </div>
-                                  </div>
-                                  <div>
-                                    <h5 className="text-sm font-semibold text-slate-800 mb-2">Expertise Details</h5>
-                                    <p className="text-sm text-slate-600 leading-relaxed">{tech.description}</p>
                                   </div>
                                 </div>
                               )}
@@ -386,7 +397,7 @@ export default function HomeExperience() {
             viewport={{ once: true }}
           >
             <p className="text-sm text-slate-500 italic">
-              💡 Click on any technology badge above to see detailed experience and project information
+              💡 Click on any technology within a skill to see detailed experience and project information
             </p>
           </motion.div>
         </div>

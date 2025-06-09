@@ -69,6 +69,7 @@ export default function HomeHero() {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
+            className="hover:scale-120 transition-all duration-800"
           >
             <div className="w-[280px] h-full rounded-md overflow-hidden">
               <Image src={imgJohann} alt="Johann Vårvik" className="w-full h-full object-cover" />
@@ -82,7 +83,7 @@ export default function HomeHero() {
             className="max-w-2xl flex flex-col"
           >
             <motion.h1
-              className="text-7xl font-['Meow_Script'] text-white mb-2 leading-tight"
+              className="text-8xl font-['Meow_Script'] text-white mb-2 leading-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
