@@ -8,7 +8,7 @@ export default function HomePortfolio() {
   return (
     <section className="w-full bg-slate-900" id="portfolio">
       <div>
-        <div className="pt-16 text-center">
+        <div className="pt-32 text-center">
           <h2 className="text-5xl font-bold text-white mb-4">Portfolio Timeline</h2>
           <p className="text-xl text-slate-300 max-w-2xl mx-auto">
             Journey through innovative projects and technical milestones

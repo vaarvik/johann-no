@@ -27,10 +27,6 @@ export default function HomeHero() {
     setParticles(generatedParticles)
   }, [])
 
-  const onNavigateToHowItWasMade = () => {
-    console.log("navigate to how it was made")
-  }
-
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden" id="home">
       <motion.div
@@ -138,15 +134,16 @@ export default function HomeHero() {
                   Contact me
                 </Button>
               </Link>
-              <Button
-                variant="secondary"
-                size="lg"
-                onClick={onNavigateToHowItWasMade}
-                className="flex items-center gap-2"
-              >
-                <Zap className="h-4 w-4" />
-                See how this site was made
-              </Button>
+              <Link href="/how-it-was-made">
+                <Button
+                  variant="secondary"
+                  size="lg"
+                  className="flex items-center gap-2"
+                >
+                  <Zap className="h-4 w-4" />
+                  See how this site was made
+                </Button>
+              </Link>
             </motion.div>
           </motion.div>
         </div>

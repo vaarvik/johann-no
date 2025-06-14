@@ -37,14 +37,16 @@ export default function HomeContact() {
                 Send Message
               </Button>
             </Link>
-            <Button
-              variant="outline"
-              size="lg"
-              onClick={() => {}}
-            >
-              <Zap className="h-4 w-4" />
-              See how this site was made
-            </Button>
+            <Link href="/how-it-was-made">
+              <Button
+                variant="outline"
+                size="lg"
+                onClick={() => {}}
+              >
+                <Zap className="h-4 w-4" />
+                See how this site was made
+              </Button>
+            </Link>
           </div>
         </motion.div>
       </div>
