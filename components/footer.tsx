@@ -52,7 +52,7 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-semibold mb-4">Services</h4>
             <ul className="space-y-2">
-              {["Web Development", "System Architecture", "Team Leadership", "Design"].map(item => (
+              {["Web Development", "System Architecture", "Team Management", "Design"].map(item => (
                 <li key={item}>
                   <span className="text-slate-400 text-sm">{item}</span>
                 </li>

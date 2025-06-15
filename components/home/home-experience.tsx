@@ -88,6 +88,7 @@ const skills = [
 export default function HomeExperience() {
   const [inView, setInView] = useState(false)
   const [windowHeight, setWindowHeight] = useState(800) // Default fallback
+  const [isMobile, setIsMobile] = useState(false)
   const [matrixChars, setMatrixChars] = useState<Array<{
     id: number
     char: string
@@ -99,6 +100,7 @@ export default function HomeExperience() {
   // Get window height and generate matrix chars on client side
   useEffect(() => {
     setWindowHeight(window.innerHeight)
+    setIsMobile(window.innerWidth < 768) // Check if mobile
 
     // Create Matrix-style falling code characters
     const chars = Array.from({ length: 40 }, (_, i) => ({
@@ -109,6 +111,14 @@ export default function HomeExperience() {
       duration: Math.random() * 3 + 2,
     }))
     setMatrixChars(chars)
+
+    // Handle resize
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
   }, [])
 
   return (
@@ -151,28 +161,30 @@ export default function HomeExperience() {
             <div className="bg-slate-800 border-2 border-green-500 max-w-3xl mx-auto rounded-md">
               <div className="bg-slate-700 px-4 py-3 flex items-center gap-2 border-b border-green-500 rounded-t-md">
                 <div className="flex gap-2">
-                  <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                  <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                  <div className={`${isMobile ? "w-2 h-2" : "w-3 h-3"} bg-red-500 rounded-full`}></div>
+                  <div className={`${isMobile ? "w-2 h-2" : "w-3 h-3"} bg-yellow-500 rounded-full`}></div>
+                  <div className={`${isMobile ? "w-2 h-2" : "w-3 h-3"} bg-green-500 rounded-full`}></div>
                 </div>
                 <div className="flex items-center gap-2 ml-4">
                   <Terminal className="h-4 w-4 text-green-400" />
-                  <span className="text-green-400 font-mono text-sm">johann@portfolio:~$ get_experience --years</span>
+                  <span className="text-green-400 font-mono text-xs sm:text-sm">
+                    johann:~$ get_exp --years
+                  </span>
                 </div>
               </div>
 
-              <div className="p-6 font-mono">
-                <div className="text-green-400 mb-2">
-                  <span className="text-green-500">$</span> Calculating years of experience...
+              <div className="p-4 sm:p-6 font-mono">
+                <div className="text-green-400 mb-2 text-sm sm:text-base">
+                  <span className="text-green-500">$</span> {isMobile ? "Calculating..." : "Calculating years of experience..."}
                 </div>
-                <div className="text-green-300">
-                  <span className="text-green-500">→</span> Scanning development history
+                <div className="text-green-300 text-sm sm:text-base">
+                  <span className="text-green-500">→</span> {isMobile ? "Scanning history" : "Scanning development history"}
                 </div>
-                <div className="text-green-300">
-                  <span className="text-green-500">→</span> Processing project milestones
+                <div className="text-green-300 text-sm sm:text-base">
+                  <span className="text-green-500">→</span> {isMobile ? "Processing milestones" : "Processing project milestones"}
                 </div>
-                <div className="text-green-300">
-                  <span className="text-green-500">→</span> Computing experience metrics
+                <div className="text-green-300 text-sm sm:text-base">
+                  <span className="text-green-500">→</span> {isMobile ? "Computing metrics" : "Computing experience metrics"}
                 </div>
                 <div>
                   <motion.div
@@ -195,23 +207,23 @@ export default function HomeExperience() {
                       <div className="relative overflow-hidden flex">
                         <YearCounter
                           decimals={22}
-                          className="text-lg md:text-2xl lg:text-[15rem] leading-none font-bold text-green-400"
+                          className="text-8xl sm:text-9xl md:text-[12rem] lg:text-[15rem] leading-none font-bold text-green-400"
                           startDate={new Date(2019, 1, 15)}
                         />
                       </div>
 
                       <motion.span
-                        className="block w-1 h-6 bg-green-400 ml-2"
+                        className={`block ${isMobile ? "w-0.5 h-4" : "w-1 h-6"} bg-green-400`}
                         animate={{ opacity: [1, 0, 1] }}
                         transition={{ duration: 1, repeat: Infinity }}
                       />
                     </motion.div>
                   </motion.div>
 
-                  <div className="text-green-400">
+                  <div className="text-green-400 text-sm sm:text-base">
                     <span className="text-green-500">
                       <Loader2 className="inline animate-spin w-3 h-3" />
-                    </span>{" "}Years of experience increasing
+                    </span>{" "}{isMobile ? "Experience increasing" : "Years of experience increasing"}
                   </div>
                 </div>
               </div>
@@ -220,18 +232,18 @@ export default function HomeExperience() {
         </div>
       </div>
 
-      <div className="py-32 bg-slate-200 relative" id="skills">
-        <div className="container mx-auto px-8 relative z-10">
+      <div className="py-16 sm:py-24 lg:py-32 bg-slate-200 relative" id="skills">
+        <div className="container mx-auto px-4 sm:px-8 relative z-10">
           <motion.div
-            className="mb-16 text-center"
+            className="mb-12 sm:mb-16 text-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-5xl font-bold text-slate-800 mb-4">Technical Skills</h2>
-            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-              Comprehensive expertise across the full stack of modern development
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-800 mb-3 sm:mb-4">Technical Skills</h2>
+            <p className="text-base sm:text-lg lg:text-xl text-slate-600 max-w-2xl mx-auto px-4">
+              {isMobile ? "Full stack development expertise" : "Comprehensive expertise across the full stack of modern development"}
             </p>
           </motion.div>
 
@@ -277,17 +289,17 @@ export default function HomeExperience() {
                       }}
                     />
 
-                    <div className="p-8 relative z-10">
+                    <div className="p-4 sm:p-6 lg:p-8 relative z-10">
 
                       <motion.div
-                        className={`w-20 h-20 ${skill.iconBg} flex items-center justify-center mx-auto mb-6 border-2 ${skill.borderColor} shadow-lg relative rounded-md`}
+                        className={`w-16 h-16 sm:w-20 sm:h-20 ${skill.iconBg} flex items-center justify-center mx-auto mb-4 sm:mb-6 border-2 ${skill.borderColor} shadow-lg relative rounded-md`}
                         whileHover={{
                           scale: 1.15,
                           rotate: [0, -10, 10, 0]
                         }}
                         transition={{ duration: 0.4 }}
                       >
-                        <skill.icon className={`h-10 w-10 ${skill.iconColor}`} />
+                        <skill.icon className={`h-8 w-8 sm:h-10 sm:w-10 ${skill.iconColor}`} />
 
                         <motion.div
                           className={`absolute inset-0 border-2 ${skill.borderColor} opacity-0 rounded-md`}
@@ -303,12 +315,12 @@ export default function HomeExperience() {
                         />
                       </motion.div>
 
-                      <h3 className="text-2xl font-bold text-white mb-4 text-center tracking-wide">
+                      <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-3 sm:mb-4 text-center tracking-wide">
                         {skill.name}
                       </h3>
 
-                      <div className="mb-6">
-                        <div className="flex justify-between items-center mb-2 text-sm font-semibold text-white/90">
+                      <div className="mb-4 sm:mb-6">
+                        <div className="flex justify-between items-center mb-2 text-xs sm:text-sm font-semibold text-white/90">
                           <span>Proficiency</span>
                           <span>{skill.level}%</span>
                         </div>
@@ -338,10 +350,10 @@ export default function HomeExperience() {
                       </div>
 
                       <div>
-                        <h4 className="text-sm font-bold text-white/90 mb-3 uppercase tracking-wider">
+                        <h4 className="text-xs sm:text-sm font-bold text-white/90 mb-2 sm:mb-3 uppercase tracking-wider">
                           Technologies
                         </h4>
-                        <div className="flex flex-wrap gap-2">
+                        <div className="flex flex-wrap gap-1 sm:gap-2">
                           {skill.technologies.map(tech => (
                             <WithPopover
                               className="max-w-[200px]"
@@ -358,7 +370,7 @@ export default function HomeExperience() {
                             >
 
                               <motion.button
-                                className="inline-flex items-center px-3 py-1 text-xs font-semibold bg-white/90 text-slate-800 hover:bg-white cursor-pointer transition-all duration-200 border-2 border-white/50 hover:border-white shadow-lg hover:shadow-xl transform hover:scale-105 rounded-md"
+                                className="inline-flex items-center px-2 py-1 sm:px-3 sm:py-1 text-xs font-semibold bg-white/90 text-slate-800 hover:bg-white cursor-pointer transition-all duration-200 border-2 border-white/50 hover:border-white shadow-lg hover:shadow-xl transform hover:scale-105 rounded-md"
                                 whileHover={{ y: -2 }}
                                 whileTap={{ scale: 0.95 }}
                               >
@@ -391,8 +403,8 @@ export default function HomeExperience() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <p className="text-sm text-slate-500 italic">
-              💡 Click on any technology within a skill to see detailed experience and project information
+            <p className="text-sm sm:text-base text-slate-500 italic px-4">
+              {isMobile ? "💡 Tap any technology for details" : "💡 Click on any technology within a skill to see detailed experience and project information"}
             </p>
           </motion.div>
         </div>
