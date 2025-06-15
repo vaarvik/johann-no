@@ -79,7 +79,7 @@ export default function HomePortfolioItem({ isVisible }: { isVisible: boolean })
               </div>
             )}
           >
-            <Button variant="primary" size="sm" icon="info">
+            <Button variant="primary" size="sm" startIcon="info">
               Project Details
             </Button>
           </WithPopover>

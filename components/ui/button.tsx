@@ -43,9 +43,11 @@ const buttonVariants = cva(
 interface ButtonProps extends React.ComponentProps<"button">,
   VariantProps<typeof buttonVariants> {
   asChild?: boolean
-  icon?: IconName
-  iconPosition?: "left" | "right"
+  startIcon?: IconName
   iconClassName?: string
+  endIcon?: IconName
+  startIconClassName?: string
+  endIconClassName?: string
 }
 
 function Button({
@@ -53,18 +55,27 @@ function Button({
   variant,
   size,
   asChild = false,
-  icon,
-  iconPosition = "left",
-  iconClassName,
+  startIconClassName,
+  startIcon,
+  endIcon,
+  endIconClassName,
   children,
   ...props
 }: ButtonProps) {
   const Comp = asChild ? Slot : "button"
 
-  const iconElement = icon && (
+  // Handle new start/end icon props
+  const startIconElement = startIcon && (
     <Icon
-      name={icon}
-      className={cn("transition-all duration-200", iconClassName || "h-4 w-4")}
+      name={startIcon}
+      className={cn("transition-all duration-200", startIconClassName || "h-4 w-4")}
+    />
+  )
+
+  const endIconElement = endIcon && (
+    <Icon
+      name={endIcon}
+      className={cn("transition-all duration-200", endIconClassName || "h-4 w-4")}
     />
   )
 
@@ -74,9 +85,9 @@ function Button({
       className={cn(buttonVariants({ variant, size, className }))}
       {...props}
     >
-      {iconPosition === "left" && iconElement}
+      {startIcon && startIconElement}
       {children}
-      {iconPosition === "right" && iconElement}
+      {endIcon && endIconElement}
     </Comp>
   )
 }

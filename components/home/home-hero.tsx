@@ -120,7 +120,7 @@ export default function HomeHero() {
               transition={{ duration: 0.8, delay: 1 }}
             >
               <Link href="mailto:contact@johann.no">
-                <Button size="lg" variant="primary" icon="send">
+                <Button size="lg" variant="primary" startIcon="send">
                   Contact me
                 </Button>
               </Link>
@@ -128,7 +128,7 @@ export default function HomeHero() {
                 <Button
                   variant="secondary"
                   size="lg"
-                  icon="zap"
+                  startIcon="zap"
                 >
                   See how this site was made
                 </Button>
@@ -182,7 +182,7 @@ function StickyNavigation() {
               <Button
                 variant="secondary"
                 size="icon"
-                icon="home"
+                startIcon="home"
                 iconClassName="h-6 w-6"
                 className={`
                 w-10 h-9 transition-all duration-300
@@ -209,7 +209,7 @@ function StickyNavigation() {
               <Button
                 variant="tertiary"
                 size="icon"
-                icon="github"
+                startIcon="github"
                 iconClassName="h-6 w-6"
                 className={`
                 w-10 h-9 transition-all duration-300
@@ -220,7 +220,7 @@ function StickyNavigation() {
               <Button
                 variant="tertiary"
                 size="icon"
-                icon="linkedin"
+                startIcon="linkedin"
                 iconClassName="h-6 w-6"
                 className={`
                 w-10 h-9 transition-all duration-300

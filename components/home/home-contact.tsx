@@ -31,7 +31,7 @@ export default function HomeContact() {
 
           <div className="flex gap-4 justify-center">
             <Link href="mailto:contact@johann.com">
-              <Button variant="primary" size="lg" icon="send">
+              <Button variant="primary" size="lg" startIcon="send">
                 Send Message
               </Button>
             </Link>
@@ -40,7 +40,7 @@ export default function HomeContact() {
                 variant="outline"
                 size="lg"
                 onClick={() => {}}
-                icon="zap"
+                startIcon="zap"
               >
                 See how this site was made
               </Button>
