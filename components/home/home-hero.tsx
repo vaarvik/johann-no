@@ -1,7 +1,6 @@
 "use client"
 
 import { motion, useScroll, useTransform } from "framer-motion"
-import { Code, Github, Home, Linkedin, Palette, Users, Zap } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useState } from "react"
@@ -93,23 +92,14 @@ export default function HomeHero() {
               className="mb-6"
             >
               <div className="flex flex-wrap gap-3">
-                <Badge size="lg" className="bg-blue-600/20">
-                  <span className="flex items-center gap-2">
-                    <Code className="h-4 w-4" />
-                    FULLSTACK DEVELOPER
-                  </span>
+                <Badge size="lg" className="bg-blue-600/20" icon="code" iconClassName="h-4 w-4">
+                  FULLSTACK DEVELOPER
                 </Badge>
-                <Badge size="lg" className="bg-green-600/20">
-                  <span className="flex items-center gap-2">
-                    <Users className="h-4 w-4" />
-                    IT MANAGER
-                  </span>
+                <Badge size="lg" className="bg-green-600/20" icon="users" iconClassName="h-4 w-4">
+                  IT MANAGER
                 </Badge>
-                <Badge size="lg" className="bg-purple-600/20">
-                  <span className="flex items-center gap-2">
-                    <Palette className="h-4 w-4" />
-                    DESIGNER
-                  </span>
+                <Badge size="lg" className="bg-purple-600/20" icon="palette" iconClassName="h-4 w-4">
+                  DESIGNER
                 </Badge>
               </div>
             </motion.div>
@@ -130,7 +120,7 @@ export default function HomeHero() {
               transition={{ duration: 0.8, delay: 1 }}
             >
               <Link href="mailto:contact@johann.no">
-                <Button size="lg" variant="primary">
+                <Button size="lg" variant="primary" icon="send">
                   Contact me
                 </Button>
               </Link>
@@ -138,9 +128,8 @@ export default function HomeHero() {
                 <Button
                   variant="secondary"
                   size="lg"
-                  className="flex items-center gap-2"
+                  icon="zap"
                 >
-                  <Zap className="h-4 w-4" />
                   See how this site was made
                 </Button>
               </Link>
@@ -193,12 +182,12 @@ function StickyNavigation() {
               <Button
                 variant="secondary"
                 size="icon"
+                icon="home"
+                iconClassName="h-6 w-6"
                 className={`
                 w-10 h-9 transition-all duration-300
               `}
-              >
-                <Home className="h-6 w-6" />
-              </Button>
+              />
             </Link>
           </div>
 
@@ -220,23 +209,23 @@ function StickyNavigation() {
               <Button
                 variant="tertiary"
                 size="icon"
+                icon="github"
+                iconClassName="h-6 w-6"
                 className={`
                 w-10 h-9 transition-all duration-300
               `}
-              >
-                <Github className="h-6 w-6" />
-              </Button>
+              />
             </Link>
             <Link href="https://www.linkedin.com/in/johann-v%C3%A5rvik-9114a7163/" target="_blank">
               <Button
                 variant="tertiary"
                 size="icon"
+                icon="linkedin"
+                iconClassName="h-6 w-6"
                 className={`
                 w-10 h-9 transition-all duration-300
               `}
-              >
-                <Linkedin className="h-6 w-6" />
-              </Button>
+              />
             </Link>
           </div>
         </div>

@@ -1,6 +1,8 @@
 import type { VariantProps } from "class-variance-authority"
+import type { IconName } from "@/lib/icons"
 import { Slot } from "@radix-ui/react-slot"
 import { cva } from "class-variance-authority"
+import { Icon } from "@/lib/icons"
 import { cn } from "@/lib/utils"
 
 const badgeVariants = cva(
@@ -29,14 +31,23 @@ const badgeVariants = cva(
   },
 )
 
+interface BadgeProps extends React.ComponentProps<"span">,
+  VariantProps<typeof badgeVariants> {
+  asChild?: boolean
+  icon?: IconName
+  iconClassName?: string
+}
+
 function Badge({
   className,
   variant,
   size,
   asChild = false,
+  icon,
+  iconClassName,
+  children,
   ...props
-}: React.ComponentProps<"span"> &
-  VariantProps<typeof badgeVariants> & { asChild?: boolean }) {
+}: BadgeProps) {
   const Comp = asChild ? Slot : "span"
 
   return (
@@ -44,7 +55,17 @@ function Badge({
       data-slot="badge"
       className={cn(badgeVariants({ variant, size }), className)}
       {...props}
-    />
+    >
+      <span className="flex items-center gap-2">
+        {icon && (
+          <Icon
+            name={icon}
+            className={iconClassName || "h-4 w-4"}
+          />
+        )}
+        {children}
+      </span>
+    </Comp>
   )
 }
 

@@ -1,7 +1,6 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Send, Zap } from "lucide-react"
 import Link from "next/link"
 import { Button } from "../ui/button"
 
@@ -32,8 +31,7 @@ export default function HomeContact() {
 
           <div className="flex gap-4 justify-center">
             <Link href="mailto:contact@johann.com">
-              <Button variant="primary" size="lg">
-                <Send className="h-4 w-4" />
+              <Button variant="primary" size="lg" icon="send">
                 Send Message
               </Button>
             </Link>
@@ -42,8 +40,8 @@ export default function HomeContact() {
                 variant="outline"
                 size="lg"
                 onClick={() => {}}
+                icon="zap"
               >
-                <Zap className="h-4 w-4" />
                 See how this site was made
               </Button>
             </Link>

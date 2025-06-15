@@ -1,4 +1,4 @@
-import { Building, Clock, Code, Info, Target, User } from "lucide-react"
+import { Building, Clock, Code, Target, User } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { WithPopover } from "@/components/ui/popover"
@@ -6,7 +6,6 @@ import { WithPopover } from "@/components/ui/popover"
 export default function HomePortfolioItem({ isVisible }: { isVisible: boolean }) {
   return (
     <div className="relative bg-slate-800 shadow-xl min-w-[500px]">
-
       <div className="bg-indigo-900/40 p-6 border-b border-indigo-700/30">
         <div className="flex justify-between items-start text-white">
           <div>
@@ -80,8 +79,7 @@ export default function HomePortfolioItem({ isVisible }: { isVisible: boolean })
               </div>
             )}
           >
-            <Button className="bg-indigo-700 hover:bg-indigo-600 text-white text-sm font-medium px-4 py-2 flex items-center gap-2 transition-all duration-300">
-              <Info className="h-4 w-4" />
+            <Button variant="primary" size="sm" icon="info">
               Project Details
             </Button>
           </WithPopover>
