@@ -84,10 +84,9 @@ const skills = [
   }
 ]
 
-// Experience & Skills Section with Updated Colors - Now comes after Hero
 export default function HomeExperience() {
   const [inView, setInView] = useState(false)
-  const [windowHeight, setWindowHeight] = useState(800) // Default fallback
+  const [windowHeight, setWindowHeight] = useState(800)
   const [isMobile, setIsMobile] = useState(false)
   const [matrixChars, setMatrixChars] = useState<Array<{
     id: number
@@ -97,12 +96,10 @@ export default function HomeExperience() {
     duration: number
   }>>([])
 
-  // Get window height and generate matrix chars on client side
   useEffect(() => {
     setWindowHeight(window.innerHeight)
-    setIsMobile(window.innerWidth < 768) // Check if mobile
+    setIsMobile(window.innerWidth < 768)
 
-    // Create Matrix-style falling code characters
     const chars = Array.from({ length: 40 }, (_, i) => ({
       id: i,
       char: ["0", "1", "{", "}", "<", ">", "(", ")", ";", "=", "+", "-", "*", "/", "$", "#"][Math.floor(Math.random() * 16)],
@@ -112,7 +109,6 @@ export default function HomeExperience() {
     }))
     setMatrixChars(chars)
 
-    // Handle resize
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768)
     }

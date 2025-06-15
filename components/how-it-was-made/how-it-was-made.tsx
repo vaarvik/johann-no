@@ -31,7 +31,6 @@ export default function HowItWasMade() {
       </header>
 
       <div className="container mx-auto px-8 py-16">
-        {/* Introduction */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -49,9 +48,7 @@ export default function HowItWasMade() {
           </p>
         </motion.div>
 
-        {/* Process Steps */}
         <div className="grid gap-12 mb-16">
-          {/* Step 1: Wireframes */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -85,7 +82,6 @@ export default function HowItWasMade() {
                     </div>
                   </div>
                   <div className="bg-slate-100 p-8 lg:p-12 flex items-center justify-center min-h-[300px]">
-                    {/* Wireframe Mockup */}
                     <div className="w-full max-w-md bg-white border-2 border-slate-300 p-6 space-y-4">
                       <div className="h-3 bg-slate-300 w-1/2"></div>
                       <div className="h-12 bg-slate-200 w-full flex items-center justify-center text-slate-500 text-xs">
@@ -107,7 +103,6 @@ export default function HowItWasMade() {
             </Card>
           </motion.div>
 
-          {/* Step 2: High-Fidelity Design */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -118,7 +113,6 @@ export default function HowItWasMade() {
               <CardContent className="p-0">
                 <div className="grid lg:grid-cols-2 gap-0">
                   <div className="bg-gradient-to-br from-blue-50 to-purple-50 p-8 lg:p-12 flex items-center justify-center min-h-[300px] order-2 lg:order-1">
-                    {/* High-Fidelity Mockup */}
                     <div className="w-full max-w-md relative">
                       <div className="bg-white shadow-xl border border-slate-200 overflow-hidden">
                         <div className="bg-slate-900 h-16 flex items-center px-4">
@@ -171,7 +165,6 @@ export default function HowItWasMade() {
             </Card>
           </motion.div>
 
-          {/* Step 3: Development */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -210,7 +203,6 @@ export default function HowItWasMade() {
                     </Button>
                   </div>
                   <div className="bg-slate-900 p-8 lg:p-12 flex items-center justify-center min-h-[300px]">
-                    {/* Code Mockup */}
                     <div className="w-full max-w-sm bg-slate-800 border border-slate-700 overflow-hidden">
                       <div className="bg-slate-700 px-4 py-2 flex items-center gap-2">
                         <div className="w-3 h-3 bg-red-500"></div>
@@ -238,7 +230,6 @@ export default function HowItWasMade() {
           </motion.div>
         </div>
 
-        {/* Technical Details */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -293,7 +284,6 @@ export default function HowItWasMade() {
           </div>
         </motion.div>
 
-        {/* Links Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

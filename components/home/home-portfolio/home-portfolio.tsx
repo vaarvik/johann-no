@@ -3,7 +3,6 @@
 import Timeline from "@/components/ui/timeline/timeline"
 import HomePortfolioItem from "./components/home-portfolio-item"
 
-// Timeline with Connected Flag and Fixed Colors - Now comes after Experience
 export default function HomePortfolio() {
   return (
     <section className="w-full bg-slate-900" id="portfolio">

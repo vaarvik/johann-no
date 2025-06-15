@@ -196,7 +196,6 @@ function StickyNavigation() {
 
   return (
     <>
-      {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
         <motion.div
           initial={{ opacity: 0 }}
@@ -226,10 +225,7 @@ function StickyNavigation() {
       >
         <div className={`max-w-7xl mx-auto py-4 ${isMobile ? "px-4" : "px-8"} ${isMobileMenuOpen ? "min-h-screen max-w-full w-full flex flex-col" : ""}`}>
           <div className="flex items-center justify-between">
-
-            {/* Desktop Navigation */}
             <div className="hidden lg:flex gap-4 items-center">
-
               <Link href="/#home">
                 <Button
                   variant="secondary"
@@ -252,7 +248,6 @@ function StickyNavigation() {
               ))}
             </div>
 
-            {/* Mobile Menu Button */}
             <div className="lg:hidden">
               <Button
                 variant="secondary"
@@ -302,7 +297,6 @@ function StickyNavigation() {
             </div>
           </div>
 
-          {/* Enhanced Mobile Navigation Menu */}
           {isMobileMenuOpen && (
             <motion.div
               initial={{ opacity: 0, y: -20 }}
@@ -336,17 +330,14 @@ function StickyNavigation() {
                 })}
               </div>
 
-              {/* Decorative middle section */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.8 }}
                 className="flex flex-col items-center gap-4 py-8"
               >
-                {/* Decorative line */}
                 <div className="w-16 h-px bg-gradient-to-r from-transparent via-blue-400/40 to-transparent" />
 
-                {/* Quick info card */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -362,7 +353,6 @@ function StickyNavigation() {
                 </motion.div>
               </motion.div>
 
-              {/* Footer with Johann Vårvik text and social links */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -370,7 +360,6 @@ function StickyNavigation() {
                 className="pt-8 border-t border-white/10"
               >
                 <div className="flex items-center justify-between">
-                  {/* Johann Vårvik text */}
                   <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -380,7 +369,6 @@ function StickyNavigation() {
                     Johann Vårvik
                   </motion.div>
 
-                  {/* Social Links */}
                   <div className="flex gap-3">
                     <Link href="https://github.com/vaarvik" target="_blank">
                       <Button
