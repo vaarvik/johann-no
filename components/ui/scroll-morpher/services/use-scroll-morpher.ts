@@ -16,36 +16,48 @@ export function useScrollMorpher(
     const isVertical = direction === "vertical"
 
     if (!wrapperRef.current || !sectionRef.current || !contentRef.current) {
-      throw new Error(
-        "All elements must be defined: wrapperRef, sectionRef, and contentRef.",
-      )
+      return
     }
 
-    updateTransformation()
-    updateSectionSize()
+    const initTimeout = requestAnimationFrame(() => {
+      updateTransformation()
+      updateSectionSize()
+    })
+
     window.addEventListener("resize", updateSectionSize)
     window.addEventListener("scroll", updateTransformation)
 
     return () => {
+      cancelAnimationFrame(initTimeout)
       window.removeEventListener("scroll", updateTransformation)
       window.removeEventListener("resize", updateSectionSize)
     }
 
     function updateSectionSize() {
-      wrapperRef.current!.style.height = isVertical
+      if (!wrapperRef.current || !contentRef.current)
+        return
+      if (typeof window === "undefined")
+        return
+
+      wrapperRef.current.style.height = isVertical
         ? "auto"
-        : `${window.innerHeight + (contentRef.current!.offsetWidth - window.innerWidth)}px`
+        : `${window.innerHeight + (contentRef.current.offsetWidth - window.innerWidth)}px`
     }
 
     function updateTransformation() {
+      if (!wrapperRef.current || !sectionRef.current || !contentRef.current)
+        return
+      if (typeof window === "undefined")
+        return
+
       const offset = Math.max(
         0,
-        window.scrollY - (wrapperRef.current!.offsetTop ?? 0),
+        window.scrollY - (wrapperRef.current.offsetTop ?? 0),
       )
 
       const contentSize = isVertical
-        ? contentRef.current!.offsetHeight
-        : contentRef.current!.offsetWidth
+        ? contentRef.current.offsetHeight
+        : contentRef.current.offsetWidth
       const windowSize = isVertical ? window.innerHeight : window.innerWidth
       const limit = contentSize - windowSize
 
@@ -53,13 +65,16 @@ export function useScrollMorpher(
         const transformValue = isVertical
           ? `translate3d(0, -0px, 0)`
           : `translate3d(-${offset}px, 0, 0)`
-        sectionRef.current!.style.transform = transformValue
+        sectionRef.current.style.transform = transformValue
       }
 
-      const visibleItems = itemRefs
-        .current!.map((item, index) =>
-        isElementVisible(item, threshold) ? index : -1,
-      ).filter(index => index !== -1)
+      // Filter out null items and check visibility
+      const visibleItems = itemRefs.current
+        .filter(item => item !== null && item !== undefined)
+        .map((item, index) =>
+          isElementVisible(item, threshold) ? index : -1,
+        )
+        .filter(index => index !== -1)
 
       setVisibleItems(visibleItems)
     }
