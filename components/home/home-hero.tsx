@@ -232,7 +232,7 @@ function StickyNavigation() {
                   size="icon"
                   startIcon="home"
                   startIconClassName="h-5 w-5 sm:h-6 sm:w-6"
-                  className="w-9 h-9 sm:w-10 sm:h-9 transition-all duration-300 bg-white/10 hover:bg-white/20 text-white border-white/20 hover:border-white/30"
+                  className="w-9 h-9 sm:w-10 sm:h-9 transition-all duration-300 bg-white/10 hover:bg-white/20 text-white hover:text-white border-white/20 hover:border-white/30"
                 />
               </Link>
               {navigationItems.filter(item => !item.showOnMobile).map(item => (
@@ -240,7 +240,7 @@ function StickyNavigation() {
                   <Button
                     key={item.href}
                     variant="secondary"
-                    className="bg-white/10 hover:bg-white/20 text-white border-white/20 hover:border-white/30 backdrop-blur-sm"
+                    className="bg-white/10 hover:bg-white/20 text-white hover:text-white border-white/20 hover:border-white/30 backdrop-blur-sm"
                   >
                     {item.label}
                   </Button>
@@ -254,7 +254,7 @@ function StickyNavigation() {
                 size="icon"
                 startIcon={isMobileMenuOpen ? "x" : "menu"}
                 startIconClassName="h-5 w-5"
-                className="w-9 h-9 transition-all duration-300 relative z-50 bg-white/10 hover:bg-white/20 text-white border-white/20 hover:border-white/30 backdrop-blur-sm"
+                className="w-9 h-9 transition-all duration-300 relative z-50 bg-white/10 hover:bg-white/20 text-white hover:text-white border-white/20 hover:border-white/30 backdrop-blur-sm"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               />
             </div>
@@ -265,6 +265,7 @@ function StickyNavigation() {
                   title="Currently at Aevy"
                   subtitle="Location: Oslo, Norway"
                   href="https://aevy.io"
+                  side="left"
                 />
               </div>
               <Link href="https://github.com/vaarvik" target="_blank">
