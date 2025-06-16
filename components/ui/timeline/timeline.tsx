@@ -8,9 +8,13 @@ import { cn } from "@/lib/utils"
 import ScrollMorpher from "../scroll-morpher/scroll-morpher"
 
 const timelineItemVariants = cva(
-  "flex items-center h-screen overflow-hidden relative text-left transition-all duration-300 ease-in-out w-full md:flex-col md:h-[66%] md:justify-end md:w-screen before:content-[''] before:bg-indigo-600 before:h-screen before:w-2 before:z-10 md:before:h-4 md:before:w-full md:before:absolute",
+  "flex items-center h-screen overflow-hidden relative text-left transition-all duration-300 ease-in-out w-full ",
   {
     variants: {
+      variant: {
+        horizontal: "flex-col h-[66%] justify-end w-screen",
+        vertical: "",
+      },
       device: {
         mobile: "", // "flex-col h-auto w-full md:h-screen md:w-auto",
         tablet: "", // "flex-col h-auto w-full md:h-screen md:w-auto",
@@ -23,10 +27,34 @@ const timelineItemVariants = cva(
   },
 )
 
-const timelineItemPoleVariants = cva(
-  "flex flex-col justify-center md:left-[-200px] relative transform scale-x-0 origin-left transition-transform duration-800 ease-[cubic-bezier(0.72,1.5,0.1,0.9)] transition-delay-[1.12s] w-[calc(100vw-48px)] md:scale-x-100 md:items-center md:h-[480px] md:w-auto md:origin-bottom md:scale-y-0 md:justify-start after:content-[''] after:bg-indigo-600 after:block after:h-2 after:w-full md:after:h-full md:after:absolute md:after:w-2 before:content-[''] before:bg-indigo-600 before:block before:rounded-full before:h-6 before:-left-3 before:opacity-0 before:absolute before:w-6 md:before:bottom-0 md:before:left-[unset] md:before:opacity-100",
+const timelineItemLineVariants = cva(
+  "before:content-[''] before:bg-indigo-600 before:h-screen before:w-2 before:z-10",
   {
     variants: {
+      variant: {
+        horizontal: "before:h-4 before:w-full before:absolute",
+        vertical: "",
+      },
+      device: {
+        mobile: "", // "before:h-4 before:absolute before:w-full",
+        tablet: "", // "before:h-4 before:absolute before:w-full",
+        desktop: "", // "before:h-screen before:w-2 before:z-10 md:before:h-4 md:before:w-full md:before:absolute",
+      },
+    },
+    defaultVariants: {
+      device: "desktop",
+    },
+  },
+)
+
+const timelineItemPoleVariants = cva(
+  "flex flex-col justify-center relative transform scale-x-0 origin-left transition-transform duration-800 ease-[cubic-bezier(0.72,1.5,0.1,0.9)] transition-delay-[1.12s] w-[calc(100vw-48px)]",
+  {
+    variants: {
+      variant: {
+        horizontal: "scale-x-100 items-center h-[480px] w-auto origin-bottom scale-y-0 justify-start left-[-200px] ",
+        vertical: "",
+      },
       device: {
         mobile: "", // "items-center h-auto justify-start transform scale-y-0 origin-bottom w-auto md:h-[480px]",
         tablet: "", // "items-center h-auto justify-start transform scale-y-0 origin-bottom w-auto md:h-[480px]",
@@ -39,62 +67,42 @@ const timelineItemPoleVariants = cva(
   },
 )
 
-const timelineItemRightVariants = cva(
-  "flex flex-col items-end absolute right-0 top-2 perspective-[1000px] perspective-origin-top md:left-1 md:right-[unset] md:top-[unset]",
+const timelineItemPolePoleVariants = cva(
+  "after:content-[''] after:bg-indigo-600 after:block after:h-2 after:w-full",
   {
     variants: {
+      variant: {
+        horizontal: "after:h-full after:absolute after:w-2",
+        vertical: "",
+      },
+    },
+  },
+)
+
+const timelineItemPoleBaseVariants = cva(
+  "before:content-[''] before:bg-indigo-600 before:block before:rounded-full before:h-6 before:-left-3 before:opacity-0 before:absolute before:w-6",
+  {
+    variants: {
+      variant: {
+        horizontal: "before:bottom-0 before:left-[unset] before:opacity-100",
+        vertical: "",
+      },
+    },
+  },
+)
+
+const timelineItemRightVariants = cva(
+  "flex flex-col items-end absolute right-0 top-2 perspective-[1000px] perspective-origin-top",
+  {
+    variants: {
+      variant: {
+        horizontal: "left-1 right-[unset] top-[unset]",
+        vertical: "",
+      },
       device: {
         mobile: "", // "left-1 right-auto top-auto",
         tablet: "", // "left-1 right-auto top-auto",
         desktop: "", // "right-0 top-2",
-      },
-    },
-    defaultVariants: {
-      device: "desktop",
-    },
-  },
-)
-
-const _timelineItemBeforeVariants = cva(
-  "before:content-[''] before:bg-indigo-600 before:h-screen before:w-2 before:z-10",
-  {
-    variants: {
-      device: {
-        mobile: "before:h-4 before:absolute before:w-full",
-        tablet: "before:h-4 before:absolute before:w-full",
-        desktop: "before:h-screen before:w-2",
-      },
-    },
-    defaultVariants: {
-      device: "desktop",
-    },
-  },
-)
-
-const _timelineItemPoleAfterVariants = cva(
-  "after:content-[''] after:bg-indigo-600 after:block after:h-2 after:w-full",
-  {
-    variants: {
-      device: {
-        mobile: "after:h-full after:absolute after:w-2",
-        tablet: "after:h-full after:absolute after:w-2",
-        desktop: "after:h-2 after:w-full",
-      },
-    },
-    defaultVariants: {
-      device: "desktop",
-    },
-  },
-)
-
-const _timelineItemPoleBeforeVariants = cva(
-  "before:content-[''] before:bg-indigo-600 before:block before:h-6 before:-left-3 before:opacity-0 before:absolute before:w-6",
-  {
-    variants: {
-      device: {
-        mobile: "before:bottom-0 before:left-auto before:opacity-100",
-        tablet: "before:bottom-0 before:left-auto before:opacity-100",
-        desktop: "before:-left-3 before:opacity-0",
       },
     },
     defaultVariants: {
@@ -112,16 +120,16 @@ interface TimelineProps
   }[]
 }
 
-export default function Timeline({ items, className, ...props }: TimelineProps) {
+export default function Timeline({ items, className, variant = "horizontal", ...props }: TimelineProps) {
   return (
     <div className={cn(className)} {...props}>
       <ScrollMorpher
-        direction="horizontal"
+        direction={variant}
         items={items.map((item, index) => ({
           id: item.id,
           content: (isVisible: boolean): React.JSX.Element => {
             return (
-              <motion.div className={cn(timelineItemVariants())} initial={{ scaleX: 0, originX: 0 }} animate={isVisible && index === 0 ? { scaleX: 1, originX: 0 } : { scaleX: 1, originX: 0 }}>
+              <motion.div className={cn(timelineItemVariants({ variant }), timelineItemLineVariants({ variant }))} initial={{ scaleX: 0, originX: 0 }} animate={isVisible && index === 0 ? { scaleX: 1, originX: 0 } : { scaleX: 1, originX: 0 }}>
                 <motion.div className="absolute top-0 left-0 w-full h-full">
                   {/* Creative rainbow ghost effects - more subtle and varied */}
                   <motion.div
@@ -370,8 +378,8 @@ export default function Timeline({ items, className, ...props }: TimelineProps) 
                   />
                 </motion.div>
 
-                <div className={cn(timelineItemPoleVariants(), isVisible && "!scale-100 transition-delay-0")}>
-                  <div className={cn(timelineItemRightVariants())}>
+                <div className={cn(timelineItemPoleVariants({ variant }), timelineItemPolePoleVariants({ variant }), timelineItemPoleBaseVariants({ variant }), isVisible && "!scale-100 transition-delay-0")}>
+                  <div className={cn(timelineItemRightVariants({ variant }))}>
                     {item.content(isVisible)}
                   </div>
                 </div>

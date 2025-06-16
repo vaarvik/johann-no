@@ -13,7 +13,7 @@ const scrollMorpherVariants = cva(
     variants: {
       direction: {
         horizontal: "h-screen w-auto",
-        vertical: "h-auto w-full md:h-screen md:w-auto",
+        vertical: "h-auto w-full",
       },
     },
     defaultVariants: {
@@ -28,7 +28,7 @@ const contentVariants = cva(
     variants: {
       direction: {
         horizontal: "flex-row h-screen",
-        vertical: "flex-col h-auto w-full md:flex-row md:h-screen md:w-auto",
+        vertical: "flex-col h-auto w-full",
       },
     },
     defaultVariants: {
@@ -43,7 +43,7 @@ const itemVariants = cva(
     variants: {
       direction: {
         horizontal: "h-full w-auto",
-        vertical: "h-auto w-auto md:h-full md:w-auto",
+        vertical: "h-auto w-auto",
       },
     },
     defaultVariants: {
