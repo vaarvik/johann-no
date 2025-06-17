@@ -44,11 +44,11 @@ export default function HomePortfolioItem({ isVisible }: { isVisible: boolean })
 
   return (
     <div className="relative bg-slate-800 shadow-xl w-full lg:min-w-[500px]">
-      <div className="bg-indigo-900/40 p-4 lg:p-6 border-b border-indigo-700/30">
+      <div className="bg-indigo-900/40 p-4 border-b border-indigo-700/30">
         <div className="flex justify-between items-start gap-6 text-white sm:flex-row flex-col">
           <div className="w-full">
             <h3 className="text-xl lg:text-2xl font-bold mb-2">Air Traffic Management System</h3>
-            <div className="flex flex-col items-start gap-2 text-indigo-200 text-sm lg:flex-row lg:items-center lg:gap-4">
+            <div className="flex gap-0 text-indigo-200 text-sm flex-col lg:items-start lg:gap-2">
               <div className="flex items-center gap-2">
                 <Clock className="h-4 w-4" />
                 <span>Jan 2020 - Sept 2021</span>
