@@ -48,7 +48,7 @@ export default function HomePortfolioItem({ isVisible }: { isVisible: boolean })
         <div className="flex justify-between items-start gap-6 text-white sm:flex-row flex-col">
           <div className="w-full">
             <h3 className="text-xl lg:text-2xl font-bold mb-2">Air Traffic Management System</h3>
-            <div className="flex gap-0 text-indigo-200 text-sm flex-col lg:items-start lg:gap-2">
+            <div className="flex text-indigo-200 text-sm flex-col lg:items-start">
               <div className="flex items-center gap-2">
                 <Clock className="h-4 w-4" />
                 <span>Jan 2020 - Sept 2021</span>
@@ -58,19 +58,12 @@ export default function HomePortfolioItem({ isVisible }: { isVisible: boolean })
                   <User className="h-4 w-4" />
                   <span>IT Consultant</span>
                 </div>
-                {isMobile && (
-                  <Badge className="bg-indigo-700 text-indigo-100 border border-indigo-600 px-3 py-1 text-xs font-medium shrink-0">
-                    LEAD PROJECT
-                  </Badge>
-                )}
+                <Badge className="bg-indigo-700 text-indigo-100 border border-indigo-600 px-3 py-1 text-xs font-medium shrink-0">
+                  LEAD PROJECT
+                </Badge>
               </div>
             </div>
           </div>
-          {!isMobile && (
-            <Badge className="bg-indigo-700 text-indigo-100 border border-indigo-600 px-3 py-1 text-xs font-medium shrink-0">
-              LEAD PROJECT
-            </Badge>
-          )}
         </div>
       </div>
 
