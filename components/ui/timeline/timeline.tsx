@@ -53,7 +53,7 @@ const timelineItemPoleVariants = cva(
     variants: {
       variant: {
         horizontal: "scale-x-100 items-center h-[480px] w-auto origin-bottom scale-y-0 justify-start left-[-200px] ",
-        vertical: "",
+        vertical: "top-[-144px]",
       },
       device: {
         mobile: "", // "items-center h-auto justify-start transform scale-y-0 origin-bottom w-auto md:h-[480px]",
@@ -92,11 +92,11 @@ const timelineItemPoleBaseVariants = cva(
 )
 
 const timelineItemRightVariants = cva(
-  "flex flex-col items-end absolute right-0 top-2 perspective-[1000px] perspective-origin-top",
+  "flex flex-col items-end absolute right-0 top-2 perspective-[1000px] perspective-origin-top w-full",
   {
     variants: {
       variant: {
-        horizontal: "left-1 right-[unset] top-[unset]",
+        horizontal: "left-1 right-[unset] top-[unset] w-auto",
         vertical: "",
       },
       device: {
@@ -122,7 +122,7 @@ interface TimelineProps
 
 export default function Timeline({ items, className, variant = "horizontal", ...props }: TimelineProps) {
   return (
-    <div className={cn(className)} {...props}>
+    <div className={cn(className, { "px-4": variant === "vertical" })} {...props}>
       <ScrollMorpher
         direction={variant}
         items={items.map((item, index) => ({
