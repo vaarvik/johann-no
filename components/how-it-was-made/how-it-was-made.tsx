@@ -317,7 +317,7 @@ function FigmaButton() {
 
 function GithubButton() {
   return (
-    <Link href="https://github.com/">
+    <Link href="https://github.com/vaarvik/johann-no">
       <Button variant="tertiary" className="bg-slate-900 hover:bg-slate-800 text-white w-fit">
         <Github className="h-4 w-4 mr-2" />
         View Source Code
