@@ -47,16 +47,16 @@ export function Navigation() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 lg:hidden"
+          className="fixed top-0 inset-0 bg-black/60 backdrop-blur-sm z-40 lg:hidden"
           onClick={() => setIsMobileMenuOpen(false)}
         />
       )}
 
       <motion.nav
         className={`
-          sticky top-0 z-50
+          z-50
           transition-all duration-300 bg-slate-900/50 backdrop-blur-xl border-slate-700/30
-          ${isMobileMenuOpen ? "bg-slate-900/95 backdrop-blur-2xl border-slate-600/40" : ""}
+          ${isMobileMenuOpen ? "fixed top-0 w-full bg-slate-900/95 backdrop-blur-2xl border-slate-600/40" : "sticky top-0"}
         `}
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
