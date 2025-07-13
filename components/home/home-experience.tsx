@@ -3,7 +3,6 @@
 import { motion } from "framer-motion"
 import { Brain, Code, Database, Loader2, Palette, Server, Terminal } from "lucide-react"
 import { useEffect, useState } from "react"
-import { WithPopover } from "../ui/popover"
 import { YearCounter } from "../ui/year-counter/year-counter"
 
 const skills = [
@@ -32,7 +31,7 @@ const skills = [
     iconColor: "text-slate-700",
     technologies: [
       { name: "Node.js", experience: "5+ years", projects: 20, },
-      { name: "Java", experience: "6+ years", projects: 25, },
+      { name: "Java/Kotlin", experience: "6+ years", projects: 25, },
       { name: "Golang", experience: "2+ years", projects: 6, },
       { name: "Python", experience: "3+ years", projects: 8, }
     ]
@@ -351,28 +350,29 @@ export default function HomeExperience() {
                         </h4>
                         <div className="flex flex-wrap gap-1 sm:gap-2">
                           {skill.technologies.map(tech => (
-                            <WithPopover
-                              className="max-w-[200px]"
-                              key={`${skill.name}-${tech.name}`}
-                              content={(
-                                <div className="space-y-1">
-                                  <h4 className="text-sm font-semibold text-slate-800">{tech.name}</h4>
-                                  <div className="flex justify-between items-center text-xs">
-                                    <span className="text-slate-700">{tech.experience}</span>
-                                    <span className="text-slate-700">{tech.projects}+ projects</span>
-                                  </div>
-                                </div>
-                              )}
-                            >
+                            // <WithPopover
+                            //   className="max-w-[200px]"
+                            //   key={`${skill.name}-${tech.name}`}
+                            //   content={(
+                            //     <div className="space-y-1">
+                            //       <h4 className="text-sm font-semibold text-slate-800">{tech.name}</h4>
+                            //       <div className="flex justify-between items-center text-xs">
+                            //         <span className="text-slate-700">{tech.experience}</span>
+                            //         <span className="text-slate-700">{tech.projects}+ projects</span>
+                            //       </div>
+                            //     </div>
+                            //   )}
+                            // >
 
-                              <motion.button
-                                className="inline-flex items-center px-2 py-1 sm:px-3 sm:py-1 text-xs font-semibold bg-white/90 text-slate-800 hover:bg-white cursor-pointer transition-all duration-200 border-2 border-white/50 hover:border-white shadow-lg hover:shadow-xl transform hover:scale-105 rounded-md"
-                                whileHover={{ y: -2 }}
-                                whileTap={{ scale: 0.95 }}
-                              >
-                                {tech.name}
-                              </motion.button>
-                            </WithPopover>
+                            <motion.button
+                              key={`${skill.name}-${tech.name}`}
+                              className="inline-flex items-center px-2 py-1 sm:px-3 sm:py-1 text-xs font-semibold bg-white/90 text-slate-800 hover:bg-white transition-all duration-200 border-2 border-white/50 hover:border-white shadow-lg hover:shadow-xl transform hover:scale-105 rounded-md"
+                              whileHover={{ y: -2 }}
+                              whileTap={{ scale: 0.95 }}
+                            >
+                              {tech.name}
+                            </motion.button>
+                            // </WithPopover>
                           ))}
                         </div>
                       </div>
@@ -392,7 +392,7 @@ export default function HomeExperience() {
             ))}
           </div>
 
-          <motion.div
+          {/* <motion.div
             className="text-center"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -402,7 +402,7 @@ export default function HomeExperience() {
             <p className="text-sm sm:text-base text-slate-500 italic px-4">
               {isMobile ? "💡 Tap any technology for details" : "💡 Click on any technology within a skill to see detailed experience and project information"}
             </p>
-          </motion.div>
+          </motion.div> */}
         </div>
       </div>
     </section>

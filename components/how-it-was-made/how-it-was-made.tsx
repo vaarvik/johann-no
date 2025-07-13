@@ -1,11 +1,12 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { ArrowLeft, Code2, ExternalLink, Figma, Github, Layers, Monitor, Palette, Smartphone, Zap } from "lucide-react"
+import { ArrowLeft, Code2, ExternalLink, Figma, Github, Layers, Palette, Zap } from "lucide-react"
 import Link from "next/link"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import { WithTooltip } from "../ui/tooltip"
 
 export default function HowItWasMade() {
   return (
@@ -44,7 +45,7 @@ export default function HowItWasMade() {
           <h2 className="text-4xl font-bold text-slate-900 mb-4">From Concept to Reality</h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto">
             This portfolio was built using modern design principles, starting from wireframes to high-fidelity
-            designs in Figma, then implemented with React, TypeScript, and Tailwind CSS.
+            designs in Figma, then implemented with Next.js, React, TypeScript, and Tailwind CSS.
           </p>
         </motion.div>
 
@@ -154,11 +155,7 @@ export default function HowItWasMade() {
                         </Badge>
                       ))}
                     </div>
-                    <Button className="bg-blue-600 hover:bg-blue-700 text-white w-fit">
-                      <Figma className="h-4 w-4 mr-2" />
-                      View Figma Design
-                      <ExternalLink className="h-4 w-4 ml-2" />
-                    </Button>
+                    <FigmaButton />
                   </div>
                 </div>
               </CardContent>
@@ -196,11 +193,7 @@ export default function HowItWasMade() {
                         </Badge>
                       ))}
                     </div>
-                    <Button className="bg-slate-900 hover:bg-slate-800 text-white w-fit">
-                      <Github className="h-4 w-4 mr-2" />
-                      View Source Code
-                      <ExternalLink className="h-4 w-4 ml-2" />
-                    </Button>
+                    <GithubButton />
                   </div>
                   <div className="bg-slate-900 p-8 lg:p-12 flex items-center justify-center min-h-[300px]">
                     <div className="w-full max-w-sm bg-slate-800 border border-slate-700 overflow-hidden">
@@ -230,7 +223,7 @@ export default function HowItWasMade() {
           </motion.div>
         </div>
 
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -282,7 +275,7 @@ export default function HowItWasMade() {
               </div>
             </div>
           </div>
-        </motion.div>
+        </motion.div> */}
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -292,19 +285,11 @@ export default function HowItWasMade() {
           className="text-center"
         >
           <h3 className="text-2xl font-bold text-slate-900 mb-8">Explore the Project</h3>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Button className="bg-slate-900 hover:bg-slate-800 text-white">
-              <Github className="h-4 w-4 mr-2" />
-              GitHub Repository
-              <ExternalLink className="h-4 w-4 ml-2" />
-            </Button>
-            <Button variant="outline" className="border-blue-500 text-blue-600 hover:bg-blue-50">
-              <Figma className="h-4 w-4 mr-2" />
-              Figma Design Files
-              <ExternalLink className="h-4 w-4 ml-2" />
-            </Button>
+          <div className="flex flex-wrap gap-4 justify-center items-start">
+            <GithubButton />
+            <FigmaButton />
             <Link href="/">
-              <Button variant="outline">
+              <Button variant="tertiary">
                 <ArrowLeft className="h-4 w-4 mr-2" />
                 Back to Portfolio
               </Button>
@@ -313,5 +298,31 @@ export default function HowItWasMade() {
         </motion.div>
       </div>
     </div>
+  )
+}
+
+function FigmaButton() {
+  return (
+    <WithTooltip content={"Thanks for your interest, but you'll have to reach out to me to get access to this one."}>
+      <div className="max-w-fit">
+        <Button variant="outline" className="bg-blue-600 hover:bg-blue-700 text-white w-fit" disabled>
+          <Figma className="h-4 w-4 mr-2" />
+          Figma Design Files
+          <ExternalLink className="h-4 w-4 ml-2" />
+        </Button>
+      </div>
+    </WithTooltip>
+  )
+}
+
+function GithubButton() {
+  return (
+    <Link href="https://github.com/">
+      <Button variant="tertiary" className="bg-slate-900 hover:bg-slate-800 text-white w-fit">
+        <Github className="h-4 w-4 mr-2" />
+        View Source Code
+        <ExternalLink className="h-4 w-4 ml-2" />
+      </Button>
+    </Link>
   )
 }

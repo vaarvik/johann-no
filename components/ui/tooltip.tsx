@@ -74,7 +74,7 @@ function WithTooltip({ children, enabled = true, content, className, arrowClassN
     return <>{children}</>
 
   if (typeof content === "string") {
-    content = <Paragraph className="max-w-[350px] whitespace-normal break-words" as="div">{content}</Paragraph>
+    content = <Paragraph className="max-w-[250px] whitespace-normal break-words" as="div">{content}</Paragraph>
   }
 
   return (
