@@ -1,4 +1,4 @@
-import { Building, Clock, Code, Target, User } from "lucide-react"
+import { Building, Clock, Code, User } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { WithPopover } from "@/components/ui/popover"
@@ -113,9 +113,8 @@ export default function HomePortfolioItem({ isVisible, item }: { isVisible: bool
               </div>
 
               <div className="bg-slate-800 p-4">
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between items-center gap-4">
                   <div className="flex items-center gap-2 text-slate-300 text-sm">
-                    <Target className="h-4 w-4" />
                     <span>{item.mission}</span>
                   </div>
 
@@ -124,12 +123,12 @@ export default function HomePortfolioItem({ isVisible, item }: { isVisible: bool
                     align="end"
                     className="max-w-xl w-auto"
                     content={(
-                      <div className="p-3">
+                      <div className="p-2">
                         <div>
                           <h4 className="text-lg font-semibold text-slate-800 mb-2">Project Overview</h4>
                         </div>
                         <div>
-                          <p className="text-slate-600 leading-relaxed mb-4">
+                          <p className="text-slate-600 leading-relaxed">
                             {item.overview}
                           </p>
                         </div>
