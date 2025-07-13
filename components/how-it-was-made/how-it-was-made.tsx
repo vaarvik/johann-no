@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { ArrowLeft, Code2, ExternalLink, Figma, Github, Layers, Palette, Zap } from "lucide-react"
 import Link from "next/link"
+
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -222,60 +223,6 @@ export default function HowItWasMade() {
             </Card>
           </motion.div>
         </div>
-
-        {/* <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="bg-white p-8 border border-slate-200 mb-16"
-        >
-          <h3 className="text-2xl font-bold text-slate-900 mb-6 text-center">Technical Architecture</h3>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 flex items-center justify-center mx-auto mb-4">
-                <Monitor className="h-8 w-8 text-blue-600" />
-              </div>
-              <h4 className="font-semibold text-slate-900 mb-2">Frontend Stack</h4>
-              <p className="text-sm text-slate-600 mb-3">Modern React application with TypeScript</p>
-              <div className="flex flex-wrap gap-1 justify-center">
-                {["React 18", "TypeScript", "Vite", "ESLint"].map(tech => (
-                  <Badge key={tech} variant="secondary" className="text-xs">
-                    {tech}
-                  </Badge>
-                ))}
-              </div>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-purple-100 flex items-center justify-center mx-auto mb-4">
-                <Palette className="h-8 w-8 text-purple-600" />
-              </div>
-              <h4 className="font-semibold text-slate-900 mb-2">Styling & UI</h4>
-              <p className="text-sm text-slate-600 mb-3">Tailwind CSS with component system</p>
-              <div className="flex flex-wrap gap-1 justify-center">
-                {["Tailwind CSS", "Shadcn/ui", "Framer Motion", "Lucide Icons"].map(tech => (
-                  <Badge key={tech} variant="secondary" className="text-xs">
-                    {tech}
-                  </Badge>
-                ))}
-              </div>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-green-100 flex items-center justify-center mx-auto mb-4">
-                <Smartphone className="h-8 w-8 text-green-600" />
-              </div>
-              <h4 className="font-semibold text-slate-900 mb-2">Features</h4>
-              <p className="text-sm text-slate-600 mb-3">Responsive design with modern UX</p>
-              <div className="flex flex-wrap gap-1 justify-center">
-                {["Responsive", "Animations", "Dark Mode", "Accessibility"].map(tech => (
-                  <Badge key={tech} variant="secondary" className="text-xs">
-                    {tech}
-                  </Badge>
-                ))}
-              </div>
-            </div>
-          </div>
-        </motion.div> */}
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}

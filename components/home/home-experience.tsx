@@ -50,7 +50,7 @@ const skills = [
   },
   {
     name: "Infrastructure",
-    level: 60,
+    level: 65,
     icon: Database,
     bgColor: "bg-gradient-to-br from-emerald-500 via-emerald-600 to-teal-700",
     borderColor: "border-emerald-400",
