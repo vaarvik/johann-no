@@ -33,7 +33,6 @@ const skills = [
       { name: "Node.js", experience: "5+ years", projects: 20, },
       { name: "Java/Kotlin", experience: "6+ years", projects: 25, },
       { name: "Golang", experience: "2+ years", projects: 6, },
-      { name: "Python", experience: "3+ years", projects: 8, }
     ]
   },
   {
@@ -46,9 +45,7 @@ const skills = [
     iconColor: "text-cyan-600",
     technologies: [
       { name: "OpenAI/GPT", experience: "2+ years", projects: 12, },
-      { name: "LangChain", experience: "1+ year", projects: 6 },
-      { name: "Python ML", experience: "3+ years", projects: 10 },
-      { name: "TensorFlow", experience: "2+ years", projects: 4 }
+      { name: "Gemini", experience: "1+ year", projects: 6 },
     ]
   },
   {
@@ -60,8 +57,7 @@ const skills = [
     iconBg: "bg-white",
     iconColor: "text-emerald-600",
     technologies: [
-      { name: "AWS", experience: "4+ years", projects: 15, },
-      { name: "Docker", experience: "4+ years", projects: 18, },
+      { name: "Azure", experience: "4+ years", projects: 15, },
       { name: "Kubernetes", experience: "2+ years", projects: 5, },
       { name: "CI/CD", experience: "5+ years", projects: 20, }
     ]
@@ -76,9 +72,8 @@ const skills = [
     iconColor: "text-purple-600",
     technologies: [
       { name: "Figma", experience: "4+ years", projects: 30, },
-      { name: "UX/UI", experience: "5+ years", projects: 25, },
-      { name: "Prototyping", experience: "4+ years", projects: 20, },
-      { name: "Design Systems", experience: "3+ years", projects: 8, }
+      { name: "Design Systems", experience: "3+ years", projects: 8, },
+      { name: "UX Research", experience: "4+ years", projects: 20, },
     ]
   }
 ]
