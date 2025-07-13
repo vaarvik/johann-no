@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { Geist, Meow_Script, Space_Mono } from "next/font/google"
+import Script from "next/script"
 import "./globals.css"
 
 const geistSans = Geist({
@@ -20,21 +21,45 @@ const heroFont = Meow_Script({
 
 export const metadata: Metadata = {
   title: {
-    default: "Johann Vårvik | Full-Stack Developer",
+    default: "Johann Vårvik | Full-Stack Developer & IT Manager",
     template: "%s | Johann Vårvik",
   },
-  description: "The portfolio of Johann, a full-stack developer specializing in React, TypeScript, and modern web technologies.",
+  description: "Full-stack developer and IT manager specializing in React, TypeScript, Node.js, and modern web technologies. Leading technical teams and building scalable applications.",
+  keywords: ["full-stack developer", "React", "TypeScript", "Node.js", "IT manager", "web development", "portfolio"],
+  authors: [{ name: "Johann Vårvik" }],
+  creator: "Johann Vårvik",
+  publisher: "Johann Vårvik",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL("https://johann.no"), // TODO: Update to your actual domain
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "Johann Vårvik | Full-Stack Developer",
-    description: "The portfolio of Johann, a full-stack developer specializing in React, TypeScript, and modern web technologies.",
-    url: "https://johann-v2.vercel.app/", // TODO: Remember to change this to your actual domain
+    title: "Johann Vårvik | Full-Stack Developer & IT Manager",
+    description: "Full-stack developer and IT manager specializing in React, TypeScript, Node.js, and modern web technologies. Leading technical teams and building scalable applications.",
+    url: "https://johann.no/", // TODO: Remember to change this to your actual domain
     siteName: "Johann Vårvik",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/og-image.jpg", // TODO: Create and add this image
+        width: 1200,
+        height: 630,
+        alt: "Johann Vårvik - Full-Stack Developer & IT Manager",
+      },
+    ],
   },
   twitter: {
-    title: "Johann's Portfolio | Full-Stack Developer",
     card: "summary_large_image",
+    title: "Johann Vårvik | Full-Stack Developer & IT Manager",
+    description: "Full-stack developer and IT manager specializing in React, TypeScript, Node.js, and modern web technologies.",
+    creator: "@johann_vaarvik", // TODO: Update with your actual Twitter handle
+    images: ["/og-image.jpg"], // TODO: Create and add this image
   },
   robots: {
     index: true,
@@ -47,6 +72,10 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  verification: {
+    google: "TODO", // TODO: Add Google Search Console verification code
+  },
+  manifest: "/manifest.json",
 }
 
 export default function RootLayout({
@@ -54,8 +83,47 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Johann Vårvik",
+    "jobTitle": "Full-Stack Developer & IT Manager",
+    "description": "Full-stack developer and IT manager specializing in React, TypeScript, Node.js, and modern web technologies.",
+    "url": "https://johann.no",
+    "sameAs": [
+      "https://github.com/vaarvik",
+      "https://www.linkedin.com/in/johann-v%C3%A5rvik-9114a7163/"
+    ],
+    "knowsAbout": [
+      "React",
+      "TypeScript",
+      "Node.js",
+      "Java",
+      "Kotlin",
+      "PostgreSQL",
+      "Kubernetes",
+      "Azure",
+      "Web Development",
+      "System Architecture",
+      "Team Management"
+    ],
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Aevy"
+    }
+  }
+
   return (
     <html lang="en">
+      <head>
+        <Script
+          id="structured-data"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(structuredData),
+          }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${spaceMono.variable} ${heroFont.variable} antialiased`}
       >

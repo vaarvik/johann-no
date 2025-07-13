@@ -1,0 +1,16 @@
+{
+  "name": "Johann Vårvik - Full-Stack Developer & IT Manager",
+  "short_name": "Johann Vårvik",
+  "description": "Full-stack developer and IT manager specializing in React, TypeScript, Node.js, and modern web technologies.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#1e293b",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ]
+}
