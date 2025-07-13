@@ -4,6 +4,7 @@ import HomeContact from "@/components/home/home-contact"
 import HomeExperience from "@/components/home/home-experience"
 import HomeHero from "@/components/home/home-hero/home-hero"
 import HomePortfolio from "@/components/home/home-portfolio/home-portfolio"
+import { Navigation } from "@/components/home/navigation"
 
 export const metadata: Metadata = {
   alternates: {
@@ -16,6 +17,7 @@ export default function Home() {
     <div>
       <main>
         <HomeHero />
+        <Navigation />
         <HomeExperience />
         <HomePortfolio />
         <HomeContact />

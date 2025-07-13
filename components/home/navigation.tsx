@@ -9,23 +9,8 @@ import { Button } from "../ui/button"
 import { LiveStatusIndicator } from "../ui/live-status-indicator"
 
 export function Navigation() {
-  const [isSticky, setIsSticky] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const isMobile = useMobile()
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setIsSticky(window.scrollY > window.innerHeight * 0.92)
-
-      const handleScroll = () => {
-        const scrollPosition = window.scrollY
-        setIsSticky(scrollPosition > window.innerHeight * 0.92)
-      }
-
-      window.addEventListener("scroll", handleScroll)
-      return () => window.removeEventListener("scroll", handleScroll)
-    }
-  }, [])
 
   // Prevent scroll when mobile menu is open
   useEffect(() => {
@@ -69,20 +54,13 @@ export function Navigation() {
 
       <motion.nav
         className={`
-          ${isSticky && !isMobileMenuOpen
-      ? "fixed top-0 left-0 right-0 z-50"
-      : "absolute bottom-0 left-0 right-0 z-20 border-b border-slate-700/20"
-    }
-          transition-all duration-300 bg-slate-900/80 backdrop-blur-xl border-b border-slate-700/30
-          ${isMobileMenuOpen ? "fixed top-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-2xl border-b border-slate-600/40" : ""}
+          sticky top-0 z-50
+          transition-all duration-300 bg-slate-900/50 backdrop-blur-xl border-slate-700/30
+          ${isMobileMenuOpen ? "bg-slate-900/95 backdrop-blur-2xl border-slate-600/40" : ""}
         `}
         initial={{ opacity: 0, y: 50 }}
-        animate={{
-          opacity: 1,
-          y: 0,
-          backgroundColor: isSticky ? "rgba(15, 23, 42, 0.80)" : "transparent"
-        }}
-        transition={{ duration: 0.8, delay: isSticky ? 0 : 1.2 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 1.2 }}
       >
         <div className={`max-w-7xl mx-auto py-4 ${isMobile ? "px-4" : "px-8"} ${isMobileMenuOpen ? "min-h-screen max-w-full w-full flex flex-col" : ""}`}>
           <div className="flex items-center justify-between">

@@ -1,7 +1,6 @@
 "use client"
 
 import { motion, useScroll, useTransform } from "framer-motion"
-import { Navigation } from "../navigation"
 import { HeroContent } from "./components/hero-content"
 import { HeroImage } from "./components/hero-image"
 import { ParticleBackground } from "./components/particle-background"
@@ -11,7 +10,7 @@ export default function HomeHero() {
   const y = useTransform(scrollY, [0, 500], [0, 150])
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-8" id="home">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-8 py-20 lg:py-0 pb-32 -mb-[72px]" id="home">
       <motion.div
         style={{ y }}
         className="absolute inset-0 bg-slate-900"
@@ -27,8 +26,6 @@ export default function HomeHero() {
           <HeroContent />
         </div>
       </div>
-
-      <Navigation />
     </section>
   )
 }

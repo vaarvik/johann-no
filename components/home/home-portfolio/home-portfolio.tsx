@@ -112,7 +112,7 @@ export default function HomePortfolio() {
       <div>
         <div className="pt-32 text-center">
           <h2 className="text-5xl font-bold text-white mb-4">Portfolio Timeline</h2>
-          <p className="text-xl text-slate-300 max-w-2xl mx-auto">
+          <p className="text-xl text-slate-300 max-w-2xl mx-auto px-8">
             Here's what I've been working on lately - a mix of interesting projects where I got to solve real problems and use cool tech.
           </p>
         </div>

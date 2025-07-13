@@ -123,7 +123,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(structuredData),
           }}
-          // eslint-disable-next-line react-dom/no-dangerously-set-innerhtml
+
         />
       </head>
       <body
