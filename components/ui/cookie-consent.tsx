@@ -75,10 +75,7 @@ export default function CookieConsent() {
             <div className="flex-1 text-center md:text-left">
               <Heading as="h3" level={4} className="text-white mb-2 ">Cookies and anonymous analytics</Heading>
               <Paragraph className="text-slate-300">
-                We use PostHog (hosted in the EU) to collect anonymous data, such as page views and clicks, to help improve the website. We do not use ads, cross-site tracking, or personal identifiers.
-              </Paragraph>
-              <Paragraph className="text-slate-300 mt-2">
-                We will store one cookie to remember your consent. Analytics cookies are only set if you accept. <Link href="/privacy" className="text-blue-300 hover:text-white transition-colors duration-200">Read privacy policy.</Link>
+                We use PostHog (hosted in the EU) to collect anonymous data, such as page views and clicks, to help improve the website. We will store one cookie to remember your consent. Analytics cookies are only set if you accept. <Link href="/privacy" className="text-blue-300 hover:text-white transition-colors duration-200">Read privacy policy.</Link>
               </Paragraph>
             </div>
             <div className="flex shrink-0 items-center justify-center md:justify-end gap-3">

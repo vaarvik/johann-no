@@ -207,6 +207,7 @@ export default function HowItWasMade() {
                       <div className="p-4 font-mono text-xs space-y-1">
                         <div className="text-purple-400">import <span className="text-blue-400">React</span> from <span className="text-green-400">'react'</span>;</div>
                         <div className="text-purple-400">import <span className="text-blue-400">&#123; motion &#125;</span> from <span className="text-green-400">'framer-motion'</span>;</div>
+                        {/* eslint-disable-next-line react/no-comment-textnodes */}
                         <div className="text-slate-500">// Component implementation</div>
                         <div className="text-yellow-400">function <span className="text-blue-400">ModernHero</span>() &#123;</div>
                         <div className="pl-4 text-purple-400">return (</div>

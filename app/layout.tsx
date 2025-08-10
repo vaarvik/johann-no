@@ -122,6 +122,7 @@ export default function RootLayout({
         <Script
           id="structured-data"
           type="application/ld+json"
+          // eslint-disable-next-line react-dom/no-dangerously-set-innerhtml
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(structuredData),
           }}
