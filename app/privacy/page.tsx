@@ -103,7 +103,7 @@ export default function PrivacyPage() {
       <section className="space-y-4">
         <Heading as="h2" level={3}>Contact</Heading>
         <Paragraph>
-          For any questions regarding your personal data, please contact us at <a className="underline" href="mailto:privacy@johann.no">privacy@johann.no</a>.
+          For any questions regarding your personal data, please contact us at <a className="underline" href="mailto:contact@johann.no">contact@johann.no</a>.
         </Paragraph>
       </section>
     </main>
