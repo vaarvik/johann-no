@@ -12,7 +12,7 @@ export default function PrivacyPage() {
   return (
     <main className="container mx-auto px-6 md:px-8 py-12 md:py-16 max-w-4xl">
       <Heading as="h1" level={1} className="mb-6">Privacy Policy for Johann.no</Heading>
-      <Paragraph className="mb-8 text-muted-foreground">
+      <Paragraph className="mb-8">
         Your privacy matters. This page explains what data is collected, how it is used, and your rights.
       </Paragraph>
 
