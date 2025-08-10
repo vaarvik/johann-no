@@ -65,19 +65,16 @@ async function main() {
     const fontsDir = join(process.cwd(), "public", "fonts")
     const fontPath = join(fontsDir, "MeowScript-Regular.ttf")
     if (!existsSync(fontsDir)) mkdirSync(fontsDir, { recursive: true })
-
     if (!existsSync(fontPath)) {
-      const url = "https://github.com/google/fonts/raw/main/ofl/meowscript/MeowScript-Regular.ttf"
-      console.log("Downloading Meow Script TTF…")
-      const res = await fetch(url)
-      if (!res.ok) throw new Error(`Font download failed: ${res.status}`)
-      const buf = Buffer.from(await res.arrayBuffer())
-      writeFileSync(fontPath, buf)
+      console.warn(
+        "MeowScript-Regular.ttf not found in public/fonts — using fallback script fonts.\n" +
+        "Add the file at public/fonts/MeowScript-Regular.ttf to use the exact Meow Script glyphs."
+      )
+    } else {
+      const fontBuffer = readFileSync(fontPath)
+      GlobalFonts.register(fontBuffer, "Meow Script")
+      console.log("Registered Meow Script font:", fontPath)
     }
-
-    const fontBuffer = readFileSync(fontPath)
-    GlobalFonts.register(fontBuffer, "Meow Script")
-    console.log("Registered Meow Script font:", fontPath)
   } catch (e) {
     console.warn("Failed to ensure/register Meow Script font. Falling back:", e)
   }
