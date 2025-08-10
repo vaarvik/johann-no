@@ -76,7 +76,9 @@ export default function Footer() {
               Made with <Heart className="h-4 w-4 text-red-500" /> and <Coffee className="h-4 w-4 text-yellow-600" />
             </span>
             <Separator orientation="vertical" className="h-4 bg-slate-700" />
-            <span>Built with Next.js, React & TypeScript</span>
+            <span className="hidden md:inline">Built with Next.js, React & TypeScript</span>
+            <Separator orientation="vertical" className="h-4 bg-slate-700 hidden md:block" />
+            <Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link>
           </div>
         </div>
       </div>

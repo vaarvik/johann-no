@@ -1,6 +1,8 @@
 import type { Metadata } from "next"
 import { Geist, Meow_Script, Space_Mono } from "next/font/google"
 import Script from "next/script"
+import { PosthogProvider } from "@/components/providers/posthog-provider"
+import CookieConsent from "@/components/ui/cookie-consent"
 import "./globals.css"
 
 const geistSans = Geist({
@@ -129,7 +131,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${spaceMono.variable} ${heroFont.variable} antialiased`}
       >
-        {children}
+        <PosthogProvider>
+          {children}
+          {/** Cookie consent banner (client-only) */}
+          <CookieConsent />
+        </PosthogProvider>
       </body>
     </html>
   )
