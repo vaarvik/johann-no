@@ -1,25 +1,77 @@
 import type { Metadata } from "next"
-import { Geist, Meow_Script, Space_Mono } from "next/font/google"
+import localFont from "next/font/local"
 import Script from "next/script"
 import { PosthogProvider } from "@/components/providers/posthog-provider"
 import CookieConsent from "@/components/ui/cookie-consent"
 import "./globals.css"
 
-const geistSans = Geist({
+const geistSans = localFont({
+  src: [
+    {
+      path: "../public/fonts/Geist/static/Geist-Black.ttf",
+      weight: "900",
+    },
+    {
+      path: "../public/fonts/Geist/static/Geist-ExtraBold.ttf",
+      weight: "800",
+    },
+    {
+      path: "../public/fonts/Geist/static/Geist-Bold.ttf",
+      weight: "700",
+    },
+    {
+      path: "../public/fonts/Geist/static/Geist-Medium.ttf",
+      weight: "500",
+    },
+    {
+      path: "../public/fonts/Geist/static/Geist-Regular.ttf",
+      weight: "400",
+    },
+    {
+      path: "../public/fonts/Geist/static/Geist-Light.ttf",
+      weight: "300",
+    },
+    {
+      path: "../public/fonts/Geist/static/Geist-ExtraLight.ttf",
+      weight: "200",
+    },
+    {
+      path: "../public/fonts/Geist/static/Geist-Thin.ttf",
+      weight: "100",
+    },
+  ],
   variable: "--font-geist-sans",
-  subsets: ["latin"],
 })
 
-const spaceMono = Space_Mono({
+const spaceMono = localFont({
+  src: [
+    {
+      path: "../public/fonts/Space_Mono/SpaceMono-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/Space_Mono/SpaceMono-Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/Space_Mono/SpaceMono-Italic.ttf",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/Space_Mono/SpaceMono-BoldItalic.ttf",
+      weight: "700",
+      style: "italic",
+    },
+  ],
   variable: "--font-space-mono",
-  subsets: ["latin"],
-  weight: ["400", "700"],
 })
 
-const heroFont = Meow_Script({
-  variable: "--font-hero",
-  weight: "400",
-  subsets: ["latin"],
+const heroFont = localFont({
+  src: "../public/fonts/Meow_Script/MeowScript-Regular.ttf",
+  variable: "--font-meow-script",
 })
 
 export const metadata: Metadata = {
@@ -27,8 +79,17 @@ export const metadata: Metadata = {
     default: "Johann Vårvik | Full-Stack Developer & IT Manager",
     template: "%s | Johann Vårvik",
   },
-  description: "Full-stack developer and IT manager specializing in React, TypeScript, Node.js, and modern web technologies. Leading technical teams and building scalable applications.",
-  keywords: ["full-stack developer", "React", "TypeScript", "Node.js", "IT manager", "web development", "portfolio"],
+  description:
+        "Full-stack developer and IT manager specializing in React, TypeScript, Node.js, and modern web technologies. Leading technical teams and building scalable applications.",
+  keywords: [
+    "full-stack developer",
+    "React",
+    "TypeScript",
+    "Node.js",
+    "IT manager",
+    "web development",
+    "portfolio",
+  ],
   authors: [{ name: "Johann Vårvik" }],
   creator: "Johann Vårvik",
   publisher: "Johann Vårvik",
@@ -43,7 +104,8 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Johann Vårvik | Full-Stack Developer & IT Manager",
-    description: "Full-stack developer and IT manager specializing in React, TypeScript, Node.js, and modern web technologies. Leading technical teams and building scalable applications.",
+    description:
+            "Full-stack developer and IT manager specializing in React, TypeScript, Node.js, and modern web technologies. Leading technical teams and building scalable applications.",
     url: "https://johann.no/", // TODO: Remember to change this to your actual domain
     siteName: "Johann Vårvik",
     locale: "en_US",
@@ -60,7 +122,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Johann Vårvik | Full-Stack Developer & IT Manager",
-    description: "Full-stack developer and IT manager specializing in React, TypeScript, Node.js, and modern web technologies.",
+    description:
+            "Full-stack developer and IT manager specializing in React, TypeScript, Node.js, and modern web technologies.",
     creator: "@johann_vaarvik", // TODO: Update with your actual Twitter handle
     images: ["/og-image.jpg"], // TODO: Create and add this image
   },
@@ -91,11 +154,12 @@ export default function RootLayout({
     "@type": "Person",
     "name": "Johann Vårvik",
     "jobTitle": "Full-Stack Developer & IT Manager",
-    "description": "Full-stack developer and IT manager specializing in React, TypeScript, Node.js, and modern web technologies.",
+    "description":
+            "Full-stack developer and IT manager specializing in React, TypeScript, Node.js, and modern web technologies.",
     "url": "https://johann.no",
     "sameAs": [
       "https://github.com/vaarvik",
-      "https://www.linkedin.com/in/johann-v%C3%A5rvik-9114a7163/"
+      "https://www.linkedin.com/in/johann-v%C3%A5rvik-9114a7163/",
     ],
     "knowsAbout": [
       "React",
@@ -108,12 +172,12 @@ export default function RootLayout({
       "Azure",
       "Web Development",
       "System Architecture",
-      "Team Management"
+      "Team Management",
     ],
     "worksFor": {
       "@type": "Organization",
-      "name": "Aevy"
-    }
+      "name": "Aevy",
+    },
   }
 
   return (
@@ -126,7 +190,6 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(structuredData),
           }}
-
         />
       </head>
       <body

@@ -14,7 +14,7 @@ export function HeroContent() {
       className="max-w-2xl flex flex-col text-center lg:text-left order-2 lg:order-none"
     >
       <motion.h1
-        className="text-6xl sm:text-6xl lg:text-8xl font-['Meow_Script'] text-white mb-2 leading-tight"
+        className="text-6xl sm:text-6xl lg:text-8xl font-hero text-white mb-2 leading-tight"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.4 }}
@@ -29,13 +29,28 @@ export function HeroContent() {
         className="mb-6"
       >
         <div className="flex flex-wrap gap-2 sm:gap-3 justify-center lg:justify-start">
-          <Badge size="default" className="bg-blue-600/20 text-xs sm:text-sm" icon="code" iconClassName="h-3 w-3 sm:h-4 sm:w-4">
+          <Badge
+            size="default"
+            className="bg-blue-600/20 text-xs sm:text-sm"
+            icon="code"
+            iconClassName="h-3 w-3 sm:h-4 sm:w-4"
+          >
             FULLSTACK DEVELOPER
           </Badge>
-          <Badge size="default" className="bg-green-600/20 text-xs sm:text-sm" icon="users" iconClassName="h-3 w-3 sm:h-4 sm:w-4">
+          <Badge
+            size="default"
+            className="bg-green-600/20 text-xs sm:text-sm"
+            icon="users"
+            iconClassName="h-3 w-3 sm:h-4 sm:w-4"
+          >
             IT MANAGER
           </Badge>
-          <Badge size="default" className="bg-purple-600/20 text-xs sm:text-sm" icon="palette" iconClassName="h-3 w-3 sm:h-4 sm:w-4">
+          <Badge
+            size="default"
+            className="bg-purple-600/20 text-xs sm:text-sm"
+            icon="palette"
+            iconClassName="h-3 w-3 sm:h-4 sm:w-4"
+          >
             DESIGNER
           </Badge>
         </div>
@@ -47,7 +62,9 @@ export function HeroContent() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.8 }}
       >
-        Crafting digital experiences with cutting-edge technology. Specialized in building scalable applications and leading technical teams to success.
+        Crafting digital experiences with cutting-edge technology.
+        Specialized in building scalable applications and leading
+        technical teams to success.
       </motion.p>
 
       <motion.div
@@ -56,8 +73,16 @@ export function HeroContent() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 1 }}
       >
-        <Link href="mailto:contact@johann.no" className="w-full sm:w-auto">
-          <Button size="lg" variant="primary" startIcon="send" className="w-full sm:w-auto">
+        <Link
+          href="mailto:contact@johann.no"
+          className="w-full sm:w-auto"
+        >
+          <Button
+            size="lg"
+            variant="primary"
+            startIcon="send"
+            className="w-full sm:w-auto"
+          >
             Contact me
           </Button>
         </Link>
