@@ -15,10 +15,10 @@ const skills = [
     iconBg: "bg-white",
     iconColor: "text-blue-600",
     technologies: [
-      { name: "React", experience: "5+ years", projects: 15, },
-      { name: "Next.js", experience: "3+ years", projects: 8, },
-      { name: "TypeScript", experience: "4+ years", projects: 12, },
-      { name: "Tailwind CSS", experience: "3+ years", projects: 10, }
+      { name: "React", experience: "6+ years", projects: 15, },
+      { name: "Next.js", experience: "4+ years", projects: 8, },
+      { name: "TypeScript", experience: "5+ years", projects: 12, },
+      { name: "Tailwind CSS", experience: "4+ years", projects: 10, }
     ]
   },
   {
@@ -30,7 +30,7 @@ const skills = [
     iconBg: "bg-white",
     iconColor: "text-slate-700",
     technologies: [
-      { name: "Node.js", experience: "5+ years", projects: 20, },
+      { name: "Node.js", experience: "6+ years", projects: 20, },
       { name: "Java/Kotlin", experience: "6+ years", projects: 25, },
       { name: "Golang", experience: "2+ years", projects: 6, },
     ]
@@ -44,8 +44,10 @@ const skills = [
     iconBg: "bg-white",
     iconColor: "text-cyan-600",
     technologies: [
-      { name: "OpenAI/GPT", experience: "2+ years", projects: 12, },
-      { name: "Gemini", experience: "1+ year", projects: 6 },
+      { name: "OpenAI", experience: "2+ years", projects: 12 },
+      { name: "Anthropic", experience: "1+ year", projects: 6 },
+      { name: "Google", experience: "1+ year", projects: 2 },
+      { name: "Mistral", experience: "<1 year", projects: 2 }
     ]
   },
   {
@@ -58,7 +60,9 @@ const skills = [
     iconColor: "text-emerald-600",
     technologies: [
       { name: "Azure", experience: "4+ years", projects: 15, },
+      { name: "AWS", experience: "1+ years", projects: 5, },
       { name: "Kubernetes", experience: "2+ years", projects: 5, },
+      { name: "Coolify", experience: "1+ years", projects: 5, },
       { name: "CI/CD", experience: "5+ years", projects: 20, }
     ]
   },
@@ -71,9 +75,9 @@ const skills = [
     iconBg: "bg-white",
     iconColor: "text-purple-600",
     technologies: [
-      { name: "Figma", experience: "4+ years", projects: 30, },
-      { name: "Design Systems", experience: "3+ years", projects: 8, },
-      { name: "UX Research", experience: "4+ years", projects: 20, },
+      { name: "Figma", experience: "5+ years", projects: 30, },
+      { name: "Design Systems", experience: "4+ years", projects: 8, },
+      { name: "UX Research", experience: "5+ years", projects: 20, },
     ]
   }
 ]
