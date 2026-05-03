@@ -93,7 +93,7 @@ const portfolioData: HomePortfolioItemData[] = [
     id: "7",
     title: "Renewable Asset Operations Platform",
     dateRange: "May 2025 - Present",
-    role: "Founding Product Engineer",
+    role: "CTO",
     badge: "PRODUCT",
     client: {
       name: "Aevy",

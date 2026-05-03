@@ -37,7 +37,7 @@ const skills = [
   },
   {
     name: "AI & ML",
-    level: 65,
+    level: 75,
     icon: Brain,
     bgColor: "bg-gradient-to-br from-cyan-500 via-cyan-600 to-blue-700",
     borderColor: "border-cyan-400",
@@ -50,7 +50,7 @@ const skills = [
   },
   {
     name: "Infrastructure",
-    level: 65,
+    level: 75,
     icon: Database,
     bgColor: "bg-gradient-to-br from-emerald-500 via-emerald-600 to-teal-700",
     borderColor: "border-emerald-400",
